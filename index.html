@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
 </head>
 <body>
     <header></header>
@@ -34,6 +36,19 @@
                 <h2>Download Resume</h2>
                 <div class="button-container">
                     <a href="documents/resume.pdf" target="_blank">Download Resume</a>
+                </div>
+            </div>
+            <div class="quadrant">
+                <h2>Fun Fact</h2>
+                <p id="fun-fact"></p>
+                <!-- JavaScript will populate the fun fact -->
+            </div>
+            <div class="quadrant map-quadrant">
+                <h2>Places I've Been</h2>
+                <div id="map"></div>
+                <div class="map-legend">
+                    <span class="legend-item">✈️ Places Visited</span>
+                    <span class="legend-item">🏠 Places Lived</span>
                 </div>
             </div>
             <!-- Add more quadrants as needed -->

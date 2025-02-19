@@ -15,6 +15,81 @@ body {
     padding: 0;
 }
 
+.site-header {
+    width: 100%;
+    background-color: var(--header-footer-background);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--header-footer-text-color);
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: var(--header-footer-text-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Dropdown menu */
+.nav-links li:hover .dropdown {
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--header-footer-background);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: var(--header-footer-text-color);
+}
+
+.dropdown a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -362,58 +437,58 @@ main ul li a[href*="facebook"]:hover {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.social-button:hover {
+social-button:hover {
     background-color: #444;
     color: #fff;
 }
 
-.social-icon {
+social-icon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
 
-.linkedin-button {
+linkedin-button {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
-.linkedin-button:hover {
+linkedin-button:hover {
     background-color: #005582;
 }
 
-.handshake-button {
+handshake-button {
     background-color: var(--secondary-color);
     border-color: var(--secondary-color);
 }
 
-.handshake-button:hover {
+handshake-button:hover {
     background-color: #d76a00;
 }
 
-.facebook-button {
+facebook-button {
     background-color: #3b5998;
     border-color: #3b5998;
 }
 
-.facebook-button:hover {
+facebook-button:hover {
     background-color: #2d4373;
 }
 
-.instagram-button {
+instagram-button {
     background-color: #E1306C;
     border-color: #E1306C;
 }
 
-.instagram-button:hover {
+instagram-button:hover {
     background-color: #C13584;
 }
 
-.featured-projects {
+featured-projects {
     margin: 20px 0;
 }
 
-.featured-projects .project {
+featured-projects .project {
     margin-bottom: 20px;
 }
 
@@ -428,4 +503,28 @@ main ul li a[href*="facebook"]:hover {
 
 #featured-awards-list a:hover {
     text-decoration: underline;
+}
+
+.map-quadrant {
+    min-height: 300px;
+}
+
+#map {
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.map-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.9em;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
