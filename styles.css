@@ -61,7 +61,8 @@ main.container {
 }
 
 .content-box ul {
-    padding-left: 20px;
+    padding-left: 20px; /* Add padding to indent bullet points */
+    list-style-type: disc; /* Ensure bullet points are displayed as discs */
 }
 
 .experience-item {
@@ -221,13 +222,10 @@ h2 {
 }
 
 main ul {
-    list-style-type: none;
     padding: 0;
-    text-align: center;
 }
 
 main ul li {
-    display: inline-block;
     margin: 10px;
 }
 
