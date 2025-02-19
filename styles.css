@@ -416,3 +416,16 @@ main ul li a[href*="facebook"]:hover {
 .featured-projects .project {
     margin-bottom: 20px;
 }
+
+#featured-awards-list a {
+    display: inline;
+    background: none;
+    color: var(--primary-color);
+    padding: 0;
+    border: none;
+    text-decoration: none;
+}
+
+#featured-awards-list a:hover {
+    text-decoration: underline;
+}
