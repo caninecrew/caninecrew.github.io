@@ -1,16 +1,71 @@
+:root {
+    --primary-color: #0073b1;
+    --secondary-color: #f68b1f;
+    --text-color: #333;
+    --background-color: #f4f4f9;
+    --header-footer-background: #333;
+    --header-footer-text-color: #fff;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #f4f4f9;
-    color: #333;
+    background: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
 
-header {
-    background: #333;
-    color: #fff;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header, footer {
+    background: var(--header-footer-background);
+    color: var(--header-footer-text-color);
     padding: 1rem;
     text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+main.container {
+    text-align: left;
+    padding: 20px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.content-box h2, .content-box h3, .content-box h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.content-box p, .content-box ul {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.content-box ul {
+    padding-left: 20px;
+}
+
+.experience-item {
+    margin-bottom: 20px;
 }
 
 nav ul {
@@ -39,21 +94,101 @@ nav ul li a:hover {
     color: #333;
 }
 
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 20px;
+nav ul li a:focus,
+.button-container a:focus,
+main ul li a:focus {
+    outline: none;
 }
 
-main {
-    text-align: left;
-    padding: 20px;
+footer .social-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer .social-links li {
+    display: inline-block;
+}
+
+footer .social-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer .social-button:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+footer .social-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+footer .linkedin-button {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+footer .linkedin-button:hover {
+    background-color: #005582;
+}
+
+footer .handshake-button {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+footer .handshake-button:hover {
+    background-color: #d76a00;
+}
+
+footer .facebook-button {
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+footer .facebook-button:hover {
+    background-color: #2d4373;
+}
+
+footer .instagram-button {
+    background-color: #E1306C;
+    border-color: #E1306C;
+}
+
+footer .instagram-button:hover {
+    background-color: #C13584;
+}
+
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    footer .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 h2, h3, h4 {
-    color: #0073b1;
+    color: var(--primary-color);
 }
 
 h2.center, h3.center {
@@ -72,9 +207,9 @@ h2 {
 .button-container a {
     text-decoration: none;
     color: #fff;
-    background-color: #0073b1;
+    background-color: var(--primary-color);
     padding: 10px 20px;
-    border: 2px solid #0073b1;
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
     display: inline-block;
@@ -105,10 +240,9 @@ main ul li a {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Specific styles for each platform */
 main ul li a[href*="linkedin"] {
-    background-color: #0073b1;
-    border-color: #0073b1;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 main ul li a[href*="linkedin"]:hover {
@@ -116,8 +250,8 @@ main ul li a[href*="linkedin"]:hover {
 }
 
 main ul li a[href*="handshake"] {
-    background-color: #f68b1f;
-    border-color: #f68b1f;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
 main ul li a[href*="handshake"]:hover {
@@ -131,4 +265,77 @@ main ul li a[href*="facebook"] {
 
 main ul li a[href*="facebook"]:hover {
     background-color: #2d4373;
+}
+
+.social-links {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+social-links li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.social-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-button:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.linkedin-button {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.linkedin-button:hover {
+    background-color: #005582;
+}
+
+.handshake-button {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.handshake-button:hover {
+    background-color: #d76a00;
+}
+
+.facebook-button {
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+.facebook-button:hover {
+    background-color: #2d4373;
+}
+
+.instagram-button {
+    background-color: #E1306C;
+    border-color: #E1306C;
+}
+
+.instagram-button:hover {
+    background-color: #C13584;
 }
