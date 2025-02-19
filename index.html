@@ -3,26 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Rumbley</title>
+    <title>Home</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header></header>
     <main class="container">
         <section class="intro">
-            <h2>Welcome!</h2>
-            <p>Explore the website to learn more about me.</p>
+            <h2>Welcome to My Website</h2>
+            <img src="images/profile.jpg" alt="Samuel Rumbley" class="profile-picture">
+            <p>Hello! I'm Samuel Rumbley. Welcome to my personal website where you can learn more about my education, work experience, projects, and more.</p>
+            <p>Feel free to explore the different sections of my site to get to know me better and see what I've been working on.</p>
         </section>
-        <section class="content-box">
-            <h2>About Me</h2>
-            <p>Hi, I'm Samuel Rumbley, a senior at Tennessee Technological University majoring in Business Information and Technology. I am passionate about data analysis, cybersecurity, and technology trends.</p>
-            <p>During my time in college, I have been serving as a Substitute Teacher for Wilson and Putnam County Schools. In these roles, I utilize critical thinking and leadership skills to create a safe and effective learning environment. My passion for education extends beyond the classroom, as demonstrated by my involvement in the Scouting program, where I empower scouts to achieve their life goals. My dedication to scouting has provided me with opportunities to build volunteer networks and develop youth leadership skills.</p>
-            <p>I'm currently pursuing a Bachelor's degree in Business Information and Technology at Tennessee Technological University. My goal is to combine my experience in education with my technical expertise to make a meaningful impact in various fields. I believe that a well-rounded education will equip me to contribute to a rapidly evolving world.</p>
-            <p>I'm actively seeking internship or co-op opportunities to gain practical experience and explore potential career paths. Specifically, I'm interested in data analysis, cybersecurity, event planning, and exploring current trends in technology.</p>
+        <section class="quadrants">
+            <div class="quadrant">
+                <h2>About Me</h2>
+                <p>Learn more about my background, interests, and experiences. <a href="about.html">Read more</a></p>
+            </div>
+            <div class="quadrant">
+                <h2>Featured Projects</h2>
+                <div class="project">
+                    <h3>Project Title 1</h3>
+                    <p>Brief description of the project. <a href="projects.html">Learn more</a></p>
+                </div>
+                <div class="project">
+                    <h3>Project Title 2</h3>
+                    <p>Brief description of the project. <a href="projects.html">Learn more</a></p>
+                </div>
+            </div>
+            <div class="quadrant">
+                <h2>Education</h2>
+                <p>Details about my educational background and achievements. <a href="education.html">Learn more</a></p>
+            </div>
+            <div class="quadrant">
+                <h2>Featured Awards</h2>
+                <ul id="featured-awards-list">
+                    <!-- JavaScript will populate this list -->
+                </ul>
+            </div>
+            <div class="quadrant">
+                <h2>Download Resume</h2>
+                <div class="button-container">
+                    <a href="documents/resume.pdf" target="_blank">Download Resume</a>
+                </div>
+            </div>
+            <!-- Add more quadrants as needed -->
         </section>
     </main>
-    <footer></footer>
+    <footer>
+        <p>&copy; 2025 Samuel Rumbley. All rights reserved.</p>
+    </footer>
     <script src="header.js"></script>
     <script src="footer.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

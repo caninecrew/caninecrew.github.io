@@ -21,11 +21,41 @@ body {
     padding: 0 20px;
 }
 
-header, footer {
-    background: var(--header-footer-background);
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--header-footer-background);
     color: var(--header-footer-text-color);
-    padding: 1rem;
-    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    color: var(--header-footer-text-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #555;
 }
 
 main {
@@ -39,66 +69,81 @@ main.container {
 
 .intro {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
-.content-box {
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 10px 0;
+}
+
+.quadrants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.quadrant {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
 }
 
-.content-box h2, .content-box h3, .content-box h4 {
+.quadrant h2 {
     color: var(--primary-color);
     margin-bottom: 10px;
 }
 
-.content-box p, .content-box ul {
+.quadrant p, .quadrant ul {
     margin-bottom: 15px;
     line-height: 1.6;
 }
 
-.content-box ul {
-    padding-left: 20px; /* Add padding to indent bullet points */
-    list-style-type: disc; /* Ensure bullet points are displayed as discs */
+.quadrant ul {
+    padding-left: 20px;
+    list-style-type: disc;
 }
 
-.experience-item {
-    margin-bottom: 20px;
+.quadrant ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+.quadrant ul li a:hover {
+    text-decoration: underline;
+}
+
+.button-container {
     text-align: center;
+    margin: 20px 0;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a {
+.button-container a {
     text-decoration: none;
     color: #fff;
-    background-color: #333;
-    padding: 10px 15px;
-    border: 2px solid #333;
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    margin: 5px;
 }
 
-nav ul li a:hover {
-    background-color: #fff;
-    color: #333;
+.button-container a:hover {
+    background-color: #005582;
 }
 
-nav ul li a:focus,
-.button-container a:focus,
-main ul li a:focus {
-    outline: none;
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: var(--header-footer-background);
+    color: var(--header-footer-text-color);
+    margin-top: 20px;
 }
 
 footer .social-links {
@@ -177,9 +222,29 @@ footer .instagram-button:hover {
 }
 
 @media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
     nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a {
         display: block;
-        margin: 10px 0;
+        width: 100%;
+        text-align: left;
+        padding: 10px 20px;
+    }
+
+    .quadrants {
+        grid-template-columns: 1fr;
     }
 
     footer .social-links {
@@ -200,25 +265,31 @@ h2 {
     text-align: center;
 }
 
-.button-container {
-    text-align: center;
-    margin: 20px 0;
+.content-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-.button-container a {
-    text-decoration: none;
-    color: #fff;
-    background-color: var(--primary-color);
-    padding: 10px 20px;
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    display: inline-block;
-    margin: 5px;
+.content-box h2, .content-box h3, .content-box h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
 }
 
-.button-container a:hover {
-    background-color: #005582;
+.content-box p, .content-box ul {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.content-box ul {
+    padding-left: 20px; /* Add padding to indent bullet points */
+    list-style-type: disc; /* Ensure bullet points are displayed as discs */
+}
+
+.experience-item {
+    margin-bottom: 20px;
 }
 
 main ul {
@@ -271,7 +342,7 @@ main ul li a[href*="facebook"]:hover {
     text-align: center;
 }
 
-social-links li {
+.social-links li {
     display: inline-block;
     margin: 10px;
 }
@@ -336,4 +407,12 @@ social-links li {
 
 .instagram-button:hover {
     background-color: #C13584;
+}
+
+.featured-projects {
+    margin: 20px 0;
+}
+
+.featured-projects .project {
+    margin-bottom: 20px;
 }
