@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
                        window.location.pathname.endsWith('index.html');
 
     const headerContent = isIndexPage ? `
+        <link rel="stylesheet" href="css/styles.css">
         <nav class="navbar">
             <div class="logo">Samuel Rumbley</div>
             <ul class="nav-links">
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </ul>
         </nav>
     ` : `
+        <link rel="stylesheet" href="../css/styles.css">
         <nav class="navbar">
             <div class="logo">Samuel Rumbley</div>
             <ul class="nav-links">
