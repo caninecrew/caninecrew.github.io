@@ -1,10 +1,10 @@
 const travelLocations = [
     {
-        name: "Nashville, Tennessee",
+        name: "Mt. Juliet, Tennessee",
         position: { lat: 36.1627, lng: -86.7816 },
-        description: "Home sweet home",
-        date: "Current",
-        image: "../images/travel/nashville.jpg"
+        description: "Hometown",
+        date: "Born and raised",
+        image: "../images/travel/mtjuliet.jpg"
     }
     // Add more locations as needed
 ];
