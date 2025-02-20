@@ -68,9 +68,15 @@
             </div>
             <div class="quadrant map-quadrant">
                 <h2>Places I've Been</h2>
-                <div id="map" class="map-container"></div>
+                <div class="map-container">
+                    <div id="map-container">
+                        <div id="map"></div>
+                        <div id="map-loading">Loading map...</div>
+                        <div id="map-error" style="display: none;">Failed to load map</div>
+                    </div>
+                </div>
                 <div class="button-container">
-                    <a href="pages/travel.html" target="_blank">Travel</a>
+                    <a href="pages/travel.html">Travel</a>
                 </div>
             </div>
             <!-- Add more quadrants as needed -->

@@ -1,7 +1,7 @@
 // filepath: /c:/Users/Samue/Documents/GitHub/caninecrew.github.io/index.js
 document.addEventListener('DOMContentLoaded', function() {
     // Fetch funFacts.csv and pick a random entry
-    fetch('funFacts.csv')
+    fetch('/data/funFacts.csv')
         .then(response => response.text())
         .then(data => {
             // Split and filter out comments or empty lines
@@ -42,39 +42,91 @@ document.addEventListener('DOMContentLoaded', function() {
         awardsList.appendChild(listItem);
     });
 
+    // Add this before the initMap function
+    const locations = [
+        {
+            position: { lat: 39.8283, lng: -98.5795 },
+            title: 'Center of USA',
+            icon: {
+                url: '/images/map-marker.png', // Add your custom marker image
+                scaledSize: new google.maps.Size(32, 32)
+            }
+        }
+        // Add more locations as needed
+    ];
+
     // Make initMap function globally available
     window.initMap = function() {
-        const map = new google.maps.Map(document.getElementById('map'), {
+        const mapElement = document.getElementById('map');
+        if (!mapElement) {
+            console.error('Map element not found');
+            return;
+        }
+
+        console.log('Initializing map...'); // Debug log
+
+        const map = new google.maps.Map(mapElement, {
             zoom: 4,
-            center: { lat: 39.8283, lng: -98.5795 }, // Center of USA
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+            center: { lat: 39.8283, lng: -98.5795 },
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [
+                {
+                    featureType: "administrative",
+                    elementType: "geometry",
+                    stylers: [{ visibility: "simplified" }]
+                },
+                {
+                    featureType: "water",
+                    elementType: "geometry",
+                    stylers: [{ color: "#a0d6d1" }]
+                },
+                {
+                    featureType: "landscape",
+                    elementType: "geometry",
+                    stylers: [{ color: "#f5f5f5" }]
+                }
+            ],
+            gestureHandling: "cooperative",
+            zoomControl: true,
+            mapTypeControl: false,
+            streetViewControl: false,
+            fullscreenControl: true
         });
 
-        // Use a publicly accessible URL for the KMZ file
-        const kmlUrl = 'https://raw.githubusercontent.com/caninecrew/caninecrew.github.io/main/visited.kmz';
-        console.log('Loading KML from:', kmlUrl);
+        // Update the marker creation in initMap:
+        locations.forEach(location => {
+            const marker = new google.maps.Marker({
+                position: location.position,
+                map: map,
+                title: location.title,
+                icon: location.icon,
+                animation: google.maps.Animation.DROP
+            });
 
-        const kmlLayer = new google.maps.KmlLayer({
-            url: kmlUrl,
-            map: map,
-            preserveViewport: false,
-            suppressInfoWindows: false
+            // Add click listener for info windows
+            const infowindow = new google.maps.InfoWindow({
+                content: `<h3>${location.title}</h3>`
+            });
+
+            marker.addListener('click', () => {
+                infowindow.open(map, marker);
+            });
         });
 
-        kmlLayer.addListener('status_changed', () => {
-            const status = kmlLayer.getStatus();
-            console.log('KML Layer Status:', status);
-            if (status !== 'OK') {
-                console.error('KML Layer Error:', status);
-            }
-        });
+        // Debug log
+        console.log('Map initialized:', map);
     };
 
-    // Load the Google Maps API
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${config.GOOGLE_MAPS_API_KEY}&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
+    // Load Google Maps API with error handling
+    try {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${config.GOOGLE_MAPS_API_KEY}&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        script.onerror = () => console.error('Failed to load Google Maps API');
+        document.head.appendChild(script);
+    } catch (error) {
+        console.error('Error loading Google Maps:', error);
+    }
 });
 
