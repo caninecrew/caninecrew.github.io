@@ -1,25 +1,35 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("/pages/header.html")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.querySelector("#header").innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Error loading header:', error);
-            // Fallback content if header fails to load
-            document.querySelector("#header").innerHTML = `
-                <nav class="navbar">
-                    <div class="logo">Samuel Rumbley</div>
-                    <ul class="nav-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/pages/education.html">Education</a></li>
-                        <li><a href="/pages/experience.html">Experience</a></li>
-                    </ul>
-                </nav>`;
-        });
+    // Check if we're on the index page or in the pages directory
+    const isIndexPage = window.location.pathname === '/' || 
+                       window.location.pathname.endsWith('index.html');
+
+    const headerContent = isIndexPage ? `
+        <nav class="navbar">
+            <div class="logo">Samuel Rumbley</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="pages/education.html">My Education</a></li>
+                <li><a href="pages/experience.html">Professional Experience</a></li>
+                <li><a href="pages/scouting.html">Scouting Achievements</a></li>
+                <li><a href="pages/church.html">Community Service</a></li>
+                <li><a href="pages/projects.html">My Projects</a></li>
+                <li><a href="pages/achievements.html">Awards & Honors</a></li>
+            </ul>
+        </nav>
+    ` : `
+        <nav class="navbar">
+            <div class="logo">Samuel Rumbley</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="education.html">My Education</a></li>
+                <li><a href="experience.html">Professional Experience</a></li>
+                <li><a href="scouting.html">Scouting Achievements</a></li>
+                <li><a href="church.html">Community Service</a></li>
+                <li><a href="projects.html">My Projects</a></li>
+                <li><a href="achievements.html">Awards & Honors</a></li>
+            </ul>
+        </nav>
+    `;
+
+    document.querySelector("#header").innerHTML = headerContent;
 });
