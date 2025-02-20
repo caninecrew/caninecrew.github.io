@@ -1,0 +1,137 @@
+/* =================================
+   10. Media Queries
+   ================================= */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .quadrants {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Medium screens (992px to 1199px) */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .quadrants {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Small screens (768px to 991px) */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    #travel-map-container {
+        height: 400px;
+    }
+}
+
+/* Extra small screens (up to 767px) */
+@media (max-width: 767px) {
+    .container {
+        max-width: 540px;
+        padding: 0 15px;
+    }
+
+    .quadrants {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .social-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .location-card img {
+        height: 200px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile screens (up to 575px) */
+@media (max-width: 575px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .button-container a {
+        width: 100%;
+    }
+
+    #travel-map-container {
+        height: 300px;
+    }
+
+    .map-legend {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Print styles */
+@media print {
+    .site-header,
+    .site-footer,
+    .button-container,
+    .social-container {
+        display: none;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    /* ... existing media query styles ... */
+    footer .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,109 @@
+/* =================================
+   5. Quadrants Grid System
+   ================================= */
+
+/* Quadrants container */
+.quadrants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Individual quadrant styling */
+.quadrant {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px; /* Ensure consistent height */
+}
+
+/* Quadrant headings */
+.quadrant h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+/* Quadrant content */
+.quadrant p, .quadrant ul {
+    flex-grow: 1; /* Allow content to expand */
+    margin-bottom: 15px;
+}
+
+/* List styling within quadrants */
+.quadrant ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    margin-bottom: 15px;
+}
+
+.quadrant ul li {
+    margin: 8px 0;
+}
+
+/* Link styling within quadrants */
+.quadrant a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.quadrant a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Button container within quadrants */
+.quadrant .button-container {
+    margin-top: auto;
+    text-align: center;
+}
+
+/* Featured awards list styling */
+#featured-awards-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+#featured-awards-list li {
+    margin: 10px 0;
+}
+
+#featured-awards-list a {
+    display: inline;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+#featured-awards-list a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .quadrants {
+        grid-template-columns: 1fr;
+    }
+
+    .quadrant {
+        margin-bottom: 15px;
+    }
+}
+
+/* Special quadrant variations */
+.quadrant.highlight {
+    border: 2px solid var(--primary-color);
+}
+
+.quadrant.centered-content {
+    text-align: center;
+}
+
+.quadrant.full-width {
+    grid-column: 1 / -1;
+}

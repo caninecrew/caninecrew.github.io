@@ -1,0 +1,103 @@
+/* =================================
+   6. Map Components
+   ================================= */
+
+/* Map quadrant specific styling */
+.map-quadrant {
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 400px;
+}
+
+/* Main map container */
+.map-container {
+    position: relative;
+    height: 250px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Google Maps container */
+#map-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Actual map element */
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Loading and error states */
+#map-loading,
+#map-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Map legend */
+.map-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Custom map marker info window */
+.gm-style .gm-style-iw {
+    background-color: white;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .map-quadrant {
+        height: 350px;
+    }
+
+    .map-container {
+        height: 200px;
+        width: 100%;
+    }
+
+    .map-legend {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Map controls custom styling */
+.gm-style-cc {
+    display: none;
+}
+
+.gm-style button {
+    background-color: white !important;
+    border-radius: 2px !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
+}

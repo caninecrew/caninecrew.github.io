@@ -1,0 +1,84 @@
+/* =================================
+   2. Base Layout & Typography
+   ================================= */
+   .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Heading styles */
+h2, h3, h4 {
+    color: var(--primary-color);
+}
+
+h2.center, h3.center {
+    text-align: center;
+}
+
+/* Content box styling */
+.content-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.content-box h2, .content-box h3, .content-box h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.content-box p, .content-box ul {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.content-box ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* Button Container & Button Styles */
+.button-container {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px 0;
+}
+
+.button-container a,
+.quadrant .button-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff !important; /* Force white text */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    min-width: 120px;
+    border: none;
+}
+
+.button-container a:hover,
+.quadrant .button-container a:hover {
+    background-color: var(--secondary-color);
+    color: #fff !important;
+    text-decoration: none;
+}
+
+/* Special button variations */
+.button-container a[href*="linkedin"] {
+    background-color: #0077b5;
+}
+
+.button-container a[href*="github"] {
+    background-color: #333;
+}
+
+/* External link indicator */
+.button-container a[target="_blank"]::after {
+    content: " ↗";
+    font-size: 0.8em;
+}

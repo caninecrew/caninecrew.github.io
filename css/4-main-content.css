@@ -1,0 +1,167 @@
+/* =================================
+   4. Main Content Components
+   ================================= */
+
+/* Main content layout */
+main {
+    padding: 20px;
+}
+
+main.container {
+    text-align: left;
+    padding: 20px;
+}
+
+/* Introduction section */
+.intro {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 10px 0 20px 0;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+/* Content sections */
+.intro, .education, .experience, .skills, .interests, .call-to-action {
+    margin-bottom: 20px;
+}
+
+/* List styling */
+main ul {
+    padding: 0;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+main ul li {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Add these missing main content styles */
+main ul li a[href*="linkedin"] {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+main ul li a[href*="linkedin"]:hover {
+    background-color: #005582;
+}
+
+main ul li a[href*="handshake"] {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+main ul li a[href*="handshake"]:hover {
+    background-color: #d76a00;
+}
+
+main ul li a[href*="facebook"] {
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+main ul li a[href*="facebook"]:hover {
+    background-color: #2d4373;
+}
+
+/* Link styling */
+main a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+main a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Button styling */
+.button-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.button-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button-container a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Call to action section */
+.call-to-action {
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.call-to-action a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.call-to-action a:hover {
+    text-decoration: underline;
+}
+
+/* Content box styling */
+.content-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Section headings */
+section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5em;
+}
+
+/* Experience items */
+.experience-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.experience-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main.container {
+        padding: 10px;
+    }
+
+    .profile-picture {
+        width: 120px;
+        height: 120px;
+    }
+
+    .button-container a {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

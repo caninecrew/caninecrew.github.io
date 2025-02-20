@@ -1,0 +1,23 @@
+/* =================================
+   1. CSS Variables & Reset
+   ================================= */
+   :root {
+    /* Brand Colors */
+    --primary-color: #0073b1;    /* LinkedIn blue - used for primary actions and links */
+    --secondary-color: #f68b1f;  /* Orange - used for hover states and secondary elements */
+    
+    /* UI Colors */
+    --text-color: #333;         /* Main text color */
+    --background-color: #f4f4f9; /* Light gray background */
+    --header-footer-background: #333; /* Dark background for header/footer */
+    --header-footer-text-color: #fff; /* Light text for dark backgrounds */
+}
+
+/* Basic reset */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
