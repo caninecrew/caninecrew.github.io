@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="config.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+    <script src="js/config.js"></script>
+    <script defer src="js/index.js"></script>
+    <script>
+        function loadGoogleMapsAPI() {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${config.GOOGLE_MAPS_API_KEY}&callback=initMap`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+        window.addEventListener('load', loadGoogleMapsAPI);
+    </script>
 </head>
 <body>
     <div id="header"></div>
@@ -85,6 +95,5 @@
     <div id="footer"></div>
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
-    <script src="js/index.js"></script>
 </body>
 </html>

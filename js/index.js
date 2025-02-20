@@ -1,5 +1,30 @@
-// filepath: /c:/Users/Samue/Documents/GitHub/caninecrew.github.io/index.js
+// Replace the existing debugging code at the start of the file
+console.log('Debug: Starting script execution');
+
+// Check config
+if (typeof config === 'undefined') {
+    console.error('Error: config object is undefined');
+} else {
+    console.log('Success: config object found');
+    console.log('API Key length:', config.GOOGLE_MAPS_API_KEY ? config.GOOGLE_MAPS_API_KEY.length : 0);
+    console.log('API Key first 4 chars:', config.GOOGLE_MAPS_API_KEY ? config.GOOGLE_MAPS_API_KEY.substring(0, 4) : 'none');
+}
+
+// Add event listener for script load errors
+window.addEventListener('error', function(e) {
+    if (e.target.tagName === 'SCRIPT') {
+        console.error('Script load failed:', e.target.src);
+    }
+}, true);
+
+console.log('Script loaded');
+window.addEventListener('load', () => {
+    console.log('Window loaded');
+    console.log('Google Maps object:', typeof google !== 'undefined' ? 'Available' : 'Not available');
+});
+
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
     // Fetch funFacts.csv and pick a random entry
     fetch('/data/funFacts.csv')
         .then(response => response.text())
@@ -55,67 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add more locations as needed
     ];
 
-    // Make initMap function globally available
-    window.initMap = function() {
-        const mapElement = document.getElementById('map');
-        if (!mapElement) {
-            console.error('Map element not found');
-            return;
-        }
-
-        console.log('Initializing map...'); // Debug log
-
-        const map = new google.maps.Map(mapElement, {
-            zoom: 4,
-            center: { lat: 39.8283, lng: -98.5795 },
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            styles: [
-                {
-                    featureType: "administrative",
-                    elementType: "geometry",
-                    stylers: [{ visibility: "simplified" }]
-                },
-                {
-                    featureType: "water",
-                    elementType: "geometry",
-                    stylers: [{ color: "#a0d6d1" }]
-                },
-                {
-                    featureType: "landscape",
-                    elementType: "geometry",
-                    stylers: [{ color: "#f5f5f5" }]
-                }
-            ],
-            gestureHandling: "cooperative",
-            zoomControl: true,
-            mapTypeControl: false,
-            streetViewControl: false,
-            fullscreenControl: true
-        });
-
-        // Update the marker creation in initMap:
-        locations.forEach(location => {
-            const marker = new google.maps.Marker({
-                position: location.position,
-                map: map,
-                title: location.title,
-                icon: location.icon,
-                animation: google.maps.Animation.DROP
-            });
-
-            // Add click listener for info windows
-            const infowindow = new google.maps.InfoWindow({
-                content: `<h3>${location.title}</h3>`
-            });
-
-            marker.addListener('click', () => {
-                infowindow.open(map, marker);
-            });
-        });
-
-        // Debug log
-        console.log('Map initialized:', map);
-    };
+    const mapLoading = document.getElementById('map-loading');
+    const mapError = document.getElementById('map-error');
 
     // Load Google Maps API with error handling
     try {
@@ -129,4 +95,50 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error loading Google Maps:', error);
     }
 });
+
+// Move initMap outside of DOMContentLoaded
+window.initMap = function() {
+    console.log('Initializing map...');
+    const mapElement = document.getElementById('map');
+    const mapLoading = document.getElementById('map-loading');
+    const mapError = document.getElementById('map-error');
+
+    try {
+        if (!mapElement) {
+            throw new Error('Map element not found');
+        }
+
+        // Hide loading indicator
+        if (mapLoading) {
+            mapLoading.style.display = 'none';
+        }
+
+        const map = new google.maps.Map(mapElement, {
+            zoom: 4,
+            center: { lat: 39.8283, lng: -98.5795 },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        // Add your markers here
+        const locations = [
+            {
+                position: { lat: 39.8283, lng: -98.5795 },
+                title: 'Center of USA'
+            }
+        ];
+
+        locations.forEach(location => {
+            new google.maps.Marker({
+                position: location.position,
+                map: map,
+                title: location.title
+            });
+        });
+
+    } catch (error) {
+        console.error('Map initialization failed:', error);
+        if (mapLoading) mapLoading.style.display = 'none';
+        if (mapError) mapError.style.display = 'block';
+    }
+};
 
