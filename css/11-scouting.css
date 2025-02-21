@@ -1,0 +1,698 @@
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('../images/scouting/hero-bg.jpg');
+    background-size: cover;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.scouting-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.highlight-card {
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+
+/* Enhanced Timeline Styling */
+.timeline-section {
+    position: relative;
+    padding: 2rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.timeline-date {
+    text-align: right;
+    font-weight: bold;
+    padding-top: 0.5rem;
+    color: var(--primary-color);
+}
+
+.timeline-content {
+    position: relative;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Special timeline items */
+.timeline-item.highlight .timeline-content {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.timeline-item.major .timeline-content {
+    border-left: 4px solid gold;
+    background: linear-gradient(to right, rgba(255,215,0,0.1), white);
+}
+
+.timeline-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.timeline-details ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 50px;
+    }
+    
+    .timeline-item {
+        grid-template-columns: 70px 1fr;
+        gap: 1rem;
+    }
+    
+    .timeline-date {
+        font-size: 0.9em;
+    }
+    
+    .timeline-content::before {
+        left: -1.75rem;
+    }
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Stats Container */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+/* Accordion */
+.accordion-item {
+    border: 1px solid #ddd;
+    margin-bottom: 0.5rem;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1rem;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.accordion-content {
+    padding: 1rem;
+    display: none;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+/* Merit Badge Timeline */
+.merit-badge-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.merit-badge-year {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.merit-badge-year h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+/* Update merit badge list styles */
+.merit-badge-list {
+    display: flex;  /* Change from grid to flex */
+    flex-wrap: wrap;  /* Allow wrapping to next line */
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+
+/* Show merit badge list when active */
+.merit-badge-list.show {
+    max-height: 2000px; /* Large enough to fit content */
+    opacity: 1;
+    padding: 1.5rem;
+}
+
+/* Add fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.merit-badge {
+    flex: 0 0 auto;  /* Don't allow badges to grow/shrink */
+    display: flex;
+    flex-direction: row;  /* Change from column to row */
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+    min-width: 250px;  /* Ensure enough space for badge content */
+}
+
+.merit-badge:hover {
+    transform: translateY(-2px);
+}
+
+.merit-badge.required {
+    background: var(--primary-color);
+    color: white;
+}
+
+.badge-name {
+    font-weight: 500;
+    margin: 0.25rem 0;
+}
+
+.badge-date {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.merit-badge.required .badge-date {
+    color: rgba(255,255,255,0.9);
+}
+
+.badge-image {
+    width: 60px;  /* Slightly smaller for horizontal layout */
+    height: 60px;
+    border-radius: 50%;
+    margin: 0;  /* Remove bottom margin */
+    object-fit: cover;
+}
+
+.badge-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  /* Left align text */
+    gap: 0.25rem;
+}
+
+.collapsible {
+    background-color: #f5f5f5;
+    color: #333;
+    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.collapsible:after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.collapsible.active:after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.collapsible:hover {
+    background-color: #e9e9e9;
+}
+
+@media (max-width: 768px) {
+    .merit-badge-list {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .merit-badge {
+        min-width: 200px;  /* Smaller minimum width on mobile */
+    }
+    
+    .badge-image {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Leadership Timeline */
+.leadership-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.leadership-entry {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.leadership-date {
+    font-weight: 500;
+    color: var(--primary-color);
+    text-align: right;
+    padding-right: 2rem;
+    border-right: 3px solid var(--primary-color);
+}
+
+.leadership-content {
+    position: relative;
+    padding-left: 1rem;
+}
+
+.leadership-role {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.leadership-org {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.leadership-description {
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .leadership-entry {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .leadership-date {
+        text-align: left;
+        border-right: none;
+        border-bottom: 3px solid var(--primary-color);
+        padding: 0 0 0.5rem 0;
+    }
+}
+
+.leadership-year {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.year-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.leadership-items {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.leadership-item {
+    padding: 1rem 1rem 1rem 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    background: #f9f9f9;
+    border-radius: 0 8px 8px 0;
+}
+
+.leadership-item .role {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.leadership-item .date {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+.leadership-item .organization {
+    font-style: italic;
+    color: #444;
+}
+
+.leadership-item .details {
+    margin-top: 0.5rem;
+    font-size: 0.95em;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .leadership-items {
+        padding: 1rem;
+    }
+    
+    .leadership-item {
+        padding: 0.75rem 0.75rem 0.75rem 1rem;
+    }
+}
+
+/* Sub-organization Section */
+.suborg-section {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--secondary-color);
+}
+
+.suborg-header {
+    color: var(--primary-color);
+    font-size: 1.1em;
+    margin: 0 0 1rem -1.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.suborg-header:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+/* Adjust spacing between sub-organizations */
+.suborg-section + .suborg-section {
+    margin-top: 2rem;
+}
+
+/* Adjust leadership items within sub-organizations */
+.suborg-section .leadership-item {
+    margin-left: 0;
+    border-left-color: var(--secondary-color);
+}
+
+/* Horizontal Timeline */
+.timeline-wrapper {
+    position: relative;
+    padding: 2rem 0;
+    overflow-x: auto;
+}
+
+.timeline.horizontal {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 4rem;
+    position: relative;
+}
+
+/* Add the connecting line */
+.timeline.horizontal::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+    z-index: 1;
+}
+
+.timeline-item {
+    flex: 0 0 300px;
+    margin: 0 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    width: 2px;
+    height: 1rem;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+/* Standardize date positioning */
+.timeline-date {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem;
+    margin: -1.5rem -1.5rem 1rem -1.5rem;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Consistent heading styles */
+.timeline-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* Consistent paragraph styles */
+.timeline-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Standard year label */
+.timeline-year {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 500;
+    position: relative;
+    z-index: 3;
+    margin-top: 0.5rem;
+}
+
+/* Clean up duplicate styles */
+.timeline-item.major .timeline-content,
+.timeline-item.highlight .timeline-content {
+    border-width: 2px;
+    border-style: solid;
+}
+
+.timeline-item.major .timeline-content {
+    border-color: var(--accent-color);
+}
+
+.timeline-item.highlight .timeline-content {
+    border-color: var(--primary-color);
+}
+
+.timeline-item.major .timeline-date {
+    background: var(--accent-color);
+}
+
+/* Styling for major milestones */
+.timeline-item.major .timeline-content {
+    border: 2px solid var(--accent-color);
+}
+
+.timeline-item.major .timeline-date {
+    background: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Styling for highlighted items */
+.timeline-item.highlight .timeline-content {
+    background: linear-gradient(to bottom right, #fff, #f8f8f8);
+    border: 1px solid var(--primary-color);
+}
+
+/* Hover effects */
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex: 0 0 250px;
+        margin: 0 1rem;
+    }
+
+    .timeline-content {
+        padding: 1rem;
+    }
+}
+
+/* Add scroll buttons */
+.timeline-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.timeline-scroll-btn.left {
+    left: 1rem;
+}
+
+.timeline-scroll-btn.right {
+    right: 1rem;
+}
+
+/* Add scroll buttons for better UX */
+.timeline-wrapper::before,
+.timeline-wrapper::after {
+    content: '→';
+    position: sticky;
+    top: 0;
+    width: 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, white, transparent);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.timeline-wrapper::before {
+    content: '←';
+    left: 0;
+    background: linear-gradient(to left, transparent, white);
+}
+
+.timeline-wrapper::after {
+    right: 0;
+}
+
+/* Add smooth scrolling behavior */
+.timeline.horizontal {
+    scroll-behavior: smooth;
+}

@@ -3,18 +3,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const isIndexPage = window.location.pathname === '/' || 
                        window.location.pathname.endsWith('index.html');
 
+    const navItems = [
+        { text: 'Home', link: '/' },
+        { text: 'Education', link: '/pages/education.html' },
+        { text: 'Experience', link: '/pages/experience.html' },
+        { text: 'Training', link: '/pages/training.html' },
+        { text: 'Scouting', link: '/pages/scouting.html' },
+        { text: 'Projects', link: '/pages/projects.html' },
+        { text: 'Achievements', link: '/pages/achievements.html' },
+        { text: 'Travel', link: '/pages/travel.html' }
+    ];
+
     const headerContent = isIndexPage ? `
         <header class="site-header">
             <nav class="navbar">
                 <div class="logo">Samuel Rumbley</div>
                 <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="pages/education.html">My Education</a></li>
-                    <li><a href="pages/experience.html">Professional Experience</a></li>
-                    <li><a href="pages/scouting.html">Scouting Achievements</a></li>
-                    <li><a href="pages/church.html">Community Service</a></li>
-                    <li><a href="pages/projects.html">My Projects</a></li>
-                    <li><a href="pages/achievements.html">Awards & Honors</a></li>
+                    ${navItems.map(item => `<li><a href="${item.link}">${item.text}</a></li>`).join('')}
                 </ul>
             </nav>
         </header>
@@ -23,13 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <nav class="navbar">
                 <div class="logo">Samuel Rumbley</div>
                 <ul class="nav-links">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="education.html">My Education</a></li>
-                    <li><a href="experience.html">Professional Experience</a></li>
-                    <li><a href="scouting.html">Scouting Achievements</a></li>
-                    <li><a href="church.html">Community Service</a></li>
-                    <li><a href="projects.html">My Projects</a></li>
-                    <li><a href="achievements.html">Awards & Honors</a></li>
+                    ${navItems.map(item => `<li><a href="..${item.link}">${item.text}</a></li>`).join('')}
                 </ul>
             </nav>
         </header>
