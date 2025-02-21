@@ -1,0 +1,171 @@
+/*
+Responsive Styles
+===============
+A comprehensive mobile-first approach to responsive design for the Scouting
+journey page, ensuring optimal display across all device sizes.
+
+Breakpoint Architecture:
+---------------------
+1. Large Screens (1200px+)
+   - Optimal reading widths
+   - Enhanced visual hierarchy
+   - Maximum content width
+   - Expanded layouts
+
+2. Medium Screens (992px - 1199px)
+   - Adjusted grid systems
+   - Scaled typography
+   - Optimized spacing
+   - Content constraints
+
+3. Tablet Screens (768px - 991px)
+   - Touch-friendly targets
+   - Simplified grids
+   - Adjusted whitespace
+   - Modified layouts
+
+4. Mobile Screens (576px - 767px)
+   - Stack card layouts
+   - Reduced padding
+   - Simplified navigation
+   - Touch optimization
+
+5. Small Mobile Screens (<576px)
+   - Essential content focus
+   - Minimal decoration
+   - Maximum readability
+   - Vertical layouts
+*/
+
+/* 1. Large Screens (1200px+)
+   -----------------------
+   Optimal experience for desktop users */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;         /* Industry standard max-width */
+    }
+    
+    .hero-content {
+        max-width: 900px;          /* Optimal reading width */
+    }
+}
+
+/* 2. Medium Screens (992px - 1199px)
+   ------------------------------
+   Laptop and small desktop adaptations */
+@media (max-width: 1199px) {
+    .container {
+        max-width: 960px;          /* Comfortable width for medium screens */
+    }
+    
+    .merit-badge-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        /* Responsive grid with minimum card width */
+    }
+}
+
+/* 3. Tablet Screens (768px - 991px)
+   -----------------------------
+   Touch-first tablet optimizations */
+@media (max-width: 991px) {
+    .container {
+        max-width: 720px;          /* Tablet-optimized width */
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;         /* Readable headline size */
+    }
+    
+    .scouting-highlights {
+        grid-template-columns: repeat(2, 1fr);  /* 2-column layout */
+    }
+    
+    .timeline-item {
+        flex: 0 0 275px;           /* Comfortable card width */
+    }
+}
+
+/* 4. Mobile Screens (576px - 767px)
+   -----------------------------
+   Mobile phone optimizations */
+@media (max-width: 767px) {
+    .container {
+        max-width: 540px;          /* Standard mobile width */
+        padding: 0 1rem;           /* Breathing room */
+    }
+    
+    .hero-section {
+        padding: 3rem 1rem;        /* Reduced vertical space */
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;           /* Mobile-friendly text size */
+    }
+    
+    .scouting-highlights {
+        grid-template-columns: 1fr; /* Stack cards vertically */
+    }
+    
+    .merit-badge-list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        /* Smaller cards for mobile */
+    }
+    
+    .leadership-item {
+        padding: 0.75rem;          /* Tighter spacing */
+    }
+}
+
+/* Add to your responsive CSS */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .badge-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+}
+
+/* 5. Small Mobile Screens (<576px)
+   ---------------------------
+   Small device optimizations */
+@media (max-width: 575px) {
+    .hero-content h1 {
+        font-size: 1.75rem;        /* Minimum readable size */
+    }
+    
+    .merit-badge-list {
+        grid-template-columns: 1fr; /* Single column */
+    }
+    
+    .timeline-item {
+        flex: 0 0 250px;           /* Minimum card width */
+    }
+    
+    .project-meta {
+        flex-direction: column;     /* Stack meta information */
+        align-items: flex-start;
+        gap: 0.5rem;               /* Consistent spacing */
+    }
+    
+    .org-header,
+    .organization-group .collapsible {
+        font-size: 1.1rem;         /* Minimum text size */
+        padding: 1rem;             /* Touch-friendly padding */
+    }
+}
+
+/* Print Styles
+   ----------
+   Optional: Optimize for printing */
+@media print {
+    /* Add print-specific styles if needed */
+}

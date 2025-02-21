@@ -79,5 +79,70 @@
 @import '8-social.css';             /* Social media elements */
 @import '9-footer.css';             /* Footer components */
 @import '10-media-queries.css';     /* Responsive design */
-@import '11-scouting.css';          /* Scouting page specific */
+
+/* Scouting Page Components
+   ========================
+   Modular CSS architecture for the Scouting journey page
+   
+   Directory: /css/scouting/
+   
+   Components:
+   1. Base (1-base.css)
+      - Variables specific to scouting
+      - Base reset overrides
+      - Typography settings
+      - Common utilities
+   
+   2. Hero Section (2-hero.css)
+      - Hero container & background
+      - Content alignment
+      - Achievement cards
+      - Highlight statistics
+   
+   3. Timeline (3-timeline.css)
+      - Horizontal scrolling timeline
+      - Timeline items & connections
+      - Date markers
+      - Navigation controls
+   
+   4. Leadership (4-leadership.css)
+      - Organization groups
+      - Leadership positions
+      - Role progression
+      - Collapsible sections
+   
+   5. Merit Badges (5-merit-badges.css)
+      - Badge grid layout
+      - Year groupings
+      - Badge cards
+      - Badge information display
+   
+   6. Eagle Project (6-eagle-project.css)
+      - Project showcase
+      - Image gallery
+      - Project details
+      - Achievement highlights
+   
+   7. Collapsible (collapsible.css)
+      - Shared collapsible functionality
+      - Animation effects
+      - State management
+      - Interactive elements
+   
+   8. Responsive (8-responsive.css)
+      - Mobile-first adaptations
+      - Breakpoint handling
+      - Component scaling
+      - Layout adjustments
+*/
+
+/* Scouting stylesheet imports - Order matters for cascade */
+@import 'scouting/1-base.css';          /* Foundation */
+@import 'scouting/2-hero.css';          /* Hero section */
+@import 'scouting/3-timeline.css';      /* Timeline */
+@import 'scouting/4-leadership.css';    /* Leadership */
+@import 'scouting/5-merit-badges.css';  /* Merit badges */
+@import 'scouting/6-eagle-project.css'; /* Eagle project */
+@import 'scouting/collapsible.css';     /* Collapsible */
+@import 'scouting/8-responsive.css';    /* Responsive */
 

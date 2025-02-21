@@ -1,0 +1,215 @@
+/*
+Leadership Styles
+===============
+A comprehensive stylesheet for organizing and displaying Scouting leadership
+roles and organizational hierarchies.
+
+Component Architecture:
+--------------------
+1. Base Layout
+   - Centered container design
+   - Consistent section spacing
+   - Background theming
+
+2. Organization Groups
+   - Collapsible sections
+   - Interactive headers
+   - Smooth transitions
+   - Visual hierarchy
+
+3. Leadership Items
+   - Individual role cards
+   - Position indicators
+   - Hover interactions
+   - Role descriptions
+
+4. Sub-organizations
+   - Nested hierarchies
+   - Section separators
+   - Role progression
+   - Visual organization
+
+5. Leadership Timeline
+   - Chronological display
+   - Visual progression
+   - Date organization
+
+6. Responsive Design
+   - Mobile adaptations
+   - Touch-friendly targets
+   - Fluid typography
+*/
+
+/* 1. Base Layout 
+   ------------
+   Foundation container for leadership content with optimal reading width */
+.leadership-section {
+    max-width: 900px;          /* Optimal content width */
+    margin: 0 auto;            /* Center alignment */
+    padding: 2rem;             /* Consistent spacing */
+    background: #f8f9fa;       /* Subtle background */
+}
+
+.leadership-container {
+    max-width: 1200px;         /* Maximum content width */
+    margin: 0 auto;            /* Center alignment */
+}
+
+/* 2. Organization Groups 
+   -------------------
+   Collapsible sections for different Scouting organizations */
+.organization-group {
+    margin-bottom: 1.5rem;     /* Vertical separation */
+    background: white;         
+    border-radius: 8px;        /* Rounded corners */
+    overflow: hidden;          /* Contains child elements */
+    box-shadow: var(--shadow); /* Subtle elevation */
+}
+
+/* Organization Headers - Interactive Elements */
+.org-header,
+.organization-group .collapsible {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;           /* Indicates interactivity */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease; /* Smooth state changes */
+}
+
+.org-header:hover, 
+.org-header.active,
+.organization-group .collapsible:hover,
+.organization-group .collapsible.active {
+    background: var(--primary-color-dark, #005fa3);
+}
+
+.org-content {
+    display: none;
+    padding: 1.5rem;
+    background: white;
+    animation: fadeIn 0.3s ease;
+}
+
+.organization-group .collapsible.active + .org-content {
+    display: block;
+}
+
+/* 3. Leadership Items */
+.leadership-item {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+    border: 1px solid #eee;
+}
+
+.leadership-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.role {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.positions {
+    margin-top: 0.5rem;
+}
+
+.positions span {
+    display: inline-block;
+    background: #f8f9fa;
+    color: #2c3e50;
+    border: 1px solid #eee;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    margin: 0.25rem;
+}
+
+/* 4. Sub-organizations */
+.suborg-section {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+}
+
+.suborg-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.suborg-header {
+    color: #2c3e50;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+.role-progression {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 5. Leadership Timeline */
+.leadership-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* 6. Responsive Design 
+   -----------------
+   Mobile-first adaptations for various screen sizes */
+@media (max-width: 768px) {
+    .leadership-section {
+        padding: 1rem;        /* Reduced spacing on mobile */
+    }
+
+    .suborg-section {
+        padding: 1rem;        /* Consistent mobile padding */
+    }
+
+    .org-header,
+    .organization-group .collapsible {
+        padding: 1rem;        /* Touch-friendly padding */
+        font-size: 1.1rem;    /* Readable mobile text */
+    }
+}
+
+/* Animation Effects
+   --------------
+   Smooth reveal animation for collapsible content */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px); /* Slight upward start */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);     /* Natural position */
+    }
+}

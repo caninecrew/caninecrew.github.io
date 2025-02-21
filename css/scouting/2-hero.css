@@ -1,0 +1,129 @@
+/*
+Hero Section Styles
+=================
+A visually striking introduction section that establishes the theme and
+highlights key achievements in the scouting journey.
+
+Component Structure:
+------------------
+1. Hero Container
+   - Full-width background with BSA-themed gradient
+   - Overlay on background image
+   - Proper spacing and alignment
+
+2. Hero Content
+   - Centered text container
+   - Clear typography hierarchy
+   - Optimized readability on image background
+
+3. Scouting Highlights
+   - Responsive grid layout
+   - Auto-fitting columns
+   - Consistent gap spacing
+
+4. Achievement Cards
+   - Frosted glass effect
+   - Hover animations
+   - Accessible contrast ratios
+
+5. Responsive Design
+   - Mobile-first approach
+   - Fluid typography
+   - Adaptive layouts
+*/
+
+/* 1. Hero Container
+   ---------------
+   Creates an impactful visual header with BSA branding */
+.hero-section {
+    /* Overlay gradient using BSA official colors */
+    background: linear-gradient(rgba(0, 63, 135, 0.9), rgba(0, 42, 92, 0.9)),
+                url('../images/scouting/hero-bg.jpg') center/cover;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* 2. Hero Content
+   -------------
+   Centers and constrains content width for optimal readability */
+.hero-content {
+    max-width: 800px;  /* Optimal reading width */
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3rem;  /* Large, impactful title */
+    margin-bottom: 1rem;
+    color: white;     /* Ensures visibility on dark background */
+}
+
+.hero-content .lead {
+    font-size: 1.25rem;     /* Subtitle sizing */
+    margin-bottom: 3rem;
+    opacity: 0.9;           /* Subtle hierarchy */
+}
+
+/* 3. Scouting Highlights
+   --------------------
+   Responsive grid for achievement statistics */
+.scouting-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* 4. Achievement Cards
+   -----------------
+   Modern card design with frosted glass effect */
+.highlight-card {
+    background: rgba(255, 255, 255, 0.1);  /* Semi-transparent background */
+    padding: 2rem;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);             /* Frosted glass effect */
+    transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);  /* Subtle lift effect */
+}
+
+.highlight-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);  /* BSA Red for emphasis */
+}
+
+.highlight-text {
+    font-size: 1rem;
+    opacity: 0.9;  /* Subtle contrast with numbers */
+}
+
+/* 5. Responsive Design
+   ------------------
+   Mobile-first breakpoints following BSA digital guidelines */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 1rem;  /* Reduced padding on mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 2.25rem;  /* Smaller heading on mobile */
+    }
+
+    .hero-content .lead {
+        font-size: 1.1rem;   /* Adjusted subtitle size */
+    }
+
+    .scouting-highlights {
+        grid-template-columns: 1fr;  /* Stack cards on mobile */
+        gap: 1.5rem;
+    }
+
+    .highlight-number {
+        font-size: 2rem;     /* Smaller statistics on mobile */
+    }
+}
