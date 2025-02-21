@@ -1,24 +1,73 @@
 /* =================================
+   Main Stylesheet
+   
+   Purpose:
+   - Central stylesheet that imports all modular CSS components
+   - Maintains organized structure through separation of concerns
+   - Provides clear documentation of stylesheet architecture
+   
    Table of Contents:
    1. CSS Variables & Reset
+      - Global variables
+      - Color schemes
+      - Basic reset properties
+   
    2. Base Layout & Typography
+      - Container layouts
+      - Typography settings
+      - Common utility classes
+   
    3. Header & Navigation
+      - Header structure
+      - Navigation menus
+      - Dropdown functionality
+   
    4. Main Content Components
+      - Content sections
+      - Typography styles
+      - Interactive elements
+   
    5. Quadrants Grid System
+      - Grid layout
+      - Card components
+      - Content organization
+   
    6. Map Components
+      - Map containers
+      - Interactive elements
+      - Loading states
+   
    7. Travel Page Specific
+      - Travel layouts
+      - Location cards
+      - Map integration
+   
    8. Social Media Components
+      - Social buttons
+      - Platform integrations
+      - Share functionality
+   
    9. Footer Styles
+      - Footer structure
+      - Navigation links
+      - Copyright section
+   
    10. Media Queries
+       - Responsive breakpoints
+       - Mobile adaptations
+       - Print styles
    ================================= */
 
-@import '1-variables-reset.css';
-@import '2-base-layout.css';
-@import '3-header-nav.css';
-@import '4-main-content.css';
-@import '5-quadrants.css';
-@import '6-map.css';
-@import '7-travel.css';
-@import '8-social.css';
-@import '9-footer.css';
-@import '10-media-queries.css';
+/* Component Imports
+   Order is important for proper cascade
+   Each file handles specific functionality */
+@import '1-variables-reset.css';    /* Foundation styles */
+@import '2-base-layout.css';        /* Core layouts */
+@import '3-header-nav.css';         /* Navigation components */
+@import '4-main-content.css';       /* Main content styles */
+@import '5-quadrants.css';          /* Grid system */
+@import '6-map.css';                /* Map functionality */
+@import '7-travel.css';             /* Travel page specific */
+@import '8-social.css';             /* Social media elements */
+@import '9-footer.css';             /* Footer components */
+@import '10-media-queries.css';     /* Responsive design */

@@ -1,8 +1,16 @@
 /* =================================
    3. Header & Navigation
+   
+   This file contains:
+   - Header layout and styling
+   - Navigation bar components
+   - Dropdown menu functionality
+   - Responsive navigation behavior
    ================================= */
 
-/* Main header container */
+/* Main header container
+   Sticky positioning keeps header visible while scrolling
+   High z-index ensures header stays above other content */
 .site-header {
     background: var(--header-footer-background);
     color: var(--header-footer-text-color);
@@ -10,10 +18,12 @@
     width: 100%;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* Ensures header stays above other elements */
 }
 
-/* Header layout */
+/* Header layout
+   Flex container for logo and navigation items
+   Spaces items evenly across the header width */
 header {
     display: flex;
     justify-content: space-between;
@@ -23,12 +33,16 @@ header {
     color: var(--header-footer-text-color);
 }
 
+/* Header title styling
+   Removes default margin for clean alignment */
 header h1 {
     margin: 0;
     font-size: 1.5em;
 }
 
-/* Navigation container */
+/* Navigation container
+   Centers navigation items and provides consistent spacing
+   Maximum width matches main content container */
 .navbar {
     display: flex;
     flex-direction: column;
@@ -40,7 +54,9 @@ header h1 {
     text-align: center;
 }
 
-/* Logo styling */
+/* Logo styling
+   Bold weight and larger size for emphasis
+   Consistent spacing below logo */
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -48,7 +64,9 @@ header h1 {
     text-align: center;
 }
 
-/* Navigation links */
+/* Navigation links container
+   Flexible layout that wraps on smaller screens
+   Centered alignment with consistent spacing */
 .nav-links {
     list-style: none;
     display: flex;
@@ -59,10 +77,15 @@ header h1 {
     justify-content: center;
 }
 
+/* Individual navigation items
+   Position relative enables absolute positioning of dropdowns */
 .nav-links li {
     position: relative;
 }
 
+/* Navigation link styling
+   Smooth transition for hover effects
+   Padding provides larger click target */
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -70,39 +93,15 @@ header h1 {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Hover effect for navigation links
+   Subtle color change indicates interactivity */
 .nav-links a:hover {
     color: #ddd;
 }
 
-/* Basic navigation styles */
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-}
-
-nav ul li {
-    margin: 0;
-}
-
-nav ul li a {
-    color: var(--header-footer-text-color);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-nav ul li a:hover {
-    background-color: #555;
-}
-
-/* Dropdown menu */
-.nav-links li:hover .dropdown {
-    display: block;
-}
-
+/* Dropdown menu functionality
+   Hidden by default, appears on hover
+   Absolute positioning relative to parent link */
 .dropdown {
     display: none;
     position: absolute;
@@ -111,33 +110,50 @@ nav ul li a:hover {
     z-index: 1;
 }
 
+/* Show dropdown on hover
+   Triggered by parent li hover state */
+.nav-links li:hover .dropdown {
+    display: block;
+}
+
+/* Dropdown link styling
+   Block display creates full-width clickable areas
+   Consistent padding and colors */
 .dropdown a {
     display: block;
     padding: 10px;
     color: var(--header-footer-text-color);
 }
 
+/* Dropdown hover effect
+   Uses primary color for brand consistency */
 .dropdown a:hover {
     background-color: var(--primary-color);
     color: #fff;
 }
 
-/* Responsive navigation */
+/* Responsive navigation adjustments
+   Triggers at 600px viewport width
+   Converts horizontal nav to vertical stack */
 @media (max-width: 600px) {
     header {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    nav ul {
+    /* Stack navigation items vertically */
+    nav ul, .nav-links {
         flex-direction: column;
         width: 100%;
     }
 
-    nav ul li {
+    /* Full-width navigation items */
+    nav ul li, .nav-links li {
         width: 100%;
+        text-align: center;
     }
 
+    /* Larger touch targets for mobile */
     nav ul li a {
         display: block;
         width: 100%;
@@ -145,17 +161,8 @@ nav ul li a:hover {
         padding: 10px 20px;
     }
 
+    /* Adjust navbar layout for mobile */
     .navbar {
         flex-direction: column;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
     }
 }

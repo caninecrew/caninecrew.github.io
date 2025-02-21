@@ -1,8 +1,18 @@
 /* =================================
    7. Travel Page Specific
+   
+   This file contains:
+   - Travel page header styling
+   - Large map container configuration
+   - Location cards grid layout
+   - Individual location card design
+   - Filter button system
+   - Responsive layout adjustments
    ================================= */
 
-/* Travel page header */
+/* Travel page header
+   Centered layout with maximum width for content
+   Uses brand colors for consistency */
 .travel-header {
     text-align: center;
     padding: 2rem 0;
@@ -15,25 +25,29 @@
 
 .travel-header p {
     color: var(--text-color);
-    max-width: 600px;
+    max-width: 600px; /* Maintains readable line length */
     margin: 0 auto;
 }
 
-/* Travel map section */
+/* Travel map section
+   Large, full-width map display
+   Proper spacing from other elements */
 .travel-map {
     margin: 2rem 0;
 }
 
 #travel-map-container {
     position: relative;
-    height: 500px;
+    height: 500px; /* Taller than quadrant map for better visibility */
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; /* Contains map controls */
 }
 
-/* Travel locations grid */
+/* Travel locations grid
+   Responsive grid layout for location cards
+   Automatically adjusts columns based on viewport */
 .travel-locations {
     padding: 2rem 0;
 }
@@ -45,26 +59,37 @@
     padding: 1rem;
 }
 
-/* Location cards */
+/* Location cards
+   Card-based design with hover effects
+   Consistent spacing and typography */
 .location-card {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     overflow: hidden;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover animation */
 }
 
+/* Card hover effects
+   Subtle lift and enhanced shadow
+   Provides visual feedback for interaction */
 .location-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/* Location card images
+   Consistent sizing with cover property
+   Maintains aspect ratio across different image sizes */
 .location-card img {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: cover; /* Ensures images fill space without distortion */
 }
 
+/* Location information container
+   Proper spacing for content readability
+   Consistent text colors and sizing */
 .location-info {
     padding: 1rem;
 }
@@ -80,29 +105,18 @@
     line-height: 1.4;
 }
 
+/* Date display for locations
+   Subtle styling for secondary information
+   Proper spacing from main content */
 .location-date {
     font-size: 0.9em;
     color: #888;
     margin-top: 0.5rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    #travel-map-container {
-        height: 300px;
-    }
-
-    .locations-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .location-card img {
-        height: 150px;
-    }
-}
-
-/* Travel filters */
+/* Travel filters
+   Flexible layout for filter buttons
+   Centered alignment with proper spacing */
 .travel-filters {
     margin: 1rem 0;
     display: flex;
@@ -111,6 +125,9 @@
     justify-content: center;
 }
 
+/* Filter button styling
+   Outline style with hover/active states
+   Uses brand colors for consistency */
 .filter-button {
     padding: 0.5rem 1rem;
     border: 1px solid var(--primary-color);
@@ -125,4 +142,22 @@
 .filter-button.active {
     background: var(--primary-color);
     color: white;
+}
+
+/* Responsive adjustments
+   Optimizes layout for mobile devices
+   Maintains usability at smaller sizes */
+@media (max-width: 768px) {
+    #travel-map-container {
+        height: 300px; /* Shorter map on mobile */
+    }
+
+    .locations-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 1rem;
+    }
+
+    .location-card img {
+        height: 150px; /* Smaller images on mobile */
+    }
 }

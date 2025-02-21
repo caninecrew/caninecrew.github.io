@@ -1,8 +1,20 @@
 /* =================================
    4. Main Content Components
+   
+   This file contains:
+   - Main content layout and spacing
+   - Introduction section styling
+   - Profile picture formatting
+   - List and link styles
+   - Button components
+   - Content box design
+   - Experience section layout
+   - Responsive design adjustments
    ================================= */
 
-/* Main content layout */
+/* Main content layout
+   Provides consistent spacing and alignment
+   for all main content sections */
 main {
     padding: 20px;
 }
@@ -12,12 +24,17 @@ main.container {
     padding: 20px;
 }
 
-/* Introduction section */
+/* Introduction section
+   Centered layout for personal introduction
+   Creates visual hierarchy with profile picture */
 .intro {
     text-align: center;
     margin: 20px 0;
 }
 
+/* Profile picture styling
+   Circular design with border accent
+   Uses object-fit to maintain aspect ratio */
 .profile-picture {
     width: 150px;
     height: 150px;
@@ -27,12 +44,16 @@ main.container {
     border: 3px solid var(--primary-color);
 }
 
-/* Content sections */
+/* Content section spacing
+   Consistent margins between major sections
+   Improves readability and visual rhythm */
 .intro, .education, .experience, .skills, .interests, .call-to-action {
     margin-bottom: 20px;
 }
 
-/* List styling */
+/* List styling within main content
+   Proper indentation and bullet points
+   Consistent line height for readability */
 main ul {
     padding: 0;
     list-style-type: disc;
@@ -44,7 +65,9 @@ main ul li {
     line-height: 1.6;
 }
 
-/* Add these missing main content styles */
+/* Social media link styling
+   Platform-specific colors and hover states
+   Maintains brand consistency */
 main ul li a[href*="linkedin"] {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
@@ -72,7 +95,9 @@ main ul li a[href*="facebook"]:hover {
     background-color: #2d4373;
 }
 
-/* Link styling */
+/* General link styling
+   Smooth color transitions on hover
+   Maintains brand color scheme */
 main a {
     color: var(--primary-color);
     text-decoration: none;
@@ -84,7 +109,9 @@ main a:hover {
     text-decoration: underline;
 }
 
-/* Button styling */
+/* Button container and styling
+   Centers buttons within their containers
+   Consistent padding and border radius */
 .button-container {
     text-align: center;
     margin: 20px 0;
@@ -104,7 +131,9 @@ main a:hover {
     background-color: var(--secondary-color);
 }
 
-/* Call to action section */
+/* Call to action section
+   Highlighted section with box shadow
+   Centers content for emphasis */
 .call-to-action {
     text-align: center;
     padding: 20px;
@@ -138,7 +167,9 @@ section h2 {
     font-size: 1.5em;
 }
 
-/* Experience items */
+/* Experience items styling
+   Separates items with bottom border
+   Removes border from last item */
 .experience-item {
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -149,7 +180,9 @@ section h2 {
     border-bottom: none;
 }
 
-/* Responsive adjustments */
+/* Responsive design adjustments
+   Modifies layout for smaller screens
+   Adjusts spacing and sizes appropriately */
 @media (max-width: 768px) {
     main.container {
         padding: 10px;

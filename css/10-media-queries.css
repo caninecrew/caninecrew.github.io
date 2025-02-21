@@ -1,86 +1,103 @@
 /* =================================
    10. Media Queries
+   
+   This file contains:
+   - Breakpoint definitions for responsive design
+   - Layout adjustments for different screen sizes
+   - Typography scaling for readability
+   - Component-specific responsive behavior
+   - Print media styling
    ================================= */
 
-/* Large screens (1200px and up) */
+/* Large screens (1200px and up)
+   Optimized for desktop and large tablet views
+   Uses three-column layout for quadrants */
 @media (min-width: 1200px) {
     .container {
-        max-width: 1140px;
+        max-width: 1140px; /* Standard bootstrap container width */
     }
 
     .quadrants {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* Three equal columns */
     }
 }
 
-/* Medium screens (992px to 1199px) */
+/* Medium screens (992px to 1199px)
+   Tablet landscape and smaller desktop screens
+   Reduces to two-column layout */
 @media (max-width: 1199px) {
     .container {
-        max-width: 960px;
+        max-width: 960px; /* Comfortable reading width */
     }
 
     .quadrants {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Two equal columns */
     }
 }
 
-/* Small screens (768px to 991px) */
+/* Small screens (768px to 991px)
+   Tablet portrait and large mobile devices
+   Adjusts spacing and element sizes */
 @media (max-width: 991px) {
     .container {
-        max-width: 720px;
+        max-width: 720px; /* Narrower container for better fit */
     }
 
     .navbar {
-        padding: 10px;
+        padding: 10px; /* Reduced navigation padding */
     }
 
     .profile-picture {
         width: 120px;
-        height: 120px;
+        height: 120px; /* Smaller profile image */
     }
 
     #travel-map-container {
-        height: 400px;
+        height: 400px; /* Adjusted map height for medium screens */
     }
 }
 
-/* Extra small screens (up to 767px) */
+/* Extra small screens (up to 767px)
+   Mobile devices in landscape and portrait
+   Switches to single column layouts */
 @media (max-width: 767px) {
     .container {
         max-width: 540px;
-        padding: 0 15px;
+        padding: 0 15px; /* Added side padding for content breathing room */
     }
 
     .quadrants {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column layout */
     }
 
     .nav-links {
-        flex-direction: column;
+        flex-direction: column; /* Stacked navigation links */
     }
 
     .social-container {
         flex-direction: column;
-        align-items: center;
+        align-items: center; /* Centered social buttons */
     }
 
     .location-card img {
-        height: 200px;
+        height: 200px; /* Maintained image height for visibility */
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stacked footer sections */
     }
 }
 
-/* Mobile screens (up to 575px) */
+/* Mobile screens (up to 575px)
+   Small mobile devices
+   Focuses on essential content and readability */
 @media (max-width: 575px) {
     body {
-        font-size: 14px;
+        font-size: 14px; /* Slightly smaller base font size */
     }
 
     h1 {
-        font-size: 1.8em;
+        font-size: 1.8em; /* Reduced heading sizes for mobile */
     }
 
     h2 {
@@ -88,21 +105,24 @@
     }
 
     .button-container a {
-        width: 100%;
+        width: 100%; /* Full-width buttons on mobile */
     }
 
     #travel-map-container {
-        height: 300px;
+        height: 300px; /* Shorter map on mobile */
     }
 
     .map-legend {
         flex-direction: column;
-        align-items: center;
+        align-items: center; /* Stacked legend items */
     }
 }
 
-/* Print styles */
+/* Print styles
+   Optimized for document printing
+   Removes unnecessary elements and adjusts typography */
 @media print {
+    /* Hide interactive elements */
     .site-header,
     .site-footer,
     .button-container,
@@ -110,17 +130,20 @@
         display: none;
     }
 
+    /* Print-friendly typography */
     body {
-        font-size: 12pt;
+        font-size: 12pt; /* Standard print font size */
         line-height: 1.5;
-        color: #000;
+        color: #000; /* Pure black for best contrast */
     }
 
+    /* Clean link appearance */
     a {
         text-decoration: none;
         color: #000;
     }
 
+    /* Full-width content */
     .container {
         width: 100%;
         margin: 0;
@@ -128,10 +151,11 @@
     }
 }
 
+/* Additional mobile adjustments
+   Specific component modifications for smallest screens */
 @media (max-width: 600px) {
-    /* ... existing media query styles ... */
     footer .social-links {
         flex-direction: column;
-        gap: 10px;
+        gap: 10px; /* Stacked social links with consistent spacing */
     }
 }

@@ -1,8 +1,19 @@
 /* =================================
    5. Quadrants Grid System
+   
+   This file contains:
+   - Grid layout configuration
+   - Individual quadrant styling
+   - Content organization within quadrants
+   - Featured awards list styling
+   - Responsive design adjustments
+   - Special quadrant variations
    ================================= */
 
-/* Quadrants container */
+/* Quadrants container
+   Uses CSS Grid for responsive layout
+   Auto-fits columns based on minimum width
+   Maintains consistent spacing between quadrants */
 .quadrants {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -10,7 +21,10 @@
     margin-top: 20px;
 }
 
-/* Individual quadrant styling */
+/* Individual quadrant styling
+   Card-like appearance with shadow
+   Flexible column layout for content organization
+   Maintains consistent height across quadrants */
 .quadrant {
     background: #fff;
     padding: 20px;
@@ -19,23 +33,29 @@
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    min-height: 250px; /* Ensure consistent height */
+    min-height: 250px; /* Ensures visual consistency */
 }
 
-/* Quadrant headings */
+/* Quadrant headings
+   Uses primary color for brand consistency
+   Proper spacing and sizing for hierarchy */
 .quadrant h2 {
     color: var(--primary-color);
     margin-bottom: 15px;
     font-size: 1.3em;
 }
 
-/* Quadrant content */
+/* Quadrant content
+   Flexible growth allows content to fill space
+   Maintains consistent spacing between elements */
 .quadrant p, .quadrant ul {
-    flex-grow: 1; /* Allow content to expand */
+    flex-grow: 1; /* Pushes button container to bottom */
     margin-bottom: 15px;
 }
 
-/* List styling within quadrants */
+/* List styling within quadrants 
+   Standard bullet points with proper indentation
+   Consistent spacing between list items */
 .quadrant ul {
     padding-left: 20px;
     list-style-type: disc;
@@ -46,7 +66,9 @@
     margin: 8px 0;
 }
 
-/* Link styling within quadrants */
+/* Link styling within quadrants
+   Brand color for recognition
+   Smooth transition for hover effects */
 .quadrant a {
     color: var(--primary-color);
     text-decoration: none;
@@ -58,13 +80,17 @@
     text-decoration: underline;
 }
 
-/* Button container within quadrants */
+/* Button container within quadrants
+   Sticks to bottom of quadrant
+   Centers buttons horizontally */
 .quadrant .button-container {
-    margin-top: auto;
+    margin-top: auto; /* Pushes to bottom of flex container */
     text-align: center;
 }
 
-/* Featured awards list styling */
+/* Featured awards list styling
+   Custom styling for awards section
+   Maintains consistent spacing with other elements */
 #featured-awards-list {
     margin: 0;
     padding-left: 20px;
@@ -84,26 +110,30 @@
     text-decoration: underline;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments
+   Switches to single column on mobile
+   Adjusts spacing for smaller screens */
 @media (max-width: 768px) {
     .quadrants {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column layout */
     }
 
     .quadrant {
-        margin-bottom: 15px;
+        margin-bottom: 15px; /* Reduced spacing on mobile */
     }
 }
 
-/* Special quadrant variations */
+/* Special quadrant variations
+   Modifier classes for unique quadrant styles
+   Maintains consistent theming while allowing customization */
 .quadrant.highlight {
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--primary-color); /* Emphasized border */
 }
 
 .quadrant.centered-content {
-    text-align: center;
+    text-align: center; /* Centers all content */
 }
 
 .quadrant.full-width {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /* Spans full width of grid */
 }
