@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <header class="site-header">
             <nav class="navbar">
                 <div class="logo">Samuel Rumbley</div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
                 <ul class="nav-links">
                     ${navItems.map(item => `<li><a href="${item.link}">${item.text}</a></li>`).join('')}
                 </ul>
@@ -27,6 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
         <header class="site-header">
             <nav class="navbar">
                 <div class="logo">Samuel Rumbley</div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                </button>
                 <ul class="nav-links">
                     ${navItems.map(item => `<li><a href="..${item.link}">${item.text}</a></li>`).join('')}
                 </ul>
@@ -35,4 +41,23 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
 
     document.querySelector("#header").innerHTML = headerContent;
+
+    // Add mobile menu functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
 });

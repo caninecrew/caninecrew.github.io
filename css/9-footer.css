@@ -15,9 +15,9 @@
    Fills width and pushes to bottom of page
    Uses theme colors for consistency */
 .site-footer {
-    background-color: var(--header-footer-background);
-    color: var(--header-footer-text-color);
-    padding: 2rem 0;
+    padding: 2rem 1rem;
+    background: var(--background-dark);
+    color: var(--text-light);
     margin-top: auto; /* Pushes footer to bottom in flex layouts */
 }
 
@@ -27,10 +27,11 @@
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 /* Footer sections
@@ -120,13 +121,33 @@
     gap: 0.5rem;
 }
 
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-link {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+}
+
 /* Responsive adjustments
    Single column layout on mobile
    Centered content for better mobile display */
 @media (max-width: 768px) {
     .footer-content {
-        grid-template-columns: 1fr; /* Stack sections vertically */
+        flex-direction: column;
         text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
     }
 
     .footer-social {
@@ -136,5 +157,16 @@
     .contact-info {
         align-items: center;
         justify-content: center;
+    }
+
+    .social-buttons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .social-link {
+        font-size: 1.75rem; /* Larger touch targets */
+        padding: 0.5rem;    /* Increase tap area */
     }
 }
