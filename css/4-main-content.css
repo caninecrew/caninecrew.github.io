@@ -180,6 +180,31 @@ section h2 {
     border-bottom: none;
 }
 
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Back to top button styling */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: none;
+}
+
 /* Responsive design adjustments
    Modifies layout for smaller screens
    Adjusts spacing and sizes appropriately */
@@ -197,4 +222,15 @@ section h2 {
         width: 100%;
         box-sizing: border-box;
     }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero-section {
+    background: url('../images/scouting-hero.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
 }

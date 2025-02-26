@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { text: 'Travel', link: '/pages/travel.html' }
     ];
 
-    const headerContent = isIndexPage ? `
+    const headerContent = `
         <header class="site-header">
             <nav class="navbar">
                 <div class="logo">Samuel Rumbley</div>
@@ -22,19 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <span class="hamburger"></span>
                 </button>
                 <ul class="nav-links">
-                    ${navItems.map(item => `<li><a href="${item.link}">${item.text}</a></li>`).join('')}
-                </ul>
-            </nav>
-        </header>
-    ` : `
-        <header class="site-header">
-            <nav class="navbar">
-                <div class="logo">Samuel Rumbley</div>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <span class="hamburger"></span>
-                </button>
-                <ul class="nav-links">
-                    ${navItems.map(item => `<li><a href="..${item.link}">${item.text}</a></li>`).join('')}
+                    ${navItems.map(item => `<li><a href="${isIndexPage ? item.link : '..' + item.link}">${item.text}</a></li>`).join('')}
                 </ul>
             </nav>
         </header>
