@@ -167,3 +167,11 @@ Component Architecture:
         padding: 1.5rem;         /* Tighter padding */
     }
 }
+
+.carousel img {
+    display: none;
+}
+
+.carousel img.active {
+    display: block;
+}

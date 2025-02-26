@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                     <div class="project-images">
                         <div class="carousel eagle-carousel">
-                            <img src="../images/eagle-project/project1.jpg" alt="Project Image 1" class="project-image">
+                            <img src="../images/eagle-project/project1.jpg" alt="Project Image 1" class="project-image active">
                             <img src="../images/eagle-project/project2.jpg" alt="Project Image 2" class="project-image">
                             <img src="../images/eagle-project/project3.jpg" alt="Project Image 3" class="project-image">
                             <img src="../images/eagle-project/project4.jpg" alt="Project Image 4" class="project-image">
