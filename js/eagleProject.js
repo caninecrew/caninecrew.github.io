@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <span class="project-location">Wilson Central High School</span>
                     </div>
                     <div class="project-images">
-                        <div class="carousel">
+                        <div class="carousel eagle-carousel">
                             <img src="../images/eagle-project/project1.jpg" alt="Project Image 1" class="project-image">
                             <img src="../images/eagle-project/project2.jpg" alt="Project Image 2" class="project-image">
                             <img src="../images/eagle-project/project3.jpg" alt="Project Image 3" class="project-image">
@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
                             <img src="../images/eagle-project/project5.jpg" alt="Project Image 5" class="project-image">
                             <img src="../images/eagle-project/project6.jpg" alt="Project Image 6" class="project-image">
                         </div>
-                        <button class="carousel-button prev" aria-label="Previous image">‹</button>
-                        <button class="carousel-button next" aria-label="Next image">›</button>
+                        <button class="carousel-button eagle-prev" aria-label="Previous image">‹</button>
+                        <button class="carousel-button eagle-next" aria-label="Next image">›</button>
                     </div>
                     <div class="project-content">
                         <h4>Mask Creation Initiative</h4>
