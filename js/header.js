@@ -48,4 +48,16 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.classList.remove('menu-open');
         }
     });
+    
+    // Highlight the active page
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        const linkPath = link.getAttribute('href');
+        const relativePath = linkPath.startsWith('/') ? linkPath : '/' + linkPath;
+        
+        if (currentPath.endsWith(relativePath) || 
+            (relativePath === '/' && (currentPath === '/' || currentPath.endsWith('index.html')))) {
+            link.classList.add('active');
+        }
+    });
 });

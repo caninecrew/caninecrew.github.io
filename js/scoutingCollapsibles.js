@@ -5,73 +5,51 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializeCollapsibles() {
     console.log("Initializing collapsibles...");
     
-    // Merit Badge Year buttons
+    // Try a more direct and reliable approach
+    
+    // Merit badge collapsibles
     const meritBadgeButtons = document.querySelectorAll('.merit-badge-year .collapsible');
     console.log(`Found ${meritBadgeButtons.length} merit badge buttons`);
     
     meritBadgeButtons.forEach(button => {
-        // Clone and replace to remove any existing event listeners
-        const newButton = button.cloneNode(true);
-        button.parentNode.replaceChild(newButton, button);
-        
-        newButton.addEventListener('click', function() {
-            // Toggle active state
+        // Make sure we're not adding duplicate listeners
+        button.onclick = function() {
             this.classList.toggle('active');
+            const content = this.closest('.merit-badge-year').querySelector('.merit-badge-list');
             
-            // Find the corresponding merit badge list
-            const badgeList = this.closest('.merit-badge-year').querySelector('.merit-badge-list');
-            
-            // Toggle display
             if (this.classList.contains('active')) {
-                badgeList.style.display = 'grid';
+                content.style.display = 'grid';
             } else {
-                badgeList.style.display = 'none';
+                content.style.display = 'none';
             }
-        });
+            
+            console.log(`Merit badge toggled: ${this.textContent.trim()}, active: ${this.classList.contains('active')}`);
+        };
     });
-
-    // Organization buttons
+    
+    // Organization collapsibles
     const orgButtons = document.querySelectorAll('.organization-group .collapsible');
     console.log(`Found ${orgButtons.length} organization buttons`);
     
-    if (orgButtons.length > 0) {
-        console.log("Organization buttons found!");
-        
-        orgButtons.forEach(button => {
-            // Clone and replace to remove any existing event listeners
-            const newButton = button.cloneNode(true);
-            button.parentNode.replaceChild(newButton, button);
+    orgButtons.forEach(button => {
+        // Make sure we're not adding duplicate listeners
+        button.onclick = function() {
+            this.classList.toggle('active');
+            const content = this.nextElementSibling;
             
-            newButton.addEventListener('click', function() {
-                console.log('Organization button clicked:', this.textContent);
-                
-                // Find the content div (should be the next sibling)
-                const content = this.nextElementSibling;
-                console.log('Content element:', content);
-                
-                // Toggle active state
-                this.classList.toggle('active');
-                
-                // Toggle display
-                if (this.classList.contains('active')) {
-                    content.style.display = "block";
-                } else {
-                    content.style.display = "none";
-                }
-                
-                // Optional: Close other org sections
-                const siblings = Array.from(this.closest('.leadership-grid')
-                    .querySelectorAll('.organization-group .collapsible'));
-                
-                siblings.forEach(sibling => {
-                    if (sibling !== this && sibling.classList.contains('active')) {
-                        sibling.classList.remove('active');
-                        sibling.nextElementSibling.style.display = "none";
-                    }
-                });
-            });
-        });
-    } else {
-        console.log("No organization buttons found. DOM structure may be incorrect.");
-    }
+            if (this.classList.contains('active')) {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+            
+            console.log(`Organization toggled: ${this.textContent.trim()}, active: ${this.classList.contains('active')}`);
+        };
+    });
+
+    // Log all collapsible buttons for debugging
+    console.log('All collapsible buttons:');
+    document.querySelectorAll('.collapsible').forEach((btn, i) => {
+        console.log(`  ${i+1}: ${btn.textContent.trim()} - in ${btn.closest('.merit-badge-year') ? 'merit-badge-year' : (btn.closest('.organization-group') ? 'organization-group' : 'unknown')}`);
+    });
 }

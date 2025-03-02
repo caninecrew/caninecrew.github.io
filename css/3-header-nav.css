@@ -16,7 +16,9 @@
     width: 100%;
     background: white;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
 /* Header layout
@@ -24,11 +26,13 @@
    Spaces items evenly across the header width */
 header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 30px;
     background-color: var(--header-footer-background);
     color: var(--header-footer-text-color);
+    border-bottom: 3px solid var(--primary-color);
 }
 
 /* Header title styling
@@ -43,17 +47,26 @@ header h1 {
    Maximum width matches main content container */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 /* Logo styling
    Bold weight and larger size for emphasis
    Consistent spacing below logo */
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 /* Navigation links container
@@ -61,8 +74,12 @@ header h1 {
    Centered alignment with consistent spacing */
 .nav-links {
     display: flex;
+    justify-content: center;
     list-style: none;
-    gap: 1rem;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
 /* Individual navigation items
@@ -127,7 +144,9 @@ header h1 {
     border: none;
     padding: 0.5rem;
     cursor: pointer;
-    position: relative;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     z-index: 100;
 }
 
@@ -210,12 +229,13 @@ header h1 {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+    .navbar {
+        position: relative;
+        padding-top: 60px; /* Make room for the mobile menu button */
+    }
+    
     .mobile-menu-btn {
         display: block;
-    }
-
-    .navbar {
-        padding: 1rem;
     }
 
     .nav-links {
@@ -223,14 +243,16 @@ header h1 {
         top: 0;
         right: -100%;
         width: 80%;
-        max-width: 300px;
+        max-width: 320px;
         height: 100vh;
         background: white;
-        padding: 4rem 2rem 2rem;
+        padding: 5rem 2rem 2rem;
         flex-direction: column;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
+        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.15);
+        transition: right 0.4s ease;
         z-index: 99;
+        text-align: center;
+        align-items: center;
     }
 
     .nav-links.active {
@@ -250,6 +272,7 @@ header h1 {
     .logo {
         font-size: 1.2rem;
         z-index: 100;
+        margin-bottom: 10px;
     }
 
     /* Add backdrop when menu is open */
@@ -262,6 +285,21 @@ header h1 {
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
         z-index: -1;
+    }
+}
+
+/* For larger screens, maintain centering */
+@media (min-width: 769px) {
+    .navbar {
+        flex-direction: column;
+    }
+    
+    .logo {
+        margin-bottom: 20px;
+    }
+    
+    .nav-links {
+        justify-content: center;
     }
 }
 

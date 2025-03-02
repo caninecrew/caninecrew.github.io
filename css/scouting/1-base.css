@@ -198,3 +198,55 @@ section {
     h5 { font-size: 1.1rem; }
     h6 { font-size: 1rem; }
 }
+
+/* Update these rules to add a bit of spacing between sections */
+
+/* Target all section containers on the scouting page */
+#timeline-section-container,
+#leadership-section-container,
+#eagle-project-section-container,
+#merit-badges-section-container {
+    margin: 0;
+    padding: 0;
+}
+
+/* Target all sections within the containers */
+#timeline-section-container section,
+#leadership-section-container section,
+#eagle-project-section-container section,
+#merit-badges-section-container section {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Adjust the hero section */
+.hero-section {
+    margin-bottom: 1.5rem; /* Add some space after hero section */
+}
+
+/* Adjust spacing within sections while maintaining section separation */
+.timeline-section,
+.leadership-section,
+.eagle-project,
+.merit-badges-section {
+    padding: 25px 0;        /* Increased padding from 20px to 25px */
+    margin: 0 0 1.5rem 0;   /* Add bottom margin for spacing between sections */
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+/* Remove the border and margin from the last section */
+#merit-badges-section-container section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Add a subtle visual separator between sections */
+.timeline-section::after,
+.leadership-section::after,
+.eagle-project::after {
+    content: "";
+    display: block;
+    height: 1.5rem; /* Space between sections */
+    width: 100%;
+}
