@@ -7,9 +7,9 @@
    1. Hero Section
    =========================== */
 .hero-section {
-  background: linear-gradient(rgba(0, 63, 135, 0.9), rgba(0, 42, 92, 0.9)),
+  background: linear-gradient(var(--primary-color-light), var(--primary-color-dark)),
               url('../images/scouting/hero-bg.jpg') center/cover;
-  color: white;
+  color: var(--text-inverse);
   padding: 4rem 2rem;
   text-align: center;
   margin-bottom: 3rem;
@@ -23,7 +23,7 @@
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: white;
+  color: var(--text-inverse);
 }
 
 .hero-content .lead {
@@ -40,7 +40,7 @@
 }
 
 .highlight-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--background-overlay);
   padding: 2rem;
   border-radius: 8px;
   backdrop-filter: blur(5px);
@@ -55,7 +55,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: var(--secondary-color, #ce1126);
+  color: var(--secondary-color);
 }
 
 .highlight-text {
@@ -97,7 +97,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--primary-color, #003f87);
+  background: var(--primary-color);
   z-index: 1;
 }
 
@@ -112,10 +112,10 @@
 }
 
 .timeline-content {
-  background: white;
+  background: var(--background-white);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
   width: 100%;
   margin-bottom: 1rem;
   position: relative;
@@ -133,13 +133,13 @@
   left: 50%;
   width: 2px;
   height: 1rem;
-  background: var(--primary-color, #003f87);
+  background: var(--primary-color);
   transform: translateX(-50%);
 }
 
 .timeline-date {
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
   padding: 0.75rem;
   margin: -1.5rem -1.5rem 1rem -1.5rem;
   border-radius: 8px 8px 0 0;
@@ -151,8 +151,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -166,7 +166,7 @@
 }
 
 .timeline-scroll-btn:hover {
-  background: var(--primary-color-dark, #002a5c);
+  background: var(--primary-color-dark);
 }
 
 .timeline-scroll-btn.left {
@@ -182,7 +182,7 @@
    =========================== */
 .merit-badges {
   padding: 2rem;
-  background: var(--background-light, #f8f9fa);
+  background: var(--background-light);
 }
 
 .merit-badge-overview {
@@ -213,27 +213,27 @@
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 15px;
   padding: 20px;
-  background-color: white;
-  border: 1px solid #e0e0e0;
+  background-color: var(--background-white);
+  border: 1px solid var(--border-color);
   border-top: none;
   margin-bottom: 12px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .merit-badge {
   display: flex;
   align-items: center;
   padding: 0.75rem;
-  background: var(--background-light, #f8f9fa);
+  background: var(--merit-badge-bg);
   border-radius: 8px;
   transition: transform 0.2s ease;
 }
 
 .merit-badge:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow-sm);
 }
 
 .badge-image {
@@ -250,13 +250,13 @@
 .badge-name {
   display: block;
   font-weight: 600;
-  color: var(--text-color, #2c3e50);
+  color: var(--merit-badge-text);
   margin-bottom: 0.25rem;
 }
 
 .badge-date {
   font-size: 0.9rem;
-  color: var(--text-secondary, #666);
+  color: var(--text-secondary);
 }
 
 /* ===========================
@@ -264,7 +264,7 @@
    =========================== */
 .leadership-section {
   padding: 2rem;
-  background: #f8f9fa;
+  background: var(--background-light);
 }
 
 .leadership-container {
@@ -276,10 +276,10 @@
   width: 100%;
   max-width: 800px;
   margin: 0 auto 20px auto;
-  background: white;
+  background: var(--background-white);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
 }
 
 .organization-group .collapsible {
@@ -300,44 +300,44 @@
 .org-content {
   display: none;
   padding: 20px;
-  background-color: white;
-  border: 1px solid #e0e0e0;
+  background-color: var(--background-white);
+  border: 1px solid var(--border-color);
   border-top: none;
   margin-bottom: 12px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .leadership-item {
   padding: 1rem;
-  background: #f8f9fa;
+  background: var(--background-light);
   border-radius: 8px;
   margin-bottom: 1rem;
   transition: transform 0.2s ease;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
 }
 
 .leadership-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
 }
 
 .role {
-  color: #2c3e50;
+  color: var(--text-color);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
 .date {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
 
 .description {
   font-size: 0.95rem;
-  color: #444;
+  color: var(--text-color);
   line-height: 1.4;
 }
 
@@ -346,7 +346,7 @@
    =========================== */
 .eagle-project {
   padding: 3rem 2rem;
-  background: var(--background-light, #f8f9fa);
+  background: var(--background-light);
 }
 
 .project-showcase {
@@ -355,16 +355,16 @@
 }
 
 .project-card {
-  background: white;
+  background: var(--background-white);
   border-radius: 12px;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .project-meta {
   padding: 1rem 1.5rem;
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -381,12 +381,12 @@
 }
 
 .project-content h3 {
-  color: var(--primary-color, #003f87);
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
 .project-content p {
-  color: var(--text-secondary, #666);
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -414,8 +414,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: var(--background-overlay);
+  color: var(--text-inverse);
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -434,8 +434,8 @@
    6. Collapsible Components
    =========================== */
 .collapsible {
-  background-color: #f1f1f1;
-  color: #444;
+  background-color: var(--background-muted);
+  color: var(--text-color);
   cursor: pointer;
   padding: 15px 20px;
   width: 100%;
@@ -450,14 +450,14 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow-sm);
   position: relative;
-  border-left: 4px solid var(--primary-color, #003f87);
+  border-left: 4px solid var(--primary-color);
 }
 
 .collapsible::after {
   content: '\25BC';
-  color: var(--primary-color, #003f87);
+  color: var(--primary-color);
   font-weight: bold;
   font-size: 14px;
   margin-left: 10px;
@@ -469,12 +469,12 @@
 }
 
 .collapsible:hover {
-  background-color: #e7e7e7;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  background-color: var(--background-hover);
+  box-shadow: var(--shadow);
 }
 
 .collapsible.active {
-  background-color: #e0e0e0;
+  background-color: var(--background-active);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   margin-bottom: 0;

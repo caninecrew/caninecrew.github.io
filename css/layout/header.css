@@ -11,9 +11,9 @@
     position: sticky;
     top: 0;
     width: 100%;
-    background: white;
+    background: var(--background-white);
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow);
     transition: all 0.3s ease;
     text-align: center;
 }
@@ -24,8 +24,8 @@ header {
     justify-content: center;
     align-items: center;
     padding: 15px 30px;
-    background-color: var(--header-footer-background);
-    color: var(--header-footer-text-color);
+    background-color: var(--header-background);
+    color: var(--header-text);
     border-bottom: 3px solid var(--primary-color);
 }
 
@@ -77,18 +77,18 @@ header h1 {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--nav-link-color);
     font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--nav-link-hover-color);
 }
 
 /* Active page highlighting */
 .nav-links a.active {
-    color: var(--primary-color);
+    color: var(--nav-link-active-color);
     font-weight: 600;
 }
 
@@ -97,8 +97,8 @@ header h1 {
 .dropdown {
     display: none;
     position: absolute;
-    background-color: var(--header-footer-background);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: var(--header-background);
+    box-shadow: var(--shadow-lg);
     z-index: 1;
 }
 
@@ -109,12 +109,12 @@ header h1 {
 .dropdown a {
     display: block;
     padding: 10px;
-    color: var(--header-footer-text-color);
+    color: var(--header-link);
 }
 
 .dropdown a:hover {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--text-inverse);
 }
 
 /* 6. Mobile Menu Button
@@ -193,10 +193,10 @@ header h1 {
         width: 80%;
         max-width: 320px;
         height: 100vh;
-        background: white;
+        background: var(--background-white);
         padding: 5rem 2rem 2rem;
         flex-direction: column;
-        box-shadow: -2px 0 15px rgba(0, 0, 0, 0.15);
+        box-shadow: var(--shadow-lg);
         transition: right 0.4s ease;
         z-index: 99;
         text-align: center;
@@ -231,7 +231,7 @@ header h1 {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: var(--background-overlay);
         z-index: -1;
     }
     

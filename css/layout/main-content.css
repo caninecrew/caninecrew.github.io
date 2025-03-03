@@ -9,20 +9,20 @@
    ----------------------- */
 main {
   min-height: 100vh;
-  padding: var(--space-md, 1.5rem) 0;
+  padding: var(--space-md) 0;
 }
 
 main.container {
-  max-width: var(--max-width, 1200px);
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--space-md, 1.5rem);
+  padding: 0 var(--space-md);
   width: 100%;
 }
 
 /* 2. Section Spacing
    --------------- */
 section {
-  margin-bottom: var(--space-lg, 2rem);
+  margin-bottom: var(--space-lg);
 }
 
 /* Common section types */
@@ -32,7 +32,7 @@ section {
 .skills, 
 .interests, 
 .call-to-action {
-  margin-bottom: var(--space-md, 1.5rem);
+  margin-bottom: var(--space-md);
 }
 
 /* Last section in a container should not have margin */
@@ -43,24 +43,24 @@ section:last-child {
 /* 3. Content Boxes
    ------------- */
 .content-box {
-  background: var(--background-white, white);
-  padding: var(--space-md, 1.5rem);
-  border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
-  margin-bottom: var(--space-md, 1.5rem);
+  background: var(--background-white);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  margin-bottom: var(--space-md);
 }
 
 /* Content box typography */
 .content-box h2, 
 .content-box h3, 
 .content-box h4 {
-  color: var(--primary-color, #003f87);
-  margin-bottom: var(--space-xs, 0.5rem);
+  color: var(--primary-color);
+  margin-bottom: var(--space-xs);
 }
 
 .content-box p, 
 .content-box ul {
-  margin-bottom: var(--space-sm, 1rem);
+  margin-bottom: var(--space-sm);
   line-height: 1.6;
 }
 
@@ -74,7 +74,7 @@ section:last-child {
    ------------- */
 .intro {
   text-align: center;
-  margin-bottom: var(--space-lg, 2rem);
+  margin-bottom: var(--space-lg);
 }
 
 /* Profile picture styling */
@@ -83,28 +83,28 @@ section:last-child {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 auto var(--space-md, 1.5rem);
-  border: 3px solid var(--primary-color, #003f87);
+  margin: 0 auto var(--space-md);
+  border: 3px solid var(--primary-color);
 }
 
 /* 5. Call to Action
    -------------- */
 .call-to-action {
   text-align: center;
-  padding: var(--space-md, 1.5rem);
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
-  border-top: 3px solid var(--primary-color, #003f87);
+  padding: var(--space-md);
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--primary-color);
 }
 
 .call-to-action h2 {
-  color: var(--primary-color, #003f87);
-  margin-bottom: var(--space-sm, 1rem);
+  color: var(--primary-color);
+  margin-bottom: var(--space-sm);
 }
 
 .call-to-action .button-container {
-  margin-top: var(--space-md, 1.5rem);
+  margin-top: var(--space-md);
 }
 
 /* 6. List Styling
@@ -112,7 +112,7 @@ section:last-child {
 main ul {
   padding-left: 1.25rem;
   list-style-type: disc;
-  margin-bottom: var(--space-sm, 1rem);
+  margin-bottom: var(--space-sm);
 }
 
 main ul li {
@@ -123,13 +123,13 @@ main ul li {
 /* 7. Link Styling
    ------------ */
 main a {
-  color: var(--primary-color, #003f87);
+  color: var(--primary-color);
   text-decoration: none;
-  transition: color var(--transition-speed, 0.3s) var(--transition-function, ease);
+  transition: color var(--transition-speed) var(--transition-function);
 }
 
 main a:hover {
-  color: var(--secondary-color, #ce1126);
+  color: var(--secondary-color);
 }
 
 /* 8. Experience/Timeline Items
@@ -137,9 +137,9 @@ main a:hover {
 .experience-item,
 .education-item,
 .timeline-item {
-  margin-bottom: var(--space-md, 1.5rem);
-  padding-bottom: var(--space-md, 1.5rem);
-  border-bottom: 1px solid var(--border-color, #eee);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .experience-item:last-child,
@@ -151,15 +151,15 @@ main a:hover {
 
 .experience-item h3,
 .education-item h3 {
-  margin-bottom: var(--space-xs, 0.5rem);
-  color: var(--primary-color, #003f87);
+  margin-bottom: var(--space-xs);
+  color: var(--primary-color);
 }
 
 .experience-date,
 .education-date {
-  color: var(--text-secondary, #666);
+  color: var(--text-secondary);
   font-size: 0.9rem;
-  margin-bottom: var(--space-xs, 0.5rem);
+  margin-bottom: var(--space-xs);
 }
 
 /* 9. Utility Features
@@ -169,8 +169,8 @@ main a:hover {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
   border: none;
   padding: 0.75rem;
   cursor: pointer;
@@ -180,15 +180,15 @@ main a:hover {
   height: 50px;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
   transition: all 0.3s ease;
   z-index: 99;
 }
 
 .back-to-top:hover {
-  background: var(--primary-color-dark, #002a5c);
+  background: var(--primary-color-dark);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+  box-shadow: var(--shadow-lg);
 }
 
 /* Fade-in animation */
@@ -207,7 +207,7 @@ main a:hover {
    ----------------------- */
 @media (max-width: 768px) {
   main.container {
-    padding: 0 var(--space-sm, 1rem);
+    padding: 0 var(--space-sm);
   }
   
   .profile-picture {
@@ -216,11 +216,11 @@ main a:hover {
   }
   
   .content-box {
-    padding: var(--space-sm, 1rem);
+    padding: var(--space-sm);
   }
   
   .call-to-action {
-    padding: var(--space-sm, 1rem);
+    padding: var(--space-sm);
   }
 }
 

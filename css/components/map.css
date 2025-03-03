@@ -7,19 +7,19 @@
 .map-container {
   width: 100%;
   position: relative;
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  margin-bottom: var(--space-md, 1.5rem);
+  margin-bottom: var(--space-md);
 }
 
 /* Travel page map container */
 #travel-map-container {
-  height: var(--map-height, 500px);
+  height: var(--map-height);
   width: 100%;
   position: relative;
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
 }
 
 /* The map itself */
@@ -40,13 +40,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--background-light);
   z-index: 1;
 }
 
 #map-error {
   display: none;
-  color: var(--secondary-color, #ce1126);
+  color: var(--secondary-color);
 }
 
 /* Map in quadrant styling */
@@ -64,7 +64,7 @@
   width: 100%;
   height: 120px;
   object-fit: cover;
-  border-radius: var(--radius-sm, 4px);
+  border-radius: var(--radius-sm);
   margin-bottom: 8px;
 }
 
@@ -81,13 +81,45 @@
 
 /* Additional styles for Leaflet maps */
 .leaflet-popup-content-wrapper {
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--radius-md);
   padding: 0;
 }
 
 .leaflet-popup-content {
   margin: 0;
   padding: 0;
+}
+
+/* Override Leaflet default styles with our variables */
+.leaflet-container {
+  background: var(--background-muted);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--map-popup-background);
+  box-shadow: var(--map-popup-shadow);
+}
+
+.leaflet-popup-content p {
+  color: var(--map-popup-text);
+}
+
+.leaflet-popup-tip {
+  background: var(--map-popup-background);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--text-tertiary);
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+  color: var(--text-color);
+}
+
+/* Custom map markers */
+.map-marker-icon {
+  background-color: var(--map-marker-color);
+  border: 2px solid var(--background-white);
 }
 
 /* Responsive adjustments */

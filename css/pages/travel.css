@@ -7,9 +7,9 @@
    1. Hero Section
    =========================== */
 .travel-hero {
-  background: linear-gradient(rgba(0, 63, 135, 0.8), rgba(0, 42, 92, 0.8)),
+  background: linear-gradient(var(--primary-color-overlay), var(--primary-color-dark-overlay)),
               url('../../images/travel/map-background.jpg') center/cover;
-  color: white;
+  color: var(--text-inverse);
   padding: 4rem 2rem;
   text-align: center;
   margin-bottom: 3rem;
@@ -23,7 +23,7 @@
 .travel-hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: white;
+  color: var(--text-inverse);
 }
 
 .travel-hero p {
@@ -36,17 +36,17 @@
 .travel-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-lg, 2rem);
-  margin: var(--space-xl, 3rem) auto;
+  gap: var(--space-lg);
+  margin: var(--space-xl) auto;
   max-width: 800px;
 }
 
 .travel-stat {
-  background: rgba(255, 255, 255, 0.15);
-  padding: var(--space-md, 1.5rem);
-  border-radius: var(--radius-md, 8px);
+  background: var(--background-translucent);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
   backdrop-filter: blur(5px);
-  transition: transform var(--transition-speed, 0.3s) var(--transition-function, ease);
+  transition: transform var(--transition-speed) var(--transition-function);
 }
 
 .travel-stat:hover {
@@ -70,13 +70,13 @@
    2. Map Section
    =========================== */
 .travel-map {
-  margin-bottom: var(--space-lg, 2rem);
+  margin-bottom: var(--space-lg);
 }
 
 #travel-map-container {
-  height: var(--map-height, 500px);
+  height: var(--map-height);
   width: 100%;
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow);
   position: relative;
@@ -97,7 +97,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--background-light);
   z-index: 1;
 }
 
@@ -115,7 +115,7 @@
   width: 100%;
   height: 120px;
   object-fit: cover;
-  border-radius: var(--radius-sm, 4px);
+  border-radius: var(--radius-sm);
   margin-bottom: 8px;
 }
 
@@ -139,18 +139,18 @@
    3. Filter Section
    =========================== */
 .filter-section {
-  margin-bottom: var(--space-md, 1.5rem);
+  margin-bottom: var(--space-md);
 }
 
 .filter-container {
-  background: var(--background-white, white);
-  padding: var(--space-md, 1.5rem);
-  border-radius: var(--radius-md, 8px);
+  background: var(--background-white);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow);
 }
 
 .filter-heading {
-  margin-bottom: var(--space-sm, 1rem);
+  margin-bottom: var(--space-sm);
   color: var(--primary-color);
 }
 
@@ -158,24 +158,24 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: var(--space-sm, 1rem);
+  margin-bottom: var(--space-sm);
 }
 
 /* Filter buttons use the same styling pattern as in buttons.css */
 .filter-button {
   padding: 0.5rem 1rem;
   border: 1px solid var(--primary-color);
-  border-radius: var(--radius-sm, 4px);
+  border-radius: var(--radius-sm);
   background: none;
   color: var(--primary-color);
   cursor: pointer;
-  transition: all var(--transition-speed, 0.3s) var(--transition-function, ease);
+  transition: all var(--transition-speed) var(--transition-function);
 }
 
 .filter-button:hover,
 .filter-button.active {
   background: var(--primary-color);
-  color: white;
+  color: var(--text-inverse);
 }
 
 .search-container {
@@ -186,8 +186,8 @@
 .search-input {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 2.5rem;
-  border: 1px solid var(--border-color, #ddd);
-  border-radius: var(--radius-sm, 4px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
   font-size: 1rem;
 }
 
@@ -196,31 +196,31 @@
   left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-secondary, #666);
+  color: var(--text-secondary);
 }
 
 /* ===========================
    4. Locations Grid
    =========================== */
 .travel-locations {
-  margin-bottom: var(--space-lg, 2rem);
+  margin-bottom: var(--space-lg);
 }
 
 /* Aligned with grid.css patterns */
 .locations-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-lg, 2rem);
-  padding: var(--space-sm, 1rem);
+  gap: var(--space-lg);
+  padding: var(--space-sm);
 }
 
 /* Card styling follows the patterns in cards.css */
 .location-card {
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
+  background: var(--background-white);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: transform var(--transition-speed, 0.2s), box-shadow var(--transition-speed, 0.2s);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
   position: relative;
 }
 
@@ -231,12 +231,12 @@
 
 .location-card img {
   width: 100%;
-  height: var(--card-height, 200px);
+  height: var(--card-height);
   object-fit: cover;
 }
 
 .location-info {
-  padding: var(--space-sm, 1rem);
+  padding: var(--space-sm);
 }
 
 .location-info h3 {
@@ -252,8 +252,8 @@
 
 .location-date {
   font-size: 0.9em;
-  color: var(--text-secondary, #888);
-  margin-top: var(--space-xs, 0.5rem);
+  color: var(--text-tertiary);
+  margin-top: var(--space-xs);
 }
 
 .location-categories {
@@ -265,10 +265,10 @@
 
 .location-category {
   font-size: 0.8em;
-  background: #f0f0f0;
+  background: var(--background-muted);
   padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-sm, 4px);
-  color: var(--text-secondary, #666);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
 }
 
 .highlight-badge {
@@ -276,9 +276,9 @@
   top: 10px;
   right: 10px;
   background: var(--secondary-color);
-  color: white;
+  color: var(--text-inverse);
   padding: 0.25rem 0.5rem;
-  border-radius: var(--radius-sm, 4px);
+  border-radius: var(--radius-sm);
   font-size: 0.8em;
   font-weight: 600;
 }
@@ -287,15 +287,15 @@
    5. Featured Trips
    =========================== */
 .featured-trips {
-  margin: var(--space-xl, 3rem) 0;
+  margin: var(--space-xl) 0;
 }
 
 .featured-trip {
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
+  background: var(--background-white);
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow);
-  margin-bottom: var(--space-md, 2rem);
+  margin-bottom: var(--space-md);
 }
 
 .featured-content {
@@ -312,7 +312,7 @@
 }
 
 .featured-details {
-  padding: var(--space-lg, 2rem);
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -321,30 +321,30 @@
 .featured-details h3 {
   font-size: 1.5rem;
   color: var(--primary-color);
-  margin-bottom: var(--space-sm, 1rem);
+  margin-bottom: var(--space-sm);
 }
 
 .featured-details p {
   line-height: 1.6;
   color: var(--text-secondary);
-  margin-bottom: var(--space-md, 1.5rem);
+  margin-bottom: var(--space-md);
 }
 
 /* ===========================
    6. Journal Entries
    =========================== */
 .travel-journal {
-  margin: var(--space-xl, 3rem) 0;
-  background: var(--background-light, #f8f9fa);
-  padding: var(--space-lg, 2rem);
-  border-radius: var(--radius-md, 8px);
+  margin: var(--space-xl) 0;
+  background: var(--background-light);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
 }
 
 .journal-entry {
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
-  padding: var(--space-lg, 2rem);
-  margin-bottom: var(--space-md, 2rem);
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
   box-shadow: var(--shadow);
 }
 
@@ -352,9 +352,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space-md, 1.5rem);
-  padding-bottom: var(--space-sm, 1rem);
-  border-bottom: 1px solid var(--border-color, #eee);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .journal-title {
@@ -364,7 +364,7 @@
 }
 
 .journal-date {
-  color: var(--text-secondary, #888);
+  color: var(--text-tertiary);
 }
 
 .journal-content {
@@ -373,22 +373,22 @@
 }
 
 .journal-content p {
-  margin-bottom: var(--space-md, 1.5rem);
+  margin-bottom: var(--space-md);
 }
 
 .journal-images {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-sm, 1rem);
-  margin: var(--space-md, 2rem) 0;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
 }
 
 .journal-images img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-radius: var(--radius-sm, 4px);
-  transition: transform var(--transition-speed, 0.3s) var(--transition-function, ease);
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-speed) var(--transition-function);
 }
 
 .journal-images img:hover {

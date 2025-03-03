@@ -148,10 +148,10 @@
     width: 80%;
     max-width: 320px;
     height: 100vh;
-    background: white;
+    background: var(--background-white);
     padding: 5rem 2rem 2rem;
     flex-direction: column;
-    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
     transition: right 0.4s ease;
     z-index: 99;
     text-align: center;
@@ -168,15 +168,15 @@
   
   /* Card components */
   .content-box {
-    padding: var(--space-sm, 1rem);
+    padding: var(--space-sm);
   }
   
   .call-to-action {
-    padding: var(--space-sm, 1rem);
+    padding: var(--space-sm);
   }
   
   .timeline-content {
-    padding: var(--space-sm, 1rem);
+    padding: var(--space-sm);
   }
   
   /* Buttons and actions */
@@ -392,12 +392,12 @@
   body {
     font-size: 12pt;
     line-height: 1.5;
-    color: #000;
-    background: white;
+    color: var(--text-color);
+    background: var(--background-white);
   }
   
   a {
-    color: #000;
+    color: var(--text-color);
     text-decoration: none;
   }
   
@@ -406,7 +406,7 @@
   .content-box,
   .quadrant {
     box-shadow: none;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
   }
   
   /* Full-width content */
@@ -421,7 +421,7 @@
   a[href^="http"]:after {
     content: " (" attr(href) ")";
     font-size: 90%;
-    color: #555;
+    color: var(--text-secondary);
   }
 }
 

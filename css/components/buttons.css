@@ -13,11 +13,11 @@
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: var(--primary-color, #003f87);
-  color: white;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
   text-decoration: none;
-  border-radius: var(--radius-sm, 5px);
-  transition: all var(--transition-speed, 0.3s) var(--transition-function, ease);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-speed) var(--transition-function);
   font-weight: 500;
   min-width: 120px;
   border: none;
@@ -30,17 +30,17 @@
 .button:hover,
 .button-container a:hover,
 .btn:hover {
-  background-color: var(--secondary-color, #ce1126);
-  color: white;
+  background-color: var(--button-primary-hover-bg);
+  color: var(--button-primary-hover-text);
   text-decoration: none;
   transform: translateY(-2px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
 }
 
 /* Button container - centers buttons and provides spacing */
 .button-container {
   text-align: center;
-  margin: var(--space-md, 1.5rem) 0;
+  margin: var(--space-md) 0;
 }
 
 /* ===========================
@@ -50,35 +50,35 @@
 /* Primary button - main call to action */
 .button--primary,
 .btn-primary {
-  background-color: var(--primary-color, #003f87);
-  color: white;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
 }
 
 .button--primary:hover,
 .btn-primary:hover {
-  background-color: var(--primary-color-dark, #002a5c);
+  background-color: var(--button-primary-hover-bg);
 }
 
 /* Secondary button - alternative action */
 .button--secondary {
-  background-color: var(--secondary-color, #ce1126);
-  color: white;
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
 }
 
 .button--secondary:hover {
-  background-color: #b30e20;
+  background-color: var(--button-secondary-hover-bg);
 }
 
 /* Outline button - subtle action */
 .button--outline {
   background-color: transparent;
-  border: 1px solid var(--primary-color, #003f87);
-  color: var(--primary-color, #003f87);
+  border: 1px solid var(--button-outline-border);
+  color: var(--button-outline-text);
 }
 
 .button--outline:hover {
-  background-color: var(--primary-color, #003f87);
-  color: white;
+  background-color: var(--button-outline-hover-bg);
+  color: var(--button-outline-hover-text);
 }
 
 /* ===========================
@@ -89,70 +89,74 @@
 .linkedin-button,
 .button--linkedin,
 .button-container a[href*="linkedin"] {
-  background-color: var(--linkedin-color, #0077b5);
-  border-color: var(--linkedin-color, #0077b5);
+  background-color: var(--linkedin-color);
+  border-color: var(--linkedin-color);
 }
 
 .linkedin-button:hover,
 .button--linkedin:hover,
 .button-container a[href*="linkedin"]:hover {
-  background-color: #005582;
+  background-color: var(--linkedin-color);
+  filter: brightness(85%);
 }
 
 /* GitHub button */
 .github-button,
 .button--github,
 .button-container a[href*="github"] {
-  background-color: var(--github-color, #333);
-  border-color: var(--github-color, #333);
+  background-color: var(--github-color);
+  border-color: var(--github-color);
 }
 
 .github-button:hover,
 .button--github:hover,
 .button-container a[href*="github"]:hover {
-  background-color: #1a1a1a;
+  background-color: var(--github-color);
+  filter: brightness(85%);
 }
 
 /* Facebook button */
 .facebook-button,
 .button--facebook,
 .button-container a[href*="facebook"] {
-  background-color: var(--facebook-color, #3b5998);
-  border-color: var(--facebook-color, #3b5998);
+  background-color: var(--facebook-color);
+  border-color: var(--facebook-color);
 }
 
 .facebook-button:hover,
 .button--facebook:hover,
 .button-container a[href*="facebook"]:hover {
-  background-color: #2d4373;
+  background-color: var(--facebook-color);
+  filter: brightness(85%);
 }
 
 /* Instagram button */
 .instagram-button,
 .button--instagram,
 .button-container a[href*="instagram"] {
-  background-color: var(--instagram-color, #E1306C);
-  border-color: var(--instagram-color, #E1306C);
+  background-color: var(--instagram-color);
+  border-color: var(--instagram-color);
 }
 
 .instagram-button:hover,
 .button--instagram:hover,
 .button-container a[href*="instagram"]:hover {
-  background-color: #C13584;
+  background-color: var(--instagram-color);
+  filter: brightness(85%);
 }
 
 /* Handshake button */
 .handshake-button,
 .button--handshake,
 .button-container a[href*="handshake"] {
-  background-color: var(--secondary-color, #ce1126);
-  border-color: var(--secondary-color, #ce1126);
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 
 .handshake-button:hover,
 .button--handshake:hover,
 .button-container a[href*="handshake"]:hover {
-  background-color: #d76a00;
+  background-color: var(--secondary-color-dark);
 }
 
 /* Social link - icon buttons used in footer */
@@ -163,17 +167,17 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
+  background-color: var(--background-active);
+  color: var(--text-secondary);
   transition: all 0.3s ease;
   font-size: 1.5rem;
 }
 
 .social-link:hover {
-  color: white;
-  background-color: var(--primary-color, #003f87);
+  color: var(--text-inverse);
+  background-color: var(--primary-color);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 /* ===========================
@@ -183,18 +187,18 @@
 /* Filter button - used in travel section */
 .filter-button {
   padding: 0.5rem 1rem;
-  border: 1px solid var(--primary-color, #003f87);
-  border-radius: var(--radius-sm, 4px);
-  background: none;
-  color: var(--primary-color, #003f87);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--primary-color);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .filter-button:hover,
 .filter-button.active {
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
 }
 
 /* Timeline navigation buttons */
@@ -202,8 +206,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -217,7 +221,7 @@
 }
 
 .timeline-scroll-btn:hover {
-  background: var(--primary-color-dark, #002a5c);
+  background: var(--primary-color-dark);
 }
 
 .timeline-scroll-btn.left {
@@ -233,8 +237,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: var(--background-active);
+  color: var(--text-inverse);
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -248,7 +252,7 @@
 }
 
 .carousel-button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--primary-color);
 }
 
 .carousel-button.prev {
@@ -264,8 +268,8 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
   border: none;
   padding: 0.75rem;
   cursor: pointer;
@@ -275,14 +279,14 @@
   height: 50px;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
   transition: all 0.3s ease;
 }
 
 .back-to-top:hover {
-  background: var(--primary-color-dark, #002a5c);
+  background: var(--primary-color-dark);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+  box-shadow: var(--shadow-lg);
 }
 
 /* ===========================
@@ -305,7 +309,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--text-color, #2c3e50);
+  background: var(--text-color);
   position: relative;
   transition: all 0.3s ease;
 }
@@ -317,7 +321,7 @@
   left: 0;
   width: 24px;
   height: 2px;
-  background: var(--text-color, #2c3e50);
+  background: var(--text-color);
   transition: all 0.3s ease;
 }
 
@@ -348,8 +352,8 @@
    =========================== */
 
 .collapsible {
-  background-color: #f1f1f1;
-  color: #444;
+  background-color: var(--background-muted);
+  color: var(--text-color);
   cursor: pointer;
   padding: 15px 20px;
   width: 100%;
@@ -364,14 +368,14 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow-sm);
   position: relative;
-  border-left: 4px solid var(--primary-color, #003f87);
+  border-left: 4px solid var(--primary-color);
 }
 
 .collapsible::after {
   content: '\25BC';
-  color: var(--primary-color, #003f87);
+  color: var(--primary-color);
   font-weight: bold;
   font-size: 14px;
   margin-left: 10px;
@@ -383,12 +387,12 @@
 }
 
 .collapsible:hover {
-  background-color: #e7e7e7;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  background-color: var(--background-hover);
+  box-shadow: var(--shadow);
 }
 
 .collapsible.active {
-  background-color: #e0e0e0;
+  background-color: var(--background-active);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   margin-bottom: 0;

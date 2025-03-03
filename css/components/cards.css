@@ -9,39 +9,39 @@
 
 /* Standard card - foundation for all card components */
 .card {
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
-  padding: var(--space-md, 1.5rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+  box-shadow: var(--shadow-lg);
 }
 
 /* Card content spacing */
 .card-content {
-  margin-top: var(--space-sm, 1rem);
+  margin-top: var(--space-sm);
 }
 
 .card h3 {
-  color: var(--primary-color, #003f87);
-  margin-bottom: var(--space-xs, 0.5rem);
+  color: var(--primary-color);
+  margin-bottom: var(--space-xs);
 }
 
 .card p {
-  color: var(--text-secondary, #666);
+  color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: var(--space-xs, 0.5rem);
+  margin-bottom: var(--space-xs);
 }
 
 /* Card with heading */
 .card-with-header h3 {
-  border-bottom: 1px solid var(--border-color, #eee);
-  padding-bottom: var(--space-xs, 0.5rem);
-  margin-bottom: var(--space-sm, 1rem);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
 }
 
 /* ===========================
@@ -49,10 +49,10 @@
    =========================== */
 
 .quadrant {
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
-  padding: var(--space-md, 1.5rem);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   min-height: 250px;
@@ -60,7 +60,7 @@
 
 /* Quadrant headings */
 .quadrant h2 {
-  color: var(--primary-color, #003f87);
+  color: var(--primary-color);
   margin-bottom: 15px;
   font-size: 1.3em;
 }
@@ -76,16 +76,16 @@
    =========================== */
 
 .location-card {
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .location-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+  box-shadow: var(--shadow-lg);
 }
 
 /* Location card images */
@@ -97,25 +97,25 @@
 
 /* Location information container */
 .location-info {
-  padding: var(--space-sm, 1rem);
+  padding: var(--space-sm);
 }
 
 .location-info h3 {
   margin: 0 0 0.5rem 0;
-  color: var(--primary-color, #003f87);
+  color: var(--primary-color);
 }
 
 .location-info p {
   margin: 0;
-  color: var(--text-secondary, #666);
+  color: var(--text-secondary);
   line-height: 1.4;
 }
 
 /* Date display for locations */
 .location-date {
   font-size: 0.9em;
-  color: #888;
-  margin-top: var(--space-xs, 0.5rem);
+  color: var(--text-tertiary);
+  margin-top: var(--space-xs);
 }
 
 /* ===========================
@@ -123,10 +123,10 @@
    =========================== */
 
 .highlight-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: var(--space-lg, 2rem);
-  border-radius: var(--radius-md, 8px);
-  backdrop-filter: blur(5px);
+  background: var(--background-card);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
   transition: transform 0.3s ease;
 }
 
@@ -138,12 +138,13 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  color: var(--secondary-color, #ce1126);
+  color: var(--secondary-color);
 }
 
 .highlight-text {
   font-size: 1rem;
   opacity: 0.9;
+  color: var(--text-color);
 }
 
 /* ===========================
@@ -151,10 +152,10 @@
    =========================== */
 
 .timeline-content {
-  background: var(--background-white, white);
+  background: var(--background-white);
   padding: 1.5rem;
-  border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
   width: 100%;
   margin-bottom: 1rem;
   position: relative;
@@ -167,8 +168,8 @@
 
 /* Date header styling */
 .timeline-date {
-  background: var(--primary-color, #003f87);
-  color: white;
+  background: var(--primary-color);
+  color: var(--text-inverse);
   padding: 0.75rem;
   margin: -1.5rem -1.5rem 1rem -1.5rem;
   border-radius: 8px 8px 0 0;
@@ -181,34 +182,34 @@
    =========================== */
 
 .leadership-item {
-  padding: var(--space-sm, 1rem);
-  background: var(--background-light, #f8f9fa);
-  border-radius: var(--radius-md, 8px);
-  margin-bottom: var(--space-sm, 1rem);
+  padding: var(--space-sm);
+  background: var(--background-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
   transition: transform 0.2s ease;
-  border: 1px solid var(--border-color, #eee);
+  border: 1px solid var(--border-color);
 }
 
 .leadership-item:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow);
 }
 
 .role {
-  color: var(--text-color, #2c3e50);
+  color: var(--text-color);
   font-weight: 600;
-  margin-bottom: var(--space-xs, 0.5rem);
+  margin-bottom: var(--space-xs);
 }
 
 .date {
   font-size: 0.9rem;
-  color: var(--text-secondary, #666);
-  margin-bottom: var(--space-xs, 0.5rem);
+  color: var(--text-secondary);
+  margin-bottom: var (--space-xs);
 }
 
 .description {
   font-size: 0.95rem;
-  color: var(--text-color, #444);
+  color: var(--text-color);
   line-height: 1.4;
 }
 
@@ -220,21 +221,23 @@
   display: flex;
   align-items: center;
   padding: 0.75rem;
-  background: var(--background-light, #f8f9fa);
-  border-radius: var(--radius-md, 8px);
-  transition: transform 0.2s ease;
+  background: var(--merit-badge-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--merit-badge-border);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .merit-badge:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow-sm);
+  background: var(--merit-badge-hover-bg);
 }
 
 .badge-image {
   width: 72px;
   height: 72px;
   object-fit: contain;
-  margin-right: var(--space-sm, 1rem);
+  margin-right: var(--space-sm);
 }
 
 .badge-info {
@@ -244,13 +247,13 @@
 .badge-name {
   display: block;
   font-weight: 600;
-  color: var(--text-color, #2c3e50);
+  color: var(--merit-badge-text);
   margin-bottom: 0.25rem;
 }
 
 .badge-date {
   font-size: 0.9rem;
-  color: var(--text-secondary, #666);
+  color: var(--text-secondary);
 }
 
 /* ===========================
@@ -258,20 +261,20 @@
    =========================== */
 
 .content-box {
-  background: var(--background-white, white);
-  padding: var(--space-md, 1.5rem);
-  border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
-  margin-bottom: var(--space-md, 1.5rem);
+  background: var(--background-white);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  margin-bottom: var(--space-md);
 }
 
 .content-box h2, .content-box h3, .content-box h4 {
-  color: var(--primary-color, #003f87);
-  margin-bottom: var(--space-xs, 0.5rem);
+  color: var(--primary-color);
+  margin-bottom: var(--space-xs);
 }
 
 .content-box p, .content-box ul {
-  margin-bottom: var(--space-sm, 1rem);
+  margin-bottom: var(--space-sm);
   line-height: 1.6;
 }
 
@@ -281,20 +284,20 @@
 
 .call-to-action {
   text-align: center;
-  padding: var(--space-md, 1.5rem);
-  background: var(--background-white, white);
-  border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
-  border-top: 3px solid var(--primary-color, #003f87);
+  padding: var(--space-md);
+  background: var(--background-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--primary-color);
 }
 
 .call-to-action h2 {
-  color: var(--primary-color, #003f87);
-  margin-bottom: var(--space-sm, 1rem);
+  color: var(--primary-color);
+  margin-bottom: var(--space-sm);
 }
 
 .call-to-action .button-container {
-  margin-top: var(--space-md, 1.5rem);
+  margin-top: var(--space-md);
 }
 
 /* ===========================
@@ -303,11 +306,11 @@
 
 @media (max-width: 768px) {
   .quadrant, .card, .content-box, .call-to-action {
-    padding: var(--space-sm, 1rem);
+    padding: var(--space-sm);
   }
   
   .highlight-card {
-    padding: var(--space-md, 1.5rem);
+    padding: var(--space-md);
   }
   
   .highlight-number {
@@ -319,7 +322,7 @@
   }
   
   .timeline-content {
-    padding: var(--space-sm, 1rem);
+    padding: var(--space-sm);
   }
   
   .timeline-date {
@@ -345,6 +348,6 @@
   
   .badge-image {
     margin-right: 0;
-    margin-bottom: var(--space-xs, 0.5rem);
+    margin-bottom: var(--space-xs);
   }
 }

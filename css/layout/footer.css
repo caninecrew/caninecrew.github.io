@@ -9,18 +9,18 @@
    ----------------- */
 footer,
 .site-footer {
-    background-color: var(--header-footer-background, #333);
-    color: var(--header-footer-text-color, #fff);
+    background-color: var(--footer-background);
+    color: var(--footer-text);
     padding: 2rem 0;
     margin-top: 3rem;
-    border-top: 3px solid var(--primary-color, #003f87);
+    border-top: 3px solid var(--primary-color);
     width: 100%;
 }
 
 /* Footer content wrapper */
 .footer-container,
 .footer-content {
-    max-width: var(--max-width, 1200px);
+    max-width: var(--max-width);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -41,7 +41,7 @@ footer,
 
 /* Section headings */
 .footer-section h3 {
-    color: #fff;
+    color: var(--text-inverse);
     margin-bottom: 1rem;
     font-size: 1.2rem;
     position: relative;
@@ -57,14 +57,14 @@ footer,
     left: 0;
     width: 50px;
     height: 2px;
-    background-color: var(--primary-color, #003f87);
+    background-color: var(--primary-color);
 }
 
 /* Section text */
 .footer-section p {
     line-height: 1.6;
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--footer-text);
 }
 
 /* 3. Footer Navigation
@@ -83,7 +83,7 @@ footer,
 
 .footer-links a,
 .footer-section ul li a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--footer-link);
     text-decoration: none;
     transition: all 0.3s ease;
     font-size: 0.95rem;
@@ -95,8 +95,8 @@ footer,
 
 .footer-links a:hover,
 .footer-section ul li a:hover {
-    color: #fff;
-    border-left-color: var(--primary-color, #003f87);
+    color: var(--footer-link-hover);
+    border-left-color: var(--primary-color);
     padding-left: 0.8rem;
 }
 
@@ -112,13 +112,13 @@ footer,
 
 /* Text-based social links */
 .footer-social a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--footer-link);
     font-size: 1.5em;
     transition: color 0.3s;
 }
 
 .footer-social a:hover {
-    color: #fff;
+    color: var(--footer-link-hover);
 }
 
 /* Icon-based social links */
@@ -130,44 +130,44 @@ footer,
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.8);
+    background-color: var(--background-active);
+    color: var(--footer-text);
     transition: all 0.3s ease;
     font-size: 1.5rem;
 }
 
 .social-links a:hover,
 .social-link:hover {
-    color: white;
-    background-color: var(--primary-color, #003f87);
+    color: var(--text-inverse);
+    background-color: var(--primary-color);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
 }
 
 /* Social media brand colors */
 .social-link[href*="linkedin"],
 .social-links a[href*="linkedin"] {
-    background-color: var(--linkedin-color, #0077b5);
+    background-color: var(--linkedin-color);
 }
 
 .social-link[href*="github"],
 .social-links a[href*="github"] {
-    background-color: var(--github-color, #333);
+    background-color: var(--github-color);
 }
 
 .social-link[href*="facebook"],
 .social-links a[href*="facebook"] {
-    background-color: var(--facebook-color, #3b5998);
+    background-color: var(--facebook-color);
 }
 
 .social-link[href*="instagram"],
 .social-links a[href*="instagram"] {
-    background-color: var(--instagram-color, #E1306C);
+    background-color: var(--instagram-color);
 }
 
 .social-link[href*="handshake"],
 .social-links a[href*="handshake"] {
-    background-color: var(--secondary-color, #ce1126);
+    background-color: var(--secondary-color);
 }
 
 /* 5. Copyright Section
@@ -177,14 +177,14 @@ footer,
     text-align: center;
     padding-top: 1.5rem;
     margin-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-bottom p,
 .copyright p {
     margin: 0;
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--footer-text);
 }
 
 /* 6. Contact Information
@@ -200,7 +200,7 @@ footer,
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--footer-text);
 }
 
 /* 7. Responsive Adjustments
@@ -239,7 +239,7 @@ footer,
     .footer-links a:hover,
     .footer-section ul li a:hover {
         border-left-color: transparent;
-        border-bottom-color: var(--primary-color, #003f87);
+        border-bottom-color: var(--primary-color);
         padding-left: 0;
     }
 
@@ -270,7 +270,7 @@ footer,
     margin: 2rem 0;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+    box-shadow: var(--shadow);
 }
 
 .social-feed iframe {
