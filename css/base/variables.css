@@ -1,0 +1,87 @@
+/*
+ * Design System Variables
+ * A centralized collection of all design tokens used throughout the site
+ */
+
+:root {
+    /* Color System - Base Brand Colors */
+    --primary-color: #003f87;      /* BSA Official Blue */
+    --primary-color-dark: #002a5c; /* BSA Dark Blue */
+    --secondary-color: #ce1126;    /* BSA Red */
+    
+    /* Text Colors - Accessible contrast ratios */
+    --text-color: #2c3e50;         /* Primary text - 7:1 contrast ratio */
+    --text-secondary: #666;        /* Secondary text - 4.5:1 contrast ratio */
+    
+    /* Background Colors */
+    --background-color: #f4f4f9;   /* Site background */
+    --background-light: #f8f9fa;   /* Light background */
+    --background-white: #ffffff;   /* White background */
+    
+    /* UI Element Colors */
+    --border-color: #eee;          /* Border color */
+    --header-footer-background: #333; /* Dark background for header/footer */
+    --header-footer-text-color: #fff; /* Light text for contrast */
+    
+    /* Social Media Brand Colors */
+    --linkedin-color: #0077b5;     /* LinkedIn blue */
+    --github-color: #333;          /* GitHub dark */
+    --facebook-color: #3b5998;     /* Facebook blue */
+    --instagram-color: #E1306C;    /* Instagram pink/purple */
+    --twitter-color: #1da1f2;      /* Twitter blue */
+    
+    /* Shadows & Effects - Consistent elevation system */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);  /* Subtle elevation */
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);     /* Standard elevation */
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.15); /* Prominent elevation */
+    
+    /* Spacing System - 8pt grid for consistent rhythm */
+    --space-xs: 0.5rem;  /* 8px */
+    --space-sm: 1rem;    /* 16px */
+    --space-md: 1.5rem;  /* 24px */
+    --space-lg: 2rem;    /* 32px */
+    --space-xl: 3rem;    /* 48px */
+    
+    /* Border Radius - Consistent rounding */
+    --radius-sm: 4px;    /* Small elements (buttons, inputs) */
+    --radius-md: 8px;    /* Cards, containers */
+    --radius-lg: 12px;   /* Large elements, featured content */
+    --radius-pill: 9999px; /* Pills, badges, avatar */
+    
+    /* Content Width Constraints */
+    --max-width: 1200px; /* Main container width */
+    --content-width-narrow: 800px; /* Reading content width */
+    --content-width-medium: 1000px; /* Medium content width */
+    
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+                  Oxygen, Ubuntu, Cantarell, sans-serif;
+    --line-height: 1.6;            /* Body text */
+    --line-height-headings: 1.2;   /* Headings */
+    
+    /* Transitions & Animations */
+    --transition-speed: 0.3s;      /* Standard transition duration */
+    --transition-function: ease;   /* Standard easing function */
+}
+
+/* Page-specific theme overrides */
+.scouting-page {
+    --section-background: #f5f8ff; /* Light blue background for sections */
+    --section-border: 1px solid #d0e0ff; /* Subtle border for sections */
+    --highlight-color: var(--secondary-color); /* Emphasis color */
+}
+
+/* Travel page theme */
+.travel-page {
+    --map-height: 500px; /* Default map height */
+    --card-height: 200px; /* Location card image height */
+}
+
+/* Print theme - Used when printing pages */
+@media print {
+    :root {
+        --text-color: #000; /* Pure black for best contrast when printing */
+        --background-light: #fff; /* White background for printing */
+        --shadow: none; /* Remove shadows when printing */
+    }
+}

@@ -1,0 +1,243 @@
+/* ================================
+   Home Page Specific Styling
+   
+   Styles exclusive to the home/index page including hero section,
+   introduction content, quadrants, and other home-specific components.
+   ================================ */
+
+/* 1. Hero Section
+   ------------- */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl, 3rem) var(--space-md, 1.5rem);
+  background-color: var(--background-light, #f8f9fa);
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: linear-gradient(rgba(0, 63, 135, 0.7), rgba(0, 63, 135, 0.4)), 
+                    url('../images/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.8);
+}
+
+.hero-content {
+  max-width: 800px;
+  color: white;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: var(--space-lg, 2rem);
+  border-radius: var(--radius-md, 8px);
+  backdrop-filter: blur(5px);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: var(--space-md, 1.5rem);
+  color: white;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md, 1.5rem);
+}
+
+/* 2. Introduction Section
+   -------------------- */
+.home-intro {
+  padding: var(--space-xl, 3rem) var(--space-md, 1.5rem);
+  text-align: center;
+}
+
+.home-intro h2 {
+  color: var(--primary-color, #003f87);
+  margin-bottom: var(--space-md, 1.5rem);
+}
+
+.home-intro p {
+  max-width: 800px;
+  margin: 0 auto var(--space-md, 1.5rem);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-lg, 2rem);
+}
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary-color, #003f87);
+  margin-bottom: var(--space-md, 1.5rem);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+}
+
+/* 3. Quadrants Section
+   ------------------ */
+.quadrants-section {
+  padding: var(--space-lg, 2rem) var(--space-md, 1.5rem);
+  background-color: var(--background-light, #f8f9fa);
+}
+
+.quadrants-section h2 {
+  text-align: center;
+  margin-bottom: var(--space-lg, 2rem);
+  color: var(--primary-color, #003f87);
+}
+
+/* 4. Featured Content
+   ---------------- */
+.featured-section {
+  padding: var(--space-xl, 3rem) var(--space-md, 1.5rem);
+}
+
+.featured-section h2 {
+  text-align: center;
+  margin-bottom: var(--space-lg, 2rem);
+  color: var(--primary-color, #003f87);
+}
+
+.featured-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg, 2rem);
+}
+
+.featured-item {
+  background: var(--background-white, white);
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+}
+
+.featured-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.featured-item-content {
+  padding: var(--space-md, 1.5rem);
+}
+
+.featured-item h3 {
+  color: var(--primary-color, #003f87);
+  margin-bottom: var(--space-xs, 0.5rem);
+}
+
+/* 5. Call-to-Action
+   --------------- */
+.home-cta {
+  background-color: var(--primary-color, #003f87);
+  color: white;
+  padding: var(--space-xl, 3rem) var(--space-md, 1.5rem);
+  text-align: center;
+}
+
+.home-cta h2 {
+  color: white;
+  margin-bottom: var(--space-md, 1.5rem);
+}
+
+.home-cta p {
+  max-width: 700px;
+  margin: 0 auto var(--space-lg, 2rem);
+  font-size: 1.1rem;
+}
+
+.home-cta .button {
+  background-color: white;
+  color: var(--primary-color, #003f87);
+  font-weight: 600;
+}
+
+.home-cta .button:hover {
+  background-color: var(--secondary-color, #ce1126);
+  color: white;
+}
+
+/* 6. Responsive Adjustments
+   ----------------------- */
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+  
+  .featured-items {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .home-intro p {
+    font-size: 1rem;
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .featured-item img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: 40vh;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .featured-items {
+    grid-template-columns: 1fr;
+  }
+}

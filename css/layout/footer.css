@@ -1,0 +1,279 @@
+/* ================================
+   Footer & Social Media Components
+   
+   A unified collection of styles for the site footer,
+   social links, and related components
+   ================================ */
+
+/* 1. Footer Container
+   ----------------- */
+footer,
+.site-footer {
+    background-color: var(--header-footer-background, #333);
+    color: var(--header-footer-text-color, #fff);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 3px solid var(--primary-color, #003f87);
+    width: 100%;
+}
+
+/* Footer content wrapper */
+.footer-container,
+.footer-content {
+    max-width: var(--max-width, 1200px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 1.5rem;
+}
+
+/* 2. Footer Sections
+   ---------------- */
+.footer-section {
+    padding: 1rem;
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 1.5rem;
+}
+
+/* Section headings */
+.footer-section h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Decorative underline for section headings */
+.footer-section h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color, #003f87);
+}
+
+/* Section text */
+.footer-section p {
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 3. Footer Navigation
+   ----------------- */
+.footer-links,
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a,
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    display: inline-block;
+    position: relative;
+    padding-left: 0.5rem;
+    border-left: 2px solid transparent;
+}
+
+.footer-links a:hover,
+.footer-section ul li a:hover {
+    color: #fff;
+    border-left-color: var(--primary-color, #003f87);
+    padding-left: 0.8rem;
+}
+
+/* 4. Social Media Links
+   ------------------ */
+.footer-social,
+.social-links,
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Text-based social links */
+.footer-social a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #fff;
+}
+
+/* Icon-based social links */
+.social-links a,
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.social-links a:hover,
+.social-link:hover {
+    color: white;
+    background-color: var(--primary-color, #003f87);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Social media brand colors */
+.social-link[href*="linkedin"],
+.social-links a[href*="linkedin"] {
+    background-color: var(--linkedin-color, #0077b5);
+}
+
+.social-link[href*="github"],
+.social-links a[href*="github"] {
+    background-color: var(--github-color, #333);
+}
+
+.social-link[href*="facebook"],
+.social-links a[href*="facebook"] {
+    background-color: var(--facebook-color, #3b5998);
+}
+
+.social-link[href*="instagram"],
+.social-links a[href*="instagram"] {
+    background-color: var(--instagram-color, #E1306C);
+}
+
+.social-link[href*="handshake"],
+.social-links a[href*="handshake"] {
+    background-color: var(--secondary-color, #ce1126);
+}
+
+/* 5. Copyright Section
+   ----------------- */
+.footer-bottom,
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p,
+.copyright p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* 6. Contact Information
+   ------------------- */
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 7. Responsive Adjustments
+   ---------------------- */
+@media (max-width: 768px) {
+    .footer-content,
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-social,
+    .social-links,
+    .social-buttons {
+        justify-content: center;
+    }
+
+    .footer-links a,
+    .footer-section ul li a {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding-left: 0;
+        padding-bottom: 0.3rem;
+    }
+
+    .footer-links a:hover,
+    .footer-section ul li a:hover {
+        border-left-color: transparent;
+        border-bottom-color: var(--primary-color, #003f87);
+        padding-left: 0;
+    }
+
+    .contact-info {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-info li {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    footer .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .social-link {
+        font-size: 1.75rem;
+        padding: 0.5rem;
+    }
+}
+
+/* Footer embedded social feeds */
+.social-feed {
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+}
+
+.social-feed iframe {
+    width: 100%;
+    border: none;
+}

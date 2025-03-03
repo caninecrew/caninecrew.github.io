@@ -1,0 +1,213 @@
+/* ================================
+   Grid System
+   
+   A unified collection of layout grid patterns used throughout the site.
+   Provides consistent spacing, alignment and responsive behavior.
+   ================================ */
+
+/* 1. Container
+   ------------- */
+.container {
+  max-width: var(--max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--space-md, 1.5rem);
+  width: 100%;
+}
+
+.container-narrow {
+  max-width: var(--content-width-narrow, 800px);
+  margin: 0 auto;
+  padding: 0 var(--space-md, 1.5rem);
+  width: 100%;
+}
+
+.container-medium {
+  max-width: var(--content-width-medium, 1000px);
+  margin: 0 auto;
+  padding: 0 var(--space-md, 1.5rem);
+  width: 100%;
+}
+
+/* 2. Standard Grids
+   ----------------- */
+.grid {
+  display: grid;
+  gap: var(--space-md, 1.5rem);
+}
+
+/* Two-column grid */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md, 1.5rem);
+}
+
+/* Three-column grid */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md, 1.5rem);
+}
+
+/* Four-column grid */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md, 1.5rem);
+}
+
+/* Auto-fill grid - adapts to available width */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-md, 1.5rem);
+}
+
+/* 3. Quadrants Grid
+   ----------------- */
+.quadrants {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md, 1.5rem);
+  margin: var(--space-lg, 2rem) 0;
+}
+
+/* 4. Specialized Grids
+   ------------------- */
+
+/* Locations grid for travel section */
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg, 2rem);
+  padding: var(--space-sm, 1rem);
+}
+
+/* Merit badge grid */
+.merit-badge-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-sm, 1rem);
+  padding: var(--space-md, 1.5rem);
+}
+
+/* Project gallery grid */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-md, 1.5rem);
+  margin: var(--space-md, 1.5rem) 0;
+}
+
+/* Stats grid for highlights */
+.scouting-highlights,
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg, 2rem);
+  margin-top: var(--space-xl, 3rem);
+}
+
+/* 5. Flex-based Layouts
+   -------------------- */
+.flex-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md, 1.5rem);
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm, 1rem);
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm, 1rem);
+}
+
+/* 6. Grid Utilities
+   --------------- */
+.gap-xs { gap: var(--space-xs, 0.5rem); }
+.gap-sm { gap: var(--space-sm, 1rem); }
+.gap-md { gap: var(--space-md, 1.5rem); }
+.gap-lg { gap: var(--space-lg, 2rem); }
+.gap-xl { gap: var(--space-xl, 3rem); }
+
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+.col-span-full { grid-column: 1 / -1; }
+
+.row-span-2 { grid-row: span 2; }
+.row-span-3 { grid-row: span 3; }
+.row-span-full { grid-row: 1 / -1; }
+
+/* 7. Alignment Utilities
+   -------------------- */
+.align-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.align-end { align-items: flex-end; }
+.align-start { align-items: flex-start; }
+.justify-start { justify-content: flex-start; }
+
+/* 8. Responsive Grid Adjustments
+   ---------------------------- */
+@media (max-width: 1200px) {
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .quadrants {
+    grid-template-columns: 1fr;
+  }
+  
+  .scouting-highlights,
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .merit-badge-list {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .scouting-highlights,
+  .stats-grid,
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .merit-badge-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .locations-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md, 1.5rem);
+  }
+  
+  .flex-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

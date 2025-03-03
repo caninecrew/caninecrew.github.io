@@ -1,0 +1,350 @@
+/*
+ * Card Component System
+ * A unified collection of card styles used throughout the site
+ */
+
+/* ===========================
+   1. Base Card Styles
+   =========================== */
+
+/* Standard card - foundation for all card components */
+.card {
+  background: var(--background-white, white);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-md, 1.5rem);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+}
+
+/* Card content spacing */
+.card-content {
+  margin-top: var(--space-sm, 1rem);
+}
+
+.card h3 {
+  color: var(--primary-color, #003f87);
+  margin-bottom: var(--space-xs, 0.5rem);
+}
+
+.card p {
+  color: var(--text-secondary, #666);
+  line-height: 1.6;
+  margin-bottom: var(--space-xs, 0.5rem);
+}
+
+/* Card with heading */
+.card-with-header h3 {
+  border-bottom: 1px solid var(--border-color, #eee);
+  padding-bottom: var(--space-xs, 0.5rem);
+  margin-bottom: var(--space-sm, 1rem);
+}
+
+/* ===========================
+   2. Quadrant Cards
+   =========================== */
+
+.quadrant {
+  background: var(--background-white, white);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-md, 1.5rem);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+}
+
+/* Quadrant headings */
+.quadrant h2 {
+  color: var(--primary-color, #003f87);
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+/* Quadrant content */
+.quadrant p, .quadrant ul {
+  flex-grow: 1;
+  margin-bottom: 15px;
+}
+
+/* ===========================
+   3. Location Cards
+   =========================== */
+
+.location-card {
+  background: var(--background-white, white);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.location-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15));
+}
+
+/* Location card images */
+.location-card img {
+  width: 100%;
+  height: var(--card-height, 200px);
+  object-fit: cover;
+}
+
+/* Location information container */
+.location-info {
+  padding: var(--space-sm, 1rem);
+}
+
+.location-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary-color, #003f87);
+}
+
+.location-info p {
+  margin: 0;
+  color: var(--text-secondary, #666);
+  line-height: 1.4;
+}
+
+/* Date display for locations */
+.location-date {
+  font-size: 0.9em;
+  color: #888;
+  margin-top: var(--space-xs, 0.5rem);
+}
+
+/* ===========================
+   4. Highlight Cards
+   =========================== */
+
+.highlight-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--space-lg, 2rem);
+  border-radius: var(--radius-md, 8px);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+}
+
+.highlight-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color, #ce1126);
+}
+
+.highlight-text {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* ===========================
+   5. Timeline Cards
+   =========================== */
+
+.timeline-content {
+  background: var(--background-white, white);
+  padding: 1.5rem;
+  border-radius: var(--radius-md, 8px);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+}
+
+/* Date header styling */
+.timeline-date {
+  background: var(--primary-color, #003f87);
+  color: white;
+  padding: 0.75rem;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ===========================
+   6. Leadership Cards
+   =========================== */
+
+.leadership-item {
+  padding: var(--space-sm, 1rem);
+  background: var(--background-light, #f8f9fa);
+  border-radius: var(--radius-md, 8px);
+  margin-bottom: var(--space-sm, 1rem);
+  transition: transform 0.2s ease;
+  border: 1px solid var(--border-color, #eee);
+}
+
+.leadership-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+}
+
+.role {
+  color: var(--text-color, #2c3e50);
+  font-weight: 600;
+  margin-bottom: var(--space-xs, 0.5rem);
+}
+
+.date {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+  margin-bottom: var(--space-xs, 0.5rem);
+}
+
+.description {
+  font-size: 0.95rem;
+  color: var(--text-color, #444);
+  line-height: 1.4;
+}
+
+/* ===========================
+   7. Merit Badge Cards
+   =========================== */
+
+.merit-badge {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--background-light, #f8f9fa);
+  border-radius: var(--radius-md, 8px);
+  transition: transform 0.2s ease;
+}
+
+.merit-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
+}
+
+.badge-image {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-right: var(--space-sm, 1rem);
+}
+
+.badge-info {
+  flex: 1;
+}
+
+.badge-name {
+  display: block;
+  font-weight: 600;
+  color: var(--text-color, #2c3e50);
+  margin-bottom: 0.25rem;
+}
+
+.badge-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #666);
+}
+
+/* ===========================
+   8. Content Box
+   =========================== */
+
+.content-box {
+  background: var(--background-white, white);
+  padding: var(--space-md, 1.5rem);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  margin-bottom: var(--space-md, 1.5rem);
+}
+
+.content-box h2, .content-box h3, .content-box h4 {
+  color: var(--primary-color, #003f87);
+  margin-bottom: var(--space-xs, 0.5rem);
+}
+
+.content-box p, .content-box ul {
+  margin-bottom: var(--space-sm, 1rem);
+  line-height: 1.6;
+}
+
+/* ===========================
+   9. Call-to-Action Card
+   =========================== */
+
+.call-to-action {
+  text-align: center;
+  padding: var(--space-md, 1.5rem);
+  background: var(--background-white, white);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.1));
+  border-top: 3px solid var(--primary-color, #003f87);
+}
+
+.call-to-action h2 {
+  color: var(--primary-color, #003f87);
+  margin-bottom: var(--space-sm, 1rem);
+}
+
+.call-to-action .button-container {
+  margin-top: var(--space-md, 1.5rem);
+}
+
+/* ===========================
+   10. Responsive Adjustments
+   =========================== */
+
+@media (max-width: 768px) {
+  .quadrant, .card, .content-box, .call-to-action {
+    padding: var(--space-sm, 1rem);
+  }
+  
+  .highlight-card {
+    padding: var(--space-md, 1.5rem);
+  }
+  
+  .highlight-number {
+    font-size: 2rem;
+  }
+  
+  .location-card img {
+    height: 150px;
+  }
+  
+  .timeline-content {
+    padding: var(--space-sm, 1rem);
+  }
+  
+  .timeline-date {
+    padding: 0.5rem;
+    margin: -1rem -1rem 0.75rem -1rem;
+  }
+  
+  .merit-badge {
+    padding: 0.5rem;
+  }
+  
+  .badge-image {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .merit-badge {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .badge-image {
+    margin-right: 0;
+    margin-bottom: var(--space-xs, 0.5rem);
+  }
+}

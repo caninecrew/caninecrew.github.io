@@ -1,147 +1,30 @@
 /* =================================
-   Main Stylesheet
-   
-   Purpose:
-   - Central stylesheet that imports all modular CSS components
-   - Maintains organized structure through separation of concerns
-   - Provides clear documentation of stylesheet architecture
-   
-   Table of Contents:
-   1. CSS Variables & Reset
-      - Global variables
-      - Color schemes
-      - Basic reset properties
-   
-   2. Base Layout & Typography
-      - Container layouts
-      - Typography settings
-      - Common utility classes
-   
-   3. Header & Navigation
-      - Header structure
-      - Navigation menus
-      - Dropdown functionality
-   
-   4. Main Content Components
-      - Content sections
-      - Typography styles
-      - Interactive elements
-   
-   5. Quadrants Grid System
-      - Grid layout
-      - Card components
-      - Content organization
-   
-   6. Map Components
-      - Map containers
-      - Interactive elements
-      - Loading states
-   
-   7. Travel Page Specific
-      - Travel layouts
-      - Location cards
-      - Map integration
-   
-   8. Social Media Components
-      - Social buttons
-      - Platform integrations
-      - Share functionality
-   
-   9. Footer Styles
-      - Footer structure
-      - Navigation links
-      - Copyright section
-   
-   10. Media Queries
-       - Responsive breakpoints
-       - Mobile adaptations
-       - Print styles
-
-   11. Scouting Page Components
-       - Hero section styling
-       - Timeline visualization
-       - Achievement highlights
-       - Project showcases
-       - Service statistics
-       - Leadership positions
+   Main Stylesheet - Simplified Structure
    ================================= */
 
-/* Component Imports
-   Order is important for proper cascade
-   Each file handles specific functionality */
-@import '1-variables-reset.css';    /* Foundation styles */
-@import '2-base-layout.css';        /* Core layouts */
-@import '3-header-nav.css';         /* Navigation components */
-@import '4-main-content.css';       /* Main content styles */
-@import '5-quadrants.css';          /* Grid system */
-@import '6-map.css';                /* Map functionality */
-@import '7-travel.css';             /* Travel page specific */
-@import '8-social.css';             /* Social media elements */
-@import '9-footer.css';             /* Footer components */
-@import '10-media-queries.css';     /* Responsive design */
+/* Base styles */
+@import 'base/variables.css';
+@import 'base/reset.css';
+@import 'base/typography.css';
 
-/* Scouting Page Components
-   ========================
-   Modular CSS architecture for the Scouting journey page
-   
-   Directory: /css/scouting/
-   
-   Components:
-   1. Base (1-base.css)
-      - Variables specific to scouting
-      - Base reset overrides
-      - Typography settings
-      - Common utilities
-   
-   2. Hero Section (2-hero.css)
-      - Hero container & background
-      - Content alignment
-      - Achievement cards
-      - Highlight statistics
-   
-   3. Timeline (3-timeline.css)
-      - Horizontal scrolling timeline
-      - Timeline items & connections
-      - Date markers
-      - Navigation controls
-   
-   4. Leadership (4-leadership.css)
-      - Organization groups
-      - Leadership positions
-      - Role progression
-      - Collapsible sections
-   
-   5. Merit Badges (5-merit-badges.css)
-      - Badge grid layout
-      - Year groupings
-      - Badge cards
-      - Badge information display
-   
-   6. Eagle Project (6-eagle-project.css)
-      - Project showcase
-      - Image gallery
-      - Project details
-      - Achievement highlights
-   
-   7. Collapsible (collapsible.css)
-      - Shared collapsible functionality
-      - Animation effects
-      - State management
-      - Interactive elements
-   
-   8. Responsive (8-responsive.css)
-      - Mobile-first adaptations
-      - Breakpoint handling
-      - Component scaling
-      - Layout adjustments
-*/
+/* Components */
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/collapsible.css';
+@import 'components/animations.css';
+@import 'components/map.css';
 
-/* Scouting stylesheet imports - Order matters for cascade */
-@import 'scouting/1-base.css';          /* Foundation */
-@import 'scouting/2-hero.css';          /* Hero section */
-@import 'scouting/3-timeline.css';      /* Timeline */
-@import 'scouting/4-leadership.css';    /* Leadership */
-@import 'scouting/5-merit-badges.css';  /* Merit badges */
-@import 'scouting/6-eagle-project.css'; /* Eagle project */
-@import 'scouting/collapsible.css';     /* Collapsible */
-@import 'scouting/8-responsive.css';    /* Responsive */
+
+/* Layout */
+@import 'layout/header.css';
+@import 'layout/footer.css';
+@import 'layout/grid.css';
+@import 'layout/main-content.css';
+
+/* Pages */
+@import 'pages/home.css';
+@import 'pages/scouting.css';
+@import 'pages/travel.css';
+
+/* Media queries - must be last */
+@import 'media-queries.css';

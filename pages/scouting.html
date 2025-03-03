@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scouting Journey - Samuel Rumbley</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <script src="../js/collapsible.js" defer></script>
 </head>
 <body>
     <div id="header"></div>
@@ -44,16 +43,18 @@
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
 
     <div id="footer"></div>
-    <script src="../js/header.js"></script>
-    <script src="../js/footer.js"></script>
-    <script src="../js/scoutingBackTop.js"></script>
-    <script src="../js/scoutingCollapsibles.js"></script>
-    <script src="../js/scoutingFade.js"></script>
-    <script src="../js/scoutingTimeline.js"></script>
-    <script src="../js/scoutingCarousel.js"></script>
-    <script src="../js/scouting.js"></script>
-    <script src="../js/leadership.js"></script>
-    <script src="../js/meritBadges.js"></script>
-    <script src="../js/eagleProject.js"></script>
+    <!-- Core libraries -->
+    <script src="../js/core/utils.js"></script>
+    <script src="../js/core/domUtils.js"></script>
+    <!-- Components -->
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+    <!-- Additional components as needed -->
+    <script src="../js/components/carousel.js"></script>
+    <script src="../js/components/collapsible.js"></script>
+    <!-- Page specific -->
+    <script src="../js/app.js"></script>
+
+
 </body>
 </html>
