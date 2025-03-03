@@ -20,6 +20,7 @@
 @import 'layout/footer.css';
 @import 'layout/grid.css';
 @import 'layout/main-content.css';
+@import 'layout/spacing.css'; 
 
 /* Pages */
 @import 'pages/home.css';

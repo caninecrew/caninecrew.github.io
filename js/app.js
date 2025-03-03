@@ -96,9 +96,6 @@ class App {
         // Load random fun fact
         this.loadFunFact();
         
-        // Initialize map if exists
-        this.initHomeMap();
-        
         // Load featured awards
         this.loadFeaturedAwards();
     }
