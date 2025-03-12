@@ -1,245 +1,282 @@
 /*
  * Design System Variables
- * A centralized collection of all design tokens used throughout the site
+ * 
+ * A comprehensive collection of design tokens that control the visual appearance
+ * of the entire website. These variables ensure consistent styling, enable theming,
+ * and simplify maintenance by centralizing style definitions.
  */
 
 :root {
-    /* ========== COLOR SYSTEM ========== */
+    /* ========== BRAND COLORS ========== */
     
-    /* Brand Colors - Base palette */
-    --primary-color: #003f87;      /* BSA Official Blue */
-    --primary-color-light: #2160a7; /* Lighter variation */
-    --primary-color-dark: #002a5c; /* BSA Dark Blue */
-    --primary-color-faint: #e6f0fa; /* Very light background variation */
+    /* Primary Brand Color - Mountain Blue */
+    --primary-color: #2B5D87;      /* Deep lake blue used for important UI elements, links, and primary actions */
+    --primary-color-light: #4980AD; /* Sky blue used for hover states, secondary elements, and visual hierarchy */
+    --primary-color-dark: #1A4166; /* Deep navy blue for active states, pressed buttons, and text on light backgrounds */
+    --primary-color-faint: #E8F0F8; /* Very subtle blue background tint for primary-themed sections and panels */
     
-    --secondary-color: #ce1126;    /* BSA Red */
-    --secondary-color-light: #e63e50; /* Lighter variation */
-    --secondary-color-dark: #a5091d; /* Darker variation */
-    --secondary-color-faint: #fde6e9; /* Very light background variation */
+    /* Secondary Brand Color - Trail Brown */
+    --secondary-color: #8B5E34;    /* Earthy brown used for accents, calls-to-action, and visual contrast */
+    --secondary-color-light: #A57B52; /* Lighter brown for hover states on secondary elements and decorative accents */
+    --secondary-color-dark: #6D4826; /* Dark brown for active states on secondary elements and text contrast */
+    --secondary-color-faint: #F6F0E8; /* Very subtle brown background tint for secondary-themed sections */
     
-    --accent-color: #ffcc00;       /* Gold/Yellow accent */
-    --accent-color-light: #ffda4a;  /* Lighter variation */
-    --accent-color-dark: #cc9900;   /* Darker variation */
+    /* Accent Color - Pine Amber */
+    --accent-color: #D3973F;       /* Amber gold used sparingly for emphasis, awards, highlights, and tertiary actions */
+    --accent-color-light: #E5B865;  /* Light amber for hover states on accent elements and decorative highlights */
+    --accent-color-dark: #B37B2B;   /* Deep amber for active states on accent elements and better text contrast */
     
-    /* Text Colors - Semantic naming for consistency */
-    --text-color: #2c3e50;         /* Primary text - 7:1 contrast ratio */
-    --text-secondary: #666;        /* Secondary text - 4.5:1 contrast ratio */
-    --text-tertiary: #999;         /* Less important text */
-    --text-inverse: #fff;          /* Text on dark backgrounds */
-    --text-link: var(--primary-color); /* Link text color */
-    --text-link-hover: var(--primary-color-dark); /* Link hover color */
-    --text-highlight: var(--secondary-color); /* Text highlighting/emphasis */
-    --text-success: #28a745;       /* Success message text */
-    --text-warning: #ffc107;       /* Warning message text */
-    --text-error: #dc3545;         /* Error message text */
-    --text-info: #17a2b8;          /* Information message text */
+    /* ========== TEXT COLORS ========== */
     
-    /* Background Colors - Semantic naming */
-    --background-color: #f4f4f9;   /* Site background */
-    --background-light: #f8f9fa;   /* Light background */
-    --background-white: #ffffff;   /* White background */
-    --background-card: var(--background-white); /* Card background */
-    --background-highlight: #f1f8ff; /* Highlight background */
-    --background-muted: #f2f2f2;   /* Muted background */
-    --background-active: #e9e9e9;  /* Active element background */
-    --background-hover: #f5f5f5;   /* Hover state background */
-    --background-success: #e8f5e9; /* Success background */
-    --background-warning: #fff8e1; /* Warning background */
-    --background-error: #ffebee;   /* Error background */
-    --background-info: #e3f2fd;    /* Information background */
+    --text-color: #333A42;         /* Charcoal text color - provides optimal contrast for readability */
+    --text-secondary: #5D656F;     /* Slate gray for less important text - maintains contrast for WCAG compliance */
+    --text-tertiary: #8B939E;      /* Light slate for subtle text for captions, timestamps, and supplementary information */
+    --text-inverse: #F4F4F0;       /* Off-white text color on dark backgrounds including header, footer, and CTAs */
+    --text-link: var(--primary-color); /* Color for all interactive text links in content areas */
+    --text-link-hover: var(--primary-color-dark); /* Color change when hovering over links to indicate interactivity */
+    --text-highlight: var(--secondary-color); /* Color for emphasized text and highlighting important information */
     
-    /* Header & Footer */
-    --header-background: #333;     /* Header background color */
-    --header-text: #fff;           /* Header text color */
-    --header-link: #fff;           /* Header link color */
-    --header-link-hover: #eee;     /* Header link hover color */
-    --header-active: var(--secondary-color); /* Header active link indicator */
+    /* Feedback Text Colors */
+    --text-success: #5a9744;       /* Text color for success messages and positive feedback */
+    --text-warning: #e59300;       /* Text color for warning messages and cautionary information */
+    --text-error: #c8553d;         /* Text color for error messages and critical alerts */
+    --text-info: #4c8daa;          /* Text color for informational messages and neutral notifications */
     
-    --footer-background: #333;     /* Footer background color */
-    --footer-text: #fff;           /* Footer text color */
-    --footer-link: #ddd;           /* Footer link color */
-    --footer-link-hover: #fff;     /* Footer link hover color */
+    /* ========== BACKGROUND COLORS ========== */
     
-    /* ========== COMPONENT COLORS ========== */
+    --background-color: #F4F2ED;   /* Light stone/parchment global site background */
+    --background-light: #F9F8F5;   /* Lighter stone for alternative sections and containers */
+    --background-white: #FFFFFF;   /* Pure white background for cards, modals, and content areas */
+    --background-card: var(--background-white); /* Specific background for card components ensuring consistency */
+    --background-highlight: #EDF3F8; /* Subtle blue highlight for important sections or selected items */
+    --background-muted: #E9E7E2;   /* Subdued stone background for inactive elements or secondary content */
     
-    /* Buttons */
-    --button-primary-bg: var(--primary-color);
-    --button-primary-text: white;
-    --button-primary-hover-bg: var(--primary-color-dark);
-    --button-primary-hover-text: white;
+    /* Interactive Background States */
+    --background-active: #e6ded5;  /* Background for active/selected elements like buttons or nav items */
+    --background-hover: #faede4;   /* Background that appears when hovering over interactive elements */
     
-    --button-secondary-bg: var(--secondary-color);
-    --button-secondary-text: white;
-    --button-secondary-hover-bg: var(--secondary-color-dark);
-    --button-secondary-hover-text: white;
+    /* Feedback Background Colors */
+    --background-success: #eaf2e6; /* Subtle green background for success messages and indicators */
+    --background-warning: #fbf0db; /* Subtle yellow background for warning messages and alerts */
+    --background-error: #f9e4df;   /* Subtle red background for error messages and critical notices */
+    --background-info: #e6eff4;    /* Subtle blue background for informational messages */
     
-    --button-outline-border: var(--primary-color);
-    --button-outline-text: var(--primary-color);
-    --button-outline-hover-bg: var(--primary-color);
-    --button-outline-hover-text: white;
+    /* ========== HEADER & FOOTER ========== */
     
-    /* Cards */
-    --card-background: var(--background-white);
-    --card-border: var(--border-color);
-    --card-shadow: var(--shadow);
-    --card-hover-transform: translateY(-3px);
-    --card-hover-shadow: var(--shadow-lg);
+    /* Header Colors */
+    --header-background: #2F3C4A;     /* Mountain slate background color for the site header */
+    --header-text: #F4F4F0;           /* Off-white text color used in the header for readability */
+    --header-link: #F4F4F0;           /* Color for navigation links in header */
+    --header-link-hover: #D3973F;     /* Amber highlight when hovering over header navigation links */
+    --header-active: var(--secondary-color); /* Trail brown indicator for currently active navigation item */
+    
+    /* Footer Colors */
+    --footer-background: #2F3C4A;     /* Mountain slate background color for the site footer - matches header */
+    --footer-text: #F4F4F0;           /* Off-white text color used in the footer - high contrast for readability */
+    --footer-link: #D0D0C7;           /* Color for links within the footer - slightly dimmer than text */
+    --footer-link-hover: #D3973F;     /* Amber highlight when hovering over footer links for interactivity */
+    
+    /* ========== COMPONENT-SPECIFIC COLORS ========== */
+    
+    /* Button Variants - Primary */
+    --button-primary-bg: var(--primary-color);      /* Green background for primary action buttons */
+    --button-primary-text: #F4EAE0;                  /* Cream text color for primary buttons - high contrast */
+    --button-primary-hover-bg: var(--primary-color-dark); /* Background change on hover for primary buttons */
+    --button-primary-hover-text: #F4EAE0;             /* Text color remains cream when hovering primary buttons */
+    
+    /* Button Variants - Secondary */
+    --button-secondary-bg: var(--secondary-color);  /* Rust orange background for secondary action buttons */
+    --button-secondary-text: #F4EAE0;                /* Cream text color for secondary buttons */
+    --button-secondary-hover-bg: var(--secondary-color-dark); /* Background change on hover */
+    --button-secondary-hover-text: #F4EAE0;           /* Text color when hovering secondary buttons */
+    
+    /* Button Variants - Outline */
+    --button-outline-border: var(--primary-color);  /* Green border color for outlined/ghost buttons */
+    --button-outline-text: var(--primary-color);    /* Green text color for outlined buttons */
+    --button-outline-hover-bg: var(--primary-color); /* Green background appears on hover - reverses color scheme */
+    --button-outline-hover-text: #F4EAE0;             /* Cream text changes on hover for contrast */
+    
+    /* Card Components */
+    --card-background: var(--background-white);     /* Background color for all card components */
+    --card-border: var(--border-color);             /* Border color around cards for definition */
+    --card-shadow: var(--shadow);                   /* Standard shadow applied to cards for elevation */
+    --card-hover-transform: translateY(-3px);       /* Subtle upward movement when hovering over cards */
+    --card-hover-shadow: var(--shadow-lg);          /* Enhanced shadow effect when hovering over cards */
     
     /* Form Elements */
-    --input-background: white;
-    --input-border: #ced4da;
-    --input-text: var(--text-color);
-    --input-focus-border: var(--primary-color-light);
-    --input-focus-shadow: 0 0 0 0.2rem rgba(0, 63, 135, 0.25);
-    --input-placeholder: #aaa;
-    --input-disabled-background: #e9ecef;
-    --input-disabled-text: #6c757d;
+    --input-background: white;                      /* Background color for text inputs, selects, etc. */
+    --input-border: #d0c7bd;                        /* Border color for form controls - harmonizes with background */
+    --input-text: var(--text-color);                /* Text color for user input in form fields */
+    --input-focus-border: var(--primary-color-light); /* Border color when input is focused */
+    --input-focus-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25); /* Glow effect for focused inputs */
+    --input-placeholder: #aba399;                      /* Color for placeholder text in empty inputs */
+    --input-disabled-background: #e9e4df;           /* Background for disabled form controls */
+    --input-disabled-text: #8c8a8f;                 /* Text color for disabled form controls */
     
-    /* Navigation */
-    --nav-link-color: var(--text-color);
-    --nav-link-hover-color: var(--primary-color);
-    --nav-link-active-color: var(--primary-color);
-    --nav-link-active-border: var(--primary-color);
-    --mobile-menu-background: rgba(255, 255, 255, 0.95);
-    --mobile-menu-shadow: var(--shadow);
+    /* Navigation Components */
+    --nav-link-color: var(--text-color);            /* Color for navigation links in main nav */
+    --nav-link-hover-color: var(--primary-color);   /* Color change when hovering over nav links */
+    --nav-link-active-color: var(--primary-color);  /* Color for the currently active nav link */
+    --nav-link-active-border: var(--primary-color); /* Border indicator for active nav items */
+    --mobile-menu-background: rgba(244, 234, 224, 0.97); /* Slightly transparent background for mobile menu */
+    --mobile-menu-shadow: var(--shadow);             /* Shadow applied to mobile navigation menu */
     
-    /* Quadrants and Sections */
-    --section-border: #eaeaea;
-    --section-header-background: var(--primary-color-faint);
-    --section-header-text: var(--primary-color-dark);
-    --section-background: var(--background-white);
-    --section-shadow: var(--shadow-sm);
+    /* Section Components */
+    --section-border: #e6ddd3;                       /* Border color for content sections and containers */
+    --section-header-background: var(--primary-color-faint); /* Background color for section headers */
+    --section-header-text: var(--primary-color-dark); /* Text color for section header titles */
+    --section-background: var(--background-white);    /* Background color for content sections */
+    --section-shadow: var(--shadow-sm);              /* Subtle shadow for section separation */
     
-    /* Timeline */
-    --timeline-line-color: var(--primary-color);
-    --timeline-dot-color: var(--secondary-color);
-    --timeline-date-color: var(--text-secondary);
-    --timeline-item-background: var(--background-white);
-    --timeline-item-shadow: var(--shadow);
+    /* Timeline Components */
+    --timeline-line-color: var(--primary-color);     /* Green color of the timeline line */
+    --timeline-dot-color: var(--secondary-color);    /* Rust orange color of timeline milestone dots/markers */
+    --timeline-date-color: var(--text-secondary);    /* Color of dates or timestamps in timeline */
+    --timeline-item-background: var(--background-white); /* Background for timeline content items */
+    --timeline-item-shadow: var(--shadow);           /* Shadow for timeline items for depth */
     
-    /* Achievements & Awards */
-    --award-border: var(--primary-color-light);
-    --award-background: var(--background-light);
-    --award-highlight: var(--secondary-color-faint);
-    --award-name-color: var(--primary-color-dark);
+    /* Achievement & Awards Components */
+    --award-border: var(--primary-color-light);      /* Border color for award/achievement items */
+    --award-background: var(--background-light);     /* Background color for award containers */
+    --award-highlight: var(--secondary-color-faint); /* Highlight color for special achievements */
+    --award-name-color: var(--primary-color-dark);   /* Text color for award names/titles */
     
-    /* Badge Colors for Merit Badges */
-    --merit-badge-bg: var(--background-white);
-    --merit-badge-border: var(--border-color);
-    --merit-badge-hover-bg: var(--primary-color-faint);
-    --merit-badge-text: var(--text-color);
+    /* Merit Badge Components */
+    --merit-badge-bg: var(--background-white);       /* Background for merit badge display items */
+    --merit-badge-border: var(--border-color);       /* Border color around merit badge items */
+    --merit-badge-hover-bg: var(--primary-color-faint); /* Background change when hovering badges */
+    --merit-badge-text: var(--text-color);           /* Text color for badge names and descriptions */
     
-    /* Map Elements */
-    --map-border: var(--border-color);
-    --map-popup-background: var(--background-white);
-    --map-popup-text: var(--text-color);
-    --map-popup-shadow: var(--shadow);
-    --map-marker-color: var(--secondary-color);
+    /* Map Components */
+    --map-border: var(--border-color);               /* Border color around map containers */
+    --map-popup-background: var(--background-white); /* Background for map info popups */
+    --map-popup-text: var(--text-color);             /* Text color for content in map popups */
+    --map-popup-shadow: var(--shadow);               /* Shadow effect for map popups */
+    --map-marker-color: var(--secondary-color);      /* Color for map location markers */
     
-    /* UI Element Colors (keeping existing) */
-    --border-color: #eee;          /* Border color */
+    /* General UI Elements */
+    --border-color: #e6ddd3;                         /* Standard border color used throughout the site */
     
-    /* Social Media Brand Colors (keeping existing) */
-    --linkedin-color: #0077b5;     /* LinkedIn blue */
-    --github-color: #333;          /* GitHub dark */
-    --facebook-color: #3b5998;     /* Facebook blue */
-    --instagram-color: #E1306C;    /* Instagram pink/purple */
-    --twitter-color: #1da1f2;      /* Twitter blue */
+    /* ========== OVERLAY COLORS ========== */
+    --primary-color-overlay: rgba(106, 153, 78, 0.7); /* Semi-transparent green for overlays */
+    --primary-color-dark-overlay: rgba(77, 113, 55, 0.8); /* Darker semi-transparent green */
+    --secondary-color-overlay: rgba(188, 108, 37, 0.7); /* Semi-transparent rust orange */
+    --background-overlay: rgba(61, 64, 91, 0.5); /* Semi-transparent dark slate for modal backdrops */
+    --background-translucent: rgba(255, 255, 255, 0.15); /* Subtle white for glass-like effects */
     
-    /* Shadows & Effects - Consistent elevation system */
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);  /* Subtle elevation */
-    --shadow: 0 2px 8px rgba(0,0,0,0.1);     /* Standard elevation */
-    --shadow-lg: 0 4px 12px rgba(0,0,0,0.15); /* Prominent elevation */
+    /* ========== SOCIAL MEDIA BRAND COLORS ========== */
     
-    /* Spacing System - 8pt grid for consistent rhythm */
-    --space-xs: 0.5rem;  /* 8px */
-    --space-sm: 1rem;    /* 16px */
-    --space-md: 1.5rem;  /* 24px */
-    --space-lg: 2rem;    /* 32px */
-    --space-xl: 3rem;    /* 48px */
+    --linkedin-color: #0077b5;                       /* Official LinkedIn brand color for social links */
+    --github-color: #333;                            /* GitHub's primary dark color for social links */
+    --facebook-color: #3b5998;                       /* Official Facebook brand color for social links */
+    --instagram-color: #E1306C;                      /* Official Instagram brand color for social links */
+    --twitter-color: #1da1f2;                        /* Official Twitter brand color for social links */
     
-    /* Border Radius - Consistent rounding */
-    --radius-sm: 4px;    /* Small elements (buttons, inputs) */
-    --radius-md: 8px;    /* Cards, containers */
-    --radius-lg: 12px;   /* Large elements, featured content */
-    --radius-pill: 9999px; /* Pills, badges, avatar */
+    /* ========== VISUAL EFFECTS ========== */
+    
+    /* Shadow System - Creates consistent elevation hierarchy */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);         /* Subtle shadow for slight elevation of elements */
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);            /* Standard shadow for cards and interactive elements */
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.15);       /* Prominent shadow for elevated/hovered elements */
+    
+    /* ========== LAYOUT SYSTEM ========== */
+    
+    /* Spacing Scale - Based on 8pt grid system */
+    --space-xs: 0.5rem;                             /* 8px - Used for tight, compact spacing */
+    --space-sm: 1rem;                               /* 16px - Used for standard element padding */
+    --space-md: 1.5rem;                             /* 24px - Used for separation between related elements */
+    --space-lg: 2rem;                               /* 32px - Used for separation between content sections */
+    --space-xl: 3rem;                               /* 48px - Used for major section divisions */
+    
+    /* Border Radius Scale */
+    --radius-sm: 4px;                               /* Small rounding for buttons, form elements */
+    --radius-md: 8px;                               /* Medium rounding for cards, modals, containers */
+    --radius-lg: 12px;                              /* Large rounding for featured elements */
+    --radius-pill: 9999px;                          /* Fully rounded ends for pill-shaped elements/badges */
     
     /* Content Width Constraints */
-    --max-width: 1200px; /* Main container width */
-    --content-width-narrow: 800px; /* Reading content width */
-    --content-width-medium: 1000px; /* Medium content width */
+    --max-width: 1200px;                            /* Maximum width for main page container */
+    --content-width-narrow: 800px;                  /* Optimized width for readable text content */
+    --content-width-medium: 1000px;                 /* Width for medium-density content areas */
     
-    /* Typography */
+    /* ========== TYPOGRAPHY SYSTEM ========== */
+    
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
-                  Oxygen, Ubuntu, Cantarell, sans-serif;
-    --line-height: 1.6;            /* Body text */
-    --line-height-headings: 1.2;   /* Headings */
+                  Oxygen, Ubuntu, Cantarell, sans-serif; /* System font stack for optimal display */
+    --line-height: 1.6;                             /* Standard line spacing for body text */
+    --line-height-headings: 1.2;                    /* Tighter line spacing for headings */
     
-    /* Transitions & Animations */
-    --transition-speed: 0.3s;      /* Standard transition duration */
-    --transition-function: ease;   /* Standard easing function */
+    /* ========== ANIMATIONS ========== */
+    
+    --transition-speed: 0.3s;                       /* Standard duration for all transitions */
+    --transition-function: ease;                    /* Standard easing function for smooth effects */
 }
 
 /* ========== THEME VARIATIONS ========== */
 
-/* Dark Theme - Can be toggled with .dark-theme class */
+/* Dark Theme - Applied when .dark-theme class is added to HTML or body */
 .dark-theme {
-    --text-color: #e1e1e1;
-    --text-secondary: #b0b0b0;
-    --text-tertiary: #888;
-    --background-color: #191919;
-    --background-light: #252525;
-    --background-white: #2d2d2d;
-    --border-color: #444;
-    --card-background: #2d2d2d;
-    --card-border: #444;
-    --background-hover: #3a3a3a;
-    --background-active: #333;
-    --input-background: #333;
-    --input-border: #555;
-    --input-placeholder: #777;
+    --text-color: #f4eae0;                         /* Cream text color for dark backgrounds */
+    --text-secondary: #d5cbc1;                     /* Medium cream text for secondary content */
+    --text-tertiary: #aba399;                      /* Darker cream for tertiary text that's still readable */
+    --background-color: #252632;                   /* Very dark slate site background */
+    --background-light: #2d2e3b;                   /* Slightly lighter background for contrast */
+    --background-white: #35374a;                   /* Dark slate replaces white for content areas */
+    --border-color: #4b4d63;                       /* Medium slate for borders in dark mode */
+    --card-background: #35374a;                    /* Dark background for cards */
+    --card-border: #4b4d63;                        /* Medium slate for card borders */
+    --background-hover: #3f4155;                   /* Slightly lighter color for hover states */
+    --background-active: #323342;                  /* Color for active states in dark mode */
+    --input-background: #3f4155;                   /* Dark background for form inputs */
+    --input-border: #5a5c73;                       /* Medium slate border for form elements */
+    --input-placeholder: #7a7c8e;                  /* Gray text for input placeholders */
+    
+    /* Preserve brand colors but slightly adjusted for dark mode */
+    --primary-color: #7eac62;                     /* Brighter green for better visibility on dark backgrounds */
+    --secondary-color: #d07f33;                   /* Brighter rust orange for dark mode */
+    --accent-color: #ffe49e;                      /* Brighter gold for dark mode */
 }
 
-/* High Contrast Theme for accessibility */
+/* High Contrast Theme - For users who need maximum legibility */
 .high-contrast-theme {
-    --text-color: #000;
-    --text-secondary: #222;
-    --text-inverse: #fff;
-    --background-color: #fff;
-    --background-light: #eee;
-    --border-color: #000;
-    --primary-color: #000080; /* Navy */
-    --primary-color-dark: #000;
-    --secondary-color: #800000; /* Maroon */
-    --button-primary-bg: #000;
-    --button-primary-text: #fff;
-    --button-primary-hover-bg: #333;
+    --text-color: #000;                           /* Pure black text for maximum contrast */
+    --text-secondary: #222;                       /* Very dark gray for secondary text */
+    --text-inverse: #fff;                         /* Pure white text on dark backgrounds */
+    --background-color: #fff;                     /* Pure white background */
+    --background-light: #eee;                     /* Light gray for subtle contrast */
+    --border-color: #000;                         /* Black borders for definition */
+    --primary-color: #005f00;                     /* Dark green - maintains contrast while adding color */
+    --primary-color-dark: #003a00;                /* Very dark green for active states */
+    --secondary-color: #8c3600;                   /* Dark orange for accents - high contrast with white */
+    --button-primary-bg: #000;                    /* Black background for buttons */
+    --button-primary-text: #fff;                  /* White text on buttons */
+    --button-primary-hover-bg: #333;              /* Dark gray for hover states */
 }
 
-/* Page-specific theme overrides (keeping your existing ones) */
+/* Page-specific Theme Overrides */
 .scouting-page {
-    --section-background: var(--primary-color-faint);
-    --section-border: 1px solid var(--primary-color-light);
-    --highlight-color: var(--secondary-color);
+    --section-background: var(--primary-color-faint);  /* Light green background specific to scouting page */
+    --section-border: 1px solid var(--primary-color-light); /* Green borders for scouting sections */
+    --highlight-color: var(--secondary-color);         /* Rust orange highlights for key scouting achievements */
 }
 
-/* Travel page theme */
+/* Travel Page Theme Overrides */
 .travel-page {
-    --map-height: 500px;
-    --card-height: 200px;
+    --map-height: 500px;                              /* Sets the height of the travel map */
+    --card-height: 200px;                             /* Sets the height of location cards */
 }
 
-/* Print theme - Used when printing pages */
+/* Print Theme - Automatically applied when printing */
 @media print {
     :root {
-        --text-color: #000;
-        --background-light: #fff;
-        --shadow: none;
-        --card-shadow: none;
-        --button-primary-bg: #fff;
-        --button-primary-text: #000;
-        --button-primary-border: 1px solid #000;
-        --section-background: #fff;
-        --timeline-line-color: #888;
+        --text-color: #000;                           /* Black text for optimal print contrast */
+        --background-light: #fff;                     /* White background for all elements */
+        --shadow: none;                               /* Removes shadows which don't print well */
+        --card-shadow: none;                          /* Removes card shadows */
+        --button-primary-bg: #fff;                    /* White button backgrounds */
+        --button-primary-text: #000;                  /* Black text on buttons */
+        --button-primary-border: 1px solid #000;      /* Black borders to define buttons */
+        --section-background: #fff;                   /* White sections */
+        --timeline-line-color: #888;                  /* Gray timeline lines to save ink */
     }
 }

@@ -11,31 +11,63 @@
     
     <main class="container">
         <!-- Hero Section - Kept at top but enhanced -->
-        <section class="hero-section" id="hero-section">
-            <div class="hero-content">
-                <h1>My Scouting Journey</h1>
-                <p class="lead">From Cub Scout to Eagle Scout and beyond - a story of leadership, service, and growth.</p>
-                <div class="scouting-highlights">
-                    <div class="highlight-card">
-                        <span class="highlight-number">15</span>
-                        <span class="highlight-text">Years in Scouting</span>
+        <section class="hero-section scouting-hero" id="hero-section">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content-wrapper">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <span class="hero-badge">Eagle Scout</span>
+                        <h1>My Scouting <span class="hero-highlight">Journey</span></h1>
+                        <p class="lead">From tying my first knot as a Cub Scout to achieving Eagle rank and mentoring the next generation of leaders - my 15-year adventure in Scouting has shaped who I am today.</p>
+                        <div class="hero-buttons">
+                            <a href="#timeline-section-container" class="button button-primary">View Timeline</a>
+                            <a href="#merit-badges-section-container" class="button button-outline">See Merit Badges</a>
+                        </div>
                     </div>
-                    <div class="highlight-card">
-                        <span class="highlight-number">500+</span>
-                        <span class="highlight-text">Service Hours</span>
-                    </div>
-                    <div class="highlight-card">
-                        <span class="highlight-number">30+</span>
-                        <span class="highlight-text">Leadership Roles</span>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years in Scouting</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Service Hours</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Leadership Roles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Merit Badges</div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="scroll-indicator">
+                <span class="scroll-text">Scroll to explore</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
         </section>
 
         <!-- Dynamic Sections -->
         <div id="timeline-section-container"></div>
         <div id="leadership-section-container"></div>
-        <div id="eagle-project-section-container"></div>
+        <!--<div id="eagle-project-section-container"></div>-->
         <div id="merit-badges-section-container"></div>
 
     </main>
