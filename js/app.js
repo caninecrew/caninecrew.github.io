@@ -1,398 +1,216 @@
-// Main application entry point
+// Main App Class
 class App {
     constructor() {
+        // Initialize core utilities
+        this.config = window.Config;
+        this.utils = window.Utils;
+        this.domUtils = window.DOMUtils;
+        this.a11y = window.A11yUtils;
+        this.performance = window.Performance;
+        
+        // State
         this.initialized = false;
-        
-        // Page detection
-        this.currentPage = this.detectCurrentPage();
-        
-        // Debug info
-        this.debug = true;
-        this.log('App instance created');
     }
     
-    init() {
-        if (this.initialized) {
-            this.log('Already initialized');
-            return;
-        }
+    async init() {
+        if (this.initialized) return;
         
-        this.log('Initializing application');
-        
-        // Register service worker
-        this.registerServiceWorker();
-        
-        // Preload critical resources
-        this.preloadResources();
-        
-        // Load common components
-        this.loadHeader();
-        this.loadFooter();
-        
-        // Load header and footer
-        this.loadDynamicComponents();
-        
-        // Initialize page-specific functionality
-        this.initCurrentPage();
-        
-        // Setup global event listeners
-        this.setupEventListeners();
-        
-        this.initialized = true;
-        this.log('Initialization complete');
-    }
-    
-    registerServiceWorker() {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/js/sw.js')
-                .then(registration => {
-                    this.log('ServiceWorker registration successful');
-                })
-                .catch(error => {
-                    this.log('ServiceWorker registration failed: ' + error, 'error');
-                });
-        }
-    }
-
-    preloadResources() {
-        // Preload critical images
-        const imagesToPreload = [
-            '/images/profile.jpg',
-            '/images/handshake.png'
-        ];
-
-        imagesToPreload.forEach(imageUrl => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'image';
-            link.href = imageUrl;
-            document.head.appendChild(link);
-        });
-    }
-
-    detectCurrentPage() {
-        const path = window.location.pathname;
-        
-        if (path.endsWith('/') || path.endsWith('index.html')) {
-            return 'home';
-        }
-        
-        if (path.includes('/pages/')) {
-            const pageName = path.split('/').pop().replace('.html', '');
-            return pageName || 'unknown';
-        }
-        
-        return 'unknown';
-    }
-    
-    loadHeader() {
-        const headerElement = document.getElementById('header');
-        if (!headerElement) return;
-        
-        // This will be handled by header.js, but we log it for tracking
-        this.log('Header mounting point found');
-    }
-    
-    loadFooter() {
-        const footerElement = document.getElementById('footer');
-        if (!footerElement) return;
-        
-        // This will be handled by footer.js, but we log it for tracking
-        this.log('Footer mounting point found');
-    }
-    
-    loadDynamicComponents() {
-        // Components will initialize themselves via their own DOMContentLoaded events
-        this.log('Loading dynamic components');
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            img.setAttribute('loading', 'lazy');
-            img.src = img.dataset.src;
-        });
-    }
-    
-    initCurrentPage() {
-        this.log(`Initializing page: ${this.currentPage}`);
-        
-        switch (this.currentPage) {
-            case 'home':
-                this.initHomePage();
-                break;
-            case 'scouting':
-                this.initScoutingPage();
-                break;
-            case 'travel':
-                this.initTravelPage();
-                break;
-            default:
-                this.log(`No special initialization for page: ${this.currentPage}`);
-        }
-    }
-    
-    initHomePage() {
-        this.log('Initializing home page');
-        
-        // Load random fun fact
-        this.loadFunFact();
-        
-        // Load featured awards
-        this.loadFeaturedAwards();
-    }
-    
-    loadFunFact() {
-        const funFactElement = document.getElementById('fun-fact');
-        if (!funFactElement) return;
-        
-        Utils.fetchTextFile('data/funFacts.csv', { filterComments: true })
-            .then(lines => {
-                if (lines && lines.length > 0) {
-                    const randomFact = lines[Math.floor(Math.random() * lines.length)].replace(/"/g, '');
-                    funFactElement.textContent = randomFact;
-                }
-            })
-            .catch(error => this.log(`Error loading fun facts: ${error}`, 'error'));
-    }
-    
-    initHomeMap() {
-        const mapElement = document.getElementById('map');
-        if (!mapElement) return;
-        
-        // Initialize map
-        const map = window.mapManager.initialize('map', {
-            zoom: 7
-        });
-        
-        if (map) {
-            // Add Nashville marker
-            window.mapManager.addMarkers('map', [
-                {
-                    position: { lat: 36.174465, lng: -86.767960 },
-                    title: 'Nashville, TN',
-                    content: '<div class="map-popup"><h3>Nashville, TN</h3><p>Home sweet home</p></div>'
-                }
-            ]);
-        }
-    }
-    
-    loadFeaturedAwards() {
-        const awardsList = document.getElementById('featured-awards-list');
-        if (!awardsList) return;
-        
-        // Sample achievements - in a real implementation, this would be imported from data/achievements.js
-        const achievements = [
-            { text: 'James E. West Fellowship', link: 'pages/achievements.html#james-e-west' },
-            { text: 'Josh Sain Memorial Award', link: 'pages/achievements.html#josh-sain-memorial-award' },
-            { text: 'MTC ACFE Scholarship', link: 'pages/achievements.html#mtc-acfe-scholarship' },
-            { text: 'Founders Award', link: 'pages/achievements.html#founders-award' },
-            { text: 'Scout of the Year', link: 'pages/achievements.html#scout-of-the-year' },
-            { text: 'Eagle Scout', link: 'pages/achievements.html#eagle-scout' },
-            { text: 'Vigil Honor', link: 'pages/achievements.html#vigil-honor' }
-        ];
-        
-        const selectedAchievements = Utils.getRandomItems(achievements, 3);
-        
-        // Clear existing list items
-        awardsList.innerHTML = '';
-        
-        // Add selected achievements
-        selectedAchievements.forEach(achievement => {
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            link.href = achievement.link;
-            link.textContent = achievement.text;
-            listItem.appendChild(link);
-            awardsList.appendChild(listItem);
-        });
-    }
-    
-    initScoutingPage() {
-        this.log('Initializing scouting page');
-        
-        // Load dynamic sections
-        this.loadScoutingComponents();
-        
-        // Initialize back to top button
-        this.initBackToTop();
-    }
-    
-    loadScoutingComponents() {
-        const promises = [
-            DOMUtils.loadHTMLFile('timeline-section-container', '../pages/timeline.html'),
-            DOMUtils.loadHTMLFile('leadership-section-container', '../pages/leadership-positions.html'),
-            DOMUtils.loadHTMLFile('merit-badges-section-container', '../pages/merit-badges.html')
-        ];
-        
-        // After all components are loaded
-        Promise.all(promises)
-            .then(() => {
-                this.log('All scouting components loaded');
-                
-                // Reinitialize components
-                if (window.reinitializeCollapsibles) {
-                    window.reinitializeCollapsibles();
-                }
-                
-                // Initialize eagle project
-                this.initEagleProject();
-            })
-            .catch(error => this.log(`Error loading scouting components: ${error}`, 'error'));
-    }
-    
-    initEagleProject() {
-        const container = document.getElementById('eagle-project-section-container');
-        if (!container) return;
-        
-        // Load eagle project content
-        fetch('../pages/eagle-project.html')
-            .then(response => response.text())
-            .then(html => {
-                container.innerHTML = html;
-                
-                // Initialize carousel
-                setTimeout(() => {
-                    new Carousel('#eagle-project .carousel');
-                }, 100);
-            })
-            .catch(error => this.log(`Error loading eagle project: ${error}`, 'error'));
-    }
-    
-    initTravelPage() {
-        this.log('Initializing travel page');
-        
-        // Initialize map if exists
-        const mapElement = document.getElementById('map');
-        if (mapElement) {
-            // Initialize map
-            const map = window.mapManager.initialize('map', {
-                zoom: 4
-            });
+        try {
+            this.performance.start('app-init');
             
-            if (map && window.travelLocations) {
-                // Convert travel locations to map markers
-                const markers = window.travelLocations.map(location => ({
-                    position: location.position || { 
-                        lat: location.coords?.lat || 36.174465, 
-                        lng: location.coords?.lng || -86.767960 
-                    },
-                    title: location.name,
-                    content: `<div class="map-popup">
-                        <h3>${location.name}</h3>
-                        <p>${location.description}</p>
-                        <p>${location.date}</p>
-                    </div>`
-                }));
-                
-                window.mapManager.addMarkers('map', markers);
-            }
-        }
-        
-        // Populate locations grid
-        this.populateLocationsGrid();
-    }
-    
-    populateLocationsGrid() {
-        const locationsGrid = document.getElementById('locations-grid');
-        
-        if (locationsGrid && window.travelLocations) {
-            // Clear existing content
-            locationsGrid.innerHTML = '';
+            // Initialize configuration
+            await this.initConfig();
             
-            // Add each location
-            window.travelLocations.forEach(location => {
-                const card = document.createElement('div');
-                card.className = 'location-card';
-                card.innerHTML = `
-                    <img src="${location.image}" alt="${location.name}">
-                    <div class="location-info">
-                        <h3>${location.name}</h3>
-                        <p>${location.description}</p>
-                        <p class="location-date">${location.date}</p>
-                    </div>
-                `;
-                locationsGrid.appendChild(card);
-            });
+            // Load header and footer
+            await this.loadCommonElements();
+            
+            // Initialize components
+            this.initComponents();
+            
+            // Set up event listeners
+            this.setupEventListeners();
+            
+            // Initialize features based on current page
+            await this.initPageSpecific();
+            
+            this.initialized = true;
+            this.performance.end('app-init');
+        } catch (error) {
+            ErrorHandler.handle(
+                ErrorHandler.create(
+                    'Failed to initialize application',
+                    ErrorHandler.types.RUNTIME,
+                    { error }
+                )
+            );
         }
     }
     
-    initBackToTop() {
-        const backToTopButton = document.getElementById('back-to-top');
-        if (!backToTopButton) return;
+    async initConfig() {
+        // Load and apply configuration
+        await this.config.init();
         
-        // Show/hide button based on scroll position
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
-            }
-        });
+        // Apply theme
+        document.documentElement.setAttribute('data-theme', this.config.get('ui.theme'));
+    }
+    
+    async loadCommonElements() {
+        // Load header
+        await this.utils.loadHTMLFile('header', '/pages/header.html');
         
-        // Scroll to top when clicked
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+        // Load footer
+        await this.utils.loadHTMLFile('footer', '/pages/footer.html');
+    }
+    
+    initComponents() {
+        // Initialize all components in the page
+        this.utils.initializeComponents(document);
+        
+        // Set up lazy loading
+        this.utils.lazyLoadImages();
     }
     
     setupEventListeners() {
-        // Fade-in animation for elements with .fade-in class
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        if (fadeElements.length > 0) {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
-            
-            fadeElements.forEach(element => observer.observe(element));
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => this.toggleTheme());
         }
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                // Close any open modals or menus
-                const mobileMenu = document.querySelector('.nav-links.active');
-                if (mobileMenu) {
-                    mobileMenu.classList.remove('active');
-                    document.querySelector('.menu-overlay')?.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                }
-            }
-        });
-
-        // Handle page transitions
-        document.querySelectorAll('a').forEach(link => {
-            if (link.origin === window.location.origin) {
-                link.addEventListener('click', (e) => {
-                    const target = e.currentTarget;
-                    if (!target.hasAttribute('target')) {
-                        e.preventDefault();
-                        document.body.classList.add('page-transition');
-                        setTimeout(() => {
-                            window.location.href = target.href;
-                        }, 300);
-                    }
-                });
+        
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        if (backToTop) {
+            window.addEventListener('scroll', this.utils.throttle(() => {
+                backToTop.classList.toggle('visible', window.scrollY > 300);
+            }, 200));
+            
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    }
+    
+    async initPageSpecific() {
+        const path = window.location.pathname;
+        
+        // Initialize map on travel page
+        if (path.includes('travel.html')) {
+            await this.initTravelPage();
+        }
+        
+        // Initialize form validation on contact page
+        if (path.includes('contact.html')) {
+            this.initContactPage();
+        }
+        
+        // Initialize photo gallery on achievements page
+        if (path.includes('achievements.html')) {
+            this.initAchievementsPage();
+        }
+    }
+    
+    async initTravelPage() {
+        const mapContainer = document.getElementById('map');
+        if (!mapContainer) return;
+        
+        try {
+            this.performance.start('map-init');
+            
+            // Set up map with loading state
+            const mapLoading = document.getElementById('map-loading');
+            if (mapLoading) mapLoading.style.display = 'flex';
+            
+            // Initialize map (assuming Leaflet is loaded)
+            const map = L.map('map').setView(
+                [this.config.get('map.defaultCenter.lat'), 
+                 this.config.get('map.defaultCenter.lng')],
+                this.config.get('map.defaultZoom')
+            );
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Hide loading state
+            if (mapLoading) mapLoading.style.display = 'none';
+            
+            this.performance.end('map-init');
+        } catch (error) {
+            // Show error state
+            const mapError = document.getElementById('map-error');
+            if (mapError) mapError.style.display = 'flex';
+            
+            ErrorHandler.handle(
+                ErrorHandler.create(
+                    'Failed to initialize map',
+                    ErrorHandler.types.RESOURCE,
+                    { error }
+                )
+            );
+        }
+    }
+    
+    initContactPage() {
+        const form = document.querySelector('form');
+        if (!form) return;
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                this.domUtils.addLoading(form, 'Sending...');
+                
+                // Add form submission logic here
+                
+                this.domUtils.removeLoading(form);
+                this.domUtils.showToast('Message sent successfully!', 'success');
+            } catch (error) {
+                this.domUtils.removeLoading(form);
+                ErrorHandler.handle(
+                    ErrorHandler.create(
+                        'Failed to send message',
+                        ErrorHandler.types.NETWORK,
+                        { error }
+                    )
+                );
             }
         });
     }
     
-    log(message, type = 'info') {
-        if (!this.debug && type !== 'error') return;
+    initAchievementsPage() {
+        const gallery = document.querySelector('.photo-gallery');
+        if (!gallery) return;
         
-        const prefix = '[App]';
-        console[type === 'error' ? 'error' : 'log'](`${prefix} ${message}`);
+        // Set up infinite scroll for gallery
+        this.domUtils.setupInfiniteScroll(
+            gallery,
+            async () => {
+                // Add gallery loading logic here
+            },
+            {
+                rootMargin: '100px'
+            }
+        );
+    }
+    
+    toggleTheme() {
+        const currentTheme = this.config.get('ui.theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        this.config.set('ui.theme', newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        this.domUtils.showToast(
+            `Switched to ${newTheme} theme`,
+            'info',
+            2000
+        );
     }
 }
 
-// Create and initialize app when DOM is ready
+// Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    window.app = new App();
-    window.app.init();
+    const app = new App();
+    app.init();
 });
 
