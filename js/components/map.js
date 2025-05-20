@@ -71,38 +71,59 @@ class LeafletMap {
         this.options = Object.assign({
             defaultCenter: [36.174465, -86.767960], // Nashville
             defaultZoom: 5,
-            debug: false
+            debug: false,
+            retryAttempts: 3,
+            retryDelay: 1000
         }, options);
         
         this.maps = {};
     }
     
-    initialize(elementId, options = {}) {
+    async initialize(elementId, options = {}) {
         const mapElement = document.getElementById(elementId);
         if (!mapElement) {
             this.log(`Map element #${elementId} not found`, 'error');
             return null;
         }
         
-        // Hide loading indicator if exists
-        const loadingElement = document.getElementById(`${elementId}-loading`);
-        if (loadingElement) {
-            loadingElement.style.display = 'none';
-        }
+        // Setup loading and error states
+        this.setupMapElements(elementId);
         
+        try {
+            // Show loading state
+            this.showLoading(elementId);
+            
+            // Initialize map with retry logic
+            const map = await this.initializeWithRetry(elementId, options);
+            
+            // Add keyboard controls
+            this.setupKeyboardControls(map, elementId);
+            
+            // Add accessibility features
+            A11yUtils.setupMapA11y(mapElement);
+            
+            this.hideLoading(elementId);
+            return map;
+        } catch (error) {
+            this.log(`Error initializing map ${elementId}: ${error.message}`, 'error');
+            this.showError(elementId);
+            return null;
+        }
+    }
+    
+    async initializeWithRetry(elementId, options, attempt = 1) {
         try {
             const mapOptions = {
                 center: options.center || this.options.defaultCenter,
-                zoom: options.zoom || this.options.defaultZoom
+                zoom: options.zoom || this.options.defaultZoom,
+                keyboard: true,
+                zoomControl: true
             };
             
             const map = L.map(elementId, mapOptions);
             
-            // Add tile layer
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                maxZoom: 19
-            }).addTo(map);
+            // Add tile layer with retry
+            await this.addTileLayerWithRetry(map);
             
             // Store map instance
             this.maps[elementId] = map;
@@ -110,51 +131,140 @@ class LeafletMap {
             
             return map;
         } catch (error) {
-            this.log(`Error initializing map ${elementId}: ${error.message}`, 'error');
-            
-            // Show error message if exists
-            const errorElement = document.getElementById(`${elementId}-error`);
-            if (errorElement) {
-                errorElement.style.display = 'block';
+            if (attempt < this.options.retryAttempts) {
+                this.log(`Retry attempt ${attempt} for map ${elementId}`, 'warn');
+                await new Promise(resolve => setTimeout(resolve, this.options.retryDelay));
+                return this.initializeWithRetry(elementId, options, attempt + 1);
             }
-            
-            return null;
+            throw error;
         }
+    }
+    
+    async addTileLayerWithRetry(map, attempt = 1) {
+        try {
+            await new Promise((resolve, reject) => {
+                const layer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    maxZoom: 19
+                }).addTo(map);
+                
+                layer.on('load', resolve);
+                layer.on('error', reject);
+            });
+        } catch (error) {
+            if (attempt < this.options.retryAttempts) {
+                await new Promise(resolve => setTimeout(resolve, this.options.retryDelay));
+                return this.addTileLayerWithRetry(map, attempt + 1);
+            }
+            throw new Error('Failed to load map tiles');
+        }
+    }
+    
+    setupMapElements(elementId) {
+        const mapContainer = document.getElementById(elementId);
+        
+        // Create loading indicator if it doesn't exist
+        if (!document.getElementById(`${elementId}-loading`)) {
+            const loading = document.createElement('div');
+            loading.id = `${elementId}-loading`;
+            loading.className = 'map-loading';
+            loading.innerHTML = '<div class="loading-spinner"></div><span>Loading map...</span>';
+            mapContainer.appendChild(loading);
+        }
+        
+        // Create error message if it doesn't exist
+        if (!document.getElementById(`${elementId}-error`)) {
+            const error = document.createElement('div');
+            error.id = `${elementId}-error`;
+            error.className = 'map-error';
+            error.innerHTML = `
+                <p>Sorry, there was an error loading the map.</p>
+                <button onclick="window.location.reload()">Try Again</button>
+            `;
+            mapContainer.appendChild(error);
+        }
+    }
+    
+    showLoading(elementId) {
+        const loading = document.getElementById(`${elementId}-loading`);
+        const error = document.getElementById(`${elementId}-error`);
+        if (loading) loading.style.display = 'flex';
+        if (error) error.style.display = 'none';
+    }
+    
+    hideLoading(elementId) {
+        const loading = document.getElementById(`${elementId}-loading`);
+        if (loading) loading.style.display = 'none';
+    }
+    
+    showError(elementId) {
+        const loading = document.getElementById(`${elementId}-loading`);
+        const error = document.getElementById(`${elementId}-error`);
+        if (loading) loading.style.display = 'none';
+        if (error) error.style.display = 'flex';
+    }
+    
+    setupKeyboardControls(map, elementId) {
+        const mapElement = document.getElementById(elementId);
+        if (!mapElement) return;
+        
+        mapElement.addEventListener('keydown', (e) => {
+            if (document.activeElement === mapElement) {
+                const panAmount = 50;
+                switch(e.key) {
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        map.panBy([0, -panAmount]);
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        map.panBy([0, panAmount]);
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        map.panBy([-panAmount, 0]);
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        map.panBy([panAmount, 0]);
+                        break;
+                    case '+':
+                        e.preventDefault();
+                        map.zoomIn();
+                        break;
+                    case '-':
+                        e.preventDefault();
+                        map.zoomOut();
+                        break;
+                }
+            }
+        });
     }
     
     addMarkers(mapId, locations = []) {
         const map = this.maps[mapId];
-        if (!map) {
-            this.log(`Map ${mapId} not found`, 'error');
-            return [];
-        }
+        if (!map || !locations.length) return [];
         
-        if (!locations.length) {
-            this.log(`No locations provided for map ${mapId}`, 'warn');
-            return [];
-        }
-        
-        const markers = locations.map(location => {
-            const { lat, lng } = location.position;
-            
-            if (!lat || !lng) {
-                this.log(`Invalid position for marker ${location.title || 'untitled'}`, 'warn');
+        return locations.map(location => {
+            if (!location.position?.lat || !location.position?.lng) {
+                this.log(`Invalid marker position for ${location.title}`, 'warn');
                 return null;
             }
             
-            // Create marker
-            const marker = L.marker([lat, lng]).addTo(map);
-            
-            // Add popup if content provided
-            if (location.content) {
-                marker.bindPopup(location.content);
+            try {
+                const marker = L.marker([location.position.lat, location.position.lng]);
+                
+                if (location.content) {
+                    marker.bindPopup(location.content);
+                }
+                
+                marker.addTo(map);
+                return marker;
+            } catch (error) {
+                this.log(`Error adding marker for ${location.title}: ${error.message}`, 'error');
+                return null;
             }
-            
-            return marker;
-        }).filter(marker => marker !== null);
-        
-        this.log(`Added ${markers.length} markers to map ${mapId}`);
-        return markers;
+        }).filter(Boolean);
     }
     
     log(message, type = 'info') {

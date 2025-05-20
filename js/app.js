@@ -19,6 +19,12 @@ class App {
         
         this.log('Initializing application');
         
+        // Register service worker
+        this.registerServiceWorker();
+        
+        // Preload critical resources
+        this.preloadResources();
+        
         // Load common components
         this.loadHeader();
         this.loadFooter();
@@ -36,6 +42,34 @@ class App {
         this.log('Initialization complete');
     }
     
+    registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/js/sw.js')
+                .then(registration => {
+                    this.log('ServiceWorker registration successful');
+                })
+                .catch(error => {
+                    this.log('ServiceWorker registration failed: ' + error, 'error');
+                });
+        }
+    }
+
+    preloadResources() {
+        // Preload critical images
+        const imagesToPreload = [
+            '/images/profile.jpg',
+            '/images/handshake.png'
+        ];
+
+        imagesToPreload.forEach(imageUrl => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = imageUrl;
+            document.head.appendChild(link);
+        });
+    }
+
     detectCurrentPage() {
         const path = window.location.pathname;
         
@@ -70,6 +104,10 @@ class App {
     loadDynamicComponents() {
         // Components will initialize themselves via their own DOMContentLoaded events
         this.log('Loading dynamic components');
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.setAttribute('loading', 'lazy');
+            img.src = img.dataset.src;
+        });
     }
     
     initCurrentPage() {
@@ -313,6 +351,35 @@ class App {
             
             fadeElements.forEach(element => observer.observe(element));
         }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close any open modals or menus
+                const mobileMenu = document.querySelector('.nav-links.active');
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('active');
+                    document.querySelector('.menu-overlay')?.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            }
+        });
+
+        // Handle page transitions
+        document.querySelectorAll('a').forEach(link => {
+            if (link.origin === window.location.origin) {
+                link.addEventListener('click', (e) => {
+                    const target = e.currentTarget;
+                    if (!target.hasAttribute('target')) {
+                        e.preventDefault();
+                        document.body.classList.add('page-transition');
+                        setTimeout(() => {
+                            window.location.href = target.href;
+                        }, 300);
+                    }
+                });
+            }
+        });
     }
     
     log(message, type = 'info') {

@@ -109,6 +109,55 @@
 .delay-4 { animation-delay: 0.4s; } /* Significant delay */
 .delay-5 { animation-delay: 0.5s; } /* Extended delay */
 
+/* Page transitions */
+.page-transition {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+/* Loading states */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+/* Error state */
+.error-state {
+    padding: 1rem;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    color: #dc3545;
+    background-color: #f8d7da;
+    margin: 1rem 0;
+}
+
 /* ==============================
    3. Component-Specific Animation Triggers
    ==============================

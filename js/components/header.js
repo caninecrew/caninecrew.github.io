@@ -1,4 +1,4 @@
-// Header component
+// Header component with enhanced navigation
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Header component initializing");
     const headerElement = document.getElementById('header');
@@ -7,78 +7,105 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Determine if we're on the root or in a subdirectory
+    // Determine path
     const isRoot = window.location.pathname === '/' || 
                   window.location.pathname.endsWith('index.html') ||
                   !window.location.pathname.includes('/pages/');
     
     const headerPath = isRoot ? 'pages/header.html' : '../pages/header.html';
-    console.log(`Loading header from: ${headerPath}`);
     
-    // Fetch the header content
-    fetch(headerPath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Failed to load header (${response.status} ${response.statusText})`);
-            }
-            return response.text();
-        })
-        .then(html => {
-            headerElement.innerHTML = html;
-            
-            // Add active class to current page link
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            const links = headerElement.querySelectorAll('.nav-links a');
-            
-            links.forEach(link => {
-                const href = link.getAttribute('href');
-                if ((currentPage === 'index.html' && href === '/' || href === 'index.html' || href === '') || 
-                    (href && href.includes(currentPage))) {
-                    link.classList.add('active');
+    // Load header content using enhanced Utils
+    Utils.loadWithState('header', async () => {
+        const html = await Utils.fetchWithRetry(headerPath);
+        headerElement.innerHTML = html;
+        
+        // Initialize header functionality after content is loaded
+        initializeHeader();
+    }).catch(error => {
+        Utils.log(`Error loading header: ${error}`, 'error', 'Header');
+    });
+});
+
+function initializeHeader() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const links = document.querySelectorAll('.nav-links a');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const closeMenuBtn = document.querySelector('.close-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    // Add active class to current page link
+    links.forEach(link => {
+        if ((currentPage === 'index.html' && (link.getAttribute('href') === '/' || 
+            link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '')) || 
+            (link.getAttribute('href') && link.getAttribute('href').includes(currentPage))) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+        }
+    });
+    
+    if (mobileMenuBtn && navLinks) {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.classList.add('menu-overlay');
+        document.body.appendChild(overlay);
+        
+        // Enhanced menu functionality with accessibility
+        const openMenu = () => {
+            navLinks.classList.add('active');
+            overlay.classList.add('active');
+            document.body.classList.add('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            A11yUtils.trapFocus(navLinks);
+        };
+        
+        const closeMenu = () => {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.focus();
+        };
+        
+        // Setup mobile menu
+        mobileMenuBtn.setAttribute('aria-controls', 'nav-links');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Open menu');
+        
+        // Event listeners
+        mobileMenuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        
+        // Close menu when clicking a link
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    closeMenu();
                 }
             });
-            
-            // Initialize mobile menu functionality
-            const mobileMenuBtn = headerElement.querySelector('.mobile-menu-btn');
-            const closeMenuBtn = headerElement.querySelector('.close-menu-btn');
-            const navLinks = headerElement.querySelector('.nav-links');
-            
-            if (mobileMenuBtn && navLinks) {
-                // Create overlay element
-                const overlay = document.createElement('div');
-                overlay.classList.add('menu-overlay');
-                document.body.appendChild(overlay);
-                
-                // Open menu function
-                const openMenu = () => {
-                    navLinks.classList.add('active');
-                    overlay.classList.add('active');
-                    document.body.classList.add('menu-open');
-                };
-                
-                // Close menu function
-                const closeMenu = () => {
-                    navLinks.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.classList.remove('menu-open');
-                };
-                
-                // Event listeners
-                mobileMenuBtn.addEventListener('click', openMenu);
-                closeMenuBtn.addEventListener('click', closeMenu);
-                overlay.addEventListener('click', closeMenu);
-                
-                // Close menu when clicking a link
-                const navLinksItems = navLinks.querySelectorAll('a');
-                navLinksItems.forEach(link => {
-                    link.addEventListener('click', closeMenu);
-                });
-            }
-            
-            console.log("Header successfully loaded and initialized");
-        })
-        .catch(error => {
-            console.error('Error loading header:', error);
-            headerElement.innerHTML = '<div class="error-message">Error loading header. Please try refreshing the page.</div>';
         });
-});
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    }
+    
+    // Add loading indicator for navigation
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Only handle internal links
+            if (link.origin === window.location.origin && !link.hasAttribute('target')) {
+                e.preventDefault();
+                document.body.classList.add('page-transition');
+                
+                // Navigate after transition
+                setTimeout(() => {
+                    window.location.href = link.href;
+                }, 300);
+            }
+        });
+    });
+}

@@ -19,6 +19,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 /* Set core body defaults */
 body {
   min-height: 100vh;
@@ -30,6 +34,8 @@ body {
   background-color: var(--background-light);
   font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
                 Oxygen, Ubuntu, Cantarell, sans-serif);
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
 }
 
 /* Remove default margins and padding from typography elements */
@@ -38,6 +44,19 @@ p, ul, ol, dl, figure,
 blockquote {
   margin: 0;
   padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
 }
 
 /* Make images easier to work with */
@@ -68,6 +87,9 @@ ol[class] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  html:focus-within {
+    scroll-behavior: auto;
+  }
 }
 
 /* Set default anchor styling */
@@ -84,4 +106,58 @@ a:hover {
 /* Fix line height in headings */
 h1, h2, h3, h4, h5, h6 {
   line-height: var(--line-height-headings);
+}
+
+/* Screen reader only utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Focus styles */
+:focus {
+  outline: 2px solid var(--color-primary, #3498db);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary, #3498db);
+  outline-offset: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary, #3498db);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
 }
