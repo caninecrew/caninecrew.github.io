@@ -3,48 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the places Samuel Rumbley has visited around the world">
     <title>My Travels - Samuel Rumbley</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
           crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-            crossorigin=""></script>
 </head>
 <body>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div id="header"></div>
-    <main class="container">
+    
+    <main id="main-content" class="container fade-in">
         <section class="travel-header">
             <h1>My Travels</h1>
             <p>Explore the places I've visited and experiences I've had around the world.</p>
         </section>
         
-        <section class="travel-map">
+        <section class="travel-map" aria-labelledby="map-title">
+            <h2 id="map-title" class="sr-only">Interactive Travel Map</h2>
             <div id="travel-map-container">
-                <div id="map"></div>
-                <div id="map-loading">Loading map...</div>
-                <div id="map-error" style="display: none;">Failed to load map</div>
+                <div id="map" tabindex="0"></div>
+                <div id="map-loading" class="loading-overlay">
+                    <div class="loading-spinner"></div>
+                    <p>Loading map...</p>
+                </div>
+                <div id="map-error" class="error-overlay" style="display: none">
+                    <p>Failed to load map</p>
+                    <button onclick="window.location.reload()">Try Again</button>
+                </div>
+                <div class="map-keyboard-instructions">
+                    Use arrow keys to pan, + and - to zoom
+                </div>
             </div>
         </section>
 
-        <section class="travel-locations">
-            <h2>Places I've Visited</h2>
+        <section class="travel-locations" aria-labelledby="locations-title">
+            <h2 id="locations-title">Places I've Visited</h2>
             <div class="locations-grid" id="locations-grid">
                 <!-- JavaScript will populate this grid -->
             </div>
         </section>
     </main>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
-    <!-- Core libraries -->
+
+    <!-- Core utilities -->
+    <script src="../js/core/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/core/domUtils.js"></script>
+    <script src="../js/core/a11yUtils.js"></script>
+    <script src="../js/core/errorHandler.js"></script>
+    <script src="../js/core/performance.js"></script>
+    
+    <!-- Map dependencies -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    
     <!-- Components -->
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
-    <!-- Additional components as needed -->
-    <script src="../js/components/carousel.js"></script>
-    <script src="../js/components/collapsible.js"></script>
+    <script src="../js/components/map.js"></script>
+    
+    <!-- Service Worker -->
+    <script src="../js/sw-register.js"></script>
+    
+    <!-- Data -->
+    <script src="../js/data/travel.js"></script>
+    
     <!-- Page specific -->
     <script src="../js/app.js"></script>
 </body>
