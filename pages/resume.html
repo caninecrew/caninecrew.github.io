@@ -3,30 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
+    <meta name="description" content="Samuel Rumbley's professional resume">
+    <title>Resume - Samuel Rumbley</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div id="header"></div>
-    <main class="container">
+    
+    <main id="main-content" class="container fade-in">
         <section>
             <h2 class="center">Resume</h2>
             <div class="resume-container">
-                <iframe src="../documents/resume.pdf" width="100%" height="600px"></iframe>
+                <!-- PDF viewer with loading state -->
+                <div class="pdf-viewer">
+                    <div id="pdf-loading" class="loading-overlay">
+                        <div class="loading-spinner"></div>
+                        <p>Loading resume...</p>
+                    </div>
+                    <iframe src="../documents/resume.pdf" 
+                            title="Samuel Rumbley's Resume"
+                            width="100%" 
+                            height="800px"
+                            onload="document.getElementById('pdf-loading').style.display='none'"
+                            onerror="handlePdfError()">
+                        <p>Your browser doesn't support embedded PDFs. You can <a href="../documents/resume.pdf" download>download the PDF</a> instead.</p>
+                    </iframe>
+                </div>
+                <!-- Download option -->
+                <div class="button-container center">
+                    <a href="../documents/resume.pdf" download class="button button-primary">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
             </div>
         </section>
     </main>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
-    <!-- Core libraries -->
+
+    <!-- Core utilities -->
+    <script src="../js/core/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/core/domUtils.js"></script>
+    <script src="../js/core/a11yUtils.js"></script>
+    <script src="../js/core/errorHandler.js"></script>
+    <script src="../js/core/performance.js"></script>
+    
     <!-- Components -->
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
-    <!-- Additional components as needed -->
-    <script src="../js/components/carousel.js"></script>
-    <script src="../js/components/collapsible.js"></script>
+    
+    <!-- Service Worker -->
+    <script src="../js/sw-register.js"></script>
+    
     <!-- Page specific -->
+    <script>
+    function handlePdfError() {
+        const viewer = document.querySelector('.pdf-viewer');
+        viewer.innerHTML = `
+            <div class="error-message">
+                <p>Sorry, there was an error loading the PDF.</p>
+                <div class="button-container">
+                    <a href="../documents/resume.pdf" download class="button">
+                        <i class="fas fa-download"></i> Download Resume Instead
+                    </a>
+                    <button onclick="window.location.reload()" class="button">
+                        <i class="fas fa-sync"></i> Try Again
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+    </script>
     <script src="../js/app.js"></script>
 </body>
 </html>

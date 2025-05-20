@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Samuel Rumbley</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .offline-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+        .offline-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .cached-content {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+        }
+    </style>
+</head>
+<body>
+    <main class="container offline-container">
+        <div class="offline-icon">
+            <i class="fas fa-wifi-slash"></i>
+        </div>
+        <h1>You're Offline</h1>
+        <p>Sorry, it looks like you've lost your internet connection. Some features may not be available.</p>
+        
+        <div class="cached-content">
+            <h2>Available Offline</h2>
+            <p>You can still access previously viewed pages and content that has been cached.</p>
+        </div>
+        
+        <div class="button-container">
+            <button onclick="window.location.reload()" class="button button-primary">
+                <i class="fas fa-sync"></i> Try Again
+            </button>
+            <a href="/" class="button">
+                <i class="fas fa-home"></i> Go to Homepage
+            </a>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

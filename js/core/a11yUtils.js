@@ -1,20 +1,15 @@
 // Accessibility utilities
 const A11yUtils = {
-    // Trap focus within a modal or dialog
-    trapFocus(element) {
-        const focusableElements = element.querySelectorAll(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        
-        if (focusableElements.length === 0) return;
-        
+    // Focus management
+    focusable: 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    
+    // Trap focus within an element (for modals, dropdowns, etc.)
+    trapFocus: function(element) {
+        const focusableElements = element.querySelectorAll(this.focusable);
         const firstFocusable = focusableElements[0];
         const lastFocusable = focusableElements[focusableElements.length - 1];
         
-        // Focus first element
-        firstFocusable.focus();
-        
-        element.addEventListener('keydown', function(e) {
+        element.addEventListener('keydown', e => {
             if (e.key === 'Tab') {
                 if (e.shiftKey) {
                     if (document.activeElement === firstFocusable) {
@@ -27,6 +22,93 @@ const A11yUtils = {
                         firstFocusable.focus();
                     }
                 }
+            }
+        });
+        
+        firstFocusable.focus();
+    },
+    
+    // Announce message to screen readers
+    announce: function(message, priority = 'polite') {
+        const announcer = document.createElement('div');
+        announcer.setAttribute('aria-live', priority);
+        announcer.setAttribute('aria-atomic', 'true');
+        announcer.classList.add('sr-only');
+        
+        document.body.appendChild(announcer);
+        
+        // Wait a moment before adding text to ensure screen reader catches the change
+        setTimeout(() => {
+            announcer.textContent = message;
+            
+            // Remove after announcement
+            setTimeout(() => {
+                announcer.remove();
+            }, 3000);
+        }, 50);
+    },
+    
+    // Toggle element visibility while maintaining accessibility
+    toggleVisibility: function(element, isVisible) {
+        if (isVisible) {
+            element.removeAttribute('hidden');
+            element.removeAttribute('aria-hidden');
+        } else {
+            element.setAttribute('hidden', '');
+            element.setAttribute('aria-hidden', 'true');
+        }
+    },
+    
+    // Handle escape key for interactive elements
+    setupEscapeHandler: function(element, closeCallback) {
+        element.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                closeCallback();
+            }
+        });
+    },
+    
+    // Set up keyboard navigation for custom components
+    setupKeyboardNav: function(container, itemSelector, callback) {
+        const items = container.querySelectorAll(itemSelector);
+        
+        container.addEventListener('keydown', e => {
+            const currentIndex = Array.from(items).indexOf(document.activeElement);
+            
+            switch (e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    e.preventDefault();
+                    if (currentIndex < items.length - 1) {
+                        items[currentIndex + 1].focus();
+                    } else {
+                        items[0].focus();
+                    }
+                    break;
+                    
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    if (currentIndex > 0) {
+                        items[currentIndex - 1].focus();
+                    } else {
+                        items[items.length - 1].focus();
+                    }
+                    break;
+                    
+                case 'Home':
+                    e.preventDefault();
+                    items[0].focus();
+                    break;
+                    
+                case 'End':
+                    e.preventDefault();
+                    items[items.length - 1].focus();
+                    break;
+            }
+            
+            if (callback) {
+                callback(e);
             }
         });
     },

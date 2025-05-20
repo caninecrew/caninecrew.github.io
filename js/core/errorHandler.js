@@ -1,88 +1,119 @@
-// Error handling service
+// Error handling utility
 const ErrorHandler = {
     // Error types
     types: {
+        RUNTIME: 'runtime',
         NETWORK: 'network',
-        API: 'api',
         VALIDATION: 'validation',
-        RUNTIME: 'runtime'
+        RESOURCE: 'resource'
     },
 
-    // Store for error handlers
-    handlers: new Map(),
-
-    // Default error handler
-    defaultHandler(error) {
-        Utils.log(error.message, 'error');
-        
-        if (error.type === this.types.NETWORK) {
-            A11yUtils.announceError('Network connection issue. Please check your connection and try again.');
-        } else {
-            A11yUtils.announceError('Something went wrong. Please try again.');
-        }
-    },
-
-    // Register an error handler for a specific type
-    register(type, handler) {
-        this.handlers.set(type, handler);
+    // Create an error object
+    create: function(message, type = this.types.RUNTIME, data = {}) {
+        return {
+            message,
+            type,
+            timestamp: new Date(),
+            data
+        };
     },
 
     // Handle an error
-    handle(error) {
-        const handler = this.handlers.get(error.type) || this.defaultHandler.bind(this);
+    handle: function(error) {
+        // Log error
+        this.log(error);
         
-        // Track error in performance monitoring
-        Performance.start('error-handling');
-        
-        try {
-            handler(error);
-        } catch (e) {
-            Utils.log('Error in error handler: ' + e.message, 'error');
+        // Show user-friendly message if needed
+        if (this.shouldShowUser(error)) {
+            this.showUserMessage(error);
         }
         
-        Performance.end('error-handling');
-    },
-
-    // Create a new error with additional context
-    create(message, type = 'runtime', details = {}) {
-        const error = new Error(message);
-        error.type = type;
-        error.details = details;
-        error.timestamp = new Date().toISOString();
+        // Track error for analytics
+        this.track(error);
+        
         return error;
     },
 
-    // Initialize error handlers
-    init() {
-        // Network errors
-        this.register(this.types.NETWORK, (error) => {
-            Utils.log('Network Error: ' + error.message, 'error');
-            A11yUtils.announceError('Network connection issue. Please check your connection and try again.');
-        });
+    // Determine if error should be shown to user
+    shouldShowUser: function(error) {
+        return error.type === this.types.NETWORK || 
+               error.type === this.types.RESOURCE;
+    },
 
-        // API errors
-        this.register(this.types.API, (error) => {
-            Utils.log('API Error: ' + error.message, 'error');
-            A11yUtils.announceError('Server communication error. Please try again later.');
-        });
+    // Show user-friendly error message
+    showUserMessage: function(error) {
+        const container = document.createElement('div');
+        container.className = 'error-message';
+        container.setAttribute('role', 'alert');
+        
+        const message = document.createElement('p');
+        message.textContent = this.getUserMessage(error);
+        
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '&times;';
+        closeBtn.className = 'close-error';
+        closeBtn.onclick = () => container.remove();
+        
+        container.appendChild(message);
+        container.appendChild(closeBtn);
+        
+        document.body.appendChild(container);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => container.remove(), 5000);
+    },
 
-        // Validation errors
-        this.register(this.types.VALIDATION, (error) => {
-            Utils.log('Validation Error: ' + error.message, 'error');
-            A11yUtils.announceError(error.message);
-        });
+    // Get user-friendly message based on error type
+    getUserMessage: function(error) {
+        switch (error.type) {
+            case this.types.NETWORK:
+                return 'Connection error. Please check your internet connection and try again.';
+            case this.types.RESOURCE:
+                return 'Failed to load required resource. Please refresh the page.';
+            default:
+                return 'An error occurred. Please try again.';
+        }
+    },
 
-        // Global error handling
-        window.addEventListener('error', (event) => {
-            this.handle(this.create(event.error?.message || 'Unknown error', this.types.RUNTIME));
+    // Log error with context
+    log: function(error) {
+        console.error('[ErrorHandler]', {
+            message: error.message,
+            type: error.type,
+            timestamp: error.timestamp,
+            data: error.data
         });
+    },
 
-        window.addEventListener('unhandledrejection', (event) => {
-            this.handle(this.create(event.reason?.message || 'Promise rejection', this.types.RUNTIME));
-        });
+    // Track error for analytics
+    track: function(error) {
+        if (window.Performance) {
+            Performance.end(`error-${error.type}`);
+        }
+        // Add analytics tracking here if needed
     }
 };
 
-// Initialize error handler
+// Export ErrorHandler
 window.ErrorHandler = ErrorHandler;
-document.addEventListener('DOMContentLoaded', () => ErrorHandler.init());
+
+// Add global error handling
+window.addEventListener('error', (event) => {
+    ErrorHandler.handle(
+        ErrorHandler.create(event.message, ErrorHandler.types.RUNTIME, {
+            filename: event.filename,
+            lineno: event.lineno,
+            colno: event.colno
+        })
+    );
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    ErrorHandler.handle(
+        ErrorHandler.create(
+            event.reason?.message || 'Unhandled Promise rejection',
+            ErrorHandler.types.RUNTIME,
+            { reason: event.reason }
+        )
+    );
+});

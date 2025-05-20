@@ -1,71 +1,126 @@
 // Configuration management
 const Config = {
-    // Debug settings
-    debug: {
-        enabled: true,
-        logLevel: 'info' // 'error' | 'warn' | 'info' | 'debug'
+    // Core settings
+    core: {
+        debug: false,
+        version: '1.0.0',
+        apiEndpoints: {
+            base: 'https://api.example.com',
+            cdn: 'https://cdn.example.com'
+        }
     },
 
-    // Map defaults
+    // Feature flags
+    features: {
+        offlineSupport: true,
+        analytics: false,
+        performanceTracking: true,
+        mapInteractions: true
+    },
+
+    // Performance settings
+    performance: {
+        cacheDuration: 3600, // 1 hour
+        maxCacheSize: 50 * 1024 * 1024, // 50MB
+        preloadImages: true,
+        lazyLoadThreshold: '50px'
+    },
+
+    // UI/UX settings
+    ui: {
+        theme: 'light',
+        animationDuration: 300,
+        toastDuration: 3000,
+        breakpoints: {
+            mobile: 576,
+            tablet: 768,
+            desktop: 992,
+            wide: 1200
+        }
+    },
+
+    // Map settings
     map: {
-        center: {
-            lat: 36.174465,
-            lng: -86.767960
+        defaultZoom: 4,
+        maxZoom: 18,
+        minZoom: 2,
+        defaultCenter: {
+            lat: 39.8283,
+            lng: -98.5795
         },
-        zoom: 5,
-        maxZoom: 19,
-        minZoom: 2
+        style: 'mapbox://styles/mapbox/streets-v11'
     },
 
-    // Cache settings
-    cache: {
-        enabled: true,
-        duration: 300000 // 5 minutes in milliseconds
+    // Get a configuration value
+    get: function(path) {
+        return path.split('.').reduce((obj, key) => obj?.[key], this);
     },
 
-    // Loading states
-    loading: {
-        minDuration: 300, // Minimum loading time to prevent flashing
-        timeout: 10000    // Request timeout
+    // Set a configuration value
+    set: function(path, value) {
+        const parts = path.split('.');
+        const last = parts.pop();
+        const obj = parts.reduce((obj, key) => obj[key] = obj[key] || {}, this);
+        obj[last] = value;
+        
+        // Save to localStorage if available
+        this.saveToStorage();
     },
 
-    // Animation settings
-    animation: {
-        enabled: true,
-        duration: 300,
-        easing: 'ease-out'
+    // Load configuration from localStorage
+    loadFromStorage: function() {
+        try {
+            const stored = localStorage.getItem('site-config');
+            if (stored) {
+                const config = JSON.parse(stored);
+                Object.assign(this, config);
+            }
+        } catch (error) {
+            console.warn('Failed to load config from storage:', error);
+        }
     },
 
-    // Responsive breakpoints
-    breakpoints: {
-        mobile: 480,
-        tablet: 768,
-        desktop: 1024
+    // Save configuration to localStorage
+    saveToStorage: function() {
+        try {
+            localStorage.setItem('site-config', JSON.stringify({
+                core: this.core,
+                features: this.features,
+                performance: this.performance,
+                ui: this.ui,
+                map: this.map
+            }));
+        } catch (error) {
+            console.warn('Failed to save config to storage:', error);
+        }
     },
 
-    // Get a configuration value with dot notation
-    get(path, defaultValue = null) {
-        return path.split('.').reduce((obj, key) => 
-            (obj && obj[key] !== undefined) ? obj[key] : defaultValue, 
-            this
-        );
-    },
+    // Initialize configuration
+    init: function() {
+        // Load stored configuration
+        this.loadFromStorage();
 
-    // Set a configuration value with dot notation
-    set(path, value) {
-        const keys = path.split('.');
-        const lastKey = keys.pop();
-        const target = keys.reduce((obj, key) => 
-            (obj[key] = obj[key] || {}), 
-            this
-        );
-        target[lastKey] = value;
-        return this;
+        // Set up environment-specific settings
+        if (window.location.hostname === 'localhost') {
+            this.core.debug = true;
+        }
+
+        // Set up feature detection
+        this.features.offlineSupport = 'serviceWorker' in navigator;
+        this.features.performanceTracking = 'performance' in window;
+
+        // Update UI settings based on user preferences
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            this.ui.theme = 'dark';
+        }
+
+        // Save initial configuration
+        this.saveToStorage();
     }
 };
 
-// Freeze the configuration to prevent modifications
-Object.freeze(Config);
-
 // Export Config
 window.Config = Config;
+
+// Initialize configuration when DOM is ready
+document.addEventListener('DOMContentLoaded', () => Config.init());
