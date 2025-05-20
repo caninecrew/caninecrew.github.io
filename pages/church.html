@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Church Activities and Volunteering</title>
+    <meta name="description" content="Samuel Rumbley's church activities and volunteering">
+    <title>Church Activities - Samuel Rumbley</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div id="header"></div>
-    <main>
+    
+    <main id="main-content" class="container fade-in">
         <section>
             <h2 class="center">Church Activities and Volunteering</h2>
             
@@ -21,7 +27,6 @@
                     <li><strong>Children's Volunteer:</strong> September 2023 - Present</li>
                     <li>Community Events Volunteer</li>
                     <li>Youth Volunteer</li>
-
                 </ul>
                 <div class="button-container">
                     <a href="https://www.cookevillenazarene.org/" target="_blank">Cookeville Church of the Nazarene</a>
@@ -46,16 +51,27 @@
             </div>
         </section>
     </main>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
-    <!-- Core libraries -->
+
+    <!-- Core utilities -->
+    <script src="../js/core/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/core/domUtils.js"></script>
+    <script src="../js/core/a11yUtils.js"></script>
+    <script src="../js/core/errorHandler.js"></script>
+    <script src="../js/core/performance.js"></script>
+    
     <!-- Components -->
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
-    <!-- Additional components as needed -->
     <script src="../js/components/carousel.js"></script>
     <script src="../js/components/collapsible.js"></script>
+    
+    <!-- Service Worker -->
+    <script src="../js/sw-register.js"></script>
+    
     <!-- Page specific -->
     <script src="../js/app.js"></script>
 </body>
