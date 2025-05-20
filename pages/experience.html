@@ -3,76 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work Experience</title>
+    <meta name="description" content="Samuel Rumbley's professional experience and work history">
+    <title>Experience - Samuel Rumbley</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div id="header"></div>
-    <main class="container">
-        <h2 class="center">Work Experience</h2>
-        <section class="content-box">            
-            <div class="experience-item">
-                <h3>Wilson County Board of Education</h3>
-                <p><strong>Substitute Teacher</strong> | July 2023 – Present</p>
-                <p>Responsible for managing classrooms, implementing lesson plans, and maintaining a positive learning environment. Adapted to various subjects and grade levels, demonstrating flexibility and strong communication skills.</p>
-                <div class="button-container">
-                    <a href="http://www.wcschools.com/" target="_blank">Wilson County Schools</a>
-                </div>
-            </div>
-            
-            <div class="experience-item">
-                <h3>Putnam County Board of Education</h3>
-                <p><strong>Substitute Teacher</strong> | May 2023 – Present</p>
-                <p>Responsible for managing classrooms, implementing lesson plans, and maintaining a positive learning environment. Adapted to various subjects and grade levels, demonstrating flexibility and strong communication skills.</p>
-                <div class="button-container">
-                    <a href="https://www.pcsstn.com/" target="_blank">Putnam County Schools</a>
-                </div>
-            </div>
-            
-            <div class="experience-item">
-                <h3>Boxwell Scout Reservation</h3>
-                <p><strong>Program Director</strong> | May 2025 - July 2025</p>
-                <ul>
-                    <li>Will serve as the Program Director for Camp Craig in 2025.</li>
-                    <li>Responsibilities will include planning and organizing all activities and programs.</li>
-                    <li>Providing leadership and support to the camp staff.</li>
-                    <li>Ensuring a high-quality experience for all campers.</li>
-                    <li>Developing and implementing new programs.</li>
-                    <li>Coordinating with various departments to uphold camp standards.</li>
-                    <li>Handling administrative tasks such as scheduling and resource management.</li>
-                    <li>Requires excellent communication skills, a strong understanding of camp operations, and the ability to work well under pressure while maintaining a positive and engaging environment.</li>
-                    <li>Will play a key role in promoting the camp and its offerings.</li>
-                </ul>
+    
+    <main id="main-content" class="container fade-in">
+        <h2 class="center">Experience</h2>
 
-                <p><strong>OA Representative and Camp Counselor</strong> | Summer 2023 & 2024</p>
+        <section class="experience-timeline">
+            <div class="content-box">
+                <h3>Substitute Teacher</h3>
+                <p>Wilson County Schools · Part-time</p>
+                <p>Aug 2023 - Present · 10 months</p>
+                <p><strong>Location:</strong> Lebanon, TN</p>
                 <ul>
-                    <li>Served as the Order of the Arrow (OA) Representative and Camp Counselor for two summer seasons (2023 and 2024).</li>
-                    <li>Acted as a liaison between the summer camp staff, Middle Tennessee Council, and Wa-Hi-Nasa Lodge.</li>
-                    <li>Oversaw all OA activities, such as unit elections, Brotherhood Review and Ceremony, and the Wednesday night Cracker Barrel.</li>
-                    <li>Conducted unit elections and maintained communication between camp and lodge leadership.</li>
+                    <li>Utilize critical thinking and problem-solving skills to create a safe and effective learning environment.</li>
+                    <li>Monitor student growth and behavior.</li>
+                    <li>Work effectively with fellow staff members.</li>
+                </ul>
+                <div class="button-container">
+                    <a href="https://www.wcschools.com/" target="_blank">Wilson County Schools</a>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h3>Group Meeting Lead</h3>
+                <p>Section SR-7B, Southern Region, Order of the Arrow, Boy Scouts of America · Volunteer</p>
+                <p>Dec 2023 - Present · 6 months</p>
+                <p><strong>Location:</strong> Virtual</p>
+                <ul>
+                    <li>Lead semi-weekly meetings with lodge leadership from across Tennessee and Kentucky.</li>
+                    <li>Help lodges coordinate events and share best practices.</li>
+                    <li>Communicate opportunities and requirements to lodges.</li>
+                </ul>
+                <div class="button-container">
+                    <a href="https://southern.oa-bsa.org/sr7b/" target="_blank">Section SR-7B</a>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h3>Boxwell Staff</h3>
+                <p>Middle Tennessee Council, Boy Scouts of America · Seasonal</p>
+                <p>May 2023 - Aug 2023 · 4 months</p>
+                <p><strong>Location:</strong> Lebanon, TN</p>
+                <ul>
                     <li>Actively participated as a summer camp staff member, including teaching merit badge classes such as Scouting Heritage and Indian Lore.</li>
                     <li>Maintained the lodge building and outdoor areas.</li>
                     <li>Promoted council programs and camping opportunities.</li>
                 </ul>
-                
                 <div class="button-container">
                     <a href="http://www.virtualboxwell.org/" target="_blank">Boxwell Scout Reservation</a>
                     <a href="https://www.mtcscouting.org/" target="_blank">Middle Tennessee Council</a>
                     <a href="https://www.wahinasa.org/" target="_blank">Wa-Hi-Nasa Lodge, Order of the Arrow</a>
                 </div>
             </div>
-        </section> 
+        </section>
     </main>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
-    <!-- Core libraries -->
+
+    <!-- Core utilities -->
+    <script src="../js/core/config.js"></script>
     <script src="../js/core/utils.js"></script>
     <script src="../js/core/domUtils.js"></script>
+    <script src="../js/core/a11yUtils.js"></script>
+    <script src="../js/core/errorHandler.js"></script>
+    <script src="../js/core/performance.js"></script>
+    
     <!-- Components -->
     <script src="../js/components/header.js"></script>
     <script src="../js/components/footer.js"></script>
-    <!-- Additional components as needed -->
     <script src="../js/components/carousel.js"></script>
     <script src="../js/components/collapsible.js"></script>
+    
+    <!-- Service Worker -->
+    <script src="../js/sw-register.js"></script>
+    
     <!-- Page specific -->
     <script src="../js/app.js"></script>
 </body>
