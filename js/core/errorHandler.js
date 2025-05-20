@@ -1,145 +1,98 @@
-// Error Handler Utility
+// Error Handling Utility
 const ErrorHandler = {
-    // Error types for categorization
-    types: {
-        NETWORK: 'network',
-        RESOURCE: 'resource',
-        RUNTIME: 'runtime',
-        VALIDATION: 'validation',
-        AUTH: 'auth'
-    },
+    errors: [],
+    maxErrors: 50,
     
-    // Create structured error object
-    create: function(message, type, details = {}) {
-        return {
-            message,
-            type,
+    // Handle and log errors
+    handle: function(error, context = '') {
+        const errorObj = {
             timestamp: new Date().toISOString(),
-            details
+            message: error.message || 'Unknown error',
+            stack: error.stack,
+            context: context,
+            type: error.name || 'Error'
         };
-    },
-    
-    // Handle error with appropriate response
-    handle: function(error) {
-        // Log error
-        console.error('[ErrorHandler]', error);
         
-        // Track error for analytics
-        if (Performance) {
-            Performance.trackError(error);
+        // Store error
+        this.errors.unshift(errorObj);
+        
+        // Trim error log if it exceeds max size
+        if (this.errors.length > this.maxErrors) {
+            this.errors.pop();
         }
         
-        // Show user-friendly message based on error type
-        let userMessage = 'An unexpected error occurred. Please try again.';
+        // Log to console
+        console.error(`[Error] ${context}: ${error.message}`, error);
         
-        switch (error.type) {
-            case this.types.NETWORK:
-                userMessage = 'Network connection error. Please check your connection and try again.';
-                break;
-            case this.types.RESOURCE:
-                userMessage = 'Failed to load resource. Please refresh the page or try again later.';
-                break;
-            case this.types.VALIDATION:
-                userMessage = error.message || 'Please check your input and try again.';
-                break;
-            case this.types.AUTH:
-                userMessage = 'Authentication error. Please log in again.';
-                break;
+        // Report to monitoring service if available
+        this.report(errorObj);
+        
+        return errorObj;
+    },
+    
+    // Report error to monitoring service
+    report: function(errorObj) {
+        // Implementation for error reporting service would go here
+        // For now, we'll just store in localStorage for debugging
+        try {
+            const storedErrors = JSON.parse(localStorage.getItem('errorLog') || '[]');
+            storedErrors.unshift(errorObj);
+            
+            // Keep only recent errors
+            while (storedErrors.length > this.maxErrors) {
+                storedErrors.pop();
+            }
+            
+            localStorage.setItem('errorLog', JSON.stringify(storedErrors));
+        } catch (e) {
+            console.warn('Failed to store error in localStorage:', e);
         }
-        
-        // Show error message to user
-        if (DOMUtils) {
-            DOMUtils.showToast(userMessage, 'error');
+    },
+    
+    // Get all logged errors
+    getErrors: function() {
+        return this.errors;
+    },
+    
+    // Clear error log
+    clearErrors: function() {
+        this.errors = [];
+        try {
+            localStorage.removeItem('errorLog');
+        } catch (e) {
+            console.warn('Failed to clear error log from localStorage:', e);
         }
+    },
+    
+    // Initialize global error handling
+    init: function() {
+        // Handle uncaught exceptions
+        window.addEventListener('error', (event) => {
+            this.handle(event.error || new Error(event.message), 'Uncaught Exception');
+            return false;
+        });
         
-        // Return error for chaining
-        return error;
-    },
-    
-    // Handle specific error scenarios
-    handleNetworkError: function(error) {
-        return this.handle(
-            this.create(
-                'Network request failed',
-                this.types.NETWORK,
-                { originalError: error }
-            )
-        );
-    },
-    
-    handleResourceError: function(error, resourceUrl) {
-        return this.handle(
-            this.create(
-                'Failed to load resource',
-                this.types.RESOURCE,
-                { 
-                    originalError: error,
-                    resourceUrl 
-                }
-            )
-        );
-    },
-    
-    handleValidationError: function(message, details) {
-        return this.handle(
-            this.create(
-                message,
-                this.types.VALIDATION,
-                details
-            )
-        );
-    },
-    
-    // Format error for logging
-    formatError: function(error) {
-        return {
-            message: error.message,
-            type: error.type,
-            timestamp: error.timestamp,
-            stack: error.details?.originalError?.stack,
-            details: JSON.stringify(error.details)
-        };
-    },
-    
-    // Check if error is recoverable
-    isRecoverable: function(error) {
-        return error.type === this.types.NETWORK || 
-               error.type === this.types.RESOURCE;
-    },
-    
-    // Clear error state from an element
-    clearError: function(element) {
-        if (!element) return;
+        // Handle unhandled promise rejections
+        window.addEventListener('unhandledrejection', (event) => {
+            const error = event.reason instanceof Error ? event.reason : new Error(String(event.reason));
+            this.handle(error, 'Unhandled Promise Rejection');
+            return false;
+        });
         
-        // Remove error classes
-        element.classList.remove('error');
-        
-        // Remove error messages
-        const errorMessages = element.querySelectorAll('.error-message');
-        errorMessages.forEach(msg => msg.remove());
+        // Load stored errors from localStorage
+        try {
+            const storedErrors = JSON.parse(localStorage.getItem('errorLog') || '[]');
+            this.errors = storedErrors;
+        } catch (e) {
+            console.warn('Failed to load stored errors:', e);
+        }
     }
 };
 
 // Export ErrorHandler
 window.ErrorHandler = ErrorHandler;
 
-// Add global error handling
-window.addEventListener('error', (event) => {
-    ErrorHandler.handle(
-        ErrorHandler.create(event.message, ErrorHandler.types.RUNTIME, {
-            filename: event.filename,
-            lineno: event.lineno,
-            colno: event.colno
-        })
-    );
-});
-
-window.addEventListener('unhandledrejection', (event) => {
-    ErrorHandler.handle(
-        ErrorHandler.create(
-            event.reason?.message || 'Unhandled Promise rejection',
-            ErrorHandler.types.RUNTIME,
-            { reason: event.reason }
-        )
-    );
+// Initialize error handling
+document.addEventListener('DOMContentLoaded', () => {
+    ErrorHandler.init();
 });

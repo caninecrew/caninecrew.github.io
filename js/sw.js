@@ -1,31 +1,25 @@
-const CACHE_NAME = 'samuel-rumbley-v1';
+// Service Worker
+const CACHE_NAME = 'caninecrew-v1';
 const OFFLINE_URL = '/offline.html';
 
+// Resources to cache
 const PRECACHE_URLS = [
     '/',
     '/index.html',
+    '/offline.html',
     '/css/styles.css',
-    '/js/core/config.js',
-    '/js/core/utils.js',
-    '/js/core/domUtils.js',
-    '/js/core/a11yUtils.js',
-    '/js/core/errorHandler.js',
-    '/js/core/performance.js',
-    '/js/components/header.js',
-    '/js/components/footer.js',
     '/js/app.js',
-    '/pages/header.html',
-    '/pages/footer.html',
     '/images/profile.jpg',
-    OFFLINE_URL
+    '/pages/header.html',
+    '/pages/footer.html'
 ];
 
-// Install service worker and cache core assets
+// Install event - precache resources
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                // Precache core assets
+                console.log('Opened cache');
                 return cache.addAll(PRECACHE_URLS);
             })
             .catch(error => {
@@ -34,56 +28,94 @@ self.addEventListener('install', event => {
     );
 });
 
-// Clean up old caches
+// Activate event - clean up old caches
 self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames
-                    .filter(cacheName => cacheName.startsWith('samuel-rumbley-'))
-                    .filter(cacheName => cacheName !== CACHE_NAME)
-                    .map(cacheName => caches.delete(cacheName))
-            );
-        })
+        caches.keys()
+            .then(cacheNames => {
+                return Promise.all(
+                    cacheNames
+                        .filter(name => name !== CACHE_NAME)
+                        .map(name => caches.delete(name))
+                );
+            })
+            .then(() => {
+                console.log('Old caches removed');
+                return self.clients.claim();
+            })
     );
 });
 
-// Network-first strategy with fallback to cache
+// Fetch event - serve from cache or network
 self.addEventListener('fetch', event => {
     // Skip cross-origin requests
     if (!event.request.url.startsWith(self.location.origin)) {
         return;
     }
-
+    
     event.respondWith(
-        fetch(event.request)
+        caches.match(event.request)
             .then(response => {
-                // Cache successful responses
-                if (response.ok) {
-                    const responseClone = response.clone();
-                    caches.open(CACHE_NAME)
-                        .then(cache => cache.put(event.request, responseClone))
-                        .catch(err => console.error('Cache update failed:', err));
+                if (response) {
+                    return response;
                 }
-                return response;
-            })
-            .catch(() => {
-                // Fallback to cache
-                return caches.match(event.request)
-                    .then(cachedResponse => {
-                        if (cachedResponse) {
-                            return cachedResponse;
+                
+                return fetch(event.request)
+                    .then(response => {
+                        // Check if we received a valid response
+                        if (!response || response.status !== 200 || response.type !== 'basic') {
+                            return response;
                         }
-                        // Show offline page if no cached version exists
-                        if (event.request.mode === 'navigate') {
+                        
+                        // Clone the response
+                        const responseToCache = response.clone();
+                        
+                        // Cache the response
+                        caches.open(CACHE_NAME)
+                            .then(cache => {
+                                cache.put(event.request, responseToCache);
+                            });
+                        
+                        return response;
+                    })
+                    .catch(error => {
+                        console.error('Fetch failed:', error);
+                        
+                        // Show offline page for HTML requests
+                        if (event.request.headers.get('Accept').includes('text/html')) {
                             return caches.match(OFFLINE_URL);
                         }
-                        // Return error response for other requests
-                        return new Response('', {
-                            status: 408,
-                            statusText: 'Request timed out'
-                        });
+                        
+                        return new Response(
+                            'Network error happened',
+                            {
+                                status: 408,
+                                headers: { 'Content-Type': 'text/plain' }
+                            }
+                        );
                     });
             })
+    );
+});
+
+// Handle push notifications
+self.addEventListener('push', event => {
+    const options = {
+        body: event.data.text(),
+        icon: '/images/profile.jpg',
+        badge: '/images/profile.jpg'
+    };
+    
+    event.waitUntil(
+        self.registration.showNotification('CanineCrew Update', options)
+    );
+});
+
+// Handle notification clicks
+self.addEventListener('notificationclick', event => {
+    event.notification.close();
+    
+    event.waitUntil(
+        clients.openWindow('/')
     );
 });

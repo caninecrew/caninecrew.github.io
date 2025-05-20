@@ -1,17 +1,15 @@
-// DOM Manipulation Utilities
+// DOM Utilities
 const DOMUtils = {
-    // Create an element with attributes and properties
+    // Create element with attributes and properties
     createElement: function(tag, attributes = {}, children = []) {
         const element = document.createElement(tag);
         
-        // Set attributes and properties
+        // Set attributes
         Object.entries(attributes).forEach(([key, value]) => {
             if (key === 'className') {
                 element.className = value;
             } else if (key === 'style' && typeof value === 'object') {
                 Object.assign(element.style, value);
-            } else if (key.startsWith('data-')) {
-                element.setAttribute(key, value);
             } else if (key.startsWith('on') && typeof value === 'function') {
                 element.addEventListener(key.slice(2).toLowerCase(), value);
             } else {
@@ -23,68 +21,16 @@ const DOMUtils = {
         children.forEach(child => {
             if (typeof child === 'string') {
                 element.appendChild(document.createTextNode(child));
-            } else if (child instanceof Node) {
+            } else {
                 element.appendChild(child);
             }
         });
         
         return element;
     },
-
-    // Load HTML content into an element
-    async loadContent: function(element, url) {
-        try {
-            Performance.start(`load-content-${url}`);
-            const response = await Utils.fetchWithRetry(url);
-            element.innerHTML = response;
-            Performance.end(`load-content-${url}`);
-            return true;
-        } catch (error) {
-            ErrorHandler.handle(
-                ErrorHandler.create(
-                    `Failed to load content from ${url}`,
-                    ErrorHandler.types.RESOURCE,
-                    { error }
-                )
-            );
-            return false;
-        }
-    },
-
-    // Add loading state to element
-    addLoading: function(element, text = 'Loading...') {
-        const loadingEl = this.createElement('div', {
-            className: 'loading-overlay'
-        }, [
-            this.createElement('div', { className: 'loading-spinner' }),
-            this.createElement('p', {}, [text])
-        ]);
-        
-        element.appendChild(loadingEl);
-        return loadingEl;
-    },
-
-    // Remove loading state
-    removeLoading: function(element) {
-        const loading = element.querySelector('.loading-overlay');
-        if (loading) {
-            loading.remove();
-        }
-    },
-
-    // Show error message
-    showError: function(element, message) {
-        const errorEl = this.createElement('div', {
-            className: 'error-message',
-            role: 'alert'
-        }, [message]);
-        
-        element.appendChild(errorEl);
-        return errorEl;
-    },
-
-    // Create a toast notification
-    showToast: function(message, type = 'info', duration = Config.get('ui.toastDuration')) {
+    
+    // Show toast notification
+    showToast: function(message, type = 'info', duration = 3000) {
         const toast = this.createElement('div', {
             className: `toast toast-${type}`,
             role: 'alert'
@@ -92,67 +38,107 @@ const DOMUtils = {
         
         document.body.appendChild(toast);
         
+        // Trigger animation
+        requestAnimationFrame(() => {
+            toast.classList.add('toast-visible');
+        });
+        
+        // Remove after duration
         setTimeout(() => {
-            toast.classList.add('fade-out');
+            toast.classList.remove('toast-visible');
             setTimeout(() => toast.remove(), 300);
         }, duration);
-        
-        return toast;
     },
-
-    // Create collapsible section
-    createCollapsible: function(header, content) {
-        const container = this.createElement('div', {
-            className: 'collapsible'
+    
+    // Load template from URL
+    loadTemplate: async function(url) {
+        try {
+            Performance.start(`template-${url}`);
+            const response = await fetch(url);
+            const html = await response.text();
+            Performance.end(`template-${url}`);
+            return html;
+        } catch (error) {
+            ErrorHandler.handleResourceError(error, url);
+            return '';
+        }
+    },
+    
+    // Create loading spinner
+    createSpinner: function(size = 'md') {
+        return this.createElement('div', {
+            className: `spinner spinner-${size}`,
+            role: 'status'
         }, [
-            this.createElement('button', {
-                className: 'collapsible-header',
-                'aria-expanded': 'false'
-            }, [header]),
-            this.createElement('div', {
-                className: 'collapsible-content',
-                'aria-hidden': 'true'
-            }, [content])
+            this.createElement('span', {
+                className: 'sr-only'
+            }, ['Loading...'])
         ]);
-        
-        A11yUtils.setupCollapsibleA11y(container);
-        return container;
     },
-
-    // Create carousel
-    createCarousel: function(slides) {
-        const carousel = this.createElement('div', {
-            className: 'carousel',
-            role: 'region',
-            'aria-label': 'Image carousel'
-        });
+    
+    // Show/hide loading state
+    showLoading: function(element, size = 'md') {
+        if (!element) return;
         
-        const slideContainer = this.createElement('div', {
-            className: 'carousel-slides'
-        });
+        const spinner = this.createSpinner(size);
+        element.classList.add('loading');
+        element.appendChild(spinner);
         
-        slides.forEach((slide, index) => {
-            const slideEl = this.createElement('div', {
-                className: 'carousel-slide',
-                'aria-label': `Slide ${index + 1} of ${slides.length}`
-            }, [slide]);
+        return () => {
+            element.classList.remove('loading');
+            spinner.remove();
+        };
+    },
+    
+    // Toggle element visibility
+    toggle: function(element, show) {
+        if (!element) return;
+        
+        if (typeof show === 'boolean') {
+            element.classList.toggle('hidden', !show);
+        } else {
+            element.classList.toggle('hidden');
+        }
+    },
+    
+    // Load image with loading state
+    loadImage: function(url, altText = '') {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
             
-            slideContainer.appendChild(slideEl);
+            Performance.start(`image-${url}`);
+            
+            img.onload = () => {
+                Performance.end(`image-${url}`);
+                resolve(img);
+            };
+            
+            img.onerror = (error) => {
+                ErrorHandler.handleResourceError(error, url);
+                reject(error);
+            };
+            
+            img.src = url;
+            img.alt = altText;
         });
-        
-        carousel.appendChild(slideContainer);
-        A11yUtils.setupCarouselKeyboardNav(carousel);
-        
-        return carousel;
     },
-
-    // Create modal
+    
+    // Update progress bar
+    updateProgress: function(element, value, max = 100) {
+        if (!element) return;
+        
+        const percentage = (value / max) * 100;
+        element.style.width = `${percentage}%`;
+        element.setAttribute('aria-valuenow', value);
+        element.setAttribute('aria-valuemax', max);
+    },
+    
+    // Create modal dialog
     createModal: function(content, options = {}) {
         const modal = this.createElement('div', {
             className: 'modal',
             role: 'dialog',
-            'aria-modal': 'true',
-            'aria-labelledby': options.titleId || undefined
+            'aria-modal': 'true'
         }, [
             this.createElement('div', {
                 className: 'modal-content'
@@ -167,42 +153,37 @@ const DOMUtils = {
         ]);
         
         document.body.appendChild(modal);
-        A11yUtils.trapFocus(modal);
+        
+        // Trap focus in modal
+        const focusableElements = modal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        
+        if (focusableElements.length) {
+            focusableElements[0].focus();
+        }
         
         return modal;
     },
-
-    // Update element visibility with animation
-    toggleVisibility: function(element, isVisible, animate = true) {
-        if (animate) {
-            element.classList.toggle('fade-in', isVisible);
-            element.classList.toggle('fade-out', !isVisible);
+    
+    // Lazy load images
+    setupLazyLoading: function() {
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img.lazy').forEach(img => {
+                imageObserver.observe(img);
+            });
         }
-        
-        setTimeout(() => {
-            A11yUtils.toggleVisibility(element, isVisible);
-        }, animate ? 300 : 0);
-    },
-
-    // Handle infinite scroll
-    setupInfiniteScroll: function(container, loadMoreFn, options = {}) {
-        const observer = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && !container.dataset.loading) {
-                container.dataset.loading = 'true';
-                
-                loadMoreFn()
-                    .then(() => {
-                        container.dataset.loading = 'false';
-                    })
-                    .catch(error => {
-                        container.dataset.loading = 'false';
-                        ErrorHandler.handle(error);
-                    });
-            }
-        }, options);
-        
-        observer.observe(container);
-        return observer;
     }
 };
 

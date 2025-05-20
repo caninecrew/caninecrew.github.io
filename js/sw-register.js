@@ -3,32 +3,63 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/js/sw.js')
             .then(registration => {
-                console.info('ServiceWorker registered: ', registration.scope);
+                console.log('ServiceWorker registration successful:', registration.scope);
                 
-                // Handle updates
-                registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    
-                    // Track state changes
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            // New content is available
-                            showUpdateNotification();
-                        }
+                // Track registration success
+                Performance.trackResourceLoad('service-worker');
+                
+                // Subscribe to push notifications if supported
+                if ('PushManager' in window) {
+                    registration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array(Config.get('push.publicKey'))
+                    })
+                    .then(subscription => {
+                        console.log('Push notification subscription:', subscription);
+                    })
+                    .catch(error => {
+                        ErrorHandler.handle(
+                            ErrorHandler.create(
+                                'Push notification subscription failed',
+                                ErrorHandler.types.RUNTIME,
+                                { error }
+                            )
+                        );
                     });
-                });
+                }
             })
             .catch(error => {
-                console.error('ServiceWorker registration failed: ', error);
                 ErrorHandler.handle(
                     ErrorHandler.create(
-                        'Failed to register service worker',
-                        ErrorHandler.types.RESOURCE,
+                        'ServiceWorker registration failed',
+                        ErrorHandler.types.RUNTIME,
                         { error }
                     )
                 );
             });
+            
+        // Handle service worker updates
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            DOMUtils.showToast('Site updated. Refresh to see changes.', 'info');
+        });
     });
+}
+
+// Convert VAPID public key to array buffer
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+    
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    
+    for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    
+    return outputArray;
 }
 
 // Show update notification
