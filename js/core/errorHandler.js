@@ -1,96 +1,122 @@
-// Error handling utility
+// Error Handler Utility
 const ErrorHandler = {
-    // Error types
+    // Error types for categorization
     types: {
-        RUNTIME: 'runtime',
         NETWORK: 'network',
+        RESOURCE: 'resource',
+        RUNTIME: 'runtime',
         VALIDATION: 'validation',
-        RESOURCE: 'resource'
+        AUTH: 'auth'
     },
-
-    // Create an error object
-    create: function(message, type = this.types.RUNTIME, data = {}) {
+    
+    // Create structured error object
+    create: function(message, type, details = {}) {
         return {
             message,
             type,
-            timestamp: new Date(),
-            data
+            timestamp: new Date().toISOString(),
+            details
         };
     },
-
-    // Handle an error
+    
+    // Handle error with appropriate response
     handle: function(error) {
         // Log error
-        this.log(error);
-        
-        // Show user-friendly message if needed
-        if (this.shouldShowUser(error)) {
-            this.showUserMessage(error);
-        }
+        console.error('[ErrorHandler]', error);
         
         // Track error for analytics
-        this.track(error);
+        if (Performance) {
+            Performance.trackError(error);
+        }
         
-        return error;
-    },
-
-    // Determine if error should be shown to user
-    shouldShowUser: function(error) {
-        return error.type === this.types.NETWORK || 
-               error.type === this.types.RESOURCE;
-    },
-
-    // Show user-friendly error message
-    showUserMessage: function(error) {
-        const container = document.createElement('div');
-        container.className = 'error-message';
-        container.setAttribute('role', 'alert');
+        // Show user-friendly message based on error type
+        let userMessage = 'An unexpected error occurred. Please try again.';
         
-        const message = document.createElement('p');
-        message.textContent = this.getUserMessage(error);
-        
-        const closeBtn = document.createElement('button');
-        closeBtn.innerHTML = '&times;';
-        closeBtn.className = 'close-error';
-        closeBtn.onclick = () => container.remove();
-        
-        container.appendChild(message);
-        container.appendChild(closeBtn);
-        
-        document.body.appendChild(container);
-        
-        // Auto-remove after 5 seconds
-        setTimeout(() => container.remove(), 5000);
-    },
-
-    // Get user-friendly message based on error type
-    getUserMessage: function(error) {
         switch (error.type) {
             case this.types.NETWORK:
-                return 'Connection error. Please check your internet connection and try again.';
+                userMessage = 'Network connection error. Please check your connection and try again.';
+                break;
             case this.types.RESOURCE:
-                return 'Failed to load required resource. Please refresh the page.';
-            default:
-                return 'An error occurred. Please try again.';
+                userMessage = 'Failed to load resource. Please refresh the page or try again later.';
+                break;
+            case this.types.VALIDATION:
+                userMessage = error.message || 'Please check your input and try again.';
+                break;
+            case this.types.AUTH:
+                userMessage = 'Authentication error. Please log in again.';
+                break;
         }
+        
+        // Show error message to user
+        if (DOMUtils) {
+            DOMUtils.showToast(userMessage, 'error');
+        }
+        
+        // Return error for chaining
+        return error;
     },
-
-    // Log error with context
-    log: function(error) {
-        console.error('[ErrorHandler]', {
+    
+    // Handle specific error scenarios
+    handleNetworkError: function(error) {
+        return this.handle(
+            this.create(
+                'Network request failed',
+                this.types.NETWORK,
+                { originalError: error }
+            )
+        );
+    },
+    
+    handleResourceError: function(error, resourceUrl) {
+        return this.handle(
+            this.create(
+                'Failed to load resource',
+                this.types.RESOURCE,
+                { 
+                    originalError: error,
+                    resourceUrl 
+                }
+            )
+        );
+    },
+    
+    handleValidationError: function(message, details) {
+        return this.handle(
+            this.create(
+                message,
+                this.types.VALIDATION,
+                details
+            )
+        );
+    },
+    
+    // Format error for logging
+    formatError: function(error) {
+        return {
             message: error.message,
             type: error.type,
             timestamp: error.timestamp,
-            data: error.data
-        });
+            stack: error.details?.originalError?.stack,
+            details: JSON.stringify(error.details)
+        };
     },
-
-    // Track error for analytics
-    track: function(error) {
-        if (window.Performance) {
-            Performance.end(`error-${error.type}`);
-        }
-        // Add analytics tracking here if needed
+    
+    // Check if error is recoverable
+    isRecoverable: function(error) {
+        return error.type === this.types.NETWORK || 
+               error.type === this.types.RESOURCE;
+    },
+    
+    // Clear error state from an element
+    clearError: function(element) {
+        if (!element) return;
+        
+        // Remove error classes
+        element.classList.remove('error');
+        
+        // Remove error messages
+        const errorMessages = element.querySelectorAll('.error-message');
+        errorMessages.forEach(msg => msg.remove());
     }
 };
 
