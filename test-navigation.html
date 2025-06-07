@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .pass { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+        .nav-links a { display: block; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>Navigation Path Test</h1>
+    <div id="header"></div>
+    
+    <div id="test-results">
+        <h2>Test Results:</h2>
+    </div>
+
+    <script src="js/simple-loader.js"></script>
+    <script>
+        // Test navigation paths after header loads
+        setTimeout(() => {
+            const results = document.getElementById('test-results');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            const tests = [
+                { 
+                    name: 'Education link', 
+                    selector: 'a[href*="education"]',
+                    expectedPath: 'pages/education.html'
+                },
+                { 
+                    name: 'Projects link', 
+                    selector: 'a[href*="projects"]',
+                    expectedPath: 'pages/projects.html'
+                },
+                { 
+                    name: 'Home link', 
+                    selector: 'a[href*="index"]',
+                    expectedPath: 'index.html'
+                }
+            ];
+            
+            tests.forEach(test => {
+                const link = document.querySelector(test.selector);
+                const div = document.createElement('div');
+                div.className = 'test-result';
+                
+                if (link) {
+                    const href = link.getAttribute('href');
+                    const isCorrect = href === test.expectedPath || href.endsWith(test.expectedPath);
+                    div.className += isCorrect ? ' pass' : ' fail';
+                    div.textContent = `${test.name}: ${isCorrect ? 'PASS' : 'FAIL'} (Found: ${href}, Expected: ${test.expectedPath})`;
+                } else {
+                    div.className += ' fail';
+                    div.textContent = `${test.name}: FAIL (Link not found)`;
+                }
+                
+                results.appendChild(div);
+            });
+            
+            // Show all navigation links
+            const linksDiv = document.createElement('div');
+            linksDiv.innerHTML = '<h3>All Navigation Links:</h3><div class="nav-links"></div>';
+            navLinks.forEach(link => {
+                const linkDiv = document.createElement('a');
+                linkDiv.href = link.href;
+                linkDiv.textContent = `${link.textContent}: ${link.getAttribute('href')}`;
+                linksDiv.querySelector('.nav-links').appendChild(linkDiv);
+            });
+            results.appendChild(linksDiv);
+            
+        }, 2000);
+    </script>
+</body>
+</html>
