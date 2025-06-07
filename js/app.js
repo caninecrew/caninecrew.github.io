@@ -34,17 +34,22 @@ class App {
             
             // Initialize features based on current page
             await this.initPageSpecific();
-            
-            this.initialized = true;
-            this.performance.end('app-init');
+              this.initialized = true;
+            if (this.performance.end) {
+                this.performance.end('app-init');
+            }
         } catch (error) {
-            ErrorHandler.handle(
-                ErrorHandler.create(
-                    'Failed to initialize application',
-                    ErrorHandler.types.RUNTIME,
-                    { error }
-                )
-            );
+            console.error('Failed to initialize application:', error);
+            // Don't let app failure break the page completely
+            if (window.ErrorHandler && ErrorHandler.handle) {
+                ErrorHandler.handle(
+                    ErrorHandler.create(
+                        'Failed to initialize application',
+                        ErrorHandler.types.RUNTIME,
+                        { error }
+                    )
+                );
+            }
         }
     }
     

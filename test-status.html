@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page Status</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .pass { background-color: #d4edda; border: 1px solid #c3e6cb; }
+        .fail { background-color: #f8d7da; border: 1px solid #f5c6cb; }
+        .loading { background-color: #fff3cd; border: 1px solid #ffeaa7; }
+    </style>
+</head>
+<body>
+    <h1>Website Status Test</h1>
+    <p>Testing if all pages load properly...</p>
+    
+    <div id="test-results"></div>
+    
+    <script>
+        const pages = [
+            'index.html',
+            'pages/education.html',
+            'pages/experience.html',
+            'pages/projects.html',
+            'pages/achievements.html',
+            'pages/training.html',
+            'pages/travel.html',
+            'pages/scouting.html'
+        ];
+        
+        const resultsContainer = document.getElementById('test-results');
+        
+        async function testPage(page) {
+            try {
+                const response = await fetch(page);
+                if (response.ok) {
+                    const html = await response.text();
+                    // Check if the page has the expected structure
+                    if (html.includes('<div id="header">') && html.includes('<div id="footer">')) {
+                        return { status: 'pass', message: 'Page structure looks good' };
+                    } else {
+                        return { status: 'fail', message: 'Missing header or footer elements' };
+                    }
+                } else {
+                    return { status: 'fail', message: `HTTP ${response.status}` };
+                }
+            } catch (error) {
+                return { status: 'fail', message: error.message };
+            }
+        }
+        
+        async function runTests() {
+            for (const page of pages) {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'test-result loading';
+                resultDiv.innerHTML = `Testing ${page}...`;
+                resultsContainer.appendChild(resultDiv);
+                
+                const result = await testPage(page);
+                resultDiv.className = `test-result ${result.status}`;
+                resultDiv.innerHTML = `${page}: ${result.message}`;
+            }
+        }
+        
+        runTests();
+    </script>
+</body>
+</html>
