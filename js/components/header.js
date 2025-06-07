@@ -6,17 +6,22 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Header element not found in the DOM");
         return;
     }
-    
-    // Check if header is already loaded by simple-loader.js
+      // Check if header is already loaded by simple-loader.js
     if (headerElement.innerHTML.trim() !== '') {
         console.log("Header already loaded by simple-loader, skipping reload");
         // Just initialize functionality without reloading content
         const path = window.location.pathname;
         const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
         
-        // Ensure paths are correct (simple-loader might need adjustment)
-        adjustNavigationPaths(isInPagesDir);
-        initializeHeader();
+        console.log("Current path:", path);
+        console.log("Is in pages directory:", isInPagesDir);
+        
+        // Wait a bit for DOM to be fully ready, then adjust paths
+        setTimeout(() => {
+            console.log("Adjusting navigation paths after timeout");
+            adjustNavigationPaths(isInPagesDir);
+            initializeHeader();
+        }, 100);
         return;
     }
       // Determine path - check if we're in the pages directory or root
@@ -41,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function adjustNavigationPaths(isInPagesDir) {
     console.log(`adjustNavigationPaths called with isInPagesDir: ${isInPagesDir}`);
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('.nav-links a, .nav-links li a, nav a');
     console.log(`Found ${navLinks.length} navigation links`);
     
     navLinks.forEach((link, index) => {
@@ -49,6 +54,8 @@ function adjustNavigationPaths(isInPagesDir) {
         const originalHref = href;
         
         if (href && !href.startsWith('http') && !href.startsWith('#')) {
+            console.log(`Processing link ${index}: ${href}`);
+            
             // Adjust paths based on current location
             if (isInPagesDir) {
                 console.log(`Pages dir mode - processing link ${index}: ${href}`);
@@ -69,7 +76,11 @@ function adjustNavigationPaths(isInPagesDir) {
                 if (href === '../index.html') {
                     link.setAttribute('href', 'index.html');
                     console.log(`  Fixed home link: ${originalHref} → ${link.getAttribute('href')}`);
-                } else if (!href.startsWith('pages/') && href !== 'index.html') {
+                } else if (href === 'index.html') {
+                    // Already correct
+                    console.log(`  Home link already correct: ${href}`);
+                } else if (!href.startsWith('pages/') && href.endsWith('.html')) {
+                    // This is a page link that needs pages/ prefix
                     link.setAttribute('href', 'pages/' + href);
                     console.log(`  Added pages/ prefix: ${originalHref} → ${link.getAttribute('href')}`);
                 } else {
@@ -80,6 +91,15 @@ function adjustNavigationPaths(isInPagesDir) {
             console.log(`Skipping external/special link ${index}: ${href}`);
         }
     });
+    
+    // Double-check our work
+    setTimeout(() => {
+        console.log("Final navigation link check:");
+        const finalLinks = document.querySelectorAll('.nav-links a, .nav-links li a, nav a');
+        finalLinks.forEach((link, index) => {
+            console.log(`  Link ${index}: ${link.textContent.trim()} → ${link.getAttribute('href')}`);
+        });
+    }, 50);
 }
 
 function initializeHeader() {

@@ -26,18 +26,22 @@
                 .catch(reject);
         });
     }
-    
-    // Load header
+      // Load header
     function loadHeader() {
         const headerElement = document.getElementById('header');
         if (!headerElement) return;
         
         const basePath = getBasePath();
         const headerPath = basePath + 'header.html';
+        const isInPagesDir = basePath === '';
         
         simpleFetch(headerPath)
             .then(html => {
                 headerElement.innerHTML = html;
+                // Adjust navigation paths if we're in root directory
+                if (!isInPagesDir) {
+                    adjustNavigationPathsSimple();
+                }
                 initializeHeaderBasic();
             })
             .catch(error => {
@@ -64,6 +68,21 @@
                 `;
                 initializeHeaderBasic();
             });
+    }
+    
+    // Simple path adjustment for navigation links
+    function adjustNavigationPathsSimple() {
+        const navLinks = document.querySelectorAll('.nav-links a, nav a');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                if (href === '../index.html') {
+                    link.setAttribute('href', 'index.html');
+                } else if (href.endsWith('.html') && !href.startsWith('pages/') && href !== 'index.html') {
+                    link.setAttribute('href', 'pages/' + href);
+                }
+            }
+        });
     }
     
     // Load footer
