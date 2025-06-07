@@ -6,13 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Footer element not found in the DOM");
         return;
     }
+      // Determine path - check if we're in the pages directory or root
+    const path = window.location.pathname;
+    const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
     
-    // Determine if we're on the root or in a subdirectory
-    const isRoot = window.location.pathname === '/' || 
-                  window.location.pathname.endsWith('index.html') ||
-                  !window.location.pathname.includes('/pages/');
-    
-    const footerPath = isRoot ? 'pages/footer.html' : '../pages/footer.html';
+    const footerPath = isInPagesDir ? 'footer.html' : 'pages/footer.html';
     console.log(`Loading footer from: ${footerPath}`);
     
     // Fetch the footer content

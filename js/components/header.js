@@ -6,13 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Header element not found in the DOM");
         return;
     }
+      // Determine path - check if we're in the pages directory or root
+    const path = window.location.pathname;
+    const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
     
-    // Determine path
-    const isRoot = window.location.pathname === '/' || 
-                  window.location.pathname.endsWith('index.html') ||
-                  !window.location.pathname.includes('/pages/');
-    
-    const headerPath = isRoot ? 'pages/header.html' : '../pages/header.html';
+    const headerPath = isInPagesDir ? 'header.html' : 'pages/header.html';
     
     // Load header content using enhanced Utils
     Utils.loadWithState('header', async () => {
@@ -32,12 +30,13 @@ function initializeHeader() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const closeMenuBtn = document.querySelector('.close-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    
-    // Add active class to current page link
+      // Add active class to current page link
     links.forEach(link => {
-        if ((currentPage === 'index.html' && (link.getAttribute('href') === '/' || 
-            link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '')) || 
-            (link.getAttribute('href') && link.getAttribute('href').includes(currentPage))) {
+        const href = link.getAttribute('href');
+        const linkPage = href ? href.split('/').pop() : '';
+        
+        if ((currentPage === 'index.html' && (href === '../index.html' || href === 'index.html' || href === '/')) || 
+            (linkPage && linkPage === currentPage)) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
         }

@@ -1,7 +1,12 @@
 // Service Worker Registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/js/sw.js')
+        // Determine the correct path for the service worker
+        const path = window.location.pathname;
+        const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
+        const swPath = isInPagesDir ? '../js/sw.js' : '/js/sw.js';
+        
+        navigator.serviceWorker.register(swPath)
             .then(registration => {
                 console.log('ServiceWorker registration successful:', registration.scope);
                 
