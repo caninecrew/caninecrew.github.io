@@ -3,12 +3,14 @@
 
 (function() {
     'use strict';
-    
-    // Simple path detection
+      // Simple path detection
     function getBasePath() {
         const path = window.location.pathname;
         const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
-        return isInPagesDir ? '' : 'pages/';
+        console.log(`🗺️ Path detection: ${path}, isInPagesDir: ${isInPagesDir}`);
+        const basePath = isInPagesDir ? '' : 'pages/';
+        console.log(`🗺️ Base path for loading: "${basePath}"`);
+        return basePath;
     }
     
     // Simple fetch with timeout
@@ -34,13 +36,18 @@
         const basePath = getBasePath();
         const headerPath = basePath + 'header.html';
         const isInPagesDir = basePath === '';
-        
-        simpleFetch(headerPath)
+          simpleFetch(headerPath)
             .then(html => {
+                console.log(`📄 Header loaded from: ${headerPath}`);
                 headerElement.innerHTML = html;
+                console.log(`📍 isInPagesDir: ${isInPagesDir}, will adjust paths: ${!isInPagesDir}`);
+                
                 // Adjust navigation paths if we're in root directory
                 if (!isInPagesDir) {
+                    console.log('🔧 Calling adjustNavigationPathsSimple...');
                     adjustNavigationPathsSimple();
+                } else {
+                    console.log('ℹ️ In pages directory, no path adjustment needed');
                 }
                 initializeHeaderBasic();
             })
@@ -69,19 +76,37 @@
                 initializeHeaderBasic();
             });
     }
-    
-    // Simple path adjustment for navigation links
+      // Simple path adjustment for navigation links
     function adjustNavigationPathsSimple() {
+        console.log('🔧 adjustNavigationPathsSimple called');
         const navLinks = document.querySelectorAll('.nav-links a, nav a');
-        navLinks.forEach(link => {
+        console.log(`Found ${navLinks.length} navigation links to adjust`);
+        
+        navLinks.forEach((link, index) => {
             const href = link.getAttribute('href');
+            const originalHref = href;
+            console.log(`Processing link ${index}: ${href}`);
+            
             if (href && !href.startsWith('http') && !href.startsWith('#')) {
                 if (href === '../index.html') {
                     link.setAttribute('href', 'index.html');
+                    console.log(`  ✅ Fixed home link: ${originalHref} → ${link.getAttribute('href')}`);
                 } else if (href.endsWith('.html') && !href.startsWith('pages/') && href !== 'index.html') {
                     link.setAttribute('href', 'pages/' + href);
+                    console.log(`  ✅ Added pages/ prefix: ${originalHref} → ${link.getAttribute('href')}`);
+                } else {
+                    console.log(`  ℹ️ No change needed: ${href}`);
                 }
+            } else {
+                console.log(`  ⏭️ Skipping external/special link: ${href}`);
             }
+        });
+        
+        // Verify the changes
+        console.log('🔍 Final verification:');
+        const finalLinks = document.querySelectorAll('.nav-links a, nav a');
+        finalLinks.forEach((link, index) => {
+            console.log(`  Link ${index}: ${link.textContent.trim()} → ${link.getAttribute('href')}`);
         });
     }
     
