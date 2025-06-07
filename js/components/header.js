@@ -11,11 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
     
     const headerPath = isInPagesDir ? 'header.html' : 'pages/header.html';
-    
-    // Load header content using enhanced Utils
+      // Load header content using enhanced Utils
     Utils.loadWithState('header', async () => {
         const html = await Utils.fetchWithRetry(headerPath);
         headerElement.innerHTML = html;
+        
+        // Adjust navigation links for current context
+        adjustNavigationPaths(isInPagesDir);
         
         // Initialize header functionality after content is loaded
         initializeHeader();
@@ -23,6 +25,36 @@ document.addEventListener('DOMContentLoaded', function() {
         Utils.log(`Error loading header: ${error}`, 'error', 'Header');
     });
 });
+
+function adjustNavigationPaths(isInPagesDir) {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        
+        if (href && !href.startsWith('http') && !href.startsWith('#')) {
+            // Adjust paths based on current location
+            if (isInPagesDir) {
+                // We're in /pages/ directory - links should be relative to pages
+                if (href === '../index.html') {
+                    // Keep home link as is
+                    return;
+                }
+                // For other links, ensure they don't have ../ prefix
+                if (href.startsWith('../')) {
+                    link.setAttribute('href', href.substring(3));
+                }
+            } else {
+                // We're in root directory - links should point to pages/
+                if (href === '../index.html') {
+                    link.setAttribute('href', 'index.html');
+                } else if (!href.startsWith('pages/') && href !== 'index.html') {
+                    link.setAttribute('href', 'pages/' + href);
+                }
+            }
+        }
+    });
+}
 
 function initializeHeader() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
