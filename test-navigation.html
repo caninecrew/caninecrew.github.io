@@ -20,12 +20,13 @@
         <h2>Test Results:</h2>
     </div>
 
-    <script src="js/simple-loader.js"></script>
-    <script>
+    <script src="js/simple-loader.js"></script>    <script>
         // Test navigation paths after header loads
         setTimeout(() => {
             const results = document.getElementById('test-results');
             const navLinks = document.querySelectorAll('.nav-links a');
+            
+            console.log('Found navigation links:', navLinks.length);
             
             const tests = [
                 { 
@@ -67,14 +68,25 @@
             const linksDiv = document.createElement('div');
             linksDiv.innerHTML = '<h3>All Navigation Links:</h3><div class="nav-links"></div>';
             navLinks.forEach(link => {
-                const linkDiv = document.createElement('a');
-                linkDiv.href = link.href;
-                linkDiv.textContent = `${link.textContent}: ${link.getAttribute('href')}`;
+                const linkDiv = document.createElement('div');
+                linkDiv.style.margin = '5px 0';
+                linkDiv.innerHTML = `<strong>${link.textContent}:</strong> <code>${link.getAttribute('href')}</code>`;
                 linksDiv.querySelector('.nav-links').appendChild(linkDiv);
             });
             results.appendChild(linksDiv);
             
-        }, 2000);
+            // Debug info
+            const debugDiv = document.createElement('div');
+            debugDiv.innerHTML = `
+                <h3>Debug Info:</h3>
+                <p><strong>Current URL:</strong> ${window.location.href}</p>
+                <p><strong>Pathname:</strong> ${window.location.pathname}</p>
+                <p><strong>Is in pages dir:</strong> ${window.location.pathname.includes('/pages/')}</p>
+                <p><strong>Header content loaded:</strong> ${document.getElementById('header').innerHTML.length > 0 ? 'Yes' : 'No'}</p>
+            `;
+            results.appendChild(debugDiv);
+            
+        }, 3000);
     </script>
 </body>
 </html>
