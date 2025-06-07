@@ -1,12 +1,12 @@
 // Main App Class
 class App {
     constructor() {
-        // Initialize core utilities
-        this.config = window.Config;
-        this.utils = window.Utils;
-        this.domUtils = window.DOMUtils;
-        this.a11y = window.A11yUtils;
-        this.performance = window.Performance;
+        // Initialize core utilities with fallbacks
+        this.config = window.Config || {};
+        this.utils = window.Utils || {};
+        this.domUtils = window.DOMUtils || {};
+        this.a11y = window.A11yUtils || {};
+        this.performance = window.Performance || { start: () => {}, end: () => {} };
         
         // State
         this.initialized = false;
@@ -16,7 +16,9 @@ class App {
         if (this.initialized) return;
         
         try {
-            this.performance.start('app-init');
+            if (this.performance.start) {
+                this.performance.start('app-init');
+            }
             
             // Initialize configuration
             await this.initConfig();
