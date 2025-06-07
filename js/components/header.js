@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Header element not found in the DOM");
         return;
     }
+    
+    // Check if header is already loaded by simple-loader.js
+    if (headerElement.innerHTML.trim() !== '') {
+        console.log("Header already loaded by simple-loader, skipping reload");
+        // Just initialize functionality without reloading content
+        const path = window.location.pathname;
+        const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
+        
+        // Ensure paths are correct (simple-loader might need adjustment)
+        adjustNavigationPaths(isInPagesDir);
+        initializeHeader();
+        return;
+    }
       // Determine path - check if we're in the pages directory or root
     const path = window.location.pathname;
     const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
