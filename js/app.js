@@ -60,13 +60,24 @@ class App {
         // Apply theme
         document.documentElement.setAttribute('data-theme', this.config.get('ui.theme'));
     }
-    
-    async loadCommonElements() {
-        // Load header
-        await this.utils.loadHTMLFile('header', '/pages/header.html');
+      async loadCommonElements() {
+        // Check if header is already loaded by simple-loader.js or header.js
+        const headerElement = document.getElementById('header');
+        const footerElement = document.getElementById('footer');
         
-        // Load footer
-        await this.utils.loadHTMLFile('footer', '/pages/footer.html');
+        if (headerElement && headerElement.innerHTML.trim() !== '') {
+            console.log('Header already loaded by simple-loader/header.js, skipping app.js reload');
+        } else {
+            // Load header only if not already loaded
+            await this.utils.loadHTMLFile('header', '/pages/header.html');
+        }
+        
+        if (footerElement && footerElement.innerHTML.trim() !== '') {
+            console.log('Footer already loaded by simple-loader, skipping app.js reload');
+        } else {
+            // Load footer only if not already loaded
+            await this.utils.loadHTMLFile('footer', '/pages/footer.html');
+        }
     }
     
     initComponents() {
