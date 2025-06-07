@@ -40,31 +40,44 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function adjustNavigationPaths(isInPagesDir) {
+    console.log(`adjustNavigationPaths called with isInPagesDir: ${isInPagesDir}`);
     const navLinks = document.querySelectorAll('.nav-links a');
+    console.log(`Found ${navLinks.length} navigation links`);
     
-    navLinks.forEach(link => {
+    navLinks.forEach((link, index) => {
         const href = link.getAttribute('href');
+        const originalHref = href;
         
         if (href && !href.startsWith('http') && !href.startsWith('#')) {
             // Adjust paths based on current location
             if (isInPagesDir) {
+                console.log(`Pages dir mode - processing link ${index}: ${href}`);
                 // We're in /pages/ directory - links should be relative to pages
                 if (href === '../index.html') {
                     // Keep home link as is
+                    console.log(`  Keeping home link as-is: ${href}`);
                     return;
                 }
                 // For other links, ensure they don't have ../ prefix
                 if (href.startsWith('../')) {
                     link.setAttribute('href', href.substring(3));
+                    console.log(`  Removed ../ prefix: ${originalHref} → ${link.getAttribute('href')}`);
                 }
             } else {
+                console.log(`Root dir mode - processing link ${index}: ${href}`);
                 // We're in root directory - links should point to pages/
                 if (href === '../index.html') {
                     link.setAttribute('href', 'index.html');
+                    console.log(`  Fixed home link: ${originalHref} → ${link.getAttribute('href')}`);
                 } else if (!href.startsWith('pages/') && href !== 'index.html') {
                     link.setAttribute('href', 'pages/' + href);
+                    console.log(`  Added pages/ prefix: ${originalHref} → ${link.getAttribute('href')}`);
+                } else {
+                    console.log(`  No change needed for: ${href}`);
                 }
             }
+        } else {
+            console.log(`Skipping external/special link ${index}: ${href}`);
         }
     });
 }
