@@ -27,21 +27,39 @@ document.addEventListener('DOMContentLoaded', function() {
       // Determine path - check if we're in the pages directory or root
     const path = window.location.pathname;
     const isInPagesDir = path.includes('/pages/') || path.split('/').slice(-2, -1)[0] === 'pages';
+      const headerPath = isInPagesDir ? 'header.html' : 'pages/header.html';
     
-    const headerPath = isInPagesDir ? 'header.html' : 'pages/header.html';
-      // Load header content using enhanced Utils
-    Utils.loadWithState('header', async () => {
-        const html = await Utils.fetchWithRetry(headerPath);
-        headerElement.innerHTML = html;
-        
-        // Adjust navigation links for current context
-        adjustNavigationPaths(isInPagesDir);
-        
-        // Initialize header functionality after content is loaded
-        initializeHeader();
-    }).catch(error => {
-        Utils.log(`Error loading header: ${error}`, 'error', 'Header');
-    });
+    // Use Utils if available, otherwise fallback to simple fetch
+    if (window.Utils && window.Utils.loadWithState) {
+        // Load header content using enhanced Utils
+        Utils.loadWithState('header', async () => {
+            const html = await Utils.fetchWithRetry(headerPath);
+            headerElement.innerHTML = html;
+            
+            // Adjust navigation links for current context
+            adjustNavigationPaths(isInPagesDir);
+            
+            // Initialize header functionality after content is loaded
+            initializeHeader();
+        }).catch(error => {
+            Utils.log(`Error loading header: ${error}`, 'error', 'Header');
+        });
+    } else {
+        // Fallback to simple fetch
+        fetch(headerPath)
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.text();
+            })
+            .then(html => {
+                headerElement.innerHTML = html;
+                adjustNavigationPaths(isInPagesDir);
+                initializeHeader();
+            })
+            .catch(error => {
+                console.error('Error loading header:', error);
+            });
+    }
 });
 
 function adjustNavigationPaths(isInPagesDir) {
