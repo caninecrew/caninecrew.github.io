@@ -83,9 +83,14 @@ class App {
     initComponents() {
         // Initialize all components in the page
         this.utils.initializeComponents(document);
-        
+
         // Set up lazy loading
         this.utils.lazyLoadImages();
+
+        // Reveal any elements using the fade-in utility
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.classList.add('visible');
+        });
     }
     
     setupEventListeners() {
