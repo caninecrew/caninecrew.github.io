@@ -87,7 +87,7 @@
             const originalHref = href;
             console.log(`Processing link ${index}: ${href}`);
             
-            if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('/')) {
+            if (href && !href.startsWith('http') && !href.startsWith('#')) {
                 if (href === '../index.html') {
                     link.setAttribute('href', 'index.html');
                     console.log(`  ✅ Fixed home link: ${originalHref} → ${link.getAttribute('href')}`);
