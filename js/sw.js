@@ -1,5 +1,5 @@
 // Service Worker
-const CACHE_NAME = 'caninecrew-v1';
+const CACHE_NAME = 'caninecrew-v2';
 const OFFLINE_URL = '/offline.html';
 
 // Resources to cache
