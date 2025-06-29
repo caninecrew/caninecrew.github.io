@@ -71,7 +71,7 @@ function adjustNavigationPaths(isInPagesDir) {
         const href = link.getAttribute('href');
         const originalHref = href;
         
-        if (href && !href.startsWith('http') && !href.startsWith('#')) {
+        if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('/')) {
             console.log(`Processing link ${index}: ${href}`);
             
             // Adjust paths based on current location
