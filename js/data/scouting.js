@@ -1,29 +1,56 @@
-// Load dynamic sections
+// Load dynamic sections for the scouting page
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('../pages/timeline.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('timeline-section-container').innerHTML = data;
-            initializeCollapsibles(); // Initialize collapsibles after loading content
-        })
-        .catch(error => console.error('Error loading timeline:', error));
+    // Function to load HTML content into a container
+    const loadSection = (url, containerId) => {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${url}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = data;
+                    // Re-initialize any components that were loaded
+                    if (window.initializeCollapsibles) {
+                        window.initializeCollapsibles();
+                    }
+                }
+            })
+            .catch(error => console.error(`Error loading section from ${url}:`, error));
+    };
 
-    fetch('../pages/leadership-positions.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('leadership-section-container').innerHTML = data;
-            // Add a small delay to ensure DOM elements are fully rendered
-            setTimeout(() => {
-                initializeCollapsibles(); // Initialize collapsibles after loading content
-            }, 100);
-        })
-        .catch(error => console.error('Error loading leadership positions:', error));
+    // Load all scouting page sections
+    loadSection('../pages/timeline.html', 'timeline-section');
+    loadSection('../pages/leadership-positions.html', 'leadership-section');
+    loadSection('../pages/merit-badges.html', 'merit-badges-section');
+});
 
-    fetch('../pages/merit-badges.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('merit-badges-section-container').innerHTML = data;
-            initializeCollapsibles(); // Initialize collapsibles after loading content
-        })
-        .catch(error => console.error('Error loading merit badges:', error));
+// Modal functionality for the Eagle Project gallery
+function openModal(src, alt) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionText = document.getElementById("caption");
+    
+    if (modal && modalImg && captionText) {
+        modal.style.display = "block";
+        modalImg.src = src;
+        captionText.innerHTML = alt;
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
 });
