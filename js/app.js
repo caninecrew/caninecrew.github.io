@@ -1,3 +1,53 @@
+/**
+ * Initializes all collapsible components on the page.
+ * This function is idempotent and can be called multiple times; it will only initialize
+ * buttons that have not yet been processed.
+ */
+function initializeCollapsibles() {
+  // Find all collapsible buttons that have not been initialized
+  const collapsibles = document.querySelectorAll('.collapsible:not([data-collapsible-init])');
+
+  collapsibles.forEach(button => {
+    // Mark the button as initialized to prevent re-adding listeners
+    button.setAttribute('data-collapsible-init', 'true');
+    
+    // Set initial accessibility state
+    button.setAttribute('aria-expanded', 'false');
+
+    button.addEventListener('click', function() {
+      // Toggle the 'active' class for styling
+      this.classList.toggle('active');
+      const isActive = this.classList.contains('active');
+      
+      // Update accessibility state
+      this.setAttribute('aria-expanded', isActive);
+
+      // Find the content panel to show or hide
+      let content;
+      // The merit badge buttons are inside an H3, others are not
+      if (this.parentElement.tagName === 'H3') {
+        content = this.parentElement.nextElementSibling;
+      } else {
+        content = this.nextElementSibling;
+      }
+
+      // Toggle the display if the content panel exists
+      if (content) {
+        if (isActive) {
+          // Merit badge lists use a grid layout
+          if (content.classList.contains('merit-badge-list')) {
+            content.style.display = 'grid';
+          } else {
+            content.style.display = 'block';
+          }
+        } else {
+          content.style.display = 'none';
+        }
+      }
+    });
+  });
+}
+
 // Main App Class
 class App {
     constructor() {
@@ -22,9 +72,6 @@ class App {
             
             // Initialize configuration
             await this.initConfig();
-            
-            // Load header and footer
-            await this.loadCommonElements();
             
             // Initialize components
             this.initComponents();
@@ -55,37 +102,22 @@ class App {
     
     async initConfig() {
         // Load and apply configuration
-        await this.config.init();
+        if (this.config.init) {
+            await this.config.init();
+        }
         
         // Apply theme
-        document.documentElement.setAttribute('data-theme', this.config.get('ui.theme'));
-    }
-      async loadCommonElements() {
-        // Check if header is already loaded by simple-loader.js or header.js
-        const headerElement = document.getElementById('header');
-        const footerElement = document.getElementById('footer');
-        
-        if (headerElement && headerElement.innerHTML.trim() !== '') {
-            console.log('Header already loaded by simple-loader/header.js, skipping app.js reload');
-        } else {
-            // Load header only if not already loaded
-            await this.utils.loadHTMLFile('header', '/pages/header.html');
-        }
-        
-        if (footerElement && footerElement.innerHTML.trim() !== '') {
-            console.log('Footer already loaded by simple-loader, skipping app.js reload');
-        } else {
-            // Load footer only if not already loaded
-            await this.utils.loadHTMLFile('footer', '/pages/footer.html');
-        }
+        document.documentElement.setAttribute('data-theme', this.config.get ? this.config.get('ui.theme') : 'light');
     }
     
     initComponents() {
         // Initialize all components in the page
-        this.utils.initializeComponents(document);
+        initializeCollapsibles();
 
         // Set up lazy loading
-        this.utils.lazyLoadImages();
+        if (this.utils.lazyLoadImages) {
+            this.utils.lazyLoadImages();
+        }
 
         // Reveal any elements using the fade-in utility
         document.querySelectorAll('.fade-in').forEach(el => {
@@ -103,9 +135,12 @@ class App {
         // Back to top button
         const backToTop = document.getElementById('back-to-top');
         if (backToTop) {
-            window.addEventListener('scroll', this.utils.throttle(() => {
+            const throttledScroll = this.utils.throttle ? this.utils.throttle(() => {
                 backToTop.classList.toggle('visible', window.scrollY > 300);
-            }, 200));
+            }, 200) : () => {
+                backToTop.classList.toggle('visible', window.scrollY > 300);
+            };
+            window.addEventListener('scroll', throttledScroll);
             
             backToTop.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -137,39 +172,43 @@ class App {
         if (!mapContainer) return;
         
         try {
-            this.performance.start('map-init');
+            if (this.performance.start) this.performance.start('map-init');
             
             // Set up map with loading state
             const mapLoading = document.getElementById('map-loading');
             if (mapLoading) mapLoading.style.display = 'flex';
             
             // Initialize map (assuming Leaflet is loaded)
-            const map = L.map('map').setView(
-                [this.config.get('map.defaultCenter.lat'), 
-                 this.config.get('map.defaultCenter.lng')],
-                this.config.get('map.defaultZoom')
-            );
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
+            if (typeof L !== 'undefined') {
+                const map = L.map('map').setView(
+                    [this.config.get('map.defaultCenter.lat'), 
+                     this.config.get('map.defaultCenter.lng')],
+                    this.config.get('map.defaultZoom')
+                );
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+            }
             
             // Hide loading state
             if (mapLoading) mapLoading.style.display = 'none';
             
-            this.performance.end('map-init');
+            if (this.performance.end) this.performance.end('map-init');
         } catch (error) {
             // Show error state
             const mapError = document.getElementById('map-error');
             if (mapError) mapError.style.display = 'flex';
             
-            ErrorHandler.handle(
-                ErrorHandler.create(
-                    'Failed to initialize map',
-                    ErrorHandler.types.RESOURCE,
-                    { error }
-                )
-            );
+            if (window.ErrorHandler && ErrorHandler.handle) {
+                ErrorHandler.handle(
+                    ErrorHandler.create(
+                        'Failed to initialize map',
+                        ErrorHandler.types.RESOURCE,
+                        { error }
+                    )
+                );
+            }
         }
     }
     
@@ -181,28 +220,30 @@ class App {
             e.preventDefault();
             
             try {
-                this.domUtils.addLoading(form, 'Sending...');
+                if (this.domUtils.addLoading) this.domUtils.addLoading(form, 'Sending...');
                 
                 // Add form submission logic here
                 
-                this.domUtils.removeLoading(form);
-                this.domUtils.showToast('Message sent successfully!', 'success');
+                if (this.domUtils.removeLoading) this.domUtils.removeLoading(form);
+                if (this.domUtils.showToast) this.domUtils.showToast('Message sent successfully!', 'success');
             } catch (error) {
-                this.domUtils.removeLoading(form);
-                ErrorHandler.handle(
-                    ErrorHandler.create(
-                        'Failed to send message',
-                        ErrorHandler.types.NETWORK,
-                        { error }
-                    )
-                );
+                if (this.domUtils.removeLoading) this.domUtils.removeLoading(form);
+                if (window.ErrorHandler && ErrorHandler.handle) {
+                    ErrorHandler.handle(
+                        ErrorHandler.create(
+                            'Failed to send message',
+                            ErrorHandler.types.NETWORK,
+                            { error }
+                        )
+                    );
+                }
             }
         });
     }
     
     initAchievementsPage() {
         const gallery = document.querySelector('.photo-gallery');
-        if (!gallery) return;
+        if (!gallery || !this.domUtils.setupInfiniteScroll) return;
         
         // Set up infinite scroll for gallery
         this.domUtils.setupInfiniteScroll(
@@ -217,17 +258,20 @@ class App {
     }
     
     toggleTheme() {
+        if (!this.config.get || !this.config.set) return;
         const currentTheme = this.config.get('ui.theme');
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
         this.config.set('ui.theme', newTheme);
         document.documentElement.setAttribute('data-theme', newTheme);
         
-        this.domUtils.showToast(
-            `Switched to ${newTheme} theme`,
-            'info',
-            2000
-        );
+        if (this.domUtils.showToast) {
+            this.domUtils.showToast(
+                `Switched to ${newTheme} theme`,
+                'info',
+                2000
+            );
+        }
     }
 }
 
@@ -236,4 +280,3 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = new App();
     app.init();
 });
-
