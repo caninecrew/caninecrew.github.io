@@ -62,21 +62,119 @@
 
         <div class="container">
             <!-- Timeline Section -->
-            <section id="timeline-section" class="content-box loading">
+            <section class="timeline-section content-box" id="timeline-section">
                 <h2>Scouting Journey Timeline</h2>
-                <!-- content from pages/timeline.html will be loaded here -->
+                <div class="timeline-wrapper">
+                    <div class="timeline horizontal">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2010</div>
+                            <div class="timeline-content">
+                                <h3>Started in Cub Scouts</h3>
+                                <p>Began my scouting journey in Pack 253</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">June 2015</div>
+                            <div class="timeline-content">
+                                <h3>Joined Scouts BSA</h3>
+                                <p>Joined Troop 1204 and earned Scout rank</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">September 2015</div>
+                            <div class="timeline-content">
+                                <h3>Tenderfoot Rank</h3>
+                                <p>Completed first major rank advancement</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 2016</div>
+                            <div class="timeline-content">
+                                <h3>Second Class & First Class</h3>
+                                <p>Achieved two ranks in rapid succession</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Mar 2017</div>
+                            <div class="timeline-content">
+                                <h3>Star Rank</h3>
+                                <p>Earned six merit badges and demonstrated leadership</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Aug 2017</div>
+                            <div class="timeline-content">
+                                <h3>Order of the Arrow</h3>
+                                <p>Inducted into Scouting's National Honor Society</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">May 2018</div>
+                            <div class="timeline-content">
+                                <h3>Life Rank</h3>
+                                <p>Final rank before Eagle Scout</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">February 28, 2021</div>
+                            <div class="timeline-content">
+                                <h3>Eagle Scout</h3>
+                                <p>Achieved the rank of Eagle Scout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Leadership Section -->
-            <section id="leadership-section" class="content-box loading">
+            <section class="leadership-section content-box" id="leadership-section">
                 <h2>Leadership Experience</h2>
-                <!-- content from pages/leadership-positions.html will be loaded here -->
+                <div id="leadership-roles-content" class="leadership-grid">
+                     <div class="organization-group">
+                        <button class="collapsible">Order of the Arrow</button>
+                        <div class="org-content" style="display: none;">
+                            <div class="leadership-items">
+                                <div class="suborg-section">
+                                    <h4 class="suborg-header">National Order of the Arrow</h4>
+                                    <div class="role-progression">
+                                        <div class="leadership-item">
+                                            <div class="role">National Communications Subcommittee</div>
+                                            <div class="date">January 2024 - October 2024</div>
+                                            <div class="description">Serving on the national subcommittee for communications strategy</div>
+                                        </div>
+                                        <div class="leadership-item">
+                                            <div class="role">National Conference Staff</div>
+                                            <div class="date">2024</div>
+                                            <div class="positions">
+                                                <span>Technology Staff (July 29 - August 3)</span>
+                                                <span>Communications Staff (February - May)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="organization-group">
+                        <button class="collapsible">Scouting America</button>
+                        <div class="org-content" style="display: none;">
+                           <!-- Scouting America roles here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="gemini-feature">
+                    <button id="generate-leadership-reflection" class="button button-primary">✨ Generate Leadership Reflection</button>
+                    <div id="leadership-reflection-output" class="gemini-output"></div>
+                    <div id="leadership-loading" class="loading-indicator" style="display: none;">Generating...</div>
+                </div>
             </section>
 
             <!-- Merit Badges Section -->
-            <section id="merit-badges-section" class="content-box loading">
+            <section class="merit-badges content-box" id="merit-badges-section">
                 <h2>Merit Badge Achievement</h2>
-                <!-- content from pages/merit-badges.html will be loaded here -->
+                <div id="merit-badges-content">
+                    <!-- Merit badges content will be dynamically inserted here if needed, or can be hardcoded -->
+                </div>
             </section>
 
             <!-- Eagle Project Section -->
@@ -85,12 +183,17 @@
                 <div class="project-showcase">
                     <div class="project-card">
                         <div class="project-content">
-                            <h3>Masks for the Community</h3>
+                            <h3 id="project-title">Masks for the Community</h3>
                             <div class="project-meta">
                                 <span class="project-date"><i class="fas fa-calendar-alt"></i> Completed: February 28, 2021</span>
                                 <span class="project-location"><i class="fas fa-map-marker-alt"></i> Mt. Juliet, TN</span>
                             </div>
-                            <p>For my Eagle Scout project, I led a team of volunteers to produce and distribute over 500 handmade face masks to local schools and community members during the COVID-19 pandemic. This project involved coordinating volunteers, managing materials, and ensuring quality control to provide essential protective equipment to those in need.</p>
+                            <p id="project-description">For my Eagle Scout project, I led a team of volunteers to produce and distribute over 500 handmade face masks to local schools and community members during the COVID-19 pandemic. This project involved coordinating volunteers, managing materials, and ensuring quality control to provide essential protective equipment to those in need.</p>
+                            <div class="gemini-feature">
+                                <button id="summarize-project-impact" class="button button-primary">✨ Summarize Project Impact</button>
+                                <div id="project-impact-output" class="gemini-output"></div>
+                                <div id="project-loading" class="loading-indicator" style="display: none;">Generating...</div>
+                            </div>
                         </div>
                         <div class="project-gallery">
                             <img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official" onclick="openModal(this.src, this.alt)">
@@ -107,7 +210,7 @@
     </main>
 
     <!-- Image Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
+    <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage">
         <div id="caption"></div>
@@ -117,6 +220,7 @@
     <div id="footer"></div>
 
     <script src="../js/simple-loader.js"></script>
+    <script src="../js/components/collapsible.js"></script>
     <script src="../js/data/scouting.js"></script>
     <script src="../js/app.js"></script>
 </body>
