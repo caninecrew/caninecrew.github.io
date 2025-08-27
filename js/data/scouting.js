@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (container) {
                     container.innerHTML = data;
                     // Re-initialize any components that were loaded
-                    if (window.initializeCollapsibles) {
-                        window.initializeCollapsibles();
+                    if (window.reinitializeCollapsibles) {
+                        window.reinitializeCollapsibles();
                     }
                 }
             })
