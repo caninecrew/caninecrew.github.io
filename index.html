@@ -3,115 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley - Portfolio showcasing education, experience, and scouting achievements">
+    <meta name="description" content="Samuel Rumbley - Portfolio showcasing education, experience, and scouting achievements.">
     <meta name="keywords" content="Samuel Rumbley, business information technology, scouting, leadership, Tennessee">
-    <meta name="author" content="Samuel Rumbley">    <title>Home</title>
+    <meta name="author" content="Samuel Rumbley">
+    <title>Samuel Rumbley - Home</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-          crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-            crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="header"></div>
+
     <main class="container">
-        <section class="intro">
-            <h2>Welcome to My Website</h2>
-            <img src="images/profile.jpg" alt="Samuel Rumbley" class="profile-picture">
-            <p>Hello! I'm Samuel Rumbley. Welcome to my personal website where you can learn more about my education, work experience, projects, and more.</p>
-            <p>Feel free to explore the different sections of my site to get to know me better and see what I've been working on.</p>
-        </section>
-        <section class="quadrants">
-            <!-- Education Quadrant -->
-            <div class="quadrant">
-                <h2>Education</h2>
-                <p>I'm currently pursuing a Bachelor's degree in Business Information and Technology at Tennessee Technological University. My goal is to combine my experience in education with my technical expertise to make a meaningful impact in various fields.</p>
-                <div class="button-container">
-                    <a href="pages/education.html">Education</a>
-                </div>
-            </div>
-            
-            <!-- Experience Quadrant -->
-            <div class="quadrant">
-                <h2>Experience</h2>
-                <p>During my time in college, I have been serving as a Substitute Teacher for Wilson and Putnam County Schools, where I utilize critical thinking and leadership skills to create a safe and effective learning environment.</p>
-                <div class="button-container">
-                    <a href="pages/experience.html">Experience</a>
-                </div>
-            </div>
-            
-            <div class="quadrant">
-                <h2>Interests</h2>
-                <ul>
-                    <li>Data Analysis</li>
-                    <li>Cybersecurity</li>
-                    <li>Technology Trends</li>
-                    <li>Leadership</li>
-                    <li>Event Planning</li>
-                </ul>
-            </div>
-            <div class="quadrant">
-                <h2>Connect with Me</h2>
-                <p>Feel free to connect with me on <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank">LinkedIn</a>.</p>
-            </div>
-            <div class="quadrant">
-                <h2>Featured Awards</h2>
-                <ul id="featured-awards-list">
-                    <!-- JavaScript will populate this list -->
-                </ul>
-                <div class="button-container">
-                    <a href="pages/achievements.html">Awards</a>
-                </div>
-            </div>
-            <div class="quadrant">
-                <h2>Download Resume</h2>
-                <div class="button-container">
-                    <a href="documents/resume.pdf" target="_blank">Download Resume</a>
-                </div>
-            </div>
-            <div class="quadrant">
-                <h2>Fun Fact</h2>
-                <p id="fun-fact"></p>
-                <!-- JavaScript will populate the fun fact -->
-            </div>
-            <div class="quadrant">
-                <h2>Training & Certifications</h2>
-                <p>View my professional certifications and completed training courses.</p>
-                <div class="button-container">
-                    <a href="pages/training.html">View Training</a>
-                </div>
-            </div>
-            <div class="quadrant map-quadrant">
-                <h2>Places I've Been</h2>
-                <p>Explore locations I've visited around the country and the world on my travel page.</p>
-                <div class="button-container">
-                    <a href="pages/travel.html">Travel</a>
+        <section class="hero-section">
+            <div class="hero-content">
+                <img src="images/profile.jpg" alt="Samuel Rumbley" class="profile-picture">
+                <h1>Samuel Rumbley</h1>
+                <p class="subtitle">Business Information Technology Student | Aspiring Tech Leader</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/caninecrew" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="documents/resume.pdf" target="_blank" class="button">View Resume</a>
                 </div>
             </div>
         </section>
-    </main>    <div id="footer"></div>
-    
-    <!-- Simple loader - runs first to ensure basic functionality -->
+
+        <section class="content-box">
+            <h2>About Me</h2>
+            <p>I am a dedicated and driven student at Tennessee Technological University, pursuing a degree in Business Information and Technology with a minor in Leadership. My goal is to leverage my technical skills and leadership experience to make a meaningful impact. I am passionate about data analysis, cybersecurity, and exploring emerging technology trends.</p>
+        </section>
+
+        <div class="quadrants">
+            <div class="quadrant">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <p>Currently pursuing a Bachelor's degree at Tennessee Technological University. My coursework includes Management Information Systems, Intro to Cybersecurity, and Business Statistics.</p>
+                <a href="pages/education.html" class="button">Learn More</a>
+            </div>
+            <div class="quadrant">
+                <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                <p>I have experience as a Substitute Teacher, where I've honed my leadership and critical thinking skills. I've also held multiple leadership roles in the Order of the Arrow, Boy Scouts of America.</p>
+                <a href="pages/experience.html" class="button">See Experience</a>
+            </div>
+            <div class="quadrant">
+                <h3><i class="fas fa-lightbulb"></i> Projects</h3>
+                <p>I've contributed to several publications, including "The Wheel v3," a resource guide for Order of the Arrow members, and the "2023 Annual Report" for the Wa-Hi-Nasa Lodge.</p>
+                <a href="pages/projects.html" class="button">View Projects</a>
+            </div>
+        </div>
+
+        <section class="content-box fun-fact-section">
+            <h2><i class="fas fa-star"></i> Fun Fact</h2>
+            <p id="fun-fact">I have climbed a 12,441-foot mountain!</p>
+        </section>
+
+    </main>
+
+    <div id="footer"></div>
+
     <script src="js/simple-loader.js"></script>
-    
-    <!-- Core utilities -->
-    <script src="js/core/config.js"></script>
-    <script src="js/core/utils.js"></script>
-    <script src="js/core/domUtils.js"></script>
-    <script src="js/core/a11yUtils.js"></script>
-    <script src="js/core/errorHandler.js"></script>
-    <script src="js/core/performance.js"></script>
-    <!-- Components -->
-    <script src="js/components/header.js"></script>
-    <script src="js/components/footer.js"></script>
-    <script src="js/components/map.js"></script>
-    <script src="js/components/carousel.js"></script>
-    <script src="js/components/collapsible.js"></script>
-    <!-- Data -->
-    <script src="js/data/travel.js"></script>
-    <!-- Application -->
     <script src="js/app.js"></script>
 </body>
 </html>
