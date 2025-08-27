@@ -1,78 +1,55 @@
-// Enhanced collapsible component
-class Collapsible {
-    constructor(options = {}) {
-        this.options = Object.assign({
-            debug: false
-        }, options);
-        
-        this.initialized = false;
-    }
+/**
+ * Initializes all collapsible components on the page.
+ * This function is idempotent and can be called multiple times; it will only initialize
+ * buttons that have not yet been processed.
+ */
+function initializeCollapsibles() {
+  // Find all collapsible buttons that have not been initialized
+  const collapsibles = document.querySelectorAll('.collapsible:not([data-collapsible-init])');
+
+  collapsibles.forEach(button => {
+    // Mark the button as initialized to prevent re-adding listeners
+    button.setAttribute('data-collapsible-init', 'true');
     
-    init() {
-        if (this.initialized) {
-            this.log('Already initialized, reinitializing...');
+    // Set initial accessibility state
+    button.setAttribute('aria-expanded', 'false');
+
+    button.addEventListener('click', function() {
+      // Toggle the 'active' class for styling
+      this.classList.toggle('active');
+      const isActive = this.classList.contains('active');
+      
+      // Update accessibility state
+      this.setAttribute('aria-expanded', isActive);
+
+      // Find the content panel to show or hide
+      let content;
+      // The merit badge buttons are inside an H3, others are not
+      if (this.parentElement.tagName === 'H3') {
+        content = this.parentElement.nextElementSibling;
+      } else {
+        content = this.nextElementSibling;
+      }
+
+      // Toggle the display if the content panel exists
+      if (content) {
+        if (isActive) {
+          // Merit badge lists use a grid layout
+          if (content.classList.contains('merit-badge-list')) {
+            content.style.display = 'grid';
+          } else {
+            content.style.display = 'block';
+          }
+        } else {
+          content.style.display = 'none';
         }
-        
-        this.initType('.collapsible:not(.merit-badge-year .collapsible):not(.organization-group .collapsible)', {
-            getContent: button => button.nextElementSibling,
-            displayStyle: 'block'
-        });
-        
-        this.initType('.merit-badge-year .collapsible', {
-            getContent: button => button.closest('.merit-badge-year').querySelector('.merit-badge-list'),
-            displayStyle: 'grid'
-        });
-        
-        this.initType('.organization-group .collapsible', {
-            getContent: button => button.closest('.organization-group').querySelector('.org-content'),
-            displayStyle: 'block'
-        });
-        
-        this.initialized = true;
-        this.log('Initialization complete');
-    }
-    
-    initType(selector, typeOptions) {
-        const buttons = document.querySelectorAll(selector);
-        this.log(`Found ${buttons.length} elements for selector: ${selector}`);
-        
-        buttons.forEach((button, index) => {
-            // Remove existing handlers
-            button.onclick = null;
-            
-            // Add new handler
-            button.addEventListener('click', () => {
-                button.classList.toggle('active');
-                const content = typeOptions.getContent(button);
-                
-                if (content) {
-                    content.style.display = button.classList.contains('active') 
-                        ? typeOptions.displayStyle 
-                        : 'none';
-                } else {
-                    this.log(`Content not found for collapsible #${index}`, 'error');
-                }
-            });
-        });
-    }
-    
-    log(message, type = 'info') {
-        if (!this.options.debug && type !== 'error') return;
-        
-        const prefix = '[Collapsible]';
-        Utils.log(`${prefix} ${message}`, type);
-    }
+      }
+    });
+  });
 }
 
-// Create global instance
-window.collapsible = new Collapsible({ debug: true });
+// Run the function once the initial page loads
+document.addEventListener('DOMContentLoaded', initializeCollapsibles);
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-    window.collapsible.init();
-});
-
-// Add global reinitialize function
-window.reinitializeCollapsibles = () => {
-    window.collapsible.init();
-};
+// Make the function globally available to be called after dynamic content is loaded
+window.initializeCollapsibles = initializeCollapsibles;

@@ -1,8 +1,9 @@
 // Load dynamic sections for the scouting page
 document.addEventListener('DOMContentLoaded', () => {
-    // Function to load HTML content into a container
+    
+    // Function to load HTML content into a container, which returns a promise
     const loadSection = (url, containerId) => {
-        fetch(url)
+        return fetch(url)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to load ${url}: ${response.statusText}`);
@@ -13,20 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const container = document.getElementById(containerId);
                 if (container) {
                     container.innerHTML = data;
-                    // Re-initialize any components that were loaded
-                    if (window.reinitializeCollapsibles) {
-                        window.reinitializeCollapsibles();
-                    }
+                } else {
+                    console.error(`Container with ID #${containerId} not found.`);
                 }
-            })
-            .catch(error => console.error(`Error loading section from ${url}:`, error));
+            });
     };
 
-    // Load all scouting page sections
-    loadSection('../pages/timeline.html', 'timeline-section');
-    loadSection('../pages/leadership-positions.html', 'leadership-section');
-    loadSection('../pages/merit-badges.html', 'merit-badges-section');
+    // Use Promise.all to wait for all dynamic content to load
+    Promise.all([
+        loadSection('../pages/leadership-positions.html', 'leadership-roles-content'),
+        loadSection('../pages/merit-badges.html', 'merit-badges-content')
+    ]).then(() => {
+        // Once all content is on the page, initialize the collapsible buttons
+        if (window.initializeCollapsibles) {
+            window.initializeCollapsibles();
+        }
+    }).catch(error => {
+        console.error('Error loading dynamic scouting sections:', error);
+    });
+
 });
+
 
 // Modal functionality for the Eagle Project gallery
 function openModal(src, alt) {
