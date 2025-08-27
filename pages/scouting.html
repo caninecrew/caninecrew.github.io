@@ -14,93 +14,110 @@
     
     <div id="header"></div>
     
-    <main id="main-content" class="container">
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero-section scouting-hero" id="hero-section" aria-labelledby="hero-title">
-            <div class="hero-background">
-                <div class="hero-overlay"></div>
-            </div>
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
             <div class="hero-content-wrapper">
                 <div class="hero-content">
                     <div class="hero-text">
                         <span class="hero-badge">Eagle Scout</span>
                         <h1 id="hero-title">My Scouting <span class="hero-highlight">Journey</span></h1>
-                        <p class="lead">From tying my first knot as a Cub Scout to achieving Eagle rank and mentoring the next generation of leaders - my 15-year adventure in Scouting has shaped who I am today.</p>
+                        <p class="lead">From my first knot as a Cub Scout to achieving Eagle rank and mentoring new leaders, my 15-year adventure in Scouting has shaped who I am.</p>
                         <div class="hero-buttons">
-                            <a href="#timeline-section-container" class="button button-primary">View Timeline</a>
-                            <a href="#merit-badges-section-container" class="button button-outline">See Merit Badges</a>
+                            <a href="#timeline-section" class="button button-primary">View Timeline</a>
+                            <a href="#merit-badges-section" class="button button-outline">See Merit Badges</a>
                         </div>
                     </div>
                     <div class="hero-stats" aria-label="Scouting Statistics">
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
+                            <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
                             <div class="stat-number">15+</div>
                             <div class="stat-label">Years in Scouting</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-hands-helping"></i>
-                            </div>
+                            <div class="stat-icon"><i class="fas fa-hands-helping"></i></div>
                             <div class="stat-number">500+</div>
                             <div class="stat-label">Service Hours</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-award"></i>
-                            </div>
+                            <div class="stat-icon"><i class="fas fa-award"></i></div>
                             <div class="stat-number">30+</div>
                             <div class="stat-label">Leadership Roles</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-medal"></i>
-                            </div>
+                            <div class="stat-icon"><i class="fas fa-medal"></i></div>
                             <div class="stat-number">50+</div>
                             <div class="stat-label">Merit Badges</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="scroll-indicator" aria-hidden="true">
-                <span class="scroll-text">Scroll to explore</span>
+            <a href="#timeline-section" class="scroll-indicator" aria-hidden="true">
+                <span class="scroll-text">Explore My Journey</span>
                 <i class="fas fa-chevron-down"></i>
-            </div>
+            </a>
         </section>
 
-        <!-- Dynamic Sections -->
-        <div id="timeline-section-container" class="loading" role="region" aria-label="Scouting Timeline"></div>
-        <div id="leadership-section-container" class="loading" role="region" aria-label="Leadership Positions"></div>
-        <div id="merit-badges-section-container" class="loading" role="region" aria-label="Merit Badges"></div>
+        <div class="container">
+            <!-- Timeline Section -->
+            <section id="timeline-section" class="content-box loading">
+                <h2>Scouting Journey Timeline</h2>
+                <!-- content from pages/timeline.html will be loaded here -->
+            </section>
+
+            <!-- Leadership Section -->
+            <section id="leadership-section" class="content-box loading">
+                <h2>Leadership Experience</h2>
+                <!-- content from pages/leadership-positions.html will be loaded here -->
+            </section>
+
+            <!-- Merit Badges Section -->
+            <section id="merit-badges-section" class="content-box loading">
+                <h2>Merit Badge Achievement</h2>
+                <!-- content from pages/merit-badges.html will be loaded here -->
+            </section>
+
+            <!-- Eagle Project Section -->
+            <section class="eagle-project" id="eagle-project">
+                <h2>Eagle Scout Project</h2>
+                <div class="project-showcase">
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Masks for the Community</h3>
+                            <div class="project-meta">
+                                <span class="project-date"><i class="fas fa-calendar-alt"></i> Completed: February 28, 2021</span>
+                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Mt. Juliet, TN</span>
+                            </div>
+                            <p>For my Eagle Scout project, I led a team of volunteers to produce and distribute over 500 handmade face masks to local schools and community members during the COVID-19 pandemic. This project involved coordinating volunteers, managing materials, and ensuring quality control to provide essential protective equipment to those in need.</p>
+                        </div>
+                        <div class="project-gallery">
+                            <img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official" onclick="openModal(this.src, this.alt)">
+                            <img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables" onclick="openModal(this.src, this.alt)">
+                            <img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask" onclick="openModal(this.src, this.alt)">
+                            <img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric" onclick="openModal(this.src, this.alt)">
+                            <img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask" onclick="openModal(this.src, this.alt)">
+                            <img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks" onclick="openModal(this.src, this.alt)">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>    <div id="footer"></div>
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
 
-    <!-- Simple loader - runs first to ensure basic functionality -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+    <div id="footer"></div>
+
     <script src="../js/simple-loader.js"></script>
-    
-    <!-- Core utilities -->
-    <script src="../js/core/config.js"></script>
-    <script src="../js/core/utils.js"></script>
-    <script src="../js/core/domUtils.js"></script>
-    <script src="../js/core/a11yUtils.js"></script>
-    <script src="../js/core/errorHandler.js"></script>
-    <script src="../js/core/performance.js"></script>
-    
-    <!-- Components -->
-    <script src="../js/components/header.js"></script>
-    <script src="../js/components/footer.js"></script>
-    <script src="../js/components/carousel.js"></script>
-    <script src="../js/components/collapsible.js"></script>
-    
-    <!-- Service Worker -->
-    <script src="../js/sw-register.js"></script>
-    
-    <!-- Data -->
     <script src="../js/data/scouting.js"></script>
-    
-    <!-- Page specific -->
     <script src="../js/app.js"></script>
 </body>
 </html>
