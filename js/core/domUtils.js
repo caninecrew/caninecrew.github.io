@@ -50,20 +50,23 @@ const DOMUtils = {
         }, duration);
     },
     
-    // Load template from URL
-    loadTemplate: async function(url) {
+    // NEW: Function to load HTML partials
+    async loadHTML(filePath, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.error(`Container #${containerId} not found.`);
+            return;
+        }
         try {
-            Performance.start(`template-${url}`);
-            const response = await fetch(url);
-            const html = await response.text();
-            Performance.end(`template-${url}`);
-            return html;
+            const response = await fetch(filePath);
+            if (!response.ok) throw new Error('Network response was not ok');
+            container.innerHTML = await response.text();
         } catch (error) {
-            ErrorHandler.handleResourceError(error, url);
-            return '';
+            console.error(`Failed to load HTML from ${filePath}:`, error);
+            container.innerHTML = `<p class="error-message">Failed to load content.</p>`;
         }
     },
-    
+
     // Create loading spinner
     createSpinner: function(size = 'md') {
         return this.createElement('div', {
