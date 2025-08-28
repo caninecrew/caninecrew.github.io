@@ -258,7 +258,7 @@
     --input-placeholder: #7a7c8e;                  /* Gray text for input placeholders */
     
     /* Preserve brand colors but slightly adjusted for dark mode */
-    --primary-color: #64b5f6;                     /* Brighter green for better visibility on dark backgrounds */
+    --primary-color: #6ebff7;                     /* Brighter blue for better visibility on dark backgrounds */
     --secondary-color: #d07f33;                   /* Brighter rust orange for dark mode */
     --accent-color: #ffe49e;                      /* Brighter gold for dark mode */
     --primary-dark: #1976d2;
@@ -278,6 +278,7 @@
     --error-bg: #321c1c;
     --error-text: #ff8a85;
     --error-border: #f44336;
+    --text-link: var(--primary-color);
 }
 
 /* High Contrast Theme - For users who need maximum legibility */
@@ -668,6 +669,17 @@ pre {
 .button-container {
   text-align: center;
   margin: var(--space-md) 0;
+}
+
+/* NEW: Gallery Button Style */
+.gallery-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    display: block;
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 /* ===========================
