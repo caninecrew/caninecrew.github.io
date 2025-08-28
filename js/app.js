@@ -73,6 +73,9 @@ class App {
             // Load shared HTML components like header and footer
             await this.loadSharedComponents();
             
+            // Initialize mobile menu after header is loaded
+            this.initializeMobileMenu();
+            
             // Initialize configuration
             await this.initConfig();
             
@@ -105,34 +108,118 @@ class App {
     }
 
     async loadSharedComponents() {
-        const isIndex = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html');
-        const headerPath = isIndex ? 'pages/header.html' : '../pages/header.html';
-        const footerPath = isIndex ? 'pages/footer.html' : '../pages/footer.html';
+        // Detect if we're on the index page or a subpage
+        const currentPath = window.location.pathname;
+        const isIndexPage = currentPath === '/' || 
+                           currentPath.endsWith('/') || 
+                           currentPath.endsWith('/index.html') || 
+                           currentPath.split('/').pop() === '' ||
+                           !currentPath.includes('/pages/');
+        
+        // Set paths based on page location
+        const headerPath = isIndexPage ? 'pages/header.html' : '../pages/header.html';
+        const footerPath = isIndexPage ? 'pages/footer.html' : '../pages/footer.html';
 
         const headerContainer = document.getElementById('header');
         const footerContainer = document.getElementById('footer');
 
-        if (!headerContainer || !footerContainer) {
-            console.error('Header or footer container not found on this page.');
+        // Check if containers exist
+        if (!headerContainer && !footerContainer) {
+            console.warn('Neither header nor footer container found on this page.');
             return;
         }
 
         try {
-            const [headerResponse, footerResponse] = await Promise.all([
-                fetch(headerPath),
-                fetch(footerPath)
-            ]);
+            const promises = [];
+            
+            // Load header if container exists
+            if (headerContainer) {
+                promises.push(
+                    fetch(headerPath)
+                        .then(response => {
+                            if (!response.ok) throw new Error(`Failed to fetch header: ${response.statusText}`);
+                            return response.text();
+                        })
+                        .then(html => {
+                            headerContainer.innerHTML = html;
+                        })
+                        .catch(error => {
+                            console.error('Error loading header:', error);
+                            headerContainer.innerHTML = '<div style="color:red; text-align:center; padding: 1rem;">Error: Could not load header.</div>';
+                        })
+                );
+            }
 
-            if (!headerResponse.ok) throw new Error(`Failed to fetch header: ${headerResponse.statusText}`);
-            if (!footerResponse.ok) throw new Error(`Failed to fetch footer: ${footerResponse.statusText}`);
+            // Load footer if container exists
+            if (footerContainer) {
+                promises.push(
+                    fetch(footerPath)
+                        .then(response => {
+                            if (!response.ok) throw new Error(`Failed to fetch footer: ${response.statusText}`);
+                            return response.text();
+                        })
+                        .then(html => {
+                            footerContainer.innerHTML = html;
+                        })
+                        .catch(error => {
+                            console.error('Error loading footer:', error);
+                            footerContainer.innerHTML = '<div style="color:red; text-align:center; padding: 1rem;">Error: Could not load footer.</div>';
+                        })
+                );
+            }
 
-            headerContainer.innerHTML = await headerResponse.text();
-            footerContainer.innerHTML = await footerResponse.text();
+            // Wait for all components to load
+            await Promise.all(promises);
 
         } catch (error) {
-            console.error('Error loading shared components:', error);
-            headerContainer.innerHTML = '<p style="color:red; text-align:center;">Error: Could not load header.</p>';
-            footerContainer.innerHTML = '<p style="color:red; text-align:center;">Error: Could not load footer.</p>';
+            console.error('Error in loadSharedComponents:', error);
+        }
+    }
+
+    initializeMobileMenu() {
+        // Initialize mobile menu functionality after header is loaded
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.querySelector('.main-nav');
+        const closeMenuBtn = document.querySelector('.close-menu-btn');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        if (mobileMenuBtn && mainNav) {
+            // Open mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                mainNav.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+
+            // Close mobile menu
+            const closeMobileMenu = () => {
+                mainNav.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            };
+
+            if (closeMenuBtn) {
+                closeMenuBtn.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (mainNav.classList.contains('active') && 
+                    !mainNav.contains(e.target) && 
+                    !mobileMenuBtn.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
         }
     }
     
@@ -181,6 +268,21 @@ class App {
             backToTop.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+        }
+
+        // Footer back to top button
+        const backToTopFooter = document.querySelector('.back-to-top-footer');
+        if (backToTopFooter) {
+            backToTopFooter.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Update copyright year in footer
+        const copyrightYear = document.querySelector('.copyright-year');
+        if (copyrightYear) {
+            copyrightYear.textContent = new Date().getFullYear();
         }
     }
     
