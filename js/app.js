@@ -70,6 +70,9 @@ class App {
                 this.performance.start('app-init');
             }
             
+            // Load shared HTML components like header and footer
+            await this.loadSharedComponents();
+            
             // Initialize configuration
             await this.initConfig();
             
@@ -81,13 +84,14 @@ class App {
             
             // Initialize features based on current page
             await this.initPageSpecific();
-              this.initialized = true;
+
+            this.initialized = true;
+
             if (this.performance.end) {
                 this.performance.end('app-init');
             }
         } catch (error) {
             console.error('Failed to initialize application:', error);
-            // Don't let app failure break the page completely
             if (window.ErrorHandler && ErrorHandler.handle) {
                 ErrorHandler.handle(
                     ErrorHandler.create(
@@ -98,6 +102,18 @@ class App {
                 );
             }
         }
+    }
+
+    async loadSharedComponents() {
+        const isIndex = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+        const headerPath = isIndex ? 'pages/header.html' : '../pages/header.html';
+        const footerPath = isIndex ? 'pages/footer.html' : '../pages/footer.html';
+
+        // Wait for both header and footer to be loaded
+        await Promise.all([
+            this.domUtils.loadHTML(headerPath, 'header'),
+            this.domUtils.loadHTML(footerPath, 'footer')
+        ]);
     }
     
     async initConfig() {
