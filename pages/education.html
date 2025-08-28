@@ -3,78 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley's professional experience, leadership roles, and volunteer history.">
-    <title>Experience - Samuel Rumbley</title>
+    <meta name="description" content="Samuel Rumbley's educational background, coursework, and academic achievements.">
+    <title>Education - Samuel Rumbley</title>
     <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Additional styles for the redesigned experience page */
-        .experience-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .experience-column h2 {
-            font-size: 1.8rem;
-            color: var(--primary-color-dark);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color-faint);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .experience-card {
+        /* Additional styles for the redesigned education page */
+        .education-card {
             background: var(--background-white);
             border-radius: var(--radius-md);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
             box-shadow: var(--shadow);
             border-left: 4px solid var(--primary-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .experience-card:hover {
+        .education-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
-        .experience-card h3 {
-            margin: 0;
-            font-size: 1.25rem;
-            color: var(--text-color);
-        }
-
-        .experience-card .company {
-            font-weight: 500;
-            color: var(--primary-color);
-            margin-bottom: 0.25rem;
-        }
-
-        .experience-card .date {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        .education-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .experience-card ul {
-            list-style-position: outside;
-            padding-left: 1.25rem;
+        .education-header .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-top: 0.25rem;
+        }
+
+        .education-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        .education-header .degree {
+            font-weight: 500;
+            color: var(--text-secondary);
             margin: 0;
         }
 
-        .experience-card ul li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
+        .education-details .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
         }
 
-        @media (max-width: 992px) {
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
+        .education-details h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .education-details ul {
+            list-style-position: outside;
+            padding-left: 1.25rem;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.5rem 1rem;
+        }
+
+        .education-details ul li {
+            margin-bottom: 0.25rem;
         }
     </style>
 </head>
@@ -85,68 +86,65 @@
     
     <main id="main-content" class="container fade-in">
         <section class="intro">
-            <h1>My Experience</h1>
-            <p class="lead">A detailed look at my professional roles and extensive leadership in service to the community.</p>
+            <h1>Education</h1>
+            <p class="lead">My academic journey, from high school to my current studies at Tennessee Technological University.</p>
         </section>
 
-        <div class="experience-grid">
-            <div class="experience-column">
-                <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
-                <div class="experience-card">
-                    <h3>Program Director</h3>
-                    <p class="company">Middle Tennessee Council, Scouting America</p>
-                    <p class="date">Summer 2023 - 2025 (Seasonal)</p>
-                    <ul>
-                        <li>Promoted to Program Director for Summer 2025, leading operations for over 1,000 campers and supervising 40+ staff across 60+ program areas.</li>
-                        <li>Designed and executed daily schedules, incorporating merit badges, campfires, and evening programs.</li>
-                        <li>Mentored and coordinated staff while overseeing fellowship gatherings, dining hall programming, and troop competitions, engaging over 300 stakeholders weekly.</li>
-                    </ul>
+        <section>
+            <div class="education-card">
+                <div class="education-header">
+                    <i class="fas fa-university icon"></i>
+                    <div>
+                        <h3>Tennessee Technological University</h3>
+                        <p class="degree"><strong>Bachelor's degree, Business Information Technology</strong></p>
+                    </div>
                 </div>
-                <div class="experience-card">
-                    <h3>Substitute Teacher</h3>
-                    <p class="company">Wilson & Putnam County Schools</p>
-                    <p class="date">May 2023 – Present</p>
+                <div class="education-details">
+                    <p class="date">Aug 2022 - Expected Graduation: May 2026</p>
+                    <p><strong>Overall GPA:</strong> 3.57 | <strong>Major GPA:</strong> 3.71</p>
+                    
+                    <h4>Activities & Societies</h4>
                     <ul>
-                        <li>Utilize critical thinking and problem-solving skills to create a safe and effective learning environment for students across various grade levels.</li>
-                        <li>Monitor student growth and behavior, adapting teaching strategies as needed.</li>
-                        <li>Work effectively with fellow staff members to ensure a consistent educational experience.</li>
+                        <li>Resident Assistant (Starting Aug 2025)</li>
+                        <li>Student Government Association</li>
+                    </ul>
+
+                    <h4>Relevant Coursework</h4>
+                    <ul>
+                        <li>Management Information Systems</li>
+                        <li>Intro to Cybersecurity & Privacy</li>
+                        <li>Computer Applications in Business</li>
+                        <li>Non-Profit Leadership</li>
+                        <li>Principles of Event Planning</li>
+                        <li>Business Statistics</li>
+                        <li>Business Communications</li>
                     </ul>
                 </div>
             </div>
-            <div class="experience-column">
-                <h2><i class="fas fa-hands-helping"></i> Leadership & Service</h2>
-                <div class="experience-card">
-                    <h3>Executive Board Member</h3>
-                    <p class="company">Middle Tennessee Council, Scouting America</p>
-                    <p class="date">December 2022 – February 2025</p>
+            
+            <div class="education-card">
+                <div class="education-header">
+                    <i class="fas fa-graduation-cap icon"></i>
+                    <div>
+                        <h3>Wilson Central High School</h3>
+                        <p class="degree"><strong>Elective Focus: Information Technology</strong></p>
+                    </div>
+                </div>
+                <div class="education-details">
+                    <p class="date">Aug 2018 - May 2022</p>
+                    <h4>Activities and Societies</h4>
                     <ul>
-                        <li>Advocated for the interests of over 10,000 scouts and guided community support for the scouting program.</li>
-                        <li>Contributed effectively to board discussions to help drive strategic decision-making.</li>
+                        <li>Dell Tech Computer Repair Program</li>
+                        <li>National Honor Society</li>
+                        <li>Student Council</li>
+                        <li>Beta Club</li>
+                        <li>Robotics Club</li>
+                        <li>Future Business Leaders of America</li>
+                        <li>Fellowship of Christian Athletes</li>
                     </ul>
-                </div>
-                <div class="experience-card">
-                    <h3>Scouting Leadership</h3>
-                    <p class="company">Wa-Hi-Nasa Lodge & Troop 1204</p>
-                    <p class="date">August 2017 – Present</p>
-                    <ul>
-                        <li>Led an 850-member organization as Lodge Chief, managing 80+ leaders and an $81,000 budget.</li>
-                        <li>Directed 150 volunteers to execute a week-long Winter Camp for over 500 scouts.</li>
-                        <li>Received the prestigious Founder’s Award for dedication to service.</li>
-                    </ul>
-                    <a href="scouting.html#leadership-section" class="button" style="margin-top: 1rem;">View All Scouting Roles</a>
-                </div>
-                 <div class="experience-card">
-                    <h3>Children and Youth Volunteer</h3>
-                    <p class="company">First Church of the Nazarene, Cookeville, TN</p>
-                    <p class="date">October 2023 – Present</p>
-                </div>
-                <div class="experience-card">
-                    <h3>Children and Media Volunteer</h3>
-                    <p class="company">Grace Church of the Nazarene, Nashville, TN</p>
-                    <p class="date">August 2016 - September 2023</p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
