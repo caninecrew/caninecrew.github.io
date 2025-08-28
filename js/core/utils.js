@@ -15,70 +15,6 @@ const Utils = {
     getRelativePath: function(path) {
         return this.isIndexPage() ? path : '../' + path;
     },
-    
-    // Data loading
-    fetchTextFile: async function(url, options = {}) {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch ${url}: ${response.status}`);
-            }
-            
-            const text = await response.text();
-            
-            if (options.filterComments) {
-                return text.split('\n')
-                    .map(line => line.trim())
-                    .filter(line => line && !line.startsWith('#') && !line.startsWith('//'));
-            }
-            return text;
-        } catch (error) {
-            console.error('Error fetching text file:', error);
-            return [];
-        }
-    },
-    
-    // Logging with timestamp
-    log: function(message, type = 'info') {
-        const timestamp = new Date().toISOString();
-        const prefix = `[${timestamp}]`;
-        
-        switch(type) {
-            case 'error':
-                console.error(`${prefix} ERROR:`, message);
-                break;
-            case 'warn':
-                console.warn(`${prefix} WARNING:`, message);
-                break;
-            case 'debug':
-                console.debug(`${prefix} DEBUG:`, message);
-                break;
-            default:
-                console.log(`${prefix} INFO:`, message);
-        }
-    },
-
-    // Enhanced error handling and loading states
-    async loadWithState(elementId, loadingFunction) {
-        const element = document.getElementById(elementId);
-        if (!element) return null;
-        
-        try {
-            element.classList.add('loading');
-            const result = await loadingFunction();
-            return result;
-        } catch (error) {
-            element.innerHTML = `
-                <div class="error-state">
-                    <p>Sorry, there was an error loading this content.</p>
-                    <button onclick="window.location.reload()">Try Again</button>
-                </div>`;
-            this.log(error.message, 'error');
-            return null;
-        } finally {
-            element.classList.remove('loading');
-        }
-    },
 
     // Enhanced fetch with timeout and retry
     async fetchWithRetry(url, options = {}, retries = 2, timeout = 5000) {
@@ -183,20 +119,6 @@ const Utils = {
         }
     },
 
-    // Fetch with retry logic
-    fetchWithRetry: async function(url, options = {}, retries = 3) {
-        for (let i = 0; i < retries; i++) {
-            try {
-                const response = await fetch(url, options);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                return await response.text();
-            } catch (error) {
-                if (i === retries - 1) throw error;
-                await new Promise(resolve => setTimeout(resolve, 1000 * Math.pow(2, i)));
-            }
-        }
-    },
-
     // Load HTML file with caching
     loadHTMLFile: async function(elementId, filePath) {
         if (!elementId || !filePath) {
@@ -282,16 +204,6 @@ const Utils = {
             Object.assign(linkElement, link);
             document.head.appendChild(linkElement);
         });
-    },
-
-    // Logging with context
-    log: function(message, type = 'info', context = '') {
-        if (!Config.get('core.debug') && type !== 'error') return;
-
-        const timestamp = new Date().toISOString();
-        const prefix = context ? `[${context}]` : '';
-        
-        console[type](`${timestamp} ${prefix} ${message}`);
     },
 
     // Check if element is in viewport
