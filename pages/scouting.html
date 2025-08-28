@@ -3,10 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley's Scouting journey, achievements, and leadership roles">
-    <title>Scouting Journey - Samuel Rumbley</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <meta name="description" content="A deep dive into Samuel Rumbley's 15+ year Scouting journey, from Cub Scout to Eagle Scout, highlighting extensive leadership roles and key achievements.">
+    <title>My Scouting Journey - Samuel Rumbley</title>
+    <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Redesigned Scouting Page Styles */
+        :root {
+            --scouting-primary: #003f7d; /* BSA Blue */
+            --scouting-secondary: #c92a2a; /* BSA Red */
+            --scouting-gold: #f1c40f;
+            --scouting-tan: #d2b48c;
+        }
+
+        .scouting-hero {
+            background: linear-gradient(rgba(0, 63, 125, 0.8), rgba(0, 31, 63, 0.8)), url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2940&auto=format&fit=crop') no-repeat center center/cover;
+            color: var(--text-inverse);
+            text-align: center;
+            padding: 5rem 1rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 3rem;
+        }
+
+        .scouting-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-inverse);
+        }
+
+        .scouting-hero .lead {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--scouting-gold);
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-section-horizontal {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-wrapper {
+            overflow-x: auto;
+            padding-bottom: 1.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--background-light);
+        }
+
+        .timeline-horizontal {
+            display: flex;
+            width: max-content;
+            gap: 1rem;
+        }
+
+        .timeline-item-horizontal {
+            background: var(--background-white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            width: 300px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--scouting-primary);
+        }
+
+        .timeline-item-horizontal .date {
+            font-weight: 700;
+            color: var(--scouting-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .leadership-section .organization-group .collapsible {
+            background-color: var(--primary-color-faint);
+        }
+
+        .leadership-section .suborg-section {
+            margin-top: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--primary-color-light);
+        }
+
+        .leadership-section .suborg-header {
+            font-size: 1.2rem;
+            color: var(--primary-color-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .leadership-item {
+            margin-bottom: 1rem;
+        }
+
+        .eagle-project .project-gallery a {
+            display: block;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .eagle-project .project-gallery a:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -14,188 +177,73 @@
     <div id="header"></div>
     
     <main id="main-content">
-        <section class="hero-section scouting-hero" id="hero-section" aria-labelledby="hero-title">
-            <div class="hero-background"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content-wrapper">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <span class="hero-badge">Eagle Scout</span>
-                        <h1 id="hero-title">My Scouting <span class="hero-highlight">Journey</span></h1>
-                        <p class="lead">From my first knot as a Cub Scout to achieving Eagle rank and mentoring new leaders, my 15-year adventure in Scouting has shaped who I am.</p>
-                        <div class="hero-buttons">
-                            <a href="#timeline-section" class="button button-primary">View Timeline</a>
-                            <a href="#merit-badges-section" class="button button-outline">See Merit Badges</a>
-                        </div>
-                    </div>
-                    <div class="hero-stats" aria-label="Scouting Statistics">
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Years in Scouting</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-hands-helping"></i></div>
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Service Hours</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-award"></i></div>
-                            <div class="stat-number">30+</div>
-                            <div class="stat-label">Leadership Roles</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon"><i class="fas fa-medal"></i></div>
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Merit Badges</div>
-                        </div>
-                    </div>
+        <section class="scouting-hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">My Scouting Journey</h1>
+            <p class="lead">From my first knot as a Cub Scout to achieving Eagle rank and mentoring new leaders, my 15-year adventure in Scouting has shaped my character, leadership, and commitment to service.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years in Scouting</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Service Hours</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Leadership Roles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Eagle</div>
+                    <div class="stat-label">Scout Rank</div>
                 </div>
             </div>
-            <a href="#timeline-section" class="scroll-indicator" aria-hidden="true">
-                <span class="scroll-text">Explore My Journey</span>
-                <i class="fas fa-chevron-down"></i>
-            </a>
         </section>
 
         <div class="container">
-            <section class="timeline-section content-box" id="timeline-section">
-                <h2>Scouting Journey Timeline</h2>
+            <section class="timeline-section-horizontal content-box" id="timeline-section">
+                <h2>Key Milestones</h2>
                 <div class="timeline-wrapper">
-                    <div class="timeline horizontal">
-                        <div class="timeline-item">
-                            <div class="timeline-date">2010</div>
-                            <div class="timeline-content">
-                                <h3>Started in Cub Scouts</h3>
-                                <p>Began my scouting journey in Pack 253</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">June 2015</div>
-                            <div class="timeline-content">
-                                <h3>Joined Scouts BSA</h3>
-                                <p>Joined Troop 1204 and earned Scout rank</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">September 2015</div>
-                            <div class="timeline-content">
-                                <h3>Tenderfoot Rank</h3>
-                                <p>Completed first major rank advancement</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">May 2016</div>
-                            <div class="timeline-content">
-                                <h3>Second Class & First Class</h3>
-                                <p>Achieved two ranks in rapid succession</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Mar 2017</div>
-                            <div class="timeline-content">
-                                <h3>Star Rank</h3>
-                                <p>Earned six merit badges and demonstrated leadership</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Aug 2017</div>
-                            <div class="timeline-content">
-                                <h3>Order of the Arrow</h3>
-                                <p>Inducted into Scouting's National Honor Society</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">May 2018</div>
-                            <div class="timeline-content">
-                                <h3>Life Rank</h3>
-                                <p>Final rank before Eagle Scout</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">February 28, 2021</div>
-                            <div class="timeline-content">
-                                <h3>Eagle Scout</h3>
-                                <p>Achieved the rank of Eagle Scout</p>
-                            </div>
-                        </div>
+                    <div class="timeline-horizontal">
+                        <div class="timeline-item-horizontal"><p class="date">2010</p><h3>Started in Cub Scouts</h3><p>Began my scouting journey in Pack 253.</p></div>
+                        <div class="timeline-item-horizontal"><p class="date">June 2015</p><h3>Joined Scouts BSA</h3><p>Crossed over into Troop 1204 and earned the Scout rank.</p></div>
+                        <div class="timeline-item-horizontal"><p class="date">August 2017</p><h3>Order of the Arrow</h3><p>Inducted into Scouting's National Honor Society.</p></div>
+                        <div class="timeline-item-horizontal"><p class="date">May 2018</p><h3>Life Rank</h3><p>Achieved the final rank before Eagle Scout.</p></div>
+                        <div class="timeline-item-horizontal"><p class="date">February 28, 2021</p><h3>Eagle Scout</h3><p>Earned the highest rank in Scouting.</p></div>
+                        <div class="timeline-item-horizontal"><p class="date">December 2023</p><h3>Founder's Award</h3><p>Received the highest service award in the Order of the Arrow.</p></div>
                     </div>
                 </div>
             </section>
 
             <section class="leadership-section content-box" id="leadership-section">
-                <h2>Leadership Experience</h2>
-                <div id="leadership-roles-content" class="leadership-grid">
-                     <div class="organization-group">
-                        <button class="collapsible">Order of the Arrow</button>
-                        <div class="org-content" style="display: none;">
-                            <div class="leadership-items">
-                                <div class="suborg-section">
-                                    <h4 class="suborg-header">National Order of the Arrow</h4>
-                                    <div class="role-progression">
-                                        <div class="leadership-item">
-                                            <div class="role">National Communications Subcommittee</div>
-                                            <div class="date">January 2024 - October 2024</div>
-                                            <div class="description">Serving on the national subcommittee for communications strategy</div>
-                                        </div>
-                                        <div class="leadership-item">
-                                            <div class="role">National Conference Staff</div>
-                                            <div class="date">2024</div>
-                                            <div class="positions">
-                                                <span>Technology Staff (July 29 - August 3)</span>
-                                                <span>Communications Staff (February - May)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="organization-group">
-                        <button class="collapsible">Scouting America</button>
-                        <div class="org-content" style="display: none;">
-                           </div>
-                    </div>
-                </div>
-                <div class="gemini-feature">
-                    <button id="generate-leadership-reflection" class="button button-primary">✨ Generate Leadership Reflection</button>
-                    <div id="leadership-reflection-output" class="gemini-output"></div>
-                    <div id="leadership-loading" class="loading-indicator" style="display: none;">Generating...</div>
+                <h2>Leadership Experience in Scouting</h2>
+                <p>Throughout my time in Scouting, I've had the privilege of serving in numerous leadership roles at the unit, chapter, lodge, section, and national levels.</p>
+                <div id="leadership-roles-content">
+                    <!-- Dynamic Content is loaded here by scouting.js -->
                 </div>
             </section>
 
             <section class="merit-badges content-box" id="merit-badges-section">
                 <h2>Merit Badge Achievement</h2>
                 <div id="merit-badges-content">
-                    </div>
+                    <!-- Dynamic Content is loaded here by scouting.js -->
+                </div>
             </section>
 
-            <section class="eagle-project" id="eagle-project">
-                <h2>Eagle Scout Project</h2>
-                <div class="project-showcase">
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3 id="project-title">Masks for the Community</h3>
-                            <div class="project-meta">
-                                <span class="project-date"><i class="fas fa-calendar-alt"></i> Completed: February 28, 2021</span>
-                                <span class="project-location"><i class="fas fa-map-marker-alt"></i> Mt. Juliet, TN</span>
-                            </div>
-                            <p id="project-description">For my Eagle Scout project, I led a team of volunteers to produce and distribute over 500 handmade face masks to local schools and community members during the COVID-19 pandemic. This project involved coordinating volunteers, managing materials, and ensuring quality control to provide essential protective equipment to those in need.</p>
-                            <div class="gemini-feature">
-                                <button id="summarize-project-impact" class="button button-primary">✨ Summarize Project Impact</button>
-                                <div id="project-impact-output" class="gemini-output"></div>
-                                <div id="project-loading" class="loading-indicator" style="display: none;">Generating...</div>
-                            </div>
-                        </div>
-                        <div class="project-gallery">
-                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project1.jpg', 'Presenting masks to a school official')"><img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official"></a>
-                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project2.jpg', 'Volunteers working at outdoor tables')"><img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables"></a>
-                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project3.jpg', 'A scout holding up a finished mask')"><img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask"></a>
-                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project4.jpg', 'Younger scouts helping with ironing fabric')"><img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric"></a>
-                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project5.jpg', 'A volunteer carefully ironing a mask')"><img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask"></a>
-                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project6.jpg', 'Team members assembling the masks')"><img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks"></a>
-                        </div>
-                    </div>
+            <section class="eagle-project content-box" id="eagle-project">
+                <h2>Eagle Scout Project: Masks for the Community</h2>
+                <div class="project-meta">
+                    <span><i class="fas fa-calendar-alt"></i> Completed: February 28, 2021</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Mt. Juliet, TN</span>
+                </div>
+                <p>For my Eagle Scout project, I led a team of volunteers to produce and distribute over 500 handmade face masks to local schools and community members during the COVID-19 pandemic. This project involved coordinating volunteers, managing materials, and ensuring quality control to provide essential protective equipment to those in need.</p>
+                <div class="project-gallery">
+                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project1.jpg', 'Presenting masks to a school official')"><img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official"></a>
+                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project2.jpg', 'Volunteers working at outdoor tables')"><img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables"></a>
+                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project3.jpg', 'A scout holding up a finished mask')"><img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask"></a>
+                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project4.jpg', 'Younger scouts helping with ironing fabric')"><img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric"></a>
+                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project5.jpg', 'A volunteer carefully ironing a mask')"><img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask"></a>
+                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project6.jpg', 'Team members assembling the masks')"><img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks"></a>
                 </div>
             </section>
         </div>
@@ -204,15 +252,45 @@
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage">
-        <div id="caption"></div>
+        <div id="caption" style="text-align: center; color: #ccc; padding: 10px 0; height: 150px;"></div>
     </div>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
 
-    <script src="../js/simple-loader.js"></script>
-    <script src="../js/components/collapsible.js"></script>
-    <script src="../js/data/scouting.js"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/data/scouting.js"></script>
+    <script>
+        // Modal functionality for the Eagle Project gallery
+        function openModal(src, alt) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const captionText = document.getElementById("caption");
+            
+            if (modal && modalImg && captionText) {
+                modal.style.display = "block";
+                modalImg.src = src;
+                captionText.innerHTML = alt;
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            if (modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+        document.getElementById('imageModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
