@@ -9,13 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Skip link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <div id="header"></div>
     
     <main id="main-content">
-        <!-- Hero Section -->
         <section class="hero-section scouting-hero" id="hero-section" aria-labelledby="hero-title">
             <div class="hero-background"></div>
             <div class="hero-overlay"></div>
@@ -61,7 +59,6 @@
         </section>
 
         <div class="container">
-            <!-- Timeline Section -->
             <section class="timeline-section content-box" id="timeline-section">
                 <h2>Scouting Journey Timeline</h2>
                 <div class="timeline-wrapper">
@@ -126,7 +123,6 @@
                 </div>
             </section>
 
-            <!-- Leadership Section -->
             <section class="leadership-section content-box" id="leadership-section">
                 <h2>Leadership Experience</h2>
                 <div id="leadership-roles-content" class="leadership-grid">
@@ -158,8 +154,7 @@
                     <div class="organization-group">
                         <button class="collapsible">Scouting America</button>
                         <div class="org-content" style="display: none;">
-                           <!-- Scouting America roles here -->
-                        </div>
+                           </div>
                     </div>
                 </div>
                 <div class="gemini-feature">
@@ -169,15 +164,12 @@
                 </div>
             </section>
 
-            <!-- Merit Badges Section -->
             <section class="merit-badges content-box" id="merit-badges-section">
                 <h2>Merit Badge Achievement</h2>
                 <div id="merit-badges-content">
-                    <!-- Merit badges content will be dynamically inserted here if needed, or can be hardcoded -->
-                </div>
+                    </div>
             </section>
 
-            <!-- Eagle Project Section -->
             <section class="eagle-project" id="eagle-project">
                 <h2>Eagle Scout Project</h2>
                 <div class="project-showcase">
@@ -196,12 +188,12 @@
                             </div>
                         </div>
                         <div class="project-gallery">
-                            <img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official" onclick="openModal(this.src, this.alt)">
-                            <img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables" onclick="openModal(this.src, this.alt)">
-                            <img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask" onclick="openModal(this.src, this.alt)">
-                            <img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric" onclick="openModal(this.src, this.alt)">
-                            <img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask" onclick="openModal(this.src, this.alt)">
-                            <img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks" onclick="openModal(this.src, this.alt)">
+                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project1.jpg', 'Presenting masks to a school official')"><img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official"></a>
+                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project2.jpg', 'Volunteers working at outdoor tables')"><img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables"></a>
+                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project3.jpg', 'A scout holding up a finished mask')"><img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask"></a>
+                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project4.jpg', 'Younger scouts helping with ironing fabric')"><img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric"></a>
+                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project5.jpg', 'A volunteer carefully ironing a mask')"><img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask"></a>
+                            <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project6.jpg', 'Team members assembling the masks')"><img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks"></a>
                         </div>
                     </div>
                 </div>
@@ -209,7 +201,6 @@
         </div>
     </main>
 
-    <!-- Image Modal -->
     <div id="imageModal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage">
