@@ -120,15 +120,19 @@
             margin-bottom: 1rem;
         }
 
-        .eagle-project .project-gallery a {
+        .eagle-project .project-gallery .gallery-button {
             display: block;
             border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
         }
         
-        .eagle-project .project-gallery a:hover {
+        .eagle-project .project-gallery .gallery-button:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-lg);
         }
@@ -219,15 +223,13 @@
                 <h2>Leadership Experience in Scouting</h2>
                 <p>Throughout my time in Scouting, I've had the privilege of serving in numerous leadership roles at the unit, chapter, lodge, section, and national levels.</p>
                 <div id="leadership-roles-content">
-                    <!-- Dynamic Content is loaded here by scouting.js -->
-                </div>
+                    </div>
             </section>
 
             <section class="merit-badges content-box" id="merit-badges-section">
                 <h2>Merit Badge Achievement</h2>
                 <div id="merit-badges-content">
-                    <!-- Dynamic Content is loaded here by scouting.js -->
-                </div>
+                    </div>
             </section>
 
             <section class="eagle-project content-box" id="eagle-project">
@@ -238,12 +240,12 @@
                 </div>
                 <p>For my Eagle Scout project, I led a team of volunteers to produce and distribute over 500 handmade face masks to local schools and community members during the COVID-19 pandemic. This project involved coordinating volunteers, managing materials, and ensuring quality control to provide essential protective equipment to those in need.</p>
                 <div class="project-gallery">
-                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project1.jpg', 'Presenting masks to a school official')"><img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official"></a>
-                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project2.jpg', 'Volunteers working at outdoor tables')"><img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables"></a>
-                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project3.jpg', 'A scout holding up a finished mask')"><img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask"></a>
-                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project4.jpg', 'Younger scouts helping with ironing fabric')"><img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric"></a>
-                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project5.jpg', 'A volunteer carefully ironing a mask')"><img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask"></a>
-                    <a href="javascript:void(0);" onclick="openModal('../images/eagle-project/project6.jpg', 'Team members assembling the masks')"><img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks"></a>
+                    <button class="gallery-button" onclick="openModal('../images/eagle-project/project1.jpg', 'Presenting masks to a school official')"><img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official"></button>
+                    <button class="gallery-button" onclick="openModal('../images/eagle-project/project2.jpg', 'Volunteers working at outdoor tables')"><img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables"></button>
+                    <button class="gallery-button" onclick="openModal('../images/eagle-project/project3.jpg', 'A scout holding up a finished mask')"><img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask"></button>
+                    <button class="gallery-button" onclick="openModal('../images/eagle-project/project4.jpg', 'Younger scouts helping with ironing fabric')"><img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric"></button>
+                    <button class="gallery-button" onclick="openModal('../images/eagle-project/project5.jpg', 'A volunteer carefully ironing a mask')"><img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask"></button>
+                    <button class="gallery-button" onclick="openModal('../images/eagle-project/project6.jpg', 'Team members assembling the masks')"><img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks"></button>
                 </div>
             </section>
         </div>
