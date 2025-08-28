@@ -3,93 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley's professional experience and work history">
+    <meta name="description" content="Samuel Rumbley's professional experience, leadership roles, and volunteer history.">
     <title>Experience - Samuel Rumbley</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles for the redesigned experience page */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-column h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color-faint);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .experience-card {
+            background: var(--background-white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .experience-card h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--text-color);
+        }
+
+        .experience-card .company {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-card .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style-position: outside;
+            padding-left: 1.25rem;
+            margin: 0;
+        }
+
+        .experience-card ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Skip link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <div id="header"></div>
     
     <main id="main-content" class="container fade-in">
-        <h2 class="center">Experience</h2>
-
-        <section class="experience-timeline">
-            <div class="content-box">
-                <h3>Substitute Teacher</h3>
-                <p>Wilson County Schools · Part-time</p>
-                <p>Aug 2023 - Present · 10 months</p>
-                <p><strong>Location:</strong> Lebanon, TN</p>
-                <ul>
-                    <li>Utilize critical thinking and problem-solving skills to create a safe and effective learning environment.</li>
-                    <li>Monitor student growth and behavior.</li>
-                    <li>Work effectively with fellow staff members.</li>
-                </ul>
-                <div class="button-container">
-                    <a href="https://www.wcschools.com/" target="_blank">Wilson County Schools</a>
-                </div>
-            </div>
-
-            <div class="content-box">
-                <h3>Group Meeting Lead</h3>
-                <p>Section SR-7B, Southern Region, Order of the Arrow, Boy Scouts of America · Volunteer</p>
-                <p>Dec 2023 - Present · 6 months</p>
-                <p><strong>Location:</strong> Virtual</p>
-                <ul>
-                    <li>Lead semi-weekly meetings with lodge leadership from across Tennessee and Kentucky.</li>
-                    <li>Help lodges coordinate events and share best practices.</li>
-                    <li>Communicate opportunities and requirements to lodges.</li>
-                </ul>
-                <div class="button-container">
-                    <a href="https://southern.oa-bsa.org/sr7b/" target="_blank">Section SR-7B</a>
-                </div>
-            </div>
-
-            <div class="content-box">
-                <h3>Boxwell Staff</h3>
-                <p>Middle Tennessee Council, Boy Scouts of America · Seasonal</p>
-                <p>May 2023 - Aug 2023 · 4 months</p>
-                <p><strong>Location:</strong> Lebanon, TN</p>
-                <ul>
-                    <li>Actively participated as a summer camp staff member, including teaching merit badge classes such as Scouting Heritage and Indian Lore.</li>
-                    <li>Maintained the lodge building and outdoor areas.</li>
-                    <li>Promoted council programs and camping opportunities.</li>
-                </ul>
-                <div class="button-container">
-                    <a href="http://www.virtualboxwell.org/" target="_blank">Boxwell Scout Reservation</a>
-                    <a href="https://www.mtcscouting.org/" target="_blank">Middle Tennessee Council</a>
-                    <a href="https://www.wahinasa.org/" target="_blank">Wa-Hi-Nasa Lodge, Order of the Arrow</a>
-                </div>
-            </div>
+        <section class="intro">
+            <h1>My Experience</h1>
+            <p class="lead">A detailed look at my professional roles and extensive leadership in service to the community.</p>
         </section>
+
+        <div class="experience-grid">
+            <div class="experience-column">
+                <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                <div class="experience-card">
+                    <h3>Program Director</h3>
+                    <p class="company">Middle Tennessee Council, Scouting America</p>
+                    <p class="date">Summer 2023 - 2025 (Seasonal)</p>
+                    <ul>
+                        <li>Promoted to Program Director for Summer 2025, leading operations for over 1,000 campers and supervising 40+ staff across 60+ program areas.</li>
+                        <li>Designed and executed daily schedules, incorporating merit badges, campfires, and evening programs.</li>
+                        <li>Mentored and coordinated staff while overseeing fellowship gatherings, dining hall programming, and troop competitions, engaging over 300 stakeholders weekly.</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Substitute Teacher</h3>
+                    <p class="company">Wilson & Putnam County Schools</p>
+                    <p class="date">May 2023 – Present</p>
+                    <ul>
+                        <li>Utilize critical thinking and problem-solving skills to create a safe and effective learning environment for students across various grade levels.</li>
+                        <li>Monitor student growth and behavior, adapting teaching strategies as needed.</li>
+                        <li>Work effectively with fellow staff members to ensure a consistent educational experience.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-column">
+                <h2><i class="fas fa-hands-helping"></i> Leadership & Service</h2>
+                <div class="experience-card">
+                    <h3>Executive Board Member</h3>
+                    <p class="company">Middle Tennessee Council, Scouting America</p>
+                    <p class="date">December 2022 – February 2025</p>
+                    <ul>
+                        <li>Advocated for the interests of over 10,000 scouts and guided community support for the scouting program.</li>
+                        <li>Contributed effectively to board discussions to help drive strategic decision-making.</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3>Scouting Leadership</h3>
+                    <p class="company">Wa-Hi-Nasa Lodge & Troop 1204</p>
+                    <p class="date">August 2017 – Present</p>
+                    <ul>
+                        <li>Led an 850-member organization as Lodge Chief, managing 80+ leaders and an $81,000 budget.</li>
+                        <li>Directed 150 volunteers to execute a week-long Winter Camp for over 500 scouts.</li>
+                        <li>Received the prestigious Founder’s Award for dedication to service.</li>
+                    </ul>
+                    <a href="scouting.html#leadership-section" class="button" style="margin-top: 1rem;">View All Scouting Roles</a>
+                </div>
+                 <div class="experience-card">
+                    <h3>Children and Youth Volunteer</h3>
+                    <p class="company">First Church of the Nazarene, Cookeville, TN</p>
+                    <p class="date">October 2023 – Present</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Children and Media Volunteer</h3>
+                    <p class="company">Grace Church of the Nazarene, Nashville, TN</p>
+                    <p class="date">August 2016 - September 2023</p>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>    <div id="footer"></div>
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+    <div id="footer"></div>
 
-    <!-- Simple loader - runs first to ensure basic functionality -->
-    <script src="../js/simple-loader.js"></script>
-    
-    <!-- Core utilities -->
-    <script src="../js/core/config.js"></script>
-    <script src="../js/core/utils.js"></script>
-    <script src="../js/core/domUtils.js"></script>
-    <script src="../js/core/a11yUtils.js"></script>
-    <script src="../js/core/errorHandler.js"></script>
-    <script src="../js/core/performance.js"></script>
-    
-    <!-- Components -->
-    <script src="../js/components/header.js"></script>
-    <script src="../js/components/footer.js"></script>
-    <script src="../js/components/carousel.js"></script>
-    <script src="../js/components/collapsible.js"></script>
-    
-    <!-- Service Worker -->
-    <script src="../js/sw-register.js"></script>
-    
-    <!-- Page specific -->
     <script src="../js/app.js"></script>
 </body>
 </html>
