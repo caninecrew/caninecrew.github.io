@@ -3,27 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley's projects and publications">
-    <title>Projects - Samuel Rumbley</title>
+    <meta name="description" content="Samuel Rumbley's professional resume - Download or view online">
+    <title>Resume - Samuel Rumbley</title>
     <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Project Page Specific Styles */
-        .projects-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 2rem;
+        /* Resume Page Specific Styles */
+        .resume-hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 3rem;
         }
 
-        .project-category {
+        .resume-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .resume-hero .lead {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-actions .button {
+            background: white;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-actions .button:hover {
+            background: var(--primary-color-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-actions .button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-actions .button.secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .resume-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .resume-viewer-section {
             background: var(--background-white);
             border-radius: var(--radius-lg);
             padding: 2rem;
             box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary-color);
         }
 
-        .project-category h2 {
+        .resume-viewer-section h2 {
             color: var(--primary-color-dark);
             margin-bottom: 1.5rem;
             display: flex;
@@ -32,143 +91,169 @@
             font-size: 1.8rem;
         }
 
-        .project-category h2 i {
-            color: var(--primary-color);
-        }
-
-        .project-list {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .project-item {
+        .pdf-viewer {
+            position: relative;
             background: var(--background-light);
             border-radius: var(--radius-md);
-            padding: 2rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-light);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            position: relative;
         }
 
-        .project-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+        .pdf-viewer iframe {
+            width: 100%;
+            border: none;
+            border-radius: var(--radius-md);
         }
 
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin: 0;
-        }
-
-        .project-date {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            background: var(--primary-color-faint);
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-full);
-            white-space: nowrap;
-        }
-
-        .project-meta {
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-meta i {
-            font-size: 0.9rem;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .project-type-badge {
+        .loading-overlay {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-tech-stack {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: var(--background-white);
-            color: var(--text-secondary);
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-size: 0.85rem;
-            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
         }
 
-        .coming-soon {
-            background: var(--background-light);
-            border: 2px dashed var(--border-light);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-radius: var(--radius-lg);
-            color: var(--text-secondary);
-        }
-
-        .coming-soon i {
-            font-size: 3rem;
-            color: var(--primary-color-light);
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-light);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
             margin-bottom: 1rem;
         }
 
-        .coming-soon h3 {
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-secondary);
+        }
+
+        .error-message i {
+            font-size: 3rem;
+            color: var(--warning-color);
+            margin-bottom: 1rem;
+        }
+
+        .resume-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-card {
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover {
+            background: var(--primary-color-faint);
+            border-color: var(--primary-color-light);
+            transform: translateY(-2px);
+        }
+
+        .action-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .action-card h3 {
             color: var(--text-color);
             margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .action-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .quick-info {
+            background: var(--background-white);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .quick-info h2 {
+            color: var(--primary-color-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.8rem;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary-color-light);
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            width: 24px;
+            text-align: center;
+        }
+
+        .info-item .info-content {
+            flex: 1;
+        }
+
+        .info-item .info-label {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-item .info-value {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
-            .project-header {
+            .hero-actions {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
             }
 
-            .project-type-badge {
-                position: static;
-                margin-bottom: 1rem;
+            .hero-actions .button {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
             }
 
-            .project-links {
-                flex-direction: column;
+            .resume-actions {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -179,133 +264,191 @@
     <div id="header"></div>
     
     <main id="main-content" class="container fade-in">
-        <section class="intro">
-            <h1>Projects & Publications</h1>
-            <p class="lead">A showcase of my technical projects, publications, and creative work spanning leadership development, organizational improvement, and technology solutions.</p>
+        <section class="resume-hero">
+            <h1>Professional Resume</h1>
+            <p class="lead">View my complete professional background, experience, and qualifications in a comprehensive resume format.</p>
+            <div class="hero-actions">
+                <a href="../documents/resume.pdf" download class="button">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" class="button secondary">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
         </section>
 
-        <div class="projects-grid">
-            <div class="project-category">
-                <h2><i class="fas fa-book-open"></i> Publications</h2>
-                <div class="project-list">
-                    <div class="project-item">
-                        <div class="project-type-badge">Publication</div>
-                        <div class="project-header">
-                            <h3 class="project-title">The Wheel v3</h3>
-                            <span class="project-date">Jun 2, 2024</span>
-                        </div>
-                        <p class="project-meta">
-                            <i class="fas fa-building"></i>
-                            Wa-Hi-Nasa Lodge, Order of the Arrow
-                        </p>
-                        <p class="project-description">
-                            Led the development and editorial oversight of an updated comprehensive resource guide for Order of the Arrow members. This document serves as a critical leadership development tool, providing guidance, policies, and best practices for members in leadership roles across the organization. The project involved coordinating multiple contributors, ensuring content accuracy, and creating a user-friendly format for distribution across lodge membership.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-tag">Editorial Leadership</span>
-                            <span class="tech-tag">Content Strategy</span>
-                            <span class="tech-tag">Project Management</span>
-                            <span class="tech-tag">Leadership Development</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://wa-hi-nasa.org/wp-content/uploads/The-Wheel-V3.pdf" target="_blank" class="button">
-                                <i class="fas fa-external-link-alt"></i> View Publication
-                            </a>
-                        </div>
+        <div class="resume-container">
+            <div class="resume-viewer-section">
+                <h2><i class="fas fa-file-pdf"></i> Resume Preview</h2>
+                <div class="pdf-viewer">
+                    <div id="pdf-loading" class="loading-overlay">
+                        <div class="loading-spinner"></div>
+                        <p>Loading resume preview...</p>
                     </div>
-                    
-                    <div class="project-item">
-                        <div class="project-type-badge">Annual Report</div>
-                        <div class="project-header">
-                            <h3 class="project-title">2023 Annual Report</h3>
-                            <span class="project-date">Dec 2, 2023</span>
-                        </div>
-                        <p class="project-meta">
-                            <i class="fas fa-building"></i>
-                            Wa-Hi-Nasa Lodge, Order of the Arrow
-                        </p>
-                        <p class="project-description">
-                            Provided strategic leadership and guidance to the Lodge Secretary and Flying Eagle Chairman in developing the organization's first comprehensive annual report at this scale in recent history. The report documented organizational achievements, financial health, membership growth, and program impact, establishing a new standard for organizational transparency and accountability.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-tag">Strategic Leadership</span>
-                            <span class="tech-tag">Data Analysis</span>
-                            <span class="tech-tag">Report Design</span>
-                            <span class="tech-tag">Organizational Development</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://wa-hi-nasa.org/wp-content/uploads/2023-Annual-Report.pdf" target="_blank" class="button">
-                                <i class="fas fa-external-link-alt"></i> View Report
-                            </a>
-                        </div>
+                    <iframe src="../documents/resume.pdf" 
+                            title="Samuel Rumbley's Resume Preview"
+                            width="100%" 
+                            height="800px"
+                            onload="document.getElementById('pdf-loading').style.display='none'"
+                            onerror="handlePdfError()">
+                        <p>Your browser doesn't support embedded PDFs. You can <a href="../documents/resume.pdf" download>download the PDF</a> instead.</p>
+                    </iframe>
+                </div>
+
+                <div class="resume-actions">
+                    <div class="action-card">
+                        <i class="fas fa-download"></i>
+                        <h3>Download Resume</h3>
+                        <p>Get a PDF copy of my complete resume for your records or offline viewing.</p>
+                        <a href="../documents/resume.pdf" download class="button">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    </div>
+
+                    <div class="action-card">
+                        <i class="fas fa-print"></i>
+                        <h3>Print Resume</h3>
+                        <p>Print a physical copy of my resume for meetings or interviews.</p>
+                        <button onclick="printResume()" class="button">
+                            <i class="fas fa-print"></i> Print Resume
+                        </button>
+                    </div>
+
+                    <div class="action-card">
+                        <i class="fas fa-share-alt"></i>
+                        <h3>Share Resume</h3>
+                        <p>Share my resume with colleagues or copy the direct link to this page.</p>
+                        <button onclick="shareResume()" class="button">
+                            <i class="fas fa-share-alt"></i> Share Link
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="project-category">
-                <h2><i class="fas fa-code"></i> Technical Projects</h2>
-                <div class="project-list">
-                    <div class="project-item">
-                        <div class="project-type-badge">Web Development</div>
-                        <div class="project-header">
-                            <h3 class="project-title">Personal Portfolio Website</h3>
-                            <span class="project-date">2024 - Present</span>
+            <div class="quick-info">
+                <h2><i class="fas fa-info-circle"></i> Quick Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-user"></i>
+                        <div class="info-content">
+                            <div class="info-label">Full Name</div>
+                            <div class="info-value">Samuel Rumbley</div>
                         </div>
-                        <p class="project-meta">
-                            <i class="fas fa-user"></i>
-                            Personal Project
-                        </p>
-                        <p class="project-description">
-                            Designed and developed a comprehensive personal portfolio website showcasing my professional experience, achievements, and projects. The site features responsive design, interactive elements, and optimized performance. Built with modern web technologies and best practices for accessibility and user experience.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Responsive Design</span>
-                            <span class="tech-tag">Web Accessibility</span>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div class="info-content">
+                            <div class="info-label">Education</div>
+                            <div class="info-value">Business Information Technology, Tennessee Tech University</div>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/caninecrew" target="_blank" class="button">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-content">
+                            <div class="info-label">Location</div>
+                            <div class="info-value">Cookeville, Tennessee</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-briefcase"></i>
+                        <div class="info-content">
+                            <div class="info-label">Current Role</div>
+                            <div class="info-value">Program Director & Student</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-award"></i>
+                        <div class="info-content">
+                            <div class="info-label">Key Achievement</div>
+                            <div class="info-value">Eagle Scout, Scout of the Year 2023</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-tools"></i>
+                        <div class="info-content">
+                            <div class="info-label">Core Skills</div>
+                            <div class="info-value">Leadership, Project Management, Data Analysis</div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="project-category">
-                <h2><i class="fas fa-university"></i> Academic Projects</h2>
-                <div class="project-list">
-                    <div class="coming-soon">
-                        <i class="fas fa-flask"></i>
-                        <h3>Academic Projects Coming Soon</h3>
-                        <p>Currently working on several academic projects related to Business Information Technology, including database design, systems analysis, and cybersecurity implementations. Check back soon for updates!</p>
+        <section class="cta-section" style="background: var(--background-light); padding: 2rem; border-radius: var(--radius-lg); margin-top: 2rem; text-align: center;">
+            <h2>Ready to Connect?</h2>
+            <p>I'm actively seeking opportunities in business information technology, data analysis, and leadership roles. Let's discuss how my skills and experience can benefit your organization.</p>
+            <div class="button-container">
+                <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" class="button button-primary">
+                    <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                </a>
+                <a href="mailto:samuel.rumbley@example.com" class="button">
+                    <i class="fas fa-envelope"></i> Send Email
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+    <div id="footer"></div>
+
+    <script>
+        function handlePdfError() {
+            const viewer = document.querySelector('.pdf-viewer');
+            viewer.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Unable to Display Resume</h3>
+                    <p>Sorry, there was an error loading the PDF preview. You can still download the resume using the button below.</p>
+                    <div class="button-container">
+                        <a href="../documents/resume.pdf" download class="button button-primary">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                        <button onclick="window.location.reload()" class="button">
+                            <i class="fas fa-sync-alt"></i> Try Again
+                        </button>
                     </div>
                 </div>
-            </div>
+            `;
+        }
 
-            <div class="project-category">
-                <h2><i class="fas fa-users"></i> Leadership & Event Projects</h2>
-                <div class="project-list">
-                    <div class="project-item">
-                        <div class="project-type-badge">Event Management</div>
-                        <div class="project-header">
-                            <h3 class="project-title">Middle Tennessee Council Winter Camp</h3>
-                            <span class="project-date">Dec 2023 - 2024</span>
-                        </div>
-                        <p class="project-meta">
-                            <i class="fas fa-campground"></i>
-                            Winter Camp Chair - Wa-Hi-Nasa Lodge
-                        </p>
-                        <p class="project-description">
-                            Led the planning and execution of the Middle Tennessee Council Winter Camp, coordinating over 140 staff members and delivering programming for 800+ attendees. Managed logistics, safety protocols, program development, and staff training. Successfully implemented new program elements and improved participant satisfaction scores by 15% over the previous year.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-tag">Event Management</span>
-                            <span class="tech-tag">Staff Coordination</span>
-                            <span class="tech-tag">Risk Management</span>
-                            <span class="tech-tag">Program Development</span>
-                            <span class="tech-tag">Budget Management</span>
-                        </div>
-                    </div>
+        function printResume() {
+            const iframe = document.querySelector('iframe');
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.print();
+            } else {
+                // Fallback: open PDF in new window for printing
+                window.open('../documents/resume.pdf', '_blank');
+            }
+        }
+
+        function shareResume() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Samuel Rumbley - Resume',
+                    text: 'Check out Samuel Rumbley\'s professional resume',
+                    url: window.location.href
+                });
+            } else if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Resume link copied to clipboard!');
+                });
+            } else {
+                // Fallback: select text method
+                const textArea = document.createElement('textarea');
+                textArea.value = window.location.href;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Resume link copied to clipboard!');
+            }
+        }
+    </script>
+    <script src="../js/app.js"></script>
+</body>
+</html>
