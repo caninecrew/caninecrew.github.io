@@ -21,6 +21,29 @@ function setStatus(message) {
     }
 }
 
+function setResult(message) {
+    if (solverEls.result) {
+        solverEls.result.textContent = message;
+    }
+}
+
+function normalizeErrorMessage(error) {
+    const message = error && error.message ? error.message : String(error || '');
+    if (message.includes('Equation contains invalid characters')) {
+        return 'Please use only numbers, x, and standard operators (+, -, *, /, ^).';
+    }
+    if (message.includes('Multiple variables are not supported')) {
+        return 'Please enter an equation with a single variable (x).';
+    }
+    if (message.includes('Solver still loading')) {
+        return 'Solver is still loading. Please try again in a moment.';
+    }
+    if (message.includes('Equation must contain exactly one')) {
+        return 'Please enter an equation with a single "=" sign.';
+    }
+    return message || 'Something went wrong. Please try a simpler equation.';
+}
+
 function formatResult(text) {
     const trimmed = text.trim();
     if (!trimmed) return 'No output.';
@@ -50,8 +73,8 @@ function extractYExpression(equation) {
 
 function parseValue(value) {
     const trimmed = value.trim();
-    if (trimmed === '∞' || trimmed === 'inf') return Infinity;
-    if (trimmed === '-∞' || trimmed === '-inf') return -Infinity;
+    if (trimmed === 'inf' || trimmed === 'infinity') return Infinity;
+    if (trimmed === '-inf' || trimmed === '-infinity') return -Infinity;
     const parsed = Number.parseFloat(trimmed);
     return Number.isNaN(parsed) ? null : parsed;
 }
@@ -154,7 +177,7 @@ function buildIntervalShapes(intervals, xmin, xmax) {
 }
 
 function resizePlot() {
-    if (solverEls.plot && solverEls.plot.data) {
+    if (solverEls.plot && solverEls.plot.data && window.Plotly) {
         Plotly.Plots.resize(solverEls.plot);
     }
 }
@@ -163,8 +186,16 @@ async function initSolver() {
     if (!solverEls.form) return;
     setStatus('Loading Pyodide...');
     try {
+        if (!window.loadPyodide) {
+            setStatus('Solver is unavailable.');
+            setResult('Solver failed to load. Please refresh the page or try again later.');
+            return;
+        }
         solverState.pyodide = await loadPyodide();
         const response = await fetch('../assets/py/web_bundle.py');
+        if (!response.ok) {
+            throw new Error('Solver bundle failed to load.');
+        }
         const source = await response.text();
         solverState.pyodide.runPython(source);
         solverState.pyodide.runPython(`
@@ -191,34 +222,49 @@ def _extract_expr(equation):
     } catch (error) {
         console.error('Failed to initialize solver:', error);
         setStatus('Failed to load solver.');
+        setResult(normalizeErrorMessage(error));
     }
 }
 
 async function solveAndPlot(event) {
     event.preventDefault();
+    if (!solverEls.equation || !solverEls.xmin || !solverEls.xmax || !solverEls.result) {
+        return;
+    }
     if (!solverState.solve) {
         setStatus('Solver still loading...');
+        setResult('Solver is still loading. Please try again in a moment.');
         return;
     }
 
     const equation = solverEls.equation.value.trim();
     if (!equation) {
-        solverEls.result.textContent = 'Please enter an equation or inequality.';
+        setResult('Please enter an equation or inequality.');
         return;
     }
 
     const xmin = Number.parseFloat(solverEls.xmin.value);
     const xmax = Number.parseFloat(solverEls.xmax.value);
     if (Number.isNaN(xmin) || Number.isNaN(xmax) || xmin >= xmax) {
-        solverEls.result.textContent = 'Please enter a valid x range.';
+        setResult('Please enter a valid x range.');
         return;
     }
 
     const yExpr = extractYExpression(equation);
     if (yExpr && !/[<>]/.test(equation)) {
-        solverEls.result.textContent = `Plotted y = ${yExpr} (solution not computed for multiple variables).`;
+        setResult(`Plotted y = ${yExpr} (solution not computed for multiple variables).`);
         setStatus('Plotting...');
         try {
+            if (!solverEls.plot) {
+                setStatus('Plotting unavailable.');
+                setResult('Plot area is unavailable. Please try again later.');
+                return;
+            }
+            if (!window.Plotly) {
+                setStatus('Plotting unavailable.');
+                setResult('Plotting is unavailable right now. Please try again later.');
+                return;
+            }
             const samples = 400;
             const xs = Array.from({ length: samples }, (_, i) => xmin + (i * (xmax - xmin)) / (samples - 1));
             const pyXs = solverState.pyodide.toPy(xs);
@@ -255,7 +301,7 @@ async function solveAndPlot(event) {
             return;
         } catch (plotError) {
             console.error('Plot fallback failed:', plotError);
-            solverEls.result.textContent = `Error: ${plotError.message || plotError}`;
+            setResult(normalizeErrorMessage(plotError));
             setStatus('Solve failed.');
             return;
         }
@@ -264,7 +310,7 @@ async function solveAndPlot(event) {
     setStatus('Solving...');
     try {
         const result = solverState.solve(equation, xmin, xmax);
-        solverEls.result.textContent = formatResult(result);
+        setResult(formatResult(result));
         setStatus('Solved.');
 
         const expr = solverState.extractExpr(equation);
@@ -313,13 +359,33 @@ async function solveAndPlot(event) {
         };
 
         const data = markerTrace ? [curveTrace, markerTrace] : [curveTrace];
+        if (!solverEls.plot) {
+            setStatus('Plotting unavailable.');
+            setResult(`${formatResult(result)} (plot area unavailable).`);
+            return;
+        }
+        if (!window.Plotly) {
+            setStatus('Plotting unavailable.');
+            setResult(`${formatResult(result)} (plotting unavailable).`);
+            return;
+        }
         Plotly.newPlot(solverEls.plot, data, layout, { responsive: true }).then(resizePlot);
     } catch (error) {
-        const message = error.message || String(error);
+        const message = normalizeErrorMessage(error);
         if (message.includes('Multiple variables are not supported') && yExpr) {
-            solverEls.result.textContent = `Plotted y = ${yExpr} (solution not computed for multiple variables).`;
+            setResult(`Plotted y = ${yExpr} (solution not computed for multiple variables).`);
             setStatus('Plotting...');
             try {
+                if (!solverEls.plot) {
+                    setStatus('Plotting unavailable.');
+                    setResult('Plot area is unavailable. Please try again later.');
+                    return;
+                }
+                if (!window.Plotly) {
+                    setStatus('Plotting unavailable.');
+                    setResult('Plotting is unavailable right now. Please try again later.');
+                    return;
+                }
                 const samples = 400;
                 const xs = Array.from({ length: samples }, (_, i) => xmin + (i * (xmax - xmin)) / (samples - 1));
                 const pyXs = solverState.pyodide.toPy(xs);
@@ -356,14 +422,14 @@ async function solveAndPlot(event) {
                 return;
             } catch (plotError) {
                 console.error('Plot fallback failed:', plotError);
-                solverEls.result.textContent = `Error: ${plotError.message || plotError}`;
+                setResult(normalizeErrorMessage(plotError));
                 setStatus('Solve failed.');
                 return;
             }
         }
 
         console.error('Solve failed:', error);
-        solverEls.result.textContent = `Error: ${message}`;
+        setResult(normalizeErrorMessage(error));
         setStatus('Solve failed.');
     }
 }
