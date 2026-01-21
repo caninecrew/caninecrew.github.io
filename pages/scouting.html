@@ -172,6 +172,10 @@
             font-weight: bold;
             transition: 0.3s;
             cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
         }
     </style>
 </head>
@@ -252,47 +256,15 @@
     </main>
 
     <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <button type="button" class="close" onclick="closeModal()" aria-label="Close image">&times;</button>
         <img class="modal-content" id="modalImage">
         <div id="caption" style="text-align: center; color: #ccc; padding: 10px 0; height: 150px;"></div>
     </div>
 
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">&uarr;</button>
     <div id="footer"></div>
 
     <script src="../js/app.js"></script>
     <script src="../js/data/scouting.js"></script>
-    <script>
-        // Modal functionality for the Eagle Project gallery
-        function openModal(src, alt) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            const captionText = document.getElementById("caption");
-            
-            if (modal && modalImg && captionText) {
-                modal.style.display = "block";
-                modalImg.src = src;
-                captionText.innerHTML = alt;
-            }
-        }
-
-        function closeModal() {
-            const modal = document.getElementById("imageModal");
-            if (modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
-            }
-        });
-        document.getElementById('imageModal').addEventListener('click', function(event) {
-            if (event.target === this) {
-                closeModal();
-            }
-        });
-    </script>
 </body>
 </html>

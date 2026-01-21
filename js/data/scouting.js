@@ -45,7 +45,8 @@ function openModal(src, alt) {
     if (modal && modalImg && captionText) {
         modal.style.display = "block";
         modalImg.src = src;
-        captionText.innerHTML = alt;
+        modalImg.alt = alt;
+        captionText.textContent = alt;
     }
 }
 
@@ -60,5 +61,16 @@ function closeModal() {
 document.addEventListener('keydown', function(event) {
     if (event.key === "Escape") {
         closeModal();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
     }
 });
