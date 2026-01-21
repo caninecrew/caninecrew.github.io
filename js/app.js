@@ -7,12 +7,31 @@ function initializeCollapsibles() {
   // Find all collapsible buttons that have not been initialized
   const collapsibles = document.querySelectorAll('.collapsible:not([data-collapsible-init])');
 
+  let collapsibleCounter = document.querySelectorAll('[id^="collapsible-content-"]').length;
+
   collapsibles.forEach(button => {
     // Mark the button as initialized to prevent re-adding listeners
     button.setAttribute('data-collapsible-init', 'true');
     
     // Set initial accessibility state
     button.setAttribute('aria-expanded', 'false');
+
+    // Ensure each collapsible has a content panel and wire up ARIA
+    let content;
+    if (button.parentElement && button.parentElement.tagName === 'H3') {
+      content = button.parentElement.nextElementSibling;
+    } else {
+      content = button.nextElementSibling;
+    }
+
+    if (content) {
+      if (!content.id) {
+        collapsibleCounter += 1;
+        content.id = `collapsible-content-${collapsibleCounter}`;
+      }
+      button.setAttribute('aria-controls', content.id);
+      content.setAttribute('aria-hidden', 'true');
+    }
 
     button.addEventListener('click', function() {
       // Toggle the 'active' class for styling
@@ -25,7 +44,7 @@ function initializeCollapsibles() {
       // Find the content panel to show or hide
       let content;
       // The merit badge buttons are inside an H3, others are not
-      if (this.parentElement.tagName === 'H3') {
+      if (this.parentElement && this.parentElement.tagName === 'H3') {
         content = this.parentElement.nextElementSibling;
       } else {
         content = this.nextElementSibling;
@@ -40,8 +59,10 @@ function initializeCollapsibles() {
           } else {
             content.style.display = 'block';
           }
+          content.setAttribute('aria-hidden', 'false');
         } else {
           content.style.display = 'none';
+          content.setAttribute('aria-hidden', 'true');
         }
       }
     });
