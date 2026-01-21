@@ -31,6 +31,8 @@ function initializeCollapsibles() {
       }
       button.setAttribute('aria-controls', content.id);
       content.setAttribute('aria-hidden', 'true');
+      button.classList.remove('active');
+      content.style.display = 'none';
     }
 
     button.addEventListener('click', function() {
