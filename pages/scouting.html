@@ -73,31 +73,71 @@
         
         .timeline-wrapper {
             overflow-x: auto;
-            padding-bottom: 1.5rem;
+            padding: 0.5rem 0 1.75rem;
             scrollbar-width: thin;
             scrollbar-color: var(--primary-color) var(--background-light);
+            scroll-snap-type: x mandatory;
+            scroll-padding-inline: 1rem;
         }
 
         .timeline-horizontal {
             display: flex;
             width: max-content;
-            gap: 1rem;
+            gap: 1.25rem;
+            padding: 0.25rem 1rem 0.5rem;
         }
 
         .timeline-item-horizontal {
             background: var(--background-white);
             border-radius: var(--radius-md);
-            padding: 1.5rem;
-            width: 300px;
+            padding: 1.5rem 1.5rem 1.25rem;
+            width: 320px;
             flex-shrink: 0;
             box-shadow: var(--shadow-sm);
             border-top: 4px solid var(--scouting-primary);
+            border-left: 1px solid rgba(0, 63, 125, 0.08);
+            border-right: 1px solid rgba(0, 63, 125, 0.08);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-height: 200px;
         }
 
         .timeline-item-horizontal .date {
             font-weight: 700;
             color: var(--scouting-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-self: flex-start;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(0, 63, 125, 0.08);
+        }
+
+        .timeline-item-horizontal h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--scouting-primary);
+        }
+
+        .timeline-item-horizontal p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .timeline-wrapper::after {
+            content: "";
+            position: sticky;
+            right: 0;
+            display: block;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), var(--background-white));
+            pointer-events: none;
         }
 
         .leadership-section .organization-group .collapsible {
