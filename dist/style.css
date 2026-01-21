@@ -1346,6 +1346,7 @@ pre {
 
 .badge-info {
   flex: 1;
+  min-width: 0;
 }
 
 .badge-name {
@@ -1353,6 +1354,8 @@ pre {
   font-weight: 600;
   color: var(--merit-badge-text);
   margin-bottom: 0.25rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .badge-date {
