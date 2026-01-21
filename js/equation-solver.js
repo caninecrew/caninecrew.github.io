@@ -21,6 +21,15 @@ function setStatus(message) {
     }
 }
 
+function formatResult(text) {
+    const trimmed = text.trim();
+    if (!trimmed) return 'No output.';
+    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+        return trimmed.replace(/,\s*-/g, ', -');
+    }
+    return trimmed;
+}
+
 function parseValue(value) {
     const trimmed = value.trim();
     if (trimmed === '∞') return Infinity;
@@ -183,7 +192,7 @@ async function solveAndPlot(event) {
     setStatus('Solving...');
     try {
         const result = solverState.solve(equation, xmin, xmax);
-        solverEls.result.textContent = result;
+        solverEls.result.textContent = formatResult(result);
         setStatus('Solved.');
 
         const expr = solverState.extractExpr(equation);
@@ -197,7 +206,7 @@ async function solveAndPlot(event) {
             x: xs,
             y: ys,
             mode: 'lines',
-            line: { color: '#4c8daa', width: 2 },
+            line: { color: '#4c8daa', width: 2.5 },
             name: 'f(x)'
         };
 
@@ -213,10 +222,21 @@ async function solveAndPlot(event) {
         const shapes = buildIntervalShapes(solutionInfo.intervals, xmin, xmax);
 
         const layout = {
-            margin: { t: 30, r: 20, b: 40, l: 50 },
-            xaxis: { title: 'x', range: [xmin, xmax] },
-            yaxis: { title: 'y' },
+            margin: { t: 30, r: 20, b: 50, l: 60 },
+            xaxis: {
+                title: 'x',
+                range: [xmin, xmax],
+                gridcolor: 'rgba(148, 163, 184, 0.2)',
+                zerolinecolor: 'rgba(71, 85, 105, 0.4)'
+            },
+            yaxis: {
+                title: 'y',
+                gridcolor: 'rgba(148, 163, 184, 0.2)',
+                zerolinecolor: 'rgba(71, 85, 105, 0.4)'
+            },
             shapes,
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
             legend: { orientation: 'h' }
         };
 
