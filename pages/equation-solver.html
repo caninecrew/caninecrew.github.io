@@ -124,6 +124,14 @@
             display: inline-block;
         }
 
+        .solver-status[data-state="error"] {
+            color: var(--scouting-secondary);
+        }
+
+        .solver-status[data-state="error"]::before {
+            background: var(--scouting-secondary);
+        }
+
         .solver-output {
             display: grid;
             gap: 1.5rem;
@@ -152,6 +160,11 @@
             background: var(--solver-soft);
             padding: 1rem;
             border-radius: 12px;
+        }
+
+        .result-box pre[data-state="error"] {
+            color: var(--scouting-secondary);
+            background: rgba(201, 42, 42, 0.08);
         }
 
         .plot-box {
@@ -210,15 +223,15 @@
                     </div>
 
                     <div class="solver-actions">
-                        <button type="submit" class="button button-primary">Solve & Plot</button>
-                        <span id="solver-status" class="solver-status">Loading solver...</span>
+                        <button type="submit" class="button button-primary" disabled>Solve & Plot</button>
+                        <span id="solver-status" class="solver-status" role="status" aria-live="polite">Loading solver...</span>
                     </div>
                 </form>
 
                 <div class="solver-output">
                     <div class="result-box">
                         <h3>Result</h3>
-                        <pre id="solver-result">Enter an equation to see results.</pre>
+                        <pre id="solver-result" role="status" aria-live="polite">Enter an equation to see results.</pre>
                     </div>
                     <div class="plot-box" id="solver-plot"></div>
                 </div>

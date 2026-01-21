@@ -12,18 +12,21 @@ const solverEls = {
     xmax: document.getElementById('xmax-input'),
     status: document.getElementById('solver-status'),
     result: document.getElementById('solver-result'),
-    plot: document.getElementById('solver-plot')
+    plot: document.getElementById('solver-plot'),
+    submit: document.querySelector('#solver-form button[type="submit"]')
 };
 
-function setStatus(message) {
+function setStatus(message, isError = false) {
     if (solverEls.status) {
         solverEls.status.textContent = message;
+        solverEls.status.dataset.state = isError ? 'error' : 'ok';
     }
 }
 
-function setResult(message) {
+function setResult(message, isError = false) {
     if (solverEls.result) {
         solverEls.result.textContent = message;
+        solverEls.result.dataset.state = isError ? 'error' : 'ok';
     }
 }
 
@@ -194,11 +197,12 @@ const plotConfig = {
 
 async function initSolver() {
     if (!solverEls.form) return;
+    if (solverEls.submit) solverEls.submit.disabled = true;
     setStatus('Loading Pyodide...');
     try {
         if (!window.loadPyodide) {
-            setStatus('Solver is unavailable.');
-            setResult('Solver failed to load. Please refresh the page or try again later.');
+            setStatus('Solver is unavailable.', true);
+            setResult('Solver failed to load. Please refresh the page or try again later.', true);
             return;
         }
         solverState.pyodide = await loadPyodide();
@@ -229,10 +233,11 @@ def _extract_expr(equation):
         solverState.evalExpr = solverState.pyodide.globals.get('_eval_expr');
         solverState.extractExpr = solverState.pyodide.globals.get('_extract_expr');
         setStatus('Solver ready.');
+        if (solverEls.submit) solverEls.submit.disabled = false;
     } catch (error) {
         console.error('Failed to initialize solver:', error);
-        setStatus('Failed to load solver.');
-        setResult(normalizeErrorMessage(error));
+        setStatus('Failed to load solver.', true);
+        setResult(normalizeErrorMessage(error), true);
     }
 }
 
@@ -242,21 +247,21 @@ async function solveAndPlot(event) {
         return;
     }
     if (!solverState.solve) {
-        setStatus('Solver still loading...');
-        setResult('Solver is still loading. Please try again in a moment.');
+        setStatus('Solver still loading...', true);
+        setResult('Solver is still loading. Please try again in a moment.', true);
         return;
     }
 
     const equation = solverEls.equation.value.trim();
     if (!equation) {
-        setResult('Please enter an equation or inequality.');
+        setResult('Please enter an equation or inequality.', true);
         return;
     }
 
     const xmin = Number.parseFloat(solverEls.xmin.value);
     const xmax = Number.parseFloat(solverEls.xmax.value);
     if (Number.isNaN(xmin) || Number.isNaN(xmax) || xmin >= xmax) {
-        setResult('Please enter a valid x range.');
+        setResult('Please enter a valid x range.', true);
         return;
     }
 
@@ -270,11 +275,11 @@ async function solveAndPlot(event) {
                 setResult('Plot area is unavailable. Please try again later.');
                 return;
             }
-            if (!window.Plotly) {
-                setStatus('Plotting unavailable.');
-                setResult('Plotting is unavailable right now. Please try again later.');
-                return;
-            }
+        if (!window.Plotly) {
+            setStatus('Plotting unavailable.', true);
+            setResult('Plotting is unavailable right now. Please try again later.', true);
+            return;
+        }
             const samples = 400;
             const xs = Array.from({ length: samples }, (_, i) => xmin + (i * (xmax - xmin)) / (samples - 1));
             const pyXs = solverState.pyodide.toPy(xs);
@@ -311,8 +316,8 @@ async function solveAndPlot(event) {
             return;
         } catch (plotError) {
             console.error('Plot fallback failed:', plotError);
-            setResult(normalizeErrorMessage(plotError));
-            setStatus('Solve failed.');
+            setResult(normalizeErrorMessage(plotError), true);
+            setStatus('Solve failed.', true);
             return;
         }
     }
@@ -387,13 +392,13 @@ async function solveAndPlot(event) {
             setStatus('Plotting...');
             try {
                 if (!solverEls.plot) {
-                    setStatus('Plotting unavailable.');
-                    setResult('Plot area is unavailable. Please try again later.');
+                    setStatus('Plotting unavailable.', true);
+                    setResult('Plot area is unavailable. Please try again later.', true);
                     return;
                 }
                 if (!window.Plotly) {
-                    setStatus('Plotting unavailable.');
-                    setResult('Plotting is unavailable right now. Please try again later.');
+                    setStatus('Plotting unavailable.', true);
+                    setResult('Plotting is unavailable right now. Please try again later.', true);
                     return;
                 }
                 const samples = 400;
@@ -432,15 +437,15 @@ async function solveAndPlot(event) {
                 return;
             } catch (plotError) {
                 console.error('Plot fallback failed:', plotError);
-                setResult(normalizeErrorMessage(plotError));
-                setStatus('Solve failed.');
+                setResult(normalizeErrorMessage(plotError), true);
+                setStatus('Solve failed.', true);
                 return;
             }
         }
 
         console.error('Solve failed:', error);
-        setResult(normalizeErrorMessage(error));
-        setStatus('Solve failed.');
+        setResult(normalizeErrorMessage(error), true);
+        setStatus('Solve failed.', true);
     }
 }
 
