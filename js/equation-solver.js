@@ -153,6 +153,12 @@ function buildIntervalShapes(intervals, xmin, xmax) {
     return shapes;
 }
 
+function resizePlot() {
+    if (solverEls.plot && solverEls.plot.data) {
+        Plotly.Plots.resize(solverEls.plot);
+    }
+}
+
 async function initSolver() {
     if (!solverEls.form) return;
     setStatus('Loading Pyodide...');
@@ -307,7 +313,7 @@ async function solveAndPlot(event) {
         };
 
         const data = markerTrace ? [curveTrace, markerTrace] : [curveTrace];
-        Plotly.newPlot(solverEls.plot, data, layout, { responsive: true });
+        Plotly.newPlot(solverEls.plot, data, layout, { responsive: true }).then(resizePlot);
     } catch (error) {
         const message = error.message || String(error);
         if (message.includes('Multiple variables are not supported') && yExpr) {
@@ -345,7 +351,7 @@ async function solveAndPlot(event) {
                     plot_bgcolor: 'rgba(0,0,0,0)'
                 };
 
-                Plotly.newPlot(solverEls.plot, [curveTrace], layout, { responsive: true });
+                Plotly.newPlot(solverEls.plot, [curveTrace], layout, { responsive: true }).then(resizePlot);
                 setStatus('Plotted.');
                 return;
             } catch (plotError) {
@@ -367,4 +373,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (solverEls.form) {
         solverEls.form.addEventListener('submit', solveAndPlot);
     }
+    window.addEventListener('resize', resizePlot);
 });
