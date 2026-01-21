@@ -30,13 +30,32 @@ function formatResult(text) {
     return trimmed;
 }
 
+function splitEquation(equation) {
+    const match = equation.match(/(?<![<>])=(?!=)/);
+    if (!match || match.index === undefined) return null;
+    const index = match.index;
+    const lhs = equation.slice(0, index).trim();
+    const rhs = equation.slice(index + 1).trim();
+    if (!lhs || !rhs) return null;
+    return { lhs, rhs };
+}
+
+function extractYExpression(equation) {
+    const parts = splitEquation(equation);
+    if (!parts) return null;
+    if (parts.lhs === 'y') return parts.rhs;
+    if (parts.rhs === 'y') return parts.lhs;
+    return null;
+}
+
 function parseValue(value) {
     const trimmed = value.trim();
-    if (trimmed === '∞') return Infinity;
-    if (trimmed === '-∞') return -Infinity;
+    if (trimmed === '?') return Infinity;
+    if (trimmed === '-?') return -Infinity;
     const parsed = Number.parseFloat(trimmed);
     return Number.isNaN(parsed) ? null : parsed;
 }
+
 
 function parseSolutions(output) {
     const text = output.trim();
@@ -243,8 +262,56 @@ async function solveAndPlot(event) {
         const data = markerTrace ? [curveTrace, markerTrace] : [curveTrace];
         Plotly.newPlot(solverEls.plot, data, layout, { responsive: true });
     } catch (error) {
+        const message = error.message || String(error);
+        const yExpr = extractYExpression(equation);
+        if (message.includes('Multiple variables are not supported') && yExpr) {
+            solverEls.result.textContent = `Plotted y = ${yExpr} (solution not computed for multiple variables).`;
+            setStatus('Plotting...');
+            try {
+                const samples = 400;
+                const xs = Array.from({ length: samples }, (_, i) => xmin + (i * (xmax - xmin)) / (samples - 1));
+                const pyXs = solverState.pyodide.toPy(xs);
+                const ys = solverState.evalExpr(yExpr, pyXs).toJs();
+                pyXs.destroy();
+
+                const curveTrace = {
+                    x: xs,
+                    y: ys,
+                    mode: 'lines',
+                    line: { color: '#4c8daa', width: 2.5 },
+                    name: 'y(x)'
+                };
+
+                const layout = {
+                    margin: { t: 30, r: 20, b: 50, l: 60 },
+                    xaxis: {
+                        title: 'x',
+                        range: [xmin, xmax],
+                        gridcolor: 'rgba(148, 163, 184, 0.2)',
+                        zerolinecolor: 'rgba(71, 85, 105, 0.4)'
+                    },
+                    yaxis: {
+                        title: 'y',
+                        gridcolor: 'rgba(148, 163, 184, 0.2)',
+                        zerolinecolor: 'rgba(71, 85, 105, 0.4)'
+                    },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)'
+                };
+
+                Plotly.newPlot(solverEls.plot, [curveTrace], layout, { responsive: true });
+                setStatus('Plotted.');
+                return;
+            } catch (plotError) {
+                console.error('Plot fallback failed:', plotError);
+                solverEls.result.textContent = `Error: ${plotError.message || plotError}`;
+                setStatus('Solve failed.');
+                return;
+            }
+        }
+
         console.error('Solve failed:', error);
-        solverEls.result.textContent = `Error: ${error.message || error}`;
+        solverEls.result.textContent = `Error: ${message}`;
         setStatus('Solve failed.');
     }
 }
