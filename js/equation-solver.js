@@ -182,6 +182,13 @@ function resizePlot() {
     }
 }
 
+const plotConfig = {
+    responsive: true,
+    displayModeBar: true,
+    displaylogo: false,
+    scrollZoom: true
+};
+
 async function initSolver() {
     if (!solverEls.form) return;
     setStatus('Loading Pyodide...');
@@ -296,7 +303,7 @@ async function solveAndPlot(event) {
                 plot_bgcolor: 'rgba(0,0,0,0)'
             };
 
-            Plotly.newPlot(solverEls.plot, [curveTrace], layout, { responsive: true });
+            Plotly.newPlot(solverEls.plot, [curveTrace], layout, plotConfig);
             setStatus('Plotted.');
             return;
         } catch (plotError) {
@@ -369,7 +376,7 @@ async function solveAndPlot(event) {
             setResult(`${formatResult(result)} (plotting unavailable).`);
             return;
         }
-        Plotly.newPlot(solverEls.plot, data, layout, { responsive: true }).then(resizePlot);
+        Plotly.newPlot(solverEls.plot, data, layout, plotConfig).then(resizePlot);
     } catch (error) {
         const message = normalizeErrorMessage(error);
         if (message.includes('Multiple variables are not supported') && yExpr) {
@@ -417,7 +424,7 @@ async function solveAndPlot(event) {
                     plot_bgcolor: 'rgba(0,0,0,0)'
                 };
 
-                Plotly.newPlot(solverEls.plot, [curveTrace], layout, { responsive: true }).then(resizePlot);
+                Plotly.newPlot(solverEls.plot, [curveTrace], layout, plotConfig).then(resizePlot);
                 setStatus('Plotted.');
                 return;
             } catch (plotError) {

@@ -3340,6 +3340,15 @@ footer,
   padding: var(--space-md);
 }
 
+/* Keep merit badge lists closed until expanded */
+.merit-badge-year .merit-badge-list {
+  display: none;
+}
+
+.merit-badge-year .collapsible.active + .merit-badge-list {
+  display: grid;
+}
+
 /* Project gallery grid */
 .project-gallery {
   display: grid;
