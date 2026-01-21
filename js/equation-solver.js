@@ -97,10 +97,13 @@ function parseSolutions(output) {
         const trimmed = part.trim();
         if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
             const inner = trimmed.slice(1, -1).trim();
-            const value = parseValue(inner);
-            if (value !== null && Number.isFinite(value)) {
-                points.push(value);
-            }
+            const values = inner.split(',').map(value => value.trim()).filter(Boolean);
+            values.forEach(raw => {
+                const value = parseValue(raw);
+                if (value !== null && Number.isFinite(value)) {
+                    points.push(value);
+                }
+            });
             return;
         }
 
