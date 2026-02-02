@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Use Promise.all to wait for all dynamic content to load
     Promise.all([
-        loadSection('../pages/leadership-positions.html', 'leadership-roles-content'),
-        loadSection('../pages/merit-badges.html', 'merit-badges-content')
+        loadSection('../pages/leadership-positions.html', 'leadership-roles-content')
     ]).then(() => {
         // Once all content is on the page, initialize the collapsible buttons
         if (window.initializeCollapsibles) {
