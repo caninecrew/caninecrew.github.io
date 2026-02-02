@@ -5709,32 +5709,50 @@ body>.container {
 
 /* Hero Section */
 .hero-section {
-  padding: 8rem 1rem 6rem;
-  background: linear-gradient(135deg, rgba(110, 191, 247, 0.1) 0%, rgba(208, 127, 51, 0.1) 100%);
+  padding: 4rem 1.5rem;
+  background-color: var(--header-background);
+  color: var(--text-inverse);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 85vh;
+  min-height: 50vh;
   text-align: center;
 }
 
 .hero-content {
-  max-width: 900px;
+  max-width: var(--max-width);
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  .hero-body {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .hero-profile-img {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid var(--background-white, #fff);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  margin-bottom: 2rem;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
 
@@ -5743,90 +5761,104 @@ body>.container {
 }
 
 .hero-greeting {
-  font-size: 1.5rem;
-  color: var(--primary-color);
+  font-size: 1.1rem;
+  color: var(--primary-color-light);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   display: block;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 800;
-  color: var(--text-color);
-  margin-bottom: 1rem;
+  color: var(--text-inverse);
+  margin-bottom: 0.75rem;
   line-height: 1.1;
   letter-spacing: -1px;
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-  max-width: 700px;
-  line-height: 1.5;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  line-height: 1.4;
   font-weight: 400;
 }
 
 .hero-actions {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .hero-actions {
+    justify-content: flex-start;
+  }
 }
 
 .primary-btn {
   background-color: var(--primary-color);
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.8rem;
   border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(110, 191, 247, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .primary-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(110, 191, 247, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(21, 101, 192, 0.4);
 }
 
 .secondary-btn {
   background-color: transparent;
-  color: var(--text-color);
-  padding: 1rem 2rem;
+  color: var(--text-inverse);
+  padding: 0.8rem 1.8rem;
   border-radius: 50px;
   font-weight: 600;
   text-decoration: none;
-  border: 2px solid var(--border-light, #eee);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
 }
 
 .secondary-btn:hover {
-  background-color: var(--background-white, #fff);
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-inverse);
 }
 
+/* Hero Socials */
 .hero-socials {
   display: flex;
   gap: 1.5rem;
-  font-size: 1.8rem;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .hero-socials {
+    justify-content: flex-start;
+  }
 }
 
 .hero-socials a {
-  color: var(--text-muted);
-  transition: color 0.3s ease, transform 0.3s ease;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
 }
 
 .hero-socials a:hover {
-  color: var(--primary-color);
+  color: var(--text-inverse);
   transform: translateY(-3px);
 }
+
+
 
 /* Global Quadrants Grid (Home & Scouting) */
 .quadrants {
