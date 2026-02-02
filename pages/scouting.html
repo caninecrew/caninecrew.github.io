@@ -116,6 +116,7 @@
             cursor: pointer;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 4/3;
             background: var(--background-light);
         }
 
@@ -126,8 +127,8 @@
 
         .gallery-item img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.5s ease;
         }
 
@@ -180,6 +181,7 @@
             display: block;
             max-width: 90%;
             max-height: 85vh;
+            object-fit: contain;
             padding-top: 60px;
             animation: zoomIn 0.4s;
         }
