@@ -9,6 +9,281 @@
     <title>My Scouting Journey - Samuel Rumbley</title>
     <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Horizontal Timeline Styles */
+        .timeline-wrapper {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline-horizontal {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 2rem;
+            padding: 2rem 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--background-light);
+        }
+
+        .timeline-horizontal::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .timeline-horizontal::-webkit-scrollbar-track {
+            background: var(--background-light);
+            border-radius: 10px;
+        }
+
+        .timeline-horizontal::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .timeline-horizontal::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color-dark);
+        }
+
+        .timeline-card {
+            min-width: 300px;
+            max-width: 300px;
+            background: var(--background-white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-card .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-card .timeline-date::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .timeline-card h3 a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .timeline-card h3 a:hover {
+            color: var(--primary-color);
+        }
+
+        .timeline-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Eagle Project Gallery Styles */
+        .eagle-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '🔍';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 0.9;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            padding-top: 60px;
+            animation: zoomIn 0.4s;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 45px;
+            font-weight: 300;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .modal .close:hover,
+        .modal .close:focus {
+            color: var(--primary-color-light);
+            transform: rotate(90deg);
+        }
+
+        #caption {
+            text-align: center;
+            color: #ddd;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Professional enhancements */
+        .content-box h2 {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-box h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .intro h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .intro .lead {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-card {
+                min-width: 250px;
+                max-width: 250px;
+            }
+
+            .intro h1 {
+                font-size: 2rem;
+            }
+
+            .eagle-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .modal .close {
+                font-size: 35px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -68,134 +343,76 @@
 
         <section class="content-box">
             <h2>Key Milestones</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+            <div class="timeline-wrapper">
+                <div class="timeline-horizontal" id="timeline">
+                    <div class="timeline-card">
                         <div class="timeline-date">2010</div>
-                        <h3>
-                            <a href="https://www.scouting.org/programs/cub-scouts/" target="_blank" rel="noopener">
-                                Started in Cub Scouts
-                            </a>
-                        </h3>
+                        <h3><a href="https://www.scouting.org/programs/cub-scouts/" target="_blank"
+                                rel="noopener">Started in Cub Scouts</a></h3>
                         <p>Began my involvement in Scouting through Cub Scouts, where I learned teamwork,
                             responsibility, and basic outdoor skills.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">June 2015</div>
-                        <h3>
-                            <a href="https://www.scouting.org/programs/scouts-bsa/" target="_blank" rel="noopener">
-                                Joined Scouts BSA
-                            </a>
-                        </h3>
+                        <h3><a href="https://www.scouting.org/programs/scouts-bsa/" target="_blank"
+                                rel="noopener">Joined Scouts BSA</a></h3>
                         <p>Moved into the Scouts BSA program, taking on greater responsibility through youth leadership,
                             service projects, and skill development.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">August 2017</div>
-                        <h3>
-                            <a href="https://oa-scouting.org/about" target="_blank" rel="noopener">
-                                Order of the Arrow
-                            </a>
-                        </h3>
+                        <h3><a href="https://oa-scouting.org/about" target="_blank" rel="noopener">Order of the
+                                Arrow</a></h3>
                         <p>Chosen by fellow Scouts for membership in Scouting's national honor society, recognizing
                             leadership, service, and commitment.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">May 2018</div>
-                        <h3>
-                            <a href="https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/ranks/life/"
-                                target="_blank" rel="noopener">
-                                Life Rank
-                            </a>
-                        </h3>
+                        <h3><a href="https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/ranks/life/"
+                                target="_blank" rel="noopener">Life Rank</a></h3>
                         <p>Reached the final rank before Eagle Scout, reflecting sustained leadership, service, and
                             long-term dedication.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">Feb 28, 2021</div>
-                        <h3>
-                            <a href="https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/eagle-scout/"
-                                target="_blank" rel="noopener">
-                                Eagle Scout
-                            </a>
-                        </h3>
+                        <h3><a href="https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/eagle-scout/"
+                                target="_blank" rel="noopener">Eagle Scout</a></h3>
                         <p>Earned the highest rank in Scouting, awarded to a small percentage of participants for
                             demonstrated leadership, service, and personal growth.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">Dec 2023</div>
-                        <h3>
-                            <a href="https://oa-scouting.org/resources/awards/founders-award" target="_blank"
-                                rel="noopener">
-                                Founder's Award
-                            </a>
-                        </h3>
+                        <h3><a href="https://oa-scouting.org/resources/awards/founders-award" target="_blank"
+                                rel="noopener">Founder's Award</a></h3>
                         <p>Recognized for exceptional volunteer service and long-term contributions beyond normal
                             leadership expectations.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">Dec 2024</div>
-                        <h3>
-                            <a href="https://oa-scouting.org/lodge-support/lodge-ideas/best-practices/james-e-west-fellowship"
-                                target="_blank" rel="noopener">
-                                James E. West Fellow
-                            </a>
-                        </h3>
+                        <h3><a href="https://oa-scouting.org/lodge-support/lodge-ideas/best-practices/james-e-west-fellowship"
+                                target="_blank" rel="noopener">James E. West Fellow</a></h3>
                         <p>Honored through a major endowment contribution made in my name, supporting the long-term
                             future of Scouting.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">April 2025</div>
-                        <h3>
-                            <a href="https://e3.oa-scouting.org/about/section-e3-service-award/" target="_blank"
-                                rel="noopener">
-                                Section E3 Service Award
-                            </a>
-                        </h3>
+                        <h3><a href="https://e3.oa-scouting.org/about/section-e3-service-award/" target="_blank"
+                                rel="noopener">Section E3 Service Award</a></h3>
                         <p>Received a regional service award recognizing leadership and impact beyond the local level.
                         </p>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                    <div class="timeline-card">
                         <div class="timeline-date">April 2025</div>
-                        <h3>
-                            <a href="https://www.scouting.org/programs/venturing/venturing-awards-and-advancement/rank-advancement/summit-rank/"
-                                target="_blank" rel="noopener">
-                                Summit Award
-                            </a>
-                        </h3>
+                        <h3><a href="https://www.scouting.org/programs/venturing/venturing-awards-and-advancement/rank-advancement/summit-rank/"
+                                target="_blank" rel="noopener">Summit Award</a></h3>
                         <p>Earned the highest recognition in the Venturing program, highlighting advanced leadership,
                             service, and personal development.</p>
                     </div>
@@ -205,100 +422,67 @@
 
         <section class="content-box">
             <h2>Leadership Experience</h2>
-            <p style="margin-bottom: 2rem;">Throughout my time in Scouting, I've had the privilege of serving in
-                numerous leadership roles at the unit, chapter, lodge, section, and national levels.</p>
+            <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.7;">Throughout my time in
+                Scouting, I've had the privilege of serving in numerous leadership roles at the unit, chapter, lodge,
+                section, and national levels.</p>
             <div id="leadership-roles-content">
-                <p class="text-center" style="color: #666; font-style: italic;">Loading leadership roles...</p>
+                <p class="text-center" style="color: var(--text-secondary); font-style: italic;">Loading leadership
+                    roles...</p>
             </div>
         </section>
 
         <section class="content-box">
             <h2>Eagle Scout Project: Masks for the Community</h2>
-            <div class="project-meta" style="text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem;">
-                <span style="margin-right: 1.5rem;"><i class="fas fa-calendar-alt"></i> Completed: February 28,
-                    2021</span>
-                <span><i class="fas fa-map-marker-alt"></i> Mt. Juliet, TN</span>
+            <div style="text-align: center; color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
+                <span style="margin-right: 2rem;"><i class="fas fa-calendar-alt"></i> <strong>Completed:</strong>
+                    February 28, 2021</span>
+                <span><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Mt. Juliet, TN</span>
             </div>
-            <p style="margin-bottom: 2rem; line-height: 1.8;">For my Eagle Scout project, I led a team of volunteers to
-                produce and distribute over 500 handmade face masks to local schools and community members during the
-                COVID-19 pandemic. This project involved coordinating volunteers, managing materials, and ensuring
-                quality control to provide essential protective equipment to those in need.</p>
+            <p style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">For my Eagle Scout project,
+                I led a team of volunteers to produce and distribute over 500 handmade face masks to local schools and
+                community members during the COVID-19 pandemic. This project involved coordinating volunteers, managing
+                materials, and ensuring quality control to provide essential protective equipment to those in need.</p>
 
-            <div class="projects-grid"
-                style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div class="eagle-gallery">
                 <div class="gallery-item"
-                    onclick="openModal('../images/eagle-project/project1.jpg', 'Presenting masks to a school official')"
-                    style="cursor: pointer; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    onclick="openModal('../images/eagle-project/project1.jpg', 'Presenting masks to a school official')">
                     <img src="../images/eagle-project/project1.jpg" alt="Presenting masks to a school official"
-                        loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                        loading="lazy">
                 </div>
                 <div class="gallery-item"
-                    onclick="openModal('../images/eagle-project/project2.jpg', 'Volunteers working at outdoor tables')"
-                    style="cursor: pointer; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    onclick="openModal('../images/eagle-project/project2.jpg', 'Volunteers working at outdoor tables')">
                     <img src="../images/eagle-project/project2.jpg" alt="Volunteers working at outdoor tables"
-                        loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                        loading="lazy">
                 </div>
                 <div class="gallery-item"
-                    onclick="openModal('../images/eagle-project/project3.jpg', 'A scout holding up a finished mask')"
-                    style="cursor: pointer; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    onclick="openModal('../images/eagle-project/project3.jpg', 'A scout holding up a finished mask')">
                     <img src="../images/eagle-project/project3.jpg" alt="A scout holding up a finished mask"
-                        loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                        loading="lazy">
                 </div>
                 <div class="gallery-item"
-                    onclick="openModal('../images/eagle-project/project4.jpg', 'Younger scouts helping with ironing fabric')"
-                    style="cursor: pointer; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    onclick="openModal('../images/eagle-project/project4.jpg', 'Younger scouts helping with ironing fabric')">
                     <img src="../images/eagle-project/project4.jpg" alt="Younger scouts helping with ironing fabric"
-                        loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                        loading="lazy">
                 </div>
                 <div class="gallery-item"
-                    onclick="openModal('../images/eagle-project/project5.jpg', 'A volunteer carefully ironing a mask')"
-                    style="cursor: pointer; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    onclick="openModal('../images/eagle-project/project5.jpg', 'A volunteer carefully ironing a mask')">
                     <img src="../images/eagle-project/project5.jpg" alt="A volunteer carefully ironing a mask"
-                        loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                        loading="lazy">
                 </div>
                 <div class="gallery-item"
-                    onclick="openModal('../images/eagle-project/project6.jpg', 'Team members assembling the masks')"
-                    style="cursor: pointer; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    onclick="openModal('../images/eagle-project/project6.jpg', 'Team members assembling the masks')">
                     <img src="../images/eagle-project/project6.jpg" alt="Team members assembling the masks"
-                        loading="lazy" style="width: 100%; height: 250px; object-fit: cover;">
+                        loading="lazy">
                 </div>
             </div>
         </section>
     </main>
 
-    <div id="imageModal" class="modal"
-        style="display: none; position: fixed; z-index: 1001; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9);">
-        <button type="button" class="close" onclick="closeModal()" aria-label="Close image"
-            style="position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; background: none; border: none; padding: 0; line-height: 1;">&times;</button>
-        <img class="modal-content" id="modalImage"
-            style="margin: auto; display: block; width: 80%; max-width: 700px; animation: zoom 0.6s;">
-        <div id="caption" style="text-align: center; color: #ccc; padding: 10px 0; margin-top: 1rem;"></div>
+    <div id="imageModal" class="modal">
+        <button type="button" class="close" onclick="closeModal()" aria-label="Close image">&times;</button>
+        <img class="modal-content" id="modalImage" alt="">
+        <div id="caption"></div>
     </div>
-
-    <style>
-        @keyframes zoom {
-            from {
-                transform: scale(0)
-            }
-
-            to {
-                transform: scale(1)
-            }
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-item img {
-            transition: transform 0.5s ease;
-        }
-    </style>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">&uarr;</button>
     <div id="footer"></div>

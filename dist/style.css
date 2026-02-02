@@ -704,22 +704,26 @@ h6 {
   margin-bottom: var(--space-sm, 1rem);
   line-height: var(--line-height-headings, 1.2);
   color: var(--text-color);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* Heading Scale - Follows a visual hierarchy */
 h1 {
   font-size: 2.5rem;
+  font-weight: 800;
 }
 
 /* 40px */
 h2 {
   font-size: 2rem;
+  font-weight: 700;
 }
 
 /* 32px */
 h3 {
   font-size: 1.75rem;
+  font-weight: 600;
 }
 
 /* 28px */
@@ -743,6 +747,7 @@ h6 {
    -------------------- */
 p {
   margin-bottom: var(--space-sm, 1rem);
+  line-height: 1.7;
 }
 
 ul,
@@ -1420,11 +1425,18 @@ pre {
 .quadrant {
   background: var(--background-white);
   border-radius: var(--radius-md);
-  padding: var(--space-md);
+  padding: var(--space-lg);
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   min-height: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 3px solid var(--primary-color);
+}
+
+.quadrant:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Quadrant headings */
@@ -1635,23 +1647,40 @@ pre {
 
 .content-box {
   background: var(--background-white);
-  padding: var(--space-md);
+  padding: var(--space-lg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
-.content-box h2,
+.content-box h2 {
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.content-box h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
 .content-box h3,
 .content-box h4 {
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: var(--space-xs);
 }
 
 .content-box p,
 .content-box ul {
   margin-bottom: var(--space-sm);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* ===========================
