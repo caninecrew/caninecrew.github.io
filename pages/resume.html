@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,8 +132,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .error-message {
@@ -258,20 +264,23 @@
         }
     </style>
 </head>
+
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <div id="header"></div>
-    
+
     <main id="main-content" class="container fade-in">
         <section class="resume-hero">
             <h1>Professional Resume</h1>
-            <p class="lead">View my complete professional background, experience, and qualifications in a comprehensive resume format.</p>
+            <p class="lead">View my complete professional background, experience, and qualifications in a comprehensive
+                resume format.</p>
             <div class="hero-actions">
                 <a href="../documents/resume.pdf" download class="button">
                     <i class="fas fa-download"></i> Download PDF
                 </a>
-                <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" class="button secondary">
+                <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" rel="noopener"
+                    class="button secondary">
                     <i class="fab fa-linkedin"></i> LinkedIn Profile
                 </a>
             </div>
@@ -285,13 +294,11 @@
                         <div class="loading-spinner"></div>
                         <p>Loading resume preview...</p>
                     </div>
-                    <iframe src="../documents/resume.pdf" 
-                            title="Samuel Rumbley's Resume Preview"
-                            width="100%" 
-                            height="800px"
-                            onload="document.getElementById('pdf-loading').style.display='none'"
-                            onerror="handlePdfError()">
-                        <p>Your browser doesn't support embedded PDFs. You can <a href="../documents/resume.pdf" download>download the PDF</a> instead.</p>
+                    <iframe src="../documents/resume.pdf" title="Samuel Rumbley's Resume Preview" width="100%"
+                        height="800px" onload="document.getElementById('pdf-loading').style.display='none'"
+                        onerror="handlePdfError()">
+                        <p>Your browser doesn't support embedded PDFs. You can <a href="../documents/resume.pdf"
+                                download>download the PDF</a> instead.</p>
                     </iframe>
                 </div>
 
@@ -380,11 +387,14 @@
         </div>
 
         <!-- Contact Call-to-Action -->
-        <section class="cta-section" style="background: var(--background-light); padding: 2rem; border-radius: var(--radius-lg); margin-top: 2rem; text-align: center;">
+        <section class="cta-section"
+            style="background: var(--background-light); padding: 2rem; border-radius: var(--radius-lg); margin-top: 2rem; text-align: center;">
             <h2>Ready to Connect?</h2>
-            <p>I'm actively seeking opportunities in business information technology, data analysis, and leadership roles. Let's discuss how my skills and experience can benefit your organization.</p>
+            <p>I'm actively seeking opportunities in business information technology, data analysis, and leadership
+                roles. Let's discuss how my skills and experience can benefit your organization.</p>
             <div class="button-container">
-                <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" class="button button-primary">
+                <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" rel="noopener"
+                    class="button button-primary">
                     <i class="fab fa-linkedin"></i> Connect on LinkedIn
                 </a>
                 <a href="mailto:samuel.rumbley@example.com" class="button">
@@ -452,4 +462,5 @@
     </script>
     <script src="../js/app.js"></script>
 </body>
+
 </html>

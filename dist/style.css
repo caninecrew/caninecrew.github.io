@@ -6,324 +6,496 @@
  */
 
 :root {
-    /* ========== BRAND COLORS ========== */
-    
-    /* Primary Brand Color - Mountain Blue */
-    --primary-color: #2196f3;      /* Deep lake blue used for important UI elements, links, and primary actions */
-    --primary-color-light: #64b5f6; /* Sky blue used for hover states, secondary elements, and visual hierarchy */
-    --primary-color-dark: #1976d2; /* Deep navy blue for active states, pressed buttons, and text on light backgrounds */
-    --primary-color-faint: #E8F0F8; /* Very subtle blue background tint for primary-themed sections and panels */
-    
-    /* Secondary Brand Color - Trail Brown */
-    --secondary-color: #ff4081;    /* Earthy brown used for accents, calls-to-action, and visual contrast */
-    --secondary-color-light: #ff80ab; /* Lighter brown for hover states on secondary elements and decorative accents */
-    --secondary-color-dark: #c51162; /* Dark brown for active states on secondary elements and text contrast */
-    --secondary-color-faint: #F6F0E8; /* Very subtle brown background tint for secondary-themed sections */
-    
-    /* Accent Color - Pine Amber */
-    --accent-color: #D3973F;       /* Amber gold used sparingly for emphasis, awards, highlights, and tertiary actions */
-    --accent-color-light: #E5B865;  /* Light amber for hover states on accent elements and decorative highlights */
-    --accent-color-dark: #B37B2B;   /* Deep amber for active states on accent elements and better text contrast */
-    
-    /* ========== TEXT COLORS ========== */
-    
-    --text-color: #333333;         /* Charcoal text color - provides optimal contrast for readability */
-    --text-secondary: #5D656F;     /* Slate gray for less important text - maintains contrast for WCAG compliance */
-    --text-tertiary: #8B939E;      /* Light slate for subtle text for captions, timestamps, and supplementary information */
-    --text-inverse: #F4F4F0;       /* Off-white text color on dark backgrounds including header, footer, and CTAs */
-    --text-link: var(--primary-color); /* Color for all interactive text links in content areas */
-    --text-link-hover: var(--primary-color-dark); /* Color change when hovering over links to indicate interactivity */
-    --text-highlight: var(--secondary-color); /* Color for emphasized text and highlighting important information */
-    --text-muted: #666666;
-    --text-light: #ffffff;
-    
-    /* Feedback Text Colors */
-    --text-success: #5a9744;       /* Text color for success messages and positive feedback */
-    --text-warning: #e59300;       /* Text color for warning messages and cautionary information */
-    --text-error: #c8553d;         /* Text color for error messages and critical alerts */
-    --text-info: #4c8daa;          /* Text color for informational messages and neutral notifications */
-    
-    /* ========== BACKGROUND COLORS ========== */
-    
-    --background-color: #F4F2ED;   /* Light stone/parchment global site background */
-    --background-light: #f5f5f5;   /* Lighter stone for alternative sections and containers */
-    --background-white: #FFFFFF;   /* Pure white background for cards, modals, and content areas */
-    --background-card: var(--background-white); /* Specific background for card components ensuring consistency */
-    --background-highlight: #EDF3F8; /* Subtle blue highlight for important sections or selected items */
-    --background-muted: #eeeeee;   /* Subdued stone background for inactive elements or secondary content */
-    --background-darker: #222222;
-    
-    /* Interactive Background States */
-    --background-active: #e6ded5;  /* Background for active/selected elements like buttons or nav items */
-    --background-hover: #faede4;   /* Background that appears when hovering over interactive elements */
-    
-    /* Feedback Background Colors */
-    --background-success: #eaf2e6; /* Subtle green background for success messages and indicators */
-    --background-warning: #fbf0db; /* Subtle yellow background for warning messages and alerts */
-    --background-error: #f9e4df;   /* Subtle red background for error messages and critical notices */
-    --background-info: #e6eff4;    /* Subtle blue background for informational messages */
-    
-    /* ========== HEADER & FOOTER ========== */
-    
-    /* Header Colors */
-    --header-background: #2F3C4A;     /* Mountain slate background color for the site header */
-    --header-text: #F4F4F0;           /* Off-white text color used in the header for readability */
-    --header-link: #F4F4F0;           /* Color for navigation links in header */
-    --header-link-hover: #D3973F;     /* Amber highlight when hovering over header navigation links */
-    --header-active: var(--secondary-color); /* Trail brown indicator for currently active navigation item */
-    
-    /* Footer Colors */
-    --footer-background: #2F3C4A;     /* Mountain slate background color for the site footer - matches header */
-    --footer-text: #F4F4F0;           /* Off-white text color used in the footer - high contrast for readability */
-    --footer-link: #D0D0C7;           /* Color for links within the footer - slightly dimmer than text */
-    --footer-link-hover: #D3973F;     /* Amber highlight when hovering over footer links for interactivity */
-    
-    /* ========== COMPONENT-SPECIFIC COLORS ========== */
-    
-    /* Button Variants - Primary */
-    --button-primary-bg: var(--primary-color);      /* Green background for primary action buttons */
-    --button-primary-text: #F4EAE0;                  /* Cream text color for primary buttons - high contrast */
-    --button-primary-hover-bg: var(--primary-color-dark); /* Background change on hover for primary buttons */
-    --button-primary-hover-text: #F4EAE0;             /* Text color remains cream when hovering primary buttons */
-    
-    /* Button Variants - Secondary */
-    --button-secondary-bg: var(--secondary-color);  /* Rust orange background for secondary action buttons */
-    --button-secondary-text: #F4EAE0;                /* Cream text color for secondary buttons */
-    --button-secondary-hover-bg: var(--secondary-color-dark); /* Background change on hover */
-    --button-secondary-hover-text: #F4EAE0;           /* Text color when hovering secondary buttons */
-    
-    /* Button Variants - Outline */
-    --button-outline-border: var(--primary-color);  /* Green border color for outlined/ghost buttons */
-    --button-outline-text: var(--primary-color);    /* Green text color for outlined buttons */
-    --button-outline-hover-bg: var(--primary-color); /* Green background appears on hover - reverses color scheme */
-    --button-outline-hover-text: #F4EAE0;             /* Cream text changes on hover for contrast */
-    
-    /* Card Components */
-    --card-background: var(--background-white);     /* Background color for all card components */
-    --card-border: var(--border-color);             /* Border color around cards for definition */
-    --card-shadow: var(--shadow);                   /* Standard shadow applied to cards for elevation */
-    --card-hover-transform: translateY(-3px);       /* Subtle upward movement when hovering over cards */
-    --card-hover-shadow: var(--shadow-lg);          /* Enhanced shadow effect when hovering over cards */
-    
-    /* Form Elements */
-    --input-background: white;                      /* Background color for text inputs, selects, etc. */
-    --input-border: #d0c7bd;                        /* Border color for form controls - harmonizes with background */
-    --input-text: var(--text-color);                /* Text color for user input in form fields */
-    --input-focus-border: var(--primary-color-light); /* Border color when input is focused */
-    --input-focus-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25); /* Glow effect for focused inputs */
-    --input-placeholder: #aba399;                      /* Color for placeholder text in empty inputs */
-    --input-disabled-background: #e9e4df;           /* Background for disabled form controls */
-    --input-disabled-text: #8c8a8f;                 /* Text color for disabled form controls */
-    
-    /* Navigation Components */
-    --nav-link-color: var(--text-color);            /* Color for navigation links in main nav */
-    --nav-link-hover-color: var(--primary-color);   /* Color change when hovering over nav links */
-    --nav-link-active-color: var(--primary-color);  /* Color for the currently active nav link */
-    --nav-link-active-border: var(--primary-color); /* Border indicator for active nav items */
-    --mobile-menu-background: rgba(244, 234, 224, 0.97); /* Slightly transparent background for mobile menu */
-    --mobile-menu-shadow: var(--shadow);             /* Shadow applied to mobile navigation menu */
-    
-    /* Section Components */
-    --section-border: #e6ddd3;                       /* Border color for content sections and containers */
-    --section-header-background: var(--primary-color-faint); /* Background color for section headers */
-    --section-header-text: var(--primary-color-dark); /* Text color for section header titles */
-    --section-background: var(--background-white);    /* Background color for content sections */
-    --section-shadow: var(--shadow-sm);              /* Subtle shadow for section separation */
-    
-    /* Timeline Components */
-    --timeline-line-color: var(--primary-color);     /* Green color of the timeline line */
-    --timeline-dot-color: var(--secondary-color);    /* Rust orange color of timeline milestone dots/markers */
-    --timeline-date-color: var(--text-secondary);    /* Color of dates or timestamps in timeline */
-    --timeline-item-background: var(--background-white); /* Background for timeline content items */
-    --timeline-item-shadow: var(--shadow);           /* Shadow for timeline items for depth */
-    
-    /* Achievement & Awards Components */
-    --award-border: var(--primary-color-light);      /* Border color for award/achievement items */
-    --award-background: var(--background-light);     /* Background color for award containers */
-    --award-highlight: var(--secondary-color-faint); /* Highlight color for special achievements */
-    --award-name-color: var(--primary-color-dark);   /* Text color for award names/titles */
-    
-    /* Merit Badge Components */
-    --merit-badge-bg: var(--background-white);       /* Background for merit badge display items */
-    --merit-badge-border: var(--border-color);       /* Border color around merit badge items */
-    --merit-badge-hover-bg: var(--primary-color-faint); /* Background change when hovering badges */
-    --merit-badge-text: var(--text-color);           /* Text color for badge names and descriptions */
-    
-    /* Map Components */
-    --map-border: var(--border-color);               /* Border color around map containers */
-    --map-popup-background: var(--background-main); /* Background for map info popups */
-    --map-popup-text: var(--text-color);             /* Text color for content in map popups */
-    --map-popup-shadow: var(--shadow-lg);               /* Shadow effect for map popups */
-    --map-marker-color: var(--primary-color);      /* Color for map location markers */
-    
-    /* General UI Elements */
-    --border-color: #dddddd;                         /* Standard border color used throughout the site */
-    --border-light: #eeeeee;
-    --border-dark: #999999;
-    
-    /* ========== OVERLAY COLORS ========== */
-    --primary-color-overlay: rgba(106, 153, 78, 0.7); /* Semi-transparent green for overlays */
-    --primary-color-dark-overlay: rgba(77, 113, 55, 0.8); /* Darker semi-transparent green */
-    --secondary-color-overlay: rgba(188, 108, 37, 0.7); /* Semi-transparent rust orange */
-    --background-overlay: rgba(61, 64, 91, 0.5); /* Semi-transparent dark slate for modal backdrops */
-    --background-translucent: rgba(255, 255, 255, 0.15); /* Subtle white for glass-like effects */
-    
-    /* ========== SOCIAL MEDIA BRAND COLORS ========== */
-    
-    --linkedin-color: #0077b5;                       /* Official LinkedIn brand color for social links */
-    --github-color: #333;                            /* GitHub's primary dark color for social links */
-    --facebook-color: #3b5998;                       /* Official Facebook brand color for social links */
-    --instagram-color: #E1306C;                      /* Official Instagram brand color for social links */
-    --twitter-color: #1da1f2;                        /* Official Twitter brand color for social links */
-    
-    /* ========== VISUAL EFFECTS ========== */
-    
-    /* Shadow System - Creates consistent elevation hierarchy */
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);         /* Subtle shadow for slight elevation of elements */
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-    --shadow: 0 2px 8px rgba(0,0,0,0.1);            /* Standard shadow for cards and interactive elements */
-    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);       /* Prominent shadow for elevated/hovered elements */
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
-    
-    /* ========== LAYOUT SYSTEM ========== */
-    
-    /* Spacing Scale - Based on 8pt grid system */
-    --space-xs: 0.25rem;                             /* 8px - Used for tight, compact spacing */
-    --space-sm: 0.5rem;                               /* 16px - Used for standard element padding */
-    --space-md: 1rem;                             /* 24px - Used for separation between related elements */
-    --space-lg: 1.5rem;                               /* 32px - Used for separation between content sections */
-    --space-xl: 2rem;                               /* 48px - Used for major section divisions */
-    --space-xxl: 3rem;
-    
-    /* Border Radius Scale */
-    --radius-sm: 4px;                               /* Small rounding for buttons, form elements */
-    --radius-md: 8px;                               /* Medium rounding for cards, modals, containers */
-    --radius-lg: 16px;                              /* Large rounding for featured elements */
-    --radius-xl: 24px;
-    --radius-pill: 9999px;                          /* Fully rounded ends for pill-shaped elements/badges */
-    
-    /* Content Width Constraints */
-    --max-width: 1200px;                            /* Maximum width for main page container */
-    --content-width-narrow: 800px;                  /* Optimized width for readable text content */
-    --content-width-medium: 1000px;                 /* Width for medium-density content areas */
-    
-    /* ========== TYPOGRAPHY SYSTEM ========== */
-    
-    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
-                  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* System font stack for optimal display */
-    --line-height: 1.6;                             /* Standard line spacing for body text */
-    --line-height-headings: 1.2;                    /* Tighter line spacing for headings */
-    --font-size-xs: 0.75rem;
-    --font-size-sm: 0.875rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-xxl: 1.5rem;
-    
-    /* ========== ANIMATIONS ========== */
-    
-    --transition-speed: 0.3s;                       /* Standard duration for all transitions */
-    --transition-function: ease;                    /* Standard easing function for smooth effects */
-    --transition-fast: 150ms;
-    --transition-normal: 300ms;
-    --transition-slow: 500ms;
-    
-    /* Z-index layers */
-    --z-dropdown: 1000;
-    --z-sticky: 1020;
-    --z-fixed: 1030;
-    --z-modal-backdrop: 1040;
-    --z-modal: 1050;
-    --z-popover: 1060;
-    --z-tooltip: 1070;
+  /* ========== BRAND COLORS ========== */
+
+  /* Primary Brand Color - Mountain Blue */
+  --primary-color: #1565c0;
+  /* Deep lake blue used for important UI elements, links, and primary actions */
+  --primary-color-light: #64b5f6;
+  /* Sky blue used for hover states, secondary elements, and visual hierarchy */
+  --primary-color-dark: #1976d2;
+  /* Deep navy blue for active states, pressed buttons, and text on light backgrounds */
+  --primary-color-faint: #E8F0F8;
+  /* Very subtle blue background tint for primary-themed sections and panels */
+
+  /* Secondary Brand Color - Trail Brown */
+  --secondary-color: #ff4081;
+  /* Earthy brown used for accents, calls-to-action, and visual contrast */
+  --secondary-color-light: #ff80ab;
+  /* Lighter brown for hover states on secondary elements and decorative accents */
+  --secondary-color-dark: #c51162;
+  /* Dark brown for active states on secondary elements and text contrast */
+  --secondary-color-faint: #F6F0E8;
+  /* Very subtle brown background tint for secondary-themed sections */
+
+  /* Accent Color - Pine Amber */
+  --accent-color: #D3973F;
+  /* Amber gold used sparingly for emphasis, awards, highlights, and tertiary actions */
+  --accent-color-light: #E5B865;
+  /* Light amber for hover states on accent elements and decorative highlights */
+  --accent-color-dark: #B37B2B;
+  /* Deep amber for active states on accent elements and better text contrast */
+
+  /* ========== TEXT COLORS ========== */
+
+  --text-color: #333333;
+  /* Charcoal text color - provides optimal contrast for readability */
+  --text-secondary: #5D656F;
+  /* Slate gray for less important text - maintains contrast for WCAG compliance */
+  --text-tertiary: #6e7681;
+  /* Light slate for subtle text for captions, timestamps, and supplementary information */
+  --text-inverse: #F4F4F0;
+  /* Off-white text color on dark backgrounds including header, footer, and CTAs */
+  --text-link: var(--primary-color);
+  /* Color for all interactive text links in content areas */
+  --text-link-hover: var(--primary-color-dark);
+  /* Color change when hovering over links to indicate interactivity */
+  --text-highlight: var(--secondary-color);
+  /* Color for emphasized text and highlighting important information */
+  --text-muted: #666666;
+  --text-light: #ffffff;
+
+  /* Feedback Text Colors */
+  --text-success: #5a9744;
+  /* Text color for success messages and positive feedback */
+  --text-warning: #e59300;
+  /* Text color for warning messages and cautionary information */
+  --text-error: #c8553d;
+  /* Text color for error messages and critical alerts */
+  --text-info: #4c8daa;
+  /* Text color for informational messages and neutral notifications */
+
+  /* ========== BACKGROUND COLORS ========== */
+
+  --background-color: #F4F2ED;
+  /* Light stone/parchment global site background */
+  --background-light: #f5f5f5;
+  /* Lighter stone for alternative sections and containers */
+  --background-white: #FFFFFF;
+  /* Pure white background for cards, modals, and content areas */
+  --background-card: var(--background-white);
+  /* Specific background for card components ensuring consistency */
+  --background-highlight: #EDF3F8;
+  /* Subtle blue highlight for important sections or selected items */
+  --background-muted: #eeeeee;
+  /* Subdued stone background for inactive elements or secondary content */
+  --background-darker: #222222;
+
+  /* Interactive Background States */
+  --background-active: #e6ded5;
+  /* Background for active/selected elements like buttons or nav items */
+  --background-hover: #faede4;
+  /* Background that appears when hovering over interactive elements */
+
+  /* Feedback Background Colors */
+  --background-success: #eaf2e6;
+  /* Subtle green background for success messages and indicators */
+  --background-warning: #fbf0db;
+  /* Subtle yellow background for warning messages and alerts */
+  --background-error: #f9e4df;
+  /* Subtle red background for error messages and critical notices */
+  --background-info: #e6eff4;
+  /* Subtle blue background for informational messages */
+
+  /* ========== HEADER & FOOTER ========== */
+
+  /* Header Colors */
+  --header-background: #2F3C4A;
+  /* Mountain slate background color for the site header */
+  --header-text: #F4F4F0;
+  /* Off-white text color used in the header for readability */
+  --header-link: #F4F4F0;
+  /* Color for navigation links in header */
+  --header-link-hover: #D3973F;
+  /* Amber highlight when hovering over header navigation links */
+  --header-active: var(--secondary-color);
+  /* Trail brown indicator for currently active navigation item */
+
+  /* Footer Colors */
+  --footer-background: #2F3C4A;
+  /* Mountain slate background color for the site footer - matches header */
+  --footer-text: #F4F4F0;
+  /* Off-white text color used in the footer - high contrast for readability */
+  --footer-link: #D0D0C7;
+  /* Color for links within the footer - slightly dimmer than text */
+  --footer-link-hover: #D3973F;
+  /* Amber highlight when hovering over footer links for interactivity */
+
+  /* ========== COMPONENT-SPECIFIC COLORS ========== */
+
+  /* Button Variants - Primary */
+  --button-primary-bg: var(--primary-color);
+  /* Green background for primary action buttons */
+  --button-primary-text: #F4EAE0;
+  /* Cream text color for primary buttons - high contrast */
+  --button-primary-hover-bg: var(--primary-color-dark);
+  /* Background change on hover for primary buttons */
+  --button-primary-hover-text: #F4EAE0;
+  /* Text color remains cream when hovering primary buttons */
+
+  /* Button Variants - Secondary */
+  --button-secondary-bg: var(--secondary-color);
+  /* Rust orange background for secondary action buttons */
+  --button-secondary-text: #F4EAE0;
+  /* Cream text color for secondary buttons */
+  --button-secondary-hover-bg: var(--secondary-color-dark);
+  /* Background change on hover */
+  --button-secondary-hover-text: #F4EAE0;
+  /* Text color when hovering secondary buttons */
+
+  /* Button Variants - Outline */
+  --button-outline-border: var(--primary-color);
+  /* Green border color for outlined/ghost buttons */
+  --button-outline-text: var(--primary-color);
+  /* Green text color for outlined buttons */
+  --button-outline-hover-bg: var(--primary-color);
+  /* Green background appears on hover - reverses color scheme */
+  --button-outline-hover-text: #F4EAE0;
+  /* Cream text changes on hover for contrast */
+
+  /* Card Components */
+  --card-background: var(--background-white);
+  /* Background color for all card components */
+  --card-border: var(--border-color);
+  /* Border color around cards for definition */
+  --card-shadow: var(--shadow);
+  /* Standard shadow applied to cards for elevation */
+  --card-hover-transform: translateY(-3px);
+  /* Subtle upward movement when hovering over cards */
+  --card-hover-shadow: var(--shadow-lg);
+  /* Enhanced shadow effect when hovering over cards */
+
+  /* Form Elements */
+  --input-background: white;
+  /* Background color for text inputs, selects, etc. */
+  --input-border: #d0c7bd;
+  /* Border color for form controls - harmonizes with background */
+  --input-text: var(--text-color);
+  /* Text color for user input in form fields */
+  --input-focus-border: var(--primary-color-light);
+  /* Border color when input is focused */
+  --input-focus-shadow: 0 0 0 0.2rem rgba(106, 153, 78, 0.25);
+  /* Glow effect for focused inputs */
+  --input-placeholder: #aba399;
+  /* Color for placeholder text in empty inputs */
+  --input-disabled-background: #e9e4df;
+  /* Background for disabled form controls */
+  --input-disabled-text: #8c8a8f;
+  /* Text color for disabled form controls */
+
+  /* Navigation Components */
+  --nav-link-color: var(--text-color);
+  /* Color for navigation links in main nav */
+  --nav-link-hover-color: var(--primary-color);
+  /* Color change when hovering over nav links */
+  --nav-link-active-color: var(--primary-color);
+  /* Color for the currently active nav link */
+  --nav-link-active-border: var(--primary-color);
+  /* Border indicator for active nav items */
+  --mobile-menu-background: rgba(244, 234, 224, 0.97);
+  /* Slightly transparent background for mobile menu */
+  --mobile-menu-shadow: var(--shadow);
+  /* Shadow applied to mobile navigation menu */
+
+  /* Section Components */
+  --section-border: #e6ddd3;
+  /* Border color for content sections and containers */
+  --section-header-background: var(--primary-color-faint);
+  /* Background color for section headers */
+  --section-header-text: var(--primary-color-dark);
+  /* Text color for section header titles */
+  --section-background: var(--background-white);
+  /* Background color for content sections */
+  --section-shadow: var(--shadow-sm);
+  /* Subtle shadow for section separation */
+
+  /* Timeline Components */
+  --timeline-line-color: var(--primary-color);
+  /* Green color of the timeline line */
+  --timeline-dot-color: var(--secondary-color);
+  /* Rust orange color of timeline milestone dots/markers */
+  --timeline-date-color: var(--text-secondary);
+  /* Color of dates or timestamps in timeline */
+  --timeline-item-background: var(--background-white);
+  /* Background for timeline content items */
+  --timeline-item-shadow: var(--shadow);
+  /* Shadow for timeline items for depth */
+
+  /* Achievement & Awards Components */
+  --award-border: var(--primary-color-light);
+  /* Border color for award/achievement items */
+  --award-background: var(--background-light);
+  /* Background color for award containers */
+  --award-highlight: var(--secondary-color-faint);
+  /* Highlight color for special achievements */
+  --award-name-color: var(--primary-color-dark);
+  /* Text color for award names/titles */
+
+  /* Merit Badge Components */
+  --merit-badge-bg: var(--background-white);
+  /* Background for merit badge display items */
+  --merit-badge-border: var(--border-color);
+  /* Border color around merit badge items */
+  --merit-badge-hover-bg: var(--primary-color-faint);
+  /* Background change when hovering badges */
+  --merit-badge-text: var(--text-color);
+  /* Text color for badge names and descriptions */
+
+  /* Map Components */
+  --map-border: var(--border-color);
+  /* Border color around map containers */
+  --map-popup-background: var(--background-main);
+  /* Background for map info popups */
+  --map-popup-text: var(--text-color);
+  /* Text color for content in map popups */
+  --map-popup-shadow: var(--shadow-lg);
+  /* Shadow effect for map popups */
+  --map-marker-color: var(--primary-color);
+  /* Color for map location markers */
+
+  /* General UI Elements */
+  --border-color: #dddddd;
+  /* Standard border color used throughout the site */
+  --border-light: #eeeeee;
+  --border-dark: #999999;
+
+  /* ========== OVERLAY COLORS ========== */
+  --primary-color-overlay: rgba(106, 153, 78, 0.7);
+  /* Semi-transparent green for overlays */
+  --primary-color-dark-overlay: rgba(77, 113, 55, 0.8);
+  /* Darker semi-transparent green */
+  --secondary-color-overlay: rgba(188, 108, 37, 0.7);
+  /* Semi-transparent rust orange */
+  --background-overlay: rgba(61, 64, 91, 0.5);
+  /* Semi-transparent dark slate for modal backdrops */
+  --background-translucent: rgba(255, 255, 255, 0.15);
+  /* Subtle white for glass-like effects */
+
+  /* ========== SOCIAL MEDIA BRAND COLORS ========== */
+
+  --linkedin-color: #0077b5;
+  /* Official LinkedIn brand color for social links */
+  --github-color: #333;
+  /* GitHub's primary dark color for social links */
+  --facebook-color: #3b5998;
+  /* Official Facebook brand color for social links */
+  --instagram-color: #E1306C;
+  /* Official Instagram brand color for social links */
+  --twitter-color: #1da1f2;
+  /* Official Twitter brand color for social links */
+
+  /* ========== VISUAL EFFECTS ========== */
+
+  /* Shadow System - Creates consistent elevation hierarchy */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  /* Subtle shadow for slight elevation of elements */
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* Standard shadow for cards and interactive elements */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  /* Prominent shadow for elevated/hovered elements */
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* ========== LAYOUT SYSTEM ========== */
+
+  /* Spacing Scale - Based on 8pt grid system */
+  --space-xs: 0.25rem;
+  /* 8px - Used for tight, compact spacing */
+  --space-sm: 0.5rem;
+  /* 16px - Used for standard element padding */
+  --space-md: 1rem;
+  /* 24px - Used for separation between related elements */
+  --space-lg: 1.5rem;
+  /* 32px - Used for separation between content sections */
+  --space-xl: 2rem;
+  /* 48px - Used for major section divisions */
+  --space-xxl: 3rem;
+
+  /* Border Radius Scale */
+  --radius-sm: 4px;
+  /* Small rounding for buttons, form elements */
+  --radius-md: 8px;
+  /* Medium rounding for cards, modals, containers */
+  --radius-lg: 16px;
+  /* Large rounding for featured elements */
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+  /* Fully rounded ends for pill-shaped elements/badges */
+
+  /* Content Width Constraints */
+  --max-width: 1200px;
+  /* Maximum width for main page container */
+  --content-width-narrow: 800px;
+  /* Optimized width for readable text content */
+  --content-width-medium: 1000px;
+  /* Width for medium-density content areas */
+
+  /* ========== TYPOGRAPHY SYSTEM ========== */
+
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* System font stack for optimal display */
+  --line-height: 1.6;
+  /* Standard line spacing for body text */
+  --line-height-headings: 1.2;
+  /* Tighter line spacing for headings */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+
+  /* ========== ANIMATIONS ========== */
+
+  --transition-speed: 0.3s;
+  /* Standard duration for all transitions */
+  --transition-function: ease;
+  /* Standard easing function for smooth effects */
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+  --transition-slow: 500ms;
+
+  /* Z-index layers */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
 }
 
 /* ========== THEME VARIATIONS ========== */
 
 /* Dark Theme - Applied when .dark-theme class is added to HTML or body */
 .dark-theme {
-    --text-color: #ffffff;                         /* Cream text color for dark backgrounds */
-    --text-secondary: #d5cbc1;                     /* Medium cream text for secondary content */
-    --text-tertiary: #aba399;                      /* Darker cream for tertiary text that's still readable */
-    --background-color: #252632;                   /* Very dark slate site background */
-    --background-light: #1e1e1e;                   /* Slightly lighter background for contrast */
-    --background-white: #35374a;                   /* Dark slate replaces white for content areas */
-    --border-color: #333333;                       /* Medium slate for borders in dark mode */
-    --card-background: #35374a;                    /* Dark background for cards */
-    --card-border: #4b4d63;                        /* Medium slate for card borders */
-    --background-hover: #3f4155;                   /* Slightly lighter color for hover states */
-    --background-active: #323342;                  /* Color for active states in dark mode */
-    --input-background: #3f4155;                   /* Dark background for form inputs */
-    --input-border: #5a5c73;                       /* Medium slate border for form elements */
-    --input-placeholder: #7a7c8e;                  /* Gray text for input placeholders */
-    
-    /* Preserve brand colors but slightly adjusted for dark mode */
-    --primary-color: #6ebff7;                     /* Brighter blue for better visibility on dark backgrounds */
-    --secondary-color: #d07f33;                   /* Brighter rust orange for dark mode */
-    --accent-color: #ffe49e;                      /* Brighter gold for dark mode */
-    --primary-dark: #1976d2;
-    --primary-light: #90caf9;
-    --text-muted: #999999;
-    --text-light: #333333;
-    --background-main: #121212;
-    --background-dark: #ffffff;
-    --background-muted: #333333;
-    --background-darker: #000000;
-    --border-light: #444444;
-    --border-dark: #666666;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25);
-    --error-bg: #321c1c;
-    --error-text: #ff8a85;
-    --error-border: #f44336;
-    --text-link: var(--primary-color);
+  --text-color: #ffffff;
+  /* Cream text color for dark backgrounds */
+  --text-secondary: #d5cbc1;
+  /* Medium cream text for secondary content */
+  --text-tertiary: #aba399;
+  /* Darker cream for tertiary text that's still readable */
+  --background-color: #252632;
+  /* Very dark slate site background */
+  --background-light: #1e1e1e;
+  /* Slightly lighter background for contrast */
+  --background-white: #35374a;
+  /* Dark slate replaces white for content areas */
+  --border-color: #333333;
+  /* Medium slate for borders in dark mode */
+  --card-background: #35374a;
+  /* Dark background for cards */
+  --card-border: #4b4d63;
+  /* Medium slate for card borders */
+  --background-hover: #3f4155;
+  /* Slightly lighter color for hover states */
+  --background-active: #323342;
+  /* Color for active states in dark mode */
+  --input-background: #3f4155;
+  /* Dark background for form inputs */
+  --input-border: #5a5c73;
+  /* Medium slate border for form elements */
+  --input-placeholder: #7a7c8e;
+  /* Gray text for input placeholders */
+
+  /* Preserve brand colors but slightly adjusted for dark mode */
+  --primary-color: #6ebff7;
+  /* Brighter blue for better visibility on dark backgrounds */
+  --secondary-color: #d07f33;
+  /* Brighter rust orange for dark mode */
+  --accent-color: #ffe49e;
+  /* Brighter gold for dark mode */
+  --primary-dark: #1976d2;
+  --primary-light: #90caf9;
+  --text-muted: #999999;
+  --text-light: #333333;
+  --background-main: #121212;
+  --background-dark: #ffffff;
+  --background-muted: #333333;
+  --background-darker: #000000;
+  --border-light: #444444;
+  --border-dark: #666666;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25);
+  --error-bg: #321c1c;
+  --error-text: #ff8a85;
+  --error-border: #f44336;
+  --text-link: var(--primary-color);
 }
 
 /* High Contrast Theme - For users who need maximum legibility */
 .high-contrast-theme {
-    --text-color: #000;                           /* Pure black text for maximum contrast */
-    --text-secondary: #222;                       /* Very dark gray for secondary text */
-    --text-inverse: #fff;                         /* Pure white text on dark backgrounds */
-    --background-color: #fff;                     /* Pure white background */
-    --background-light: #eee;                     /* Light gray for subtle contrast */
-    --border-color: #000;                         /* Black borders for definition */
-    --primary-color: #005f00;                     /* Dark green - maintains contrast while adding color */
-    --primary-color-dark: #003a00;                /* Very dark green for active states */
-    --secondary-color: #8c3600;                   /* Dark orange for accents - high contrast with white */
-    --button-primary-bg: #000;                    /* Black background for buttons */
-    --button-primary-text: #fff;                  /* White text on buttons */
-    --button-primary-hover-bg: #333;              /* Dark gray for hover states */
+  --text-color: #000;
+  /* Pure black text for maximum contrast */
+  --text-secondary: #222;
+  /* Very dark gray for secondary text */
+  --text-inverse: #fff;
+  /* Pure white text on dark backgrounds */
+  --background-color: #fff;
+  /* Pure white background */
+  --background-light: #eee;
+  /* Light gray for subtle contrast */
+  --border-color: #000;
+  /* Black borders for definition */
+  --primary-color: #005f00;
+  /* Dark green - maintains contrast while adding color */
+  --primary-color-dark: #003a00;
+  /* Very dark green for active states */
+  --secondary-color: #8c3600;
+  /* Dark orange for accents - high contrast with white */
+  --button-primary-bg: #000;
+  /* Black background for buttons */
+  --button-primary-text: #fff;
+  /* White text on buttons */
+  --button-primary-hover-bg: #333;
+  /* Dark gray for hover states */
 }
 
 /* Page-specific Theme Overrides */
 .scouting-page {
-    --section-background: var(--primary-color-faint);  /* Light green background specific to scouting page */
-    --section-border: 1px solid var(--primary-color-light); /* Green borders for scouting sections */
-    --highlight-color: var(--secondary-color);         /* Rust orange highlights for key scouting achievements */
+  --section-background: var(--primary-color-faint);
+  /* Light green background specific to scouting page */
+  --section-border: 1px solid var(--primary-color-light);
+  /* Green borders for scouting sections */
+  --highlight-color: var(--secondary-color);
+  /* Rust orange highlights for key scouting achievements */
 }
 
 /* Travel Page Theme Overrides */
 .travel-page {
-    --map-height: 500px;                              /* Sets the height of the travel map */
-    --card-height: 200px;                             /* Sets the height of location cards */
+  --map-height: 500px;
+  /* Sets the height of the travel map */
+  --card-height: 200px;
+  /* Sets the height of location cards */
 }
 
 /* Print Theme - Automatically applied when printing */
 @media print {
-    :root {
-        --text-color: #000;                           /* Black text for optimal print contrast */
-        --background-light: #fff;                     /* White background for all elements */
-        --shadow: none;                               /* Removes shadows which don't print well */
-        --card-shadow: none;                          /* Removes card shadows */
-        --button-primary-bg: #fff;                    /* White button backgrounds */
-        --button-primary-text: #000;                  /* Black text on buttons */
-        --button-primary-border: 1px solid #000;      /* Black borders to define buttons */
-        --section-background: #fff;                   /* White sections */
-        --timeline-line-color: #888;                  /* Gray timeline lines to save ink */
-    }
+  :root {
+    --text-color: #000;
+    /* Black text for optimal print contrast */
+    --background-light: #fff;
+    /* White background for all elements */
+    --shadow: none;
+    /* Removes shadows which don't print well */
+    --card-shadow: none;
+    /* Removes card shadows */
+    --button-primary-bg: #fff;
+    /* White button backgrounds */
+    --button-primary-text: #000;
+    /* Black text on buttons */
+    --button-primary-border: 1px solid #000;
+    /* Black borders to define buttons */
+    --section-background: #fff;
+    /* White sections */
+    --timeline-line-color: #888;
+    /* Gray timeline lines to save ink */
+  }
 }
+
 /*
  * CSS Reset
  * A modern, comprehensive reset that normalizes styles across browsers
@@ -358,15 +530,24 @@ body {
   line-height: var(--line-height);
   color: var(--text-color);
   background-color: var(--background-light);
-  font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
-                Oxygen, Ubuntu, Cantarell, sans-serif);
+  font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, sans-serif);
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
 
 /* Remove default margins and padding from typography elements */
-h1, h2, h3, h4, h5, h6,
-p, ul, ol, dl, figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+figure,
 blockquote {
   margin: 0;
   padding: 0;
@@ -413,6 +594,7 @@ ol[class] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
   html:focus-within {
     scroll-behavior: auto;
   }
@@ -430,7 +612,12 @@ a:hover {
 }
 
 /* Fix line height in headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: var(--line-height-headings);
 }
 
@@ -487,6 +674,7 @@ h1, h2, h3, h4, h5, h6 {
 .skip-link:focus {
   top: 0;
 }
+
 /*
  * Typography System
  * A structured approach to text styling across the site
@@ -495,8 +683,8 @@ h1, h2, h3, h4, h5, h6 {
 /* 1. Base Typography
    ----------------- */
 body {
-  font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
-               Oxygen, Ubuntu, Cantarell, sans-serif);
+  font-family: var(--font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, sans-serif);
   font-size: 16px;
   line-height: var(--line-height, 1.6);
   color: var(--text-color);
@@ -507,7 +695,12 @@ body {
 
 /* 2. Headings
    ----------- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: var(--space-sm, 1rem);
   line-height: var(--line-height-headings, 1.2);
   color: var(--text-color);
@@ -515,12 +708,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Heading Scale - Follows a visual hierarchy */
-h1 { font-size: 2.5rem; }  /* 40px */
-h2 { font-size: 2rem; }    /* 32px */
-h3 { font-size: 1.75rem; } /* 28px */
-h4 { font-size: 1.5rem; }  /* 24px */
-h5 { font-size: 1.25rem; } /* 20px */
-h6 { font-size: 1rem; }    /* 16px */
+h1 {
+  font-size: 2.5rem;
+}
+
+/* 40px */
+h2 {
+  font-size: 2rem;
+}
+
+/* 32px */
+h3 {
+  font-size: 1.75rem;
+}
+
+/* 28px */
+h4 {
+  font-size: 1.5rem;
+}
+
+/* 24px */
+h5 {
+  font-size: 1.25rem;
+}
+
+/* 20px */
+h6 {
+  font-size: 1rem;
+}
+
+/* 16px */
 
 /* 3. Paragraphs & Lists
    -------------------- */
@@ -528,7 +745,8 @@ p {
   margin-bottom: var(--space-sm, 1rem);
 }
 
-ul, ol {
+ul,
+ol {
   margin-bottom: var(--space-sm, 1rem);
   padding-left: 1.25rem;
 }
@@ -560,11 +778,13 @@ a:hover {
 
 /* 5. Text Formatting
    ---------------- */
-strong, b {
+strong,
+b {
   font-weight: 600;
 }
 
-em, i {
+em,
+i {
   font-style: italic;
 }
 
@@ -580,7 +800,8 @@ blockquote {
   background-color: var(--background-muted);
 }
 
-code, pre {
+code,
+pre {
   font-family: monospace;
   background-color: var(--background-muted);
   padding: 0.2em 0.4em;
@@ -594,13 +815,29 @@ pre {
 
 /* 6. Text Utilities
    --------------- */
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-left { text-align: left; }
+.text-center {
+  text-align: center;
+}
 
-.text-primary { color: var(--primary-color); }
-.text-secondary { color: var(--secondary-color); }
-.text-muted { color: var(--text-secondary); }
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-muted {
+  color: var(--text-secondary);
+}
 
 /* 7. Responsive Typography
    ---------------------- */
@@ -608,24 +845,50 @@ pre {
   body {
     font-size: 15px;
   }
-  
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
-  h4 { font-size: 1.25rem; }
-  h5 { font-size: 1.1rem; }
-  h6 { font-size: 1rem; }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 576px) {
   body {
     font-size: 14px;
   }
-  
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.3rem; }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
 }
+
 /*
  * Button Component System
  * A comprehensive collection of button styles used throughout the site.
@@ -673,13 +936,13 @@ pre {
 
 /* NEW: Gallery Button Style */
 .gallery-button {
-    border: none;
-    background: none;
-    padding: 0;
-    cursor: pointer;
-    display: block;
-    border-radius: var(--radius-md);
-    overflow: hidden;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  border-radius: var(--radius-md);
+  overflow: hidden;
 }
 
 /* ===========================
@@ -1048,8 +1311,8 @@ pre {
 }
 
 /* Button spacers */
-.button + .button,
-.button-container a + a {
+.button+.button,
+.button-container a+a {
   margin-left: 10px;
 }
 
@@ -1062,24 +1325,24 @@ pre {
     width: 32px;
     height: 32px;
   }
-  
+
   .mobile-menu-btn {
     display: block;
   }
-  
+
   .button-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
-  
-  .button + .button,
-  .button-container a + a {
+
+  .button+.button,
+  .button-container a+a {
     margin-left: 0;
     margin-top: 10px;
   }
-  
+
   /* Stack buttons on mobile */
   .button-container a {
     width: 100%;
@@ -1089,6 +1352,7 @@ pre {
 
 /* Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .button,
   .button-container a,
   .social-link,
@@ -1102,6 +1366,7 @@ pre {
     transition: none;
   }
 }
+
 /*
  * Card Component System
  * A unified collection of card styles used throughout the site
@@ -1170,7 +1435,8 @@ pre {
 }
 
 /* Quadrant content */
-.quadrant p, .quadrant ul {
+.quadrant p,
+.quadrant ul {
   flex-grow: 1;
   margin-bottom: 15px;
 }
@@ -1375,12 +1641,15 @@ pre {
   margin-bottom: var(--space-md);
 }
 
-.content-box h2, .content-box h3, .content-box h4 {
+.content-box h2,
+.content-box h3,
+.content-box h4 {
   color: var(--primary-color);
   margin-bottom: var(--space-xs);
 }
 
-.content-box p, .content-box ul {
+.content-box p,
+.content-box ul {
   margin-bottom: var(--space-sm);
   line-height: 1.6;
 }
@@ -1412,35 +1681,39 @@ pre {
    =========================== */
 
 @media (max-width: 768px) {
-  .quadrant, .card, .content-box, .call-to-action {
+
+  .quadrant,
+  .card,
+  .content-box,
+  .call-to-action {
     padding: var(--space-sm);
   }
-  
+
   .highlight-card {
     padding: var(--space-md);
   }
-  
+
   .highlight-number {
     font-size: 2rem;
   }
-  
+
   .location-card img {
     height: 150px;
   }
-  
+
   .timeline-content {
     padding: var(--space-sm);
   }
-  
+
   .timeline-date {
     padding: 0.5rem;
     margin: -1rem -1rem 0.75rem -1rem;
   }
-  
+
   .merit-badge {
     padding: 0.5rem;
   }
-  
+
   .badge-image {
     width: 60px;
     height: 60px;
@@ -1452,12 +1725,13 @@ pre {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .badge-image {
     margin-right: 0;
     margin-bottom: var(--space-xs);
   }
 }
+
 /* * Collapsible Component System
  * A unified collection of expandable/collapsible content sections
  */
@@ -1491,7 +1765,8 @@ pre {
 
 /* Arrow indicator for all collapsibles */
 .collapsible::after {
-  content: '\25BC'; /* Down arrow Unicode character */
+  content: '\25BC';
+  /* Down arrow Unicode character */
   color: var(--primary-color);
   font-weight: bold;
   font-size: 14px;
@@ -1520,7 +1795,8 @@ pre {
 
 /* Standard collapsible content container */
 .collapsible-content {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   padding: 20px;
   background-color: var(--background-white);
   overflow: hidden;
@@ -1547,14 +1823,16 @@ pre {
 /* Merit badge year header styling */
 .merit-badge-year .collapsible {
   background-color: var(--background-muted);
-  height: 60px; /* Consistent height with other collapsibles */
+  height: 60px;
+  /* Consistent height with other collapsibles */
   display: flex;
   align-items: center;
 }
 
 /* Merit badge grid layout */
 .merit-badge-list {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 15px;
   padding: 20px;
@@ -1568,7 +1846,7 @@ pre {
 }
 
 /* Animation for merit badge list */
-.merit-badge-year .collapsible.active + .merit-badge-list {
+.merit-badge-year .collapsible.active+.merit-badge-list {
   display: grid;
   animation: fadeIn 0.3s ease;
 }
@@ -1586,13 +1864,15 @@ pre {
 
 /* Organization button styling */
 .organization-group .collapsible {
-  height: 60px; /* Consistent height with merit badge buttons */
+  height: 60px;
+  /* Consistent height with merit badge buttons */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
-  padding-right: 40px; /* Space for the arrow */
+  padding-right: 40px;
+  /* Space for the arrow */
 }
 
 /* Position the arrow on organization buttons */
@@ -1603,7 +1883,8 @@ pre {
 
 /* Organization content container */
 .org-content {
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
   padding: 20px;
   background-color: var(--background-white);
   border: 1px solid var(--border-color);
@@ -1615,7 +1896,7 @@ pre {
 }
 
 /* Animation for organization content */
-.organization-group .collapsible.active + .org-content {
+.organization-group .collapsible.active+.org-content {
   display: block;
   animation: fadeIn 0.3s ease;
 }
@@ -1630,6 +1911,7 @@ pre {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1664,13 +1946,13 @@ pre {
     padding: 1rem;
     font-size: 1.1rem;
   }
-  
+
   .collapsible-content,
   .org-content,
   .merit-badge-list {
     padding: 15px;
   }
-  
+
   .merit-badge-list {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   }
@@ -1678,22 +1960,30 @@ pre {
 
 @media (max-width: 576px) {
   .merit-badge-list {
-    grid-template-columns: 1fr; /* Single column for very small screens */
+    grid-template-columns: 1fr;
+    /* Single column for very small screens */
   }
 }
 
 /* Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .collapsible,
   .collapsible::after {
     transition: none;
   }
-  
+
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 }
+
 /*
  * Animation System
  * ---------------
@@ -1715,55 +2005,69 @@ pre {
    Used for: Page elements appearing on load, modals, tooltips
    Customize: Change transform values for different movement distance */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px); /* Subtle upward start position */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* Natural final position */
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    /* Subtle upward start position */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    /* Natural final position */
+  }
 }
 
 /* Slide Down - Natural dropdown motion with fade
    Used for: Dropdown menus, expandable content, notifications
    Customize: Adjust translateY value to control dropdown distance */
 @keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px); /* Start slightly above */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* Rest at natural position */
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    /* Start slightly above */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    /* Rest at natural position */
+  }
 }
 
 /* Pulse - Subtle attention-drawing effect
    Used for: Call-to-action buttons, notifications, highlights
    Performance note: Scale transforms are GPU-accelerated */
 @keyframes pulse {
-    0% {
-        transform: scale(1); /* Normal size */
-    }
-    50% {
-        transform: scale(1.05); /* Peak size - 5% larger */
-    }
-    100% {
-        transform: scale(1); /* Return to normal */
-    }
+  0% {
+    transform: scale(1);
+    /* Normal size */
+  }
+
+  50% {
+    transform: scale(1.05);
+    /* Peak size - 5% larger */
+  }
+
+  100% {
+    transform: scale(1);
+    /* Return to normal */
+  }
 }
 
 /* Spin - Continuous rotation effect
    Used for: Loading indicators, processing states, refresh icons
    Performance note: Rotation is optimized for smooth animation */
 @keyframes spin {
-    0% {
-        transform: rotate(0deg); /* Starting position */
-    }
-    100% {
-        transform: rotate(360deg); /* Full rotation */
-    }
+  0% {
+    transform: rotate(0deg);
+    /* Starting position */
+  }
+
+  100% {
+    transform: rotate(360deg);
+    /* Full rotation */
+  }
 }
 
 /* ==============================
@@ -1777,131 +2081,160 @@ pre {
    Usage: Add .fade-in class + .visible when element should appear
    Example: <div class="fade-in">Content to reveal</div> */
 .fade-in {
-    opacity: 0;
-    transform: translateY(20px); /* Start 20px below final position */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  /* Start 20px below final position */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Applied when element should become visible (typically via JS) */
 .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Quick Fade In - For smaller UI elements needing faster appearance
    Usage: Add .quick-fade to any element that should appear quickly
    Example: <span class="quick-fade">New!</span> */
 .quick-fade {
-    animation: fadeIn 0.3s ease forwards; /* 'forwards' maintains final state */
+  animation: fadeIn 0.3s ease forwards;
+  /* 'forwards' maintains final state */
 }
 
 /* Delayed animations - For creating staggered reveal sequences
    Usage: Add both animation class + delay class
    Example: <div class="fade-in delay-2">Appears second</div> */
-.delay-1 { animation-delay: 0.1s; } /* Slight delay */
-.delay-2 { animation-delay: 0.2s; } /* Minor delay */
-.delay-3 { animation-delay: 0.3s; } /* Moderate delay */
-.delay-4 { animation-delay: 0.4s; } /* Significant delay */
-.delay-5 { animation-delay: 0.5s; } /* Extended delay */
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+/* Slight delay */
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+/* Minor delay */
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+/* Moderate delay */
+.delay-4 {
+  animation-delay: 0.4s;
+}
+
+/* Significant delay */
+.delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* Extended delay */
 
 /* Page transitions */
 .page-transition {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
 }
 
 /* Loading states */
 .loading {
-    position: relative;
-    min-height: 100px;
+  position: relative;
+  min-height: 100px;
 }
 
 .loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    margin: -20px 0 0 -20px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    border-top-color: var(--primary-color);
-    animation: spin 0.8s linear infinite;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 0.8s linear infinite;
 }
 
 .loading-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    border-top-color: var(--primary-color);
-    animation: spin 0.8s linear infinite;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 0.8s linear infinite;
 }
 
 /* Error state */
 .error-state {
-    padding: 1rem;
-    border: 1px solid #dc3545;
-    border-radius: 4px;
-    color: #dc3545;
-    background-color: #f8d7da;
-    margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  color: #dc3545;
+  background-color: #f8d7da;
+  margin: 1rem 0;
 }
 
 .error-message {
-    padding: 1rem;
-    margin: 1rem 0;
-    background-color: var(--error-bg);
-    color: var(--error-text);
-    border-radius: var(--radius-md);
-    border-left: 4px solid var(--error-border);
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--error-border);
 }
 
 .error-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 /* Update notification */
 .update-notification {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 1rem;
-    background: var(--background-light);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    z-index: 1000;
-    animation: slideIn 0.3s ease-out;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 1rem;
+  background: var(--background-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
 }
 
 @keyframes slideIn {
-    from { transform: translateY(100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* ==============================
@@ -1915,27 +2248,31 @@ pre {
 /* Merit Badge List Animation - Reveals merit badges when section expands
    Triggered by: Clicking a merit badge year header
    Effect: Smooth slide-in of badge grid */
-.merit-badge-year .collapsible.active + .merit-badge-list {
-    display: grid; /* Switches from display: none to grid */
-    animation: slideDown 0.3s ease; /* Smooth entry */
+.merit-badge-year .collapsible.active+.merit-badge-list {
+  display: grid;
+  /* Switches from display: none to grid */
+  animation: slideDown 0.3s ease;
+  /* Smooth entry */
 }
 
 /* Organization Content Animation - Reveals organization details 
    Triggered by: Clicking an organization header in leadership section
    Effect: Smooth fade-in of detailed content */
-.organization-group .collapsible.active + .org-content {
-    animation: fadeIn 0.3s ease;
+.organization-group .collapsible.active+.org-content {
+  animation: fadeIn 0.3s ease;
 }
 
 /* Timeline Item Hover Effect - Creates subtle interaction feedback
    Triggered by: Hovering over timeline events
    Effect: Item slightly rises to indicate interactivity */
 .timeline-content {
-    transition: transform 0.3s ease; /* Smooth movement on hover */
+  transition: transform 0.3s ease;
+  /* Smooth movement on hover */
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px); /* Rise effect on hover */
+  transform: translateY(-5px);
+  /* Rise effect on hover */
 }
 
 /* Card Hover Animations - Consistent hover effects across all card types
@@ -1945,35 +2282,41 @@ pre {
 .highlight-card,
 .card,
 .leadership-item {
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for both properties */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Smooth transition for both properties */
 }
 
 .location-card:hover,
 .highlight-card:hover,
 .card:hover,
 .leadership-item:hover {
-    transform: translateY(-5px); /* Subtle "lift" effect */
-    box-shadow: var(--shadow-lg, 0 4px 12px rgba(0,0,0,0.15)); /* Enhanced shadow for depth */
+  transform: translateY(-5px);
+  /* Subtle "lift" effect */
+  box-shadow: var(--shadow-lg, 0 4px 12px rgba(0, 0, 0, 0.15));
+  /* Enhanced shadow for depth */
 }
 
 /* Button Hover Animation - Consistent interactive feedback
    Triggered by: Hovering over any button or action element
    Effect: Slight elevation change to indicate clickability */
-.button, 
+.button,
 .button-container a,
 .social-link,
 .filter-button {
-    transition: all 0.3s ease; /* Smooth property changes */
+  transition: all 0.3s ease;
+  /* Smooth property changes */
 }
 
 .button:hover,
 .button-container a:hover {
-    transform: translateY(-2px); /* Subtle rise effect */
+  transform: translateY(-2px);
+  /* Subtle rise effect */
 }
 
 /* Social links get slightly more pronounced effect */
 .social-link:hover {
-    transform: translateY(-3px); /* More noticeable rise */
+  transform: translateY(-3px);
+  /* More noticeable rise */
 }
 
 /* ==============================
@@ -1987,97 +2330,104 @@ pre {
    Important for accessibility and users with vestibular disorders
    This completely disables non-essential animations when user has requested reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important; /* Practically removes animation */
-        animation-iteration-count: 1 !important; /* Prevents looping */
-        transition-duration: 0.01ms !important; /* Practically removes transitions */
-        scroll-behavior: auto !important; /* Disables smooth scrolling */
-    }
-    
-    .loading::after,
-    .loading-spinner {
-        animation: none !important;
-    }
-    
-    .update-notification {
-        animation: none;
-    }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    /* Practically removes animation */
+    animation-iteration-count: 1 !important;
+    /* Prevents looping */
+    transition-duration: 0.01ms !important;
+    /* Practically removes transitions */
+    scroll-behavior: auto !important;
+    /* Disables smooth scrolling */
+  }
+
+  .loading::after,
+  .loading-spinner {
+    animation: none !important;
+  }
+
+  .update-notification {
+    animation: none;
+  }
 }
 
 /* Interactive element states */
 .interactive-element {
-    position: relative;
-    transition: transform 0.2s ease;
+  position: relative;
+  transition: transform 0.2s ease;
 }
 
 .interactive-element:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .interactive-element:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* Toast notifications */
 .toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 1rem 2rem;
-    background: var(--background-light);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    z-index: 1000;
-    animation: fadeInUp 0.3s ease-out;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background: var(--background-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  animation: fadeInUp 0.3s ease-out;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 20px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 /* Accessibility */
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--primary-color);
-    color: white;
-    padding: 8px;
-    z-index: 1001;
-    transition: top 0.2s ease-in-out;
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  z-index: 1001;
+  transition: top 0.2s ease-in-out;
 }
 
 .skip-link:focus {
-    top: 0;
+  top: 0;
 }
 
 /* Focus styles */
 :focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
+
 /*
  * Map Components
  * Styles for Google Maps integration throughout the site
@@ -2304,12 +2654,13 @@ pre {
   #travel-map-container {
     height: 350px;
   }
+
   .map-container {
     height: 300px;
   }
 }
 
-@media (max-width: 576px) { 
+@media (max-width: 576px) {
   #travel-map-container {
     height: 300px;
   }
@@ -2323,211 +2674,213 @@ pre {
 
 /* Map Component Styles */
 .travel-map {
-    position: relative;
-    margin: 2rem 0;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
+  position: relative;
+  margin: 2rem 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 #travel-map-container {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    background: var(--background-light);
-    border-radius: inherit;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: var(--background-light);
+  border-radius: inherit;
 }
 
 /* Map container */
 #map {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 
 /* Loading state */
 #map-loading {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 1000;
 }
 
 #map-loading .loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    border-top-color: var(--primary-color);
-    animation: spin 0.8s linear infinite;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 0.8s linear infinite;
 }
 
 /* Error state */
 #map-error {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    z-index: 1000;
-    text-align: center;
-    padding: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 1000;
+  text-align: center;
+  padding: 2rem;
 }
 
 #map-error p {
-    color: var(--error-text);
-    margin-bottom: 1rem;
+  color: var(--error-text);
+  margin-bottom: 1rem;
 }
 
 /* Map controls */
 .map-controls {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: white;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-md);
-    z-index: 1000;
-    padding: 0.5rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  padding: 0.5rem;
 }
 
 .map-control-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    background: white;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .map-control-button:hover {
-    background-color: var(--background-light);
+  background-color: var(--background-light);
 }
 
 .map-control-button:active {
-    background-color: var(--background-darker);
+  background-color: var(--background-darker);
 }
 
 /* Map markers */
 .map-marker {
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    border: 2px solid white;
-    width: 12px;
-    height: 12px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .map-marker:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 /* Marker popup */
 .marker-popup {
-    background: white;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    padding: 1rem;
-    max-width: 300px;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem;
+  max-width: 300px;
 }
 
 .marker-popup h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
 }
 
 .marker-popup p {
-    margin: 0 0 0.5rem;
-    font-size: 0.9rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
 }
 
 .marker-popup img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
-    margin-bottom: 0.5rem;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
 }
 
 /* Keyboard navigation instructions */
 .map-keyboard-instructions {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-md);
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    box-shadow: var(--shadow-sm);
-    z-index: 1000;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 /* Show instructions when map is focused */
-#map:focus + .map-keyboard-instructions,
-#map:focus-within + .map-keyboard-instructions {
-    opacity: 1;
+#map:focus+.map-keyboard-instructions,
+#map:focus-within+.map-keyboard-instructions {
+  opacity: 1;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    #travel-map-container {
-        height: 400px;
-    }
+  #travel-map-container {
+    height: 400px;
+  }
 
-    .map-keyboard-instructions {
-        display: none;
-    }
+  .map-keyboard-instructions {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
-    #travel-map-container {
-        height: 300px;
-    }
+  #travel-map-container {
+    height: 300px;
+  }
 }
 
 /* High contrast mode adjustments */
 @media (forced-colors: active) {
-    .map-marker {
-        border: 2px solid ButtonText;
-        background-color: ButtonText;
-    }
+  .map-marker {
+    border: 2px solid ButtonText;
+    background-color: ButtonText;
+  }
 
-    .map-control-button {
-        border: 2px solid ButtonText;
-    }
+  .map-control-button {
+    border: 2px solid ButtonText;
+  }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    .map-marker,
-    .map-control-button,
-    .map-keyboard-instructions {
-        transition: none;
-    }
+
+  .map-marker,
+  .map-control-button,
+  .map-keyboard-instructions {
+    transition: none;
+  }
 }
+
 /* ================================
    Header & Navigation Styles
    
@@ -2538,349 +2891,353 @@ pre {
 /* 1. Header Container
    ----------------- */
 .site-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background: var(--background-white);
-    z-index: 1000;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    text-align: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--background-white);
+  z-index: 1000;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: var(--header-background);
-    color: var(--header-text);
-    border-bottom: 3px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: var(--header-background);
+  color: var(--header-text);
+  border-bottom: 3px solid var(--primary-color);
 }
 
 header h1 {
-    margin: 0;
-    font-size: 1.5em;
+  margin: 0;
+  font-size: 1.5em;
 }
 
 /* 2. Navigation Container
    --------------------- */
 .navbar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* 3. Logo Styling
    ------------- */
 .logo {
-    font-size: 1.7rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 15px;
-    text-align: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 /* 4. Navigation Links
    ---------------- */
 .nav-links {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
 }
 
 .nav-links li {
-    position: relative;
+  position: relative;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: var(--nav-link-color);
-    font-size: 1rem;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--nav-link-color);
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--nav-link-hover-color);
+  color: var(--nav-link-hover-color);
 }
 
 /* Active page highlighting */
 .nav-links a.active {
-    color: var(--nav-link-active-color);
-    font-weight: 600;
+  color: var(--nav-link-active-color);
+  font-weight: 600;
 }
 
 /* 5. Dropdown Menus
    -------------- */
 .dropdown {
-    display: none;
-    position: absolute;
-    background-color: var(--header-background);
-    box-shadow: var(--shadow-lg);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: var(--header-background);
+  box-shadow: var(--shadow-lg);
+  z-index: 1;
 }
 
 .nav-links li:hover .dropdown {
-    display: block;
+  display: block;
 }
 
 .dropdown a {
-    display: block;
-    padding: 10px;
-    color: var(--header-link);
+  display: block;
+  padding: 10px;
+  color: var(--header-link);
 }
 
 .dropdown a:hover {
-    background-color: var(--primary-color);
-    color: var(--text-inverse);
+  background-color: var(--primary-color);
+  color: var(--text-inverse);
 }
 
 /* 6. Mobile Menu Button
    ------------------ */
 .mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 100;
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
 }
 
 .hamburger {
-    display: block;
-    width: 30px;
-    height: 24px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: block;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hamburger-line {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--primary-color);
-    border-radius: 3px;
-    transition: all 0.3s ease;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 .hamburger::before,
 .hamburger::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 24px;
-    height: 2px;
-    background: var(--text-color);
-    transition: all 0.3s ease;
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 .hamburger::before {
-    top: -8px;
+  top: -8px;
 }
 
 .hamburger::after {
-    bottom: -8px;
+  bottom: -8px;
 }
 
 /* Mobile Menu Button Active State */
 .mobile-menu-btn.active .hamburger {
-    background: transparent;
+  background: transparent;
 }
 
 .mobile-menu-btn.active .hamburger::before {
-    transform: rotate(45deg);
-    top: 0;
+  transform: rotate(45deg);
+  top: 0;
 }
 
 .mobile-menu-btn.active .hamburger::after {
-    transform: rotate(-45deg);
-    bottom: 0;
+  transform: rotate(-45deg);
+  bottom: 0;
 }
 
 /* 7. Responsive Navigation
    --------------------- */
 @media (max-width: 768px) {
-    .navbar {
-        position: relative;
-        padding-top: 60px; /* Make room for the mobile menu button */
-    }
-    
-    .mobile-menu-btn {
-        display: block;
-    }
+  .navbar {
+    position: relative;
+    padding-top: 60px;
+    /* Make room for the mobile menu button */
+  }
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--background-white);
-        padding: 1rem;
-        flex-direction: column;
-        box-shadow: var(--shadow-lg);
-        transition: right 0.4s ease;
-        z-index: 999;
-    }
+  .mobile-menu-btn {
+    display: block;
+  }
 
-    .nav-links.active {
-        right: 0;
-    }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--background-white);
+    padding: 1rem;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    transition: right 0.4s ease;
+    z-index: 999;
+  }
 
-    .nav-links li {
-        margin: 0;
-        width: 100%;
-    }
+  .nav-links.active {
+    right: 0;
+  }
 
-    .nav-links a {
-        font-size: 1.1rem;
-        padding: 1rem;
-        display: block;
-        border-radius: 8px;
-        margin: 0.25rem 0;
-        font-weight: 500;
-    }
+  .nav-links li {
+    margin: 0;
+    width: 100%;
+  }
 
-    .nav-links a:hover, 
-    .nav-links a:active {
-        background-color: var(--background-highlight);
-    }
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 1rem;
+    display: block;
+    border-radius: 8px;
+    margin: 0.25rem 0;
+    font-weight: 500;
+  }
 
-    .nav-links a.active {
-        background-color: var(--primary-color-faint);
-        color: var(--primary-color);
-        font-weight: 600;
-    }
+  .nav-links a:hover,
+  .nav-links a:active {
+    background-color: var(--background-highlight);
+  }
 
-    .logo {
-        font-size: 1.2rem;
-        z-index: 100;
-        margin-bottom: 10px;
-    }
+  .nav-links a.active {
+    background-color: var(--primary-color-faint);
+    color: var(--primary-color);
+    font-weight: 600;
+  }
 
-    /* Add backdrop when menu is open */
-    .nav-links.active::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--background-overlay);
-        z-index: -1;
-    }
-    
-    /* Prevent scrolling when menu is open */
-    body.menu-open {
-        overflow: hidden;
-    }
+  .logo {
+    font-size: 1.2rem;
+    z-index: 100;
+    margin-bottom: 10px;
+  }
 
-    .nav-header {
-        display: flex;
-    }
-    
-    /* Overlay when menu is open */
-    .menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 998;
-    }
-    
-    .menu-overlay.active {
-        display: block;
-    }
+  /* Add backdrop when menu is open */
+  .nav-links.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-overlay);
+    z-index: -1;
+  }
+
+  /* Prevent scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .nav-header {
+    display: flex;
+  }
+
+  /* Overlay when menu is open */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+
+  .menu-overlay.active {
+    display: block;
+  }
 }
 
 /* For larger screens, maintain centering */
 @media (min-width: 769px) {
-    .navbar {
-        flex-direction: column;
-    }
-    
-    .logo {
-        margin-bottom: 20px;
-    }
-    
-    .nav-links {
-        justify-content: center;
-    }
+  .navbar {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-bottom: 20px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
 }
 
 /* Smaller screens */
 @media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    nav ul, .nav-links {
-        flex-direction: column;
-        width: 100%;
-    }
+  nav ul,
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
 
-    nav ul li, .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
+  nav ul li,
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
 
-    nav ul li a {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 10px 20px;
-    }
+  nav ul li a {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+  }
 }
 
 /* Navigation Header for Mobile */
 .nav-header {
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 1rem;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
 }
 
 .mobile-logo {
-    font-size: 1.2rem;
-    margin: 0;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 .close-menu-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-color);
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 /* ================================
    Footer & Social Media Components
    
@@ -2892,95 +3249,95 @@ header h1 {
    ----------------- */
 footer,
 .site-footer {
-    background-color: var(--footer-background);
-    color: var(--footer-text);
-    padding: 2rem 0;
-    margin-top: 3rem;
-    border-top: 3px solid var(--primary-color);
-    width: 100%;
+  background-color: var(--footer-background);
+  color: var(--footer-text);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 3px solid var(--primary-color);
+  width: 100%;
 }
 
 /* Footer content wrapper */
 .footer-container,
 .footer-content {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 1.5rem;
 }
 
 /* 2. Footer Sections
    ---------------- */
 .footer-section {
-    padding: 1rem;
-    flex: 1;
-    min-width: 250px;
-    margin-bottom: 1.5rem;
+  padding: 1rem;
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 1.5rem;
 }
 
 /* Section headings */
 .footer-section h3 {
-    color: var(--text-inverse);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-    font-weight: 600;
+  color: var(--text-inverse);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 /* Decorative underline for section headings */
 .footer-section h3::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 2px;
-    background-color: var(--primary-color);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--primary-color);
 }
 
 /* Section text */
 .footer-section p {
-    line-height: 1.6;
-    font-size: 0.95rem;
-    color: var(--footer-text);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--footer-text);
 }
 
 /* 3. Footer Navigation
    ----------------- */
 .footer-links,
 .footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-links li,
 .footer-section ul li {
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
 .footer-links a,
 .footer-section ul li a {
-    color: var(--footer-link);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    display: inline-block;
-    position: relative;
-    padding-left: 0.5rem;
-    border-left: 2px solid transparent;
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: inline-block;
+  position: relative;
+  padding-left: 0.5rem;
+  border-left: 2px solid transparent;
 }
 
 .footer-links a:hover,
 .footer-section ul li a:hover {
-    color: var(--footer-link-hover);
-    border-left-color: var(--primary-color);
-    padding-left: 0.8rem;
+  color: var(--footer-link-hover);
+  border-left-color: var(--primary-color);
+  padding-left: 0.8rem;
 }
 
 /* 4. Social Media Links
@@ -2988,268 +3345,270 @@ footer,
 .footer-social,
 .social-links,
 .social-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Text-based social links */
 .footer-social a {
-    color: var(--footer-link);
-    font-size: 1.5em;
-    transition: color 0.3s;
+  color: var(--footer-link);
+  font-size: 1.5em;
+  transition: color 0.3s;
 }
 
 .footer-social a:hover {
-    color: var(--footer-link-hover);
+  color: var(--footer-link-hover);
 }
 
 /* Icon-based social links */
 .social-links a,
 .social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--background-active);
-    color: var(--text-inverse);
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--background-active);
+  color: var(--text-inverse);
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  text-decoration: none;
 }
 
 .social-link i {
-    display: block;
+  display: block;
 }
 
 .social-link img {
-    max-width: 60%;
-    max-height: 60%;
-    object-fit: contain;
+  max-width: 60%;
+  max-height: 60%;
+  object-fit: contain;
 }
 
 .social-links a:hover,
 .social-link:hover {
-    color: var(--text-inverse);
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
+  color: var(--text-inverse);
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
 }
 
 /* Social media brand colors */
 .social-link[href*="linkedin"],
 .social-links a[href*="linkedin"] {
-    background-color: var(--linkedin-color);
+  background-color: var(--linkedin-color);
 }
 
 .social-link[href*="github"],
 .social-links a[href*="github"] {
-    background-color: var(--github-color);
+  background-color: var(--github-color);
 }
 
 .social-link[href*="facebook"],
 .social-links a[href*="facebook"] {
-    background-color: var(--facebook-color);
+  background-color: var(--facebook-color);
 }
 
 .social-link[href*="instagram"],
 .social-links a[href*="instagram"] {
-    background-color: var(--instagram-color);
+  background-color: var(--instagram-color);
 }
 
 .social-link[href*="handshake"],
 .social-links a[href*="handshake"] {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 /* 5. Copyright Section
    ----------------- */
 .footer-bottom,
 .copyright {
-    text-align: center;
-    padding-top: 1.5rem;
-    margin-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
+  text-align: center;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-bottom p,
 .copyright p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--footer-text);
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--footer-text);
 }
 
 /* 6. Contact Information
    ------------------- */
 .contact-info {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .contact-info li {
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    color: var(--footer-text);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--footer-text);
 }
 
 /* 7. Responsive Adjustments
    ---------------------- */
 @media (max-width: 768px) {
-    .footer-content,
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
 
-    .footer-section {
-        width: 100%;
-        margin-bottom: 2rem;
-    }
+  .footer-content,
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .footer-section h3::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
+  .footer-section {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 
-    .footer-social,
-    .social-links,
-    .social-buttons {
-        justify-content: center;
-    }
+  .footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-    .footer-links a,
-    .footer-section ul li a {
-        border-left: none;
-        border-bottom: 2px solid transparent;
-        padding-left: 0;
-        padding-bottom: 0.3rem;
-    }
+  .footer-social,
+  .social-links,
+  .social-buttons {
+    justify-content: center;
+  }
 
-    .footer-links a:hover,
-    .footer-section ul li a:hover {
-        border-left-color: transparent;
-        border-bottom-color: var(--primary-color);
-        padding-left: 0;
-    }
+  .footer-links a,
+  .footer-section ul li a {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding-left: 0;
+    padding-bottom: 0.3rem;
+  }
 
-    .contact-info {
-        align-items: center;
-        justify-content: center;
-    }
+  .footer-links a:hover,
+  .footer-section ul li a:hover {
+    border-left-color: transparent;
+    border-bottom-color: var(--primary-color);
+    padding-left: 0;
+  }
 
-    .contact-info li {
-        justify-content: center;
-    }
+  .contact-info {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-info li {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 600px) {
-    footer .social-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .social-link {
-        font-size: 1.75rem;
-        padding: 0.5rem;
-    }
+  footer .social-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-link {
+    font-size: 1.75rem;
+    padding: 0.5rem;
+  }
 }
 
 /* Footer embedded social feeds */
 .social-feed {
-    margin: 2rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 .social-feed iframe {
-    width: 100%;
-    border: none;
+  width: 100%;
+  border: none;
 }
 
 .footer-bio {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .footer-profile {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--primary-color);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-color);
 }
 
 .social-links-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
 }
 
 .social-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--footer-link);
-    transition: color 0.3s ease;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--footer-link);
+  transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .social-link i {
-    width: 1.5rem;
-    font-size: 1.2rem;
+  width: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .social-link:hover {
-    color: var(--footer-link-hover);
-    transform: translateY(-2px);
+  color: var(--footer-link-hover);
+  transform: translateY(-2px);
 }
 
 .footer-bottom-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .back-to-top-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: var(--text-inverse);
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: var(--text-inverse);
+  transition: all 0.3s ease;
 }
 
 .back-to-top-footer:hover {
-    background-color: var(--primary-color-dark);
-    transform: translateY(-3px);
+  background-color: var(--primary-color-dark);
+  transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
-    .social-links-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-bottom-content {
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .social-links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
+
 /* ================================
    Grid System
    
@@ -3348,7 +3707,7 @@ footer,
   display: none;
 }
 
-.merit-badge-year .collapsible.active + .merit-badge-list {
+.merit-badge-year .collapsible.active+.merit-badge-list {
   display: grid;
 }
 
@@ -3391,29 +3750,79 @@ footer,
 
 /* 6. Grid Utilities
    --------------- */
-.gap-xs { gap: var(--space-xs); }
-.gap-sm { gap: var(--space-sm); }
-.gap-md { gap: var(--space-md); }
-.gap-lg { gap: var(--space-lg); }
-.gap-xl { gap: var(--space-xl); }
+.gap-xs {
+  gap: var(--space-xs);
+}
 
-.col-span-2 { grid-column: span 2; }
-.col-span-3 { grid-column: span 3; }
-.col-span-full { grid-column: 1 / -1; }
+.gap-sm {
+  gap: var(--space-sm);
+}
 
-.row-span-2 { grid-row: span 2; }
-.row-span-3 { grid-row: span 3; }
-.row-span-full { grid-row: 1 / -1; }
+.gap-md {
+  gap: var(--space-md);
+}
+
+.gap-lg {
+  gap: var(--space-lg);
+}
+
+.gap-xl {
+  gap: var(--space-xl);
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+
+.col-span-3 {
+  grid-column: span 3;
+}
+
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+.row-span-2 {
+  grid-row: span 2;
+}
+
+.row-span-3 {
+  grid-row: span 3;
+}
+
+.row-span-full {
+  grid-row: 1 / -1;
+}
 
 /* 7. Alignment Utilities
    -------------------- */
-.align-center { align-items: center; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.justify-end { justify-content: flex-end; }
-.align-end { align-items: flex-end; }
-.align-start { align-items: flex-start; }
-.justify-start { justify-content: flex-start; }
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
 
 /* 8. Responsive Grid Adjustments
    ---------------------------- */
@@ -3424,6 +3833,7 @@ footer,
 }
 
 @media (max-width: 992px) {
+
   .grid-3,
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
@@ -3431,47 +3841,50 @@ footer,
 }
 
 @media (max-width: 768px) {
+
   .grid-2,
   .grid-3,
   .grid-4 {
     grid-template-columns: 1fr;
   }
-  
+
   .quadrants {
     grid-template-columns: 1fr;
   }
-  
+
   .scouting-highlights,
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .merit-badge-list {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   }
 }
 
 @media (max-width: 576px) {
+
   .scouting-highlights,
   .stats-grid,
   .project-gallery {
     grid-template-columns: 1fr;
   }
-  
+
   .merit-badge-list {
     grid-template-columns: 1fr;
   }
-  
+
   .locations-grid {
     grid-template-columns: 1fr;
     gap: var(--space-md);
   }
-  
+
   .flex-row {
     flex-direction: column;
     align-items: stretch;
   }
 }
+
 /* ================================
    Main Content Layout & Styling
    
@@ -3500,11 +3913,11 @@ section {
 }
 
 /* Common section types */
-.intro, 
-.education, 
-.experience, 
-.skills, 
-.interests, 
+.intro,
+.education,
+.experience,
+.skills,
+.interests,
 .call-to-action {
   margin-bottom: var(--space-md);
 }
@@ -3525,14 +3938,14 @@ section:last-child {
 }
 
 /* Content box typography */
-.content-box h2, 
-.content-box h3, 
+.content-box h2,
+.content-box h3,
 .content-box h4 {
   color: var(--primary-color);
   margin-bottom: var(--space-xs);
 }
 
-.content-box p, 
+.content-box p,
 .content-box ul {
   margin-bottom: var(--space-sm);
   line-height: 1.6;
@@ -3683,16 +4096,16 @@ main a:hover {
   main.container {
     padding: 0 var(--space-sm);
   }
-  
+
   .profile-picture {
     width: 120px;
     height: 120px;
   }
-  
+
   .content-box {
     padding: var(--space-sm);
   }
-  
+
   .call-to-action {
     padding: var(--space-sm);
   }
@@ -3703,11 +4116,11 @@ main a:hover {
     width: 100px;
     height: 100px;
   }
-  
+
   .intro h2 {
     font-size: 1.75rem;
   }
-  
+
   .experience-item h3,
   .education-item h3 {
     font-size: 1.25rem;
@@ -3719,85 +4132,88 @@ main a:hover {
   .fade-in {
     transition: none;
   }
-  
+
   .back-to-top {
     transition: none;
   }
 }
+
 /* Improved spacing between header and main content */
-body > .container {
-    margin-top: 1rem; /* Adjust size as needed */
+body>.container {
+  margin-top: 1rem;
+  /* Adjust size as needed */
 }
 
 /* For intro section specifically */
 .intro {
-    padding-top: 1rem;
-    margin-bottom: 2rem;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 /* Add space above h2 in intro */
 .intro h2 {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
+
 /* Redesigned Home Page Styles */
 
 .hero-section {
-    text-align: center;
-    padding: 4rem 1rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    margin-bottom: 2rem;
+  text-align: center;
+  padding: 4rem 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 2rem;
 }
 
 .hero-content .profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #007bff;
-    margin-bottom: 1rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #007bff;
+  margin-bottom: 1rem;
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-content .subtitle {
-    font-size: 1.2rem;
-    color: #6c757d;
-    margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
 }
 
 .social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .social-links a {
-    color: #343a40;
-    font-size: 1.5rem;
-    transition: color 0.3s;
+  color: #343a40;
+  font-size: 1.5rem;
+  transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #007bff;
+  color: #007bff;
 }
 
 .social-links .button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 .social-links .button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .quadrants {
@@ -3818,39 +4234,40 @@ body > .container {
 }
 
 .quadrant h3 {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .quadrant .button {
-    margin-top: auto;
-    background-color: #007bff;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    align-self: flex-start;
+  margin-top: auto;
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  align-self: flex-start;
 }
 
 .quadrant .button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .fun-fact-section {
-    text-align: center;
-    background-color: #e9ecef;
+  text-align: center;
+  background-color: #e9ecef;
 }
 
 .fun-fact-section h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
+
 /*
  * Scouting Page Styles
  * A comprehensive stylesheet for the Scouting journey page
@@ -3860,165 +4277,172 @@ body > .container {
    1. Hero Section
    =========================== */
 .scouting-hero {
-    position: relative;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    overflow: hidden;
-    padding: 0;
-    margin-bottom: 3rem;
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 3rem;
 }
 
 .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://placehold.co/1920x1080/2b5d87/ffffff?text=Scouting+Adventure');
-    background-size: cover;
-    background-position: center;
-    z-index: -2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://placehold.co/1920x1080/2b5d87/ffffff?text=Scouting+Adventure');
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(43, 93, 135, 0.9) 0%, rgba(43, 93, 135, 0.7) 100%);
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(43, 93, 135, 0.9) 0%, rgba(43, 93, 135, 0.7) 100%);
+  z-index: -1;
 }
 
 .hero-content-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 2rem;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
 }
 
 .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-text {
-    color: var(--text-inverse);
+  color: var(--text-inverse);
 }
 
 .hero-badge {
-    display: inline-block;
-    background-color: var(--secondary-color);
-    color: var(--text-inverse);
-    padding: 0.25rem 1rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--text-inverse);
+  padding: 0.25rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    color: var(--text-inverse);
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-inverse);
 }
 
 .hero-highlight {
-    color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .hero-text .lead {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 .stat-card {
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-align: center;
-    color: var(--text-inverse);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-inverse);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .stat-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent-color);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
 }
 
 .stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
 }
 
 .stat-label {
-    font-size: 0.9rem;
-    opacity: 0.9;
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--text-inverse);
-    animation: bounce 2s infinite;
-    text-decoration: none;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-inverse);
+  animation: bounce 2s infinite;
+  text-decoration: none;
 }
 
 .scroll-text {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0) translateX(-50%);
-    }
-    40% {
-        transform: translateY(-10px) translateX(-50%);
-    }
-    60% {
-        transform: translateY(-5px) translateX(-50%);
-    }
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  40% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+
+  60% {
+    transform: translateY(-5px) translateX(-50%);
+  }
 }
 
 /* ===========================
@@ -4046,12 +4470,12 @@ body > .container {
 }
 
 .project-meta {
-    padding: 1rem 0;
-    display: flex;
-    gap: 2rem;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    flex-wrap: wrap;
+  padding: 1rem 0;
+  display: flex;
+  gap: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  flex-wrap: wrap;
 }
 
 .project-content h3 {
@@ -4060,86 +4484,92 @@ body > .container {
 }
 
 .project-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    padding: 0 2rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 0 2rem 2rem;
 }
 
 .project-gallery img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
 }
 
 /* ===========================
    3. Modal Styles
    =========================== */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.9);
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
 }
 
 #caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
 }
 
-.modal-content, #caption {
-    animation-name: zoom;
-    animation-duration: 0.6s;
+.modal-content,
+#caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
 }
 
 @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
 }
 
 .close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
@@ -4150,12 +4580,13 @@ body > .container {
   .hero-text h1 {
     font-size: 2.5rem;
   }
-  
+
   .hero-content {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
+
   .hero-buttons {
     justify-content: center;
   }
@@ -4166,23 +4597,23 @@ body > .container {
     min-height: auto;
     padding: 3rem 1rem;
   }
-  
+
   .hero-text h1 {
     font-size: 2rem;
   }
-  
+
   .hero-buttons {
     flex-direction: column;
   }
-  
+
   .hero-stats {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .stat-card {
     padding: 1rem;
   }
-  
+
   .stat-number {
     font-size: 2rem;
   }
@@ -4196,7 +4627,7 @@ body > .container {
   .hero-text h1 {
     font-size: 1.75rem;
   }
-  
+
   .hero-stats {
     grid-template-columns: 1fr;
   }
@@ -4212,7 +4643,7 @@ body > .container {
    =========================== */
 .travel-hero {
   background: linear-gradient(var(--primary-color-overlay), var(--primary-color-dark-overlay)),
-              url('../../images/travel/map-background.jpg') center/cover;
+    url('../../images/travel/map-background.jpg') center/cover;
   color: var(--text-inverse);
   padding: 4rem 2rem;
   text-align: center;
@@ -4607,11 +5038,11 @@ body > .container {
   .travel-hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .featured-content {
     grid-template-columns: 1fr;
   }
-  
+
   .featured-image {
     min-height: 250px;
   }
@@ -4621,28 +5052,28 @@ body > .container {
   .travel-hero {
     padding: 3rem 1rem;
   }
-  
+
   .travel-hero h1 {
     font-size: 2rem;
   }
-  
+
   .travel-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   #travel-map-container {
     height: 350px;
   }
-  
+
   .locations-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
   }
-  
+
   .filter-buttons {
     justify-content: center;
   }
-  
+
   .journal-header {
     flex-direction: column;
     align-items: flex-start;
@@ -4654,28 +5085,28 @@ body > .container {
   .travel-hero h1 {
     font-size: 1.75rem;
   }
-  
+
   .travel-hero p {
     font-size: 1rem;
   }
-  
+
   .travel-stats {
     grid-template-columns: 1fr;
   }
-  
+
   #travel-map-container {
     height: 300px;
   }
-  
+
   .locations-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .journal-images {
     grid-template-columns: 1fr;
   }
-  
+
   .location-card img {
     height: 180px;
   }
@@ -4683,6 +5114,7 @@ body > .container {
 
 /* Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .travel-stat,
   .location-card,
   .filter-button,
@@ -4690,6 +5122,7 @@ body > .container {
     transition: none;
   }
 }
+
 /*
  * Media Queries
  * Centralized responsive adjustments for all site components
@@ -4703,11 +5136,11 @@ body > .container {
   .container {
     max-width: 1140px;
   }
-  
+
   .hero-content {
     max-width: 900px;
   }
-  
+
   .merit-badge-list {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
@@ -4720,11 +5153,11 @@ body > .container {
   .container {
     max-width: 960px;
   }
-  
+
   .grid-4 {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .merit-badge-list {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
@@ -4737,37 +5170,37 @@ body > .container {
   .container {
     max-width: 720px;
   }
-  
+
   .hero-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .scouting-highlights {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .grid-3,
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .profile-picture {
     width: 120px;
     height: 120px;
   }
-  
+
   #travel-map-container {
     height: 400px;
   }
-  
+
   .travel-hero h1 {
     font-size: 2.5rem;
   }
-  
+
   .featured-content {
     grid-template-columns: 1fr;
   }
-  
+
   .featured-image {
     min-height: 250px;
   }
@@ -4777,62 +5210,80 @@ body > .container {
    4. Mobile Screens (576px-767px)
    =========================== */
 @media (max-width: 767px) {
+
   /* Container and layout */
   .container {
     max-width: 540px;
     padding: 0 1rem;
   }
-  
+
   main.container {
     padding: 0 1rem;
   }
-  
+
   /* Typography */
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
-  h4 { font-size: 1.25rem; }
-  h5 { font-size: 1.1rem; }
-  h6 { font-size: 1rem; }
-  
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
   /* Grid and sections */
   .grid-2,
-  .grid-3, 
+  .grid-3,
   .grid-4 {
     grid-template-columns: 1fr;
   }
-  
+
   .quadrants {
     grid-template-columns: 1fr;
   }
-  
+
   section {
     margin-bottom: 2rem;
   }
-  
+
   /* Hero sections */
   .hero-section {
     padding: 3rem 1rem;
   }
-  
+
   .hero-content h1 {
     font-size: 2rem;
   }
-  
+
   .hero-content .lead {
     font-size: 1.1rem;
   }
-  
+
   /* Navigation */
   .navbar {
     position: relative;
     padding-top: 60px;
   }
-  
+
   .mobile-menu-btn {
     display: block;
   }
-  
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -4849,28 +5300,28 @@ body > .container {
     text-align: center;
     align-items: center;
   }
-  
+
   .nav-links.active {
     right: 0;
   }
-  
+
   .nav-links li {
     margin: 1rem 0;
   }
-  
+
   /* Card components */
   .content-box {
     padding: var(--space-sm);
   }
-  
+
   .call-to-action {
     padding: var(--space-sm);
   }
-  
+
   .timeline-content {
     padding: var(--space-sm);
   }
-  
+
   /* Buttons and actions */
   .button-container {
     display: flex;
@@ -4878,88 +5329,88 @@ body > .container {
     align-items: center;
     gap: 10px;
   }
-  
-  .button + .button,
-  .button-container a + a {
+
+  .button+.button,
+  .button-container a+a {
     margin-left: 0;
     margin-top: 10px;
   }
-  
+
   .timeline-scroll-btn {
     width: 32px;
     height: 32px;
   }
-  
+
   /* Travel page */
   .travel-hero {
     padding: 3rem 1rem;
   }
-  
+
   .travel-hero h1 {
     font-size: 2rem;
   }
-  
+
   .travel-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   #travel-map-container {
     height: 350px;
   }
-  
+
   .locations-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
   }
-  
+
   .filter-buttons {
     justify-content: center;
   }
-  
+
   /* Scouting page */
-  .leadership-section, 
-  .merit-badges, 
+  .leadership-section,
+  .merit-badges,
   .eagle-project {
     padding: 1.5rem 1rem;
   }
-  
+
   .merit-badge-list {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     padding: 1rem;
   }
-  
+
   .project-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .badge-image {
     width: 60px;
     height: 60px;
   }
-  
+
   /* Footer */
   .footer-content {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .footer-section {
     width: 100%;
     margin-bottom: 2rem;
   }
-  
+
   .footer-section h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
   .footer-social,
   .social-links {
     justify-content: center;
   }
-  
+
   .footer-links a,
   .footer-section ul li a {
     border-left: none;
@@ -4967,14 +5418,14 @@ body > .container {
     padding-left: 0;
     padding-bottom: 0.3rem;
   }
-  
+
   .footer-links a:hover,
   .footer-section ul li a:hover {
     border-left-color: transparent;
     border-bottom-color: var(--primary-color);
     padding-left: 0;
   }
-  
+
   .journal-header {
     flex-direction: column;
     align-items: flex-start;
@@ -4989,78 +5440,78 @@ body > .container {
   body {
     font-size: 15px;
   }
-  
+
   /* Typography */
   .hero-content h1,
   .travel-hero h1 {
     font-size: 1.75rem;
   }
-  
+
   .travel-hero p {
     font-size: 1rem;
   }
-  
+
   .intro h2 {
     font-size: 1.75rem;
   }
-  
+
   /* Grids and layouts */
   .travel-stats,
   .scouting-highlights,
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .merit-badge-list {
     grid-template-columns: 1fr;
   }
-  
+
   .merit-badge {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .badge-image {
     margin-right: 0;
     margin-bottom: 0.5rem;
   }
-  
+
   /* Travel components */
   #travel-map-container {
     height: 300px;
   }
-  
+
   .locations-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .journal-images {
     grid-template-columns: 1fr;
   }
-  
+
   .location-card img {
     height: 180px;
   }
-  
+
   /* Social components */
   .social-container {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-  
+
   .social-button {
     width: 100%;
     max-width: 300px;
   }
-  
+
   /* Footer elements */
   footer .social-links {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .social-link {
     font-size: 1.75rem;
     padding: 0.5rem;
@@ -5071,6 +5522,7 @@ body > .container {
    6. Print Styles
    =========================== */
 @media print {
+
   /* Hide interactive elements */
   .site-header,
   .site-footer,
@@ -5079,7 +5531,7 @@ body > .container {
   .back-to-top {
     display: none;
   }
-  
+
   /* Print-friendly typography */
   body {
     font-size: 12pt;
@@ -5087,12 +5539,12 @@ body > .container {
     color: var(--text-color);
     background: var(--background-white);
   }
-  
+
   a {
     color: var(--text-color);
     text-decoration: none;
   }
-  
+
   /* Optimize shadows & colors */
   .card,
   .content-box,
@@ -5100,7 +5552,7 @@ body > .container {
     box-shadow: none;
     border: 1px solid var(--border-color);
   }
-  
+
   /* Full-width content */
   .container {
     width: 100%;
@@ -5108,7 +5560,7 @@ body > .container {
     margin: 0;
     padding: 0;
   }
-  
+
   /* Add URLs after links */
   a[href^="http"]:after {
     content: " (" attr(href) ")";
@@ -5121,6 +5573,7 @@ body > .container {
    7. Reduced Motion
    =========================== */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
