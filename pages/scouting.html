@@ -285,6 +285,96 @@
                 right: 20px;
             }
         }
+
+
+        /* Existing timeline styles... */
+
+        /* New Text Modal Styles */
+        .text-modal {
+            background: var(--background-white);
+            color: var(--text-color);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .text-modal h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .role-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .role-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .role-list li::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .role-date {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0.25rem 0 0.5rem;
+            font-weight: 500;
+        }
+
+        .leadership-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .highlight-item {
+            background: var(--background-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Dark mode overrides for modal */
+        [data-theme="dark"] .text-modal {
+            background: var(--background-dark);
+            color: var(--text-color);
+        }
     </style>
 </head>
 
@@ -427,9 +517,31 @@
             <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.7;">Throughout my time in
                 Scouting, I've had the privilege of serving in numerous leadership roles at the unit, chapter, lodge,
                 section, and national levels.</p>
-            <div id="leadership-roles-content">
-                <p class="text-center" style="color: var(--text-secondary); font-style: italic;">Loading leadership
-                    roles...</p>
+            <div class="leadership-summary">
+                <p>
+                    With over 7 years of leadership experience in the Order of the Arrow, I have held multiple youth and
+                    adult roles at the lodge, chapter, section, and national levels. My journey has focused on
+                    large-scale event management, youth mentorship, and organizational communications.
+                </p>
+                <div class="leadership-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-users"></i>
+                        <span>Lodge Chief (850+ members)</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-campground"></i>
+                        <span>Winter Camp Chair (800+ attendees)</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-globe-americas"></i>
+                        <span>National OA Conference Staff</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="button" onclick="openLeadershipModal()">
+                        <i class="fas fa-list-ul"></i> View Full Leadership History
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -533,11 +645,121 @@
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">&uarr;</button>
     <div id="footer"></div>
 
+    <div id="leadershipModal" class="modal">
+        <button type="button" class="close" onclick="closeLeadershipModal()" aria-label="Close modal">&times;</button>
+        <div class="modal-content text-modal">
+            <h2>Leadership History</h2>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-flag-usa"></i> National Order of the Arrow</h3>
+                <ul class="role-list">
+                    <li>
+                        <strong>Traffic Manager, National Communications Subcommittee</strong>
+                        <span class="role-date">Jan 2024 – Oct 2024</span>
+                        <p>Appointed to the national traffic team, assisting with the communications ticketing system to
+                            route and track requests between subcommittees.</p>
+                    </li>
+                    <li>
+                        <strong>Operations Team Member, NOAC 2024</strong>
+                        <span class="role-date">July 2024 – Aug 2024</span>
+                        <p>Supported the Technology Operations Team, assisting with physical equipment and
+                            infrastructure, including computing hardware, networks, printers, and AV equipment.</p>
+                    </li>
+                    <li>
+                        <strong>Communications Team Member, NOAC 2024</strong>
+                        <span class="role-date">Mar 2024 – July 2024</span>
+                        <p>Contributed to the NOAC Communications Team pre-conference, assisting with the ticketing
+                            system to process staff and program-related requests.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-map-marked-alt"></i> Section E3 (Regional)</h3>
+                <ul class="role-list">
+                    <li>
+                        <strong>Section Leadership Seminar Coordinator</strong>
+                        <span class="role-date">2024 – 2025</span>
+                        <p>Coordinated facilities, scheduling, and logistics for a multi-state leadership seminar
+                            attended by lodge leaders across the Eastern Region.</p>
+                    </li>
+                    <li>
+                        <strong>Training Conclave Vice Chief</strong>
+                        <span class="role-date">2023 – 2024</span>
+                        <p>Planned and delivered a comprehensive leadership training program for section members from
+                            multiple states, hosted at a Scout camp.</p>
+                    </li>
+                    <li>
+                        <strong>Promotions Chair</strong>
+                        <span class="role-date">2022 – 2023</span>
+                        <p>Designed and executed social media campaigns to promote section events and supported the
+                            section committee’s communication strategy.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-feather-alt"></i> Wa-Hi-Nasa Lodge (Local Council)</h3>
+                <ul class="role-list">
+                    <li>
+                        <strong>Vigil Chair</strong>
+                        <span class="role-date">Dec 2023 – Dec 2024</span>
+                        <p>Oversaw Vigil Honor candidate selection, logistics, and ceremonies.</p>
+                    </li>
+                    <li>
+                        <strong>Winter Camp Chair</strong>
+                        <span class="role-date">Dec 2023 – Dec 2024</span>
+                        <p>Chaired the Middle Tennessee Council Winter Camp (800+ attendees), coordinating 40 youth key
+                            staff, advisers, and 100+ additional staff.</p>
+                    </li>
+                    <li>
+                        <strong>Lodge Chief</strong>
+                        <span class="role-date">Dec 2022 – Dec 2023</span>
+                        <p>Elected to lead ~920 members, presiding over the Lodge Executive Committee and guiding
+                            youth-led initiatives.</p>
+                    </li>
+                    <li>
+                        <strong>Lodge Secretary</strong>
+                        <span class="role-date">Dec 2021 – Dec 2022</span>
+                        <p>Maintained records and led communications (social media, website, newsletter, Slack),
+                            improving lodge-wide engagement.</p>
+                    </li>
+                    <li>
+                        <strong>Kithane Chapter Chief</strong>
+                        <span class="role-date">Dec 2020 – Dec 2021</span>
+                        <p>Increased meeting attendance from 2–3 to 10–15 after council reorganization.</p>
+                    </li>
+                    <li>
+                        <strong>Slack Chair</strong>
+                        <span class="role-date">Dec 2020 – Dec 2021</span>
+                        <p>Enhanced real-time lodge communications through effective Slack management.</p>
+                    </li>
+                    <li>
+                        <strong>Wewoapisak Chapter Chief</strong>
+                        <span class="role-date">Dec 2019 – Dec 2020</span>
+                        <p>Oversaw chapter activities, elections, and youth officer development.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-users"></i> Other Leadership</h3>
+                <ul class="role-list">
+                    <li>
+                        <strong>Venturing Officers Association President</strong>
+                        <span class="role-date">Feb 2024 – Feb 2025</span>
+                        <p>Middle Tennessee Council - Supports Venturing BSA program units for youth aged 14-21.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script src="../js/app.js"></script>
-    <script src="../js/data/scouting.js"></script>
     <script>
         let lastFocusedElement;
 
+        // Image Modal Functions
         function openModal(src, alt) {
             lastFocusedElement = document.activeElement;
             const modal = document.getElementById("imageModal");
@@ -550,10 +772,8 @@
                 modalImg.src = src;
                 modalImg.alt = alt;
                 captionText.textContent = alt;
-
-                if (closeBtn) {
-                    closeBtn.focus();
-                }
+                if (closeBtn) closeBtn.focus();
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -561,47 +781,48 @@
             const modal = document.getElementById("imageModal");
             if (modal) {
                 modal.style.display = "none";
-                if (lastFocusedElement) {
-                    lastFocusedElement.focus();
-                }
+                document.body.style.overflow = '';
+                if (lastFocusedElement) lastFocusedElement.focus();
             }
         }
 
+        // Leadership Modal Functions
+        function openLeadershipModal() {
+            lastFocusedElement = document.activeElement;
+            const modal = document.getElementById("leadershipModal");
+            const closeBtn = modal.querySelector('.close');
+
+            if (modal) {
+                modal.style.display = "block";
+                if (closeBtn) closeBtn.focus();
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeLeadershipModal() {
+            const modal = document.getElementById("leadershipModal");
+            if (modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = '';
+                if (lastFocusedElement) lastFocusedElement.focus();
+            }
+        }
+
+        // Global Event Listeners
         document.addEventListener('keydown', function (event) {
             if (event.key === "Escape") {
                 closeModal();
-            }
-
-            const modal = document.getElementById("imageModal");
-            if (modal && modal.style.display === "block") {
-                const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                const firstElement = focusableElements[0];
-                const lastElement = focusableElements[focusableElements.length - 1];
-
-                if (event.key === 'Tab') {
-                    if (event.shiftKey) {
-                        if (document.activeElement === firstElement) {
-                            event.preventDefault();
-                            lastElement.focus();
-                        }
-                    } else {
-                        if (document.activeElement === lastElement) {
-                            event.preventDefault();
-                            firstElement.focus();
-                        }
-                    }
-                }
+                closeLeadershipModal();
             }
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('imageModal');
-            if (modal) {
-                modal.addEventListener('click', (event) => {
-                    if (event.target === modal) {
-                        closeModal();
-                    }
-                });
+            // Close modals when clicking outside
+            window.onclick = function (event) {
+                const imageModal = document.getElementById('imageModal');
+                const leadershipModal = document.getElementById('leadershipModal');
+                if (event.target == imageModal) closeModal();
+                if (event.target == leadershipModal) closeLeadershipModal();
             }
         });
     </script>
