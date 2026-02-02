@@ -1,125 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Coming Soon!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* --- General Styling & Animated Background --- */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #ffffff;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a2a6c);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- Main Content Container --- */
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 40px 60px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: fadeIn 1.5s ease-in-out;
-            max-width: 800px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* --- Typography --- */
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            font-size: 1.8em;
-            margin-top: 5px;
-            margin-bottom: 25px;
-            font-weight: 400;
-            color: #b3e0ff;
-        }
-
-        p {
-            font-size: 1.2em;
-            font-weight: 300;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .social-links a {
-            color: #ffffff;
-            font-size: 2em;
-            margin: 0 15px;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #b3e0ff;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 25px;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            h2 {
-                font-size: 1.4em;
-            }
-            p {
-                font-size: 1em;
-            }
-            .social-links a {
-                font-size: 1.5em;
-            }
-        }
-    </style>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description"
+        content="Samuel Rumbley - Portfolio showcasing education, experience, and scouting achievements.">
+    <meta name="keywords" content="Samuel Rumbley, business information technology, scouting, leadership, Tennessee">
+    <meta name="author" content="Samuel Rumbley">
+    <title>Samuel Rumbley - Home</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">Samuel Rumbley</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <div class="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </button>
+            <nav class="main-nav">
+                <div class="nav-header">
+                    <div class="logo mobile-logo">Samuel Rumbley</div>
+                    <button class="close-menu-btn" aria-label="Close menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pages/education.html">Education</a></li>
+                    <li><a href="pages/experience.html">Experience</a></li>
+                    <li><a href="pages/scouting.html">Scouting</a></li>
+                    <li><a href="pages/achievements.html">Achievements</a></li>
+                    <li><a href="pages/training.html">Training</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="container">
-        <h1>👋 Hello There!</h1>
-        <h2>Samuel Rumbley</h2>
-        <p>
-            My website is under construction. Something cool is coming soon!
-        </p>
-    </div>
+    <main class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <img src="images/profile.jpg" alt="Samuel Rumbley" class="profile-picture">
+                <h1>Samuel Rumbley</h1>
+                <p class="subtitle">Business Information Technology Student | Aspiring Tech Leader</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/caninecrew" target="_blank" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="documents/resume.pdf" target="_blank" class="button">View Resume</a>
+                </div>
+            </div>
+        </section>
 
+        <section class="content-box">
+            <h2>About Me</h2>
+            <p>I am a dedicated and driven student at Tennessee Technological University, pursuing a degree in Business
+                Information and Technology with a minor in Leadership. My goal is to leverage my technical skills and
+                leadership experience to make a meaningful impact. I am passionate about data analysis, cybersecurity,
+                and exploring emerging technology trends.</p>
+        </section>
+
+        <div class="quadrants">
+            <div class="quadrant">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <p>Currently pursuing a Bachelor's degree at Tennessee Technological University. My coursework includes
+                    Management Information Systems, Intro to Cybersecurity, and Business Statistics.</p>
+                <a href="pages/education.html" class="button">Learn More</a>
+            </div>
+            <div class="quadrant">
+                <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                <p>I have experience as a Substitute Teacher, where I've honed my leadership and critical thinking
+                    skills. I've also held multiple leadership roles in the Order of the Arrow, Boy Scouts of America.
+                </p>
+                <a href="pages/experience.html" class="button">See Experience</a>
+            </div>
+            <div class="quadrant">
+                <h3><i class="fas fa-lightbulb"></i> Projects</h3>
+                <p>I've contributed to several publications, including "The Wheel v3," a resource guide for Order of the
+                    Arrow members, and the "2023 Annual Report" for the Wa-Hi-Nasa Lodge.</p>
+                <a href="pages/projects.html" class="button">View Projects</a>
+            </div>
+        </div>
+
+        <section class="content-box fun-fact-section">
+            <h2><i class="fas fa-star"></i> Fun Fact</h2>
+            <p id="fun-fact">I have climbed a 12,441-foot mountain!</p>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <!-- About section -->
+            <div class="footer-section">
+                <h3>About Me</h3>
+                <div class="footer-bio">
+                    <img src="../images/profile.jpg" alt="Samuel Rumbley" class="footer-profile">
+                    <p>Business Information Technology student at Tennessee Tech University with interests in data
+                        analysis, cybersecurity, and leadership.</p>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pages/education.html">Education</a></li>
+                    <li><a href="pages/experience.html">Experience</a></li>
+                    <li><a href="pages/scouting.html">Scouting</a></li>
+                    <li><a href="pages/travel.html">Travel</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect section -->
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://github.com/caninecrew" class="social-link" aria-label="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/samuel-rumbley" class="social-link"
+                        aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/samuel_rumbley" class="social-link"
+                        aria-label="Instagram Profile">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/samuel.rumbley.1" class="social-link"
+                        aria-label="Facebook Profile">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://app.joinhandshake.com/stu/users/25299545" class="social-link"
+                        aria-label="Handshake Profile">
+                        <i class="fas fa-handshake"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer bottom with added elements -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="copyright">&copy; <span class="copyright-year">2025</span> Samuel Rumbley. All Rights
+                    Reserved.</p>
+                <a href="#top" class="back-to-top-footer" aria-label="Back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
 </body>
+
 </html>
