@@ -3278,11 +3278,11 @@ header h1 {
    ----------------- */
 footer,
 .site-footer {
-  background-color: var(--footer-background);
+  background: linear-gradient(to bottom, #2F3C4A, #1A252F);
   color: var(--footer-text);
-  padding: 2rem 0;
-  margin-top: 3rem;
-  border-top: 3px solid var(--primary-color);
+  padding: 4rem 0 0 0;
+  margin-top: 4rem;
+  border-top: 4px solid var(--primary-color);
   width: 100%;
 }
 
@@ -3291,31 +3291,29 @@ footer,
 .footer-content {
   max-width: var(--max-width);
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 0 1.5rem 3rem 1.5rem;
 }
 
 /* 2. Footer Sections
    ---------------- */
 .footer-section {
-  padding: 1rem;
-  flex: 1;
-  min-width: 250px;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Section headings */
 .footer-section h3 {
   color: var(--text-inverse);
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
   position: relative;
-  padding-bottom: 0.5rem;
-  font-weight: 600;
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 /* Decorative underline for section headings */
@@ -3324,16 +3322,27 @@ footer,
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 50px;
-  height: 2px;
+  width: 40px;
+  height: 3px;
   background-color: var(--primary-color);
+  border-radius: 2px;
 }
 
 /* Section text */
 .footer-section p {
-  line-height: 1.6;
-  font-size: 0.95rem;
-  color: var(--footer-text);
+  line-height: 1.8;
+  font-size: 1rem;
+  color: var(--footer-link);
+  opacity: 0.9;
+}
+
+.footer-profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 2px solid var(--primary-color);
+  object-fit: cover;
 }
 
 /* 3. Footer Navigation
@@ -4992,6 +5001,88 @@ body>.container {
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: var(--space-md);
+}
+
+/* ===========================
+   Header Styles
+   =========================== */
+
+.site-header {
+  background-color: var(--header-background);
+  color: var(--header-text);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-fixed);
+  transition: all 0.3s ease;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.site-header.scrolled {
+  padding: 0.5rem 0;
+  background-color: rgba(47, 60, 74, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--header-text);
+  letter-spacing: -0.02em;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--header-link);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--header-link-hover);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--header-link-hover);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-header {
+  display: none;
 }
 
 /* ===========================

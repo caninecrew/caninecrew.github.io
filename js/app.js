@@ -118,62 +118,89 @@ class App {
             !currentPath.includes('/pages/');
 
         // Set paths based on page location
-        const headerPath = isIndexPage ? 'pages/header.html' : '../pages/header.html';
-        const footerPath = isIndexPage ? 'pages/footer.html' : '../pages/footer.html';
+        const headerPath = isIndexPage ? 'pages/header.html' : 'header.html';
+        const footerPath = isIndexPage ? 'pages/footer.html' : 'footer.html';
 
         const headerContainer = document.getElementById('header');
         const footerContainer = document.getElementById('footer');
 
-        // Check if containers exist
-        if (!headerContainer && !footerContainer) {
-            return;
-        }
+        if (!headerContainer && !footerContainer) return;
 
         try {
             const promises = [];
 
-            // Load header if container exists
             if (headerContainer) {
                 promises.push(
                     fetch(headerPath)
-                        .then(response => {
-                            if (!response.ok) throw new Error(`Failed to fetch header: ${response.statusText}`);
-                            return response.text();
-                        })
+                        .then(res => res.ok ? res.text() : Promise.reject(`Header: ${res.status}`))
                         .then(html => {
                             headerContainer.innerHTML = html;
-                        })
-                        .catch(error => {
-                            console.error('Error loading header:', error);
-                            headerContainer.innerHTML = '<div style="color:red; text-align:center; padding: 1rem;">Error: Could not load header.</div>';
+                            this.fixLinks(headerContainer, isIndexPage);
+                            this.initializeMobileMenu();
                         })
                 );
             }
 
-            // Load footer if container exists
             if (footerContainer) {
                 promises.push(
                     fetch(footerPath)
-                        .then(response => {
-                            if (!response.ok) throw new Error(`Failed to fetch footer: ${response.statusText}`);
-                            return response.text();
-                        })
+                        .then(res => res.ok ? res.text() : Promise.reject(`Footer: ${res.status}`))
                         .then(html => {
                             footerContainer.innerHTML = html;
-                        })
-                        .catch(error => {
-                            console.error('Error loading footer:', error);
-                            footerContainer.innerHTML = '<div style="color:red; text-align:center; padding: 1rem;">Error: Could not load footer.</div>';
+                            this.fixLinks(footerContainer, isIndexPage);
                         })
                 );
             }
 
-            // Wait for all components to load
             await Promise.all(promises);
-
         } catch (error) {
-            console.error('Error in loadSharedComponents:', error);
+            console.error('Error loading shared components:', error);
         }
+    }
+
+    /**
+     * Dynamically adjusts links within container based on page depth.
+     */
+    fixLinks(container, isIndexPage) {
+        const links = container.querySelectorAll('a');
+        links.forEach(link => {
+            let href = link.getAttribute('href');
+            if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) return;
+
+            // Simplify: All links in header/footer relative to ROOT
+            // If on index: Home is 'index.html', Education is 'pages/education.html'
+            // If on pages: Home is '../index.html', Education is 'education.html'
+
+            if (isIndexPage) {
+                // Keep index.html as is, others prepend pages/
+                if (href !== 'index.html' && !href.includes('pages/')) {
+                    link.setAttribute('href', 'pages/' + href);
+                }
+            } else {
+                // If on subpage
+                if (href === 'index.html') {
+                    link.setAttribute('href', '../index.html');
+                } else {
+                    // Remove pages/ if it exists, as we are already in pages/
+                    href = href.replace('pages/', '');
+                    link.setAttribute('href', href);
+                }
+            }
+        });
+
+        // Also fix image sources
+        const images = container.querySelectorAll('img');
+        images.forEach(img => {
+            let src = img.getAttribute('src');
+            if (!src || src.startsWith('http')) return;
+
+            if (isIndexPage) {
+                if (src.startsWith('../')) src = src.substring(3);
+            } else {
+                if (!src.startsWith('../')) src = '../' + src;
+            }
+            img.setAttribute('src', src);
+        });
     }
 
     initializeMobileMenu() {
@@ -245,10 +272,21 @@ class App {
             themeToggle.addEventListener('click', () => this.toggleTheme());
         }
 
+        // Sticky Header & Scroll Effects
+        const header = document.querySelector('.site-header');
+        window.addEventListener('scroll', () => {
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+
         // Back to top button
         const backToTop = document.getElementById('back-to-top');
         if (backToTop) {
-            // Simple throttle implementation
             let inThrottle;
             const scrollHandler = () => {
                 if (!inThrottle) {
@@ -257,7 +295,6 @@ class App {
                     setTimeout(() => inThrottle = false, 200);
                 }
             };
-
             window.addEventListener('scroll', scrollHandler);
 
             backToTop.addEventListener('click', () => {
@@ -265,7 +302,6 @@ class App {
             });
         }
 
-        // Footer back to top button
         const backToTopFooter = document.querySelector('.back-to-top-footer');
         if (backToTopFooter) {
             backToTopFooter.addEventListener('click', (e) => {
@@ -274,7 +310,6 @@ class App {
             });
         }
 
-        // Update copyright year in footer
         const copyrightYear = document.querySelector('.copyright-year');
         if (copyrightYear) {
             copyrightYear.textContent = new Date().getFullYear();
