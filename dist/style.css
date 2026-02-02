@@ -5608,7 +5608,230 @@ body>.container {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ===========================
+   9. Homepage & Global Sections
+   =========================== */
+
+/* Hero Section */
+.hero-section {
+  padding: 8rem 1rem 6rem;
+  background: linear-gradient(135deg, rgba(110, 191, 247, 0.1) 0%, rgba(208, 127, 51, 0.1) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-profile-img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--background-white, #fff);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-profile-img:hover {
+  transform: scale(1.03);
+}
+
+.hero-greeting {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(110, 191, 247, 0.4);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(110, 191, 247, 0.6);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--border-light, #eee);
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background-color: var(--background-white, #fff);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.hero-socials {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.hero-socials a {
+  color: var(--text-muted);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-socials a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+/* Global Quadrants Grid (Home & Scouting) */
+.quadrants {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem 0;
+}
+
+.quadrant {
+  background: var(--background-white, #fff);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.quadrant:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.quadrant h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.quadrant i {
+  color: var(--primary-color);
+  background: rgba(110, 191, 247, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.quadrant p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.quadrant .button {
+  display: inline-block;
+  margin-top: auto;
+}
+
+/* Fun Fact Section */
+.fun-fact-section {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #ff9f43 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  margin: 4rem 0;
+  box-shadow: 0 10px 30px rgba(208, 127, 51, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.fun-fact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==');
+  opacity: 0.3;
+}
+
+.fun-fact-section h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.fun-fact-section p {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

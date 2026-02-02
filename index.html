@@ -48,55 +48,65 @@
     <main class="container">
         <section class="hero-section">
             <div class="hero-content">
-                <img src="images/profile.jpg" alt="Samuel Rumbley" class="profile-picture">
-                <h1>Samuel Rumbley</h1>
-                <p class="subtitle">Business Intelligence & Analytics Student | Aspiring Data-Driven Leader</p>
-                <div class="social-links">
+                <img src="images/profile.jpg" alt="Samuel Rumbley" class="hero-profile-img">
+                <span class="hero-greeting">Hello, I'm</span>
+                <h1 class="hero-title">Samuel Rumbley</h1>
+                <h2 class="hero-subtitle">Business Intelligence & Analytics Student<br>Aspiring Data-Driven Leader</h2>
+
+                <div class="hero-actions">
+                    <a href="documents/resume.pdf" target="_blank" class="primary-btn">View Resume</a>
+                    <a href="#about" class="secondary-btn">About Me</a>
+                </div>
+
+                <div class="hero-socials">
                     <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" rel="noopener"
                         aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/caninecrew" target="_blank" rel="noopener" aria-label="GitHub"><i
                             class="fab fa-github"></i></a>
-                    <a href="documents/resume.pdf" target="_blank" rel="noopener" class="button">View Resume</a>
+                    <a href="mailto:contact@samuelrumbley.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </section>
 
-        <section class="content-box">
+        <section id="about" class="content-box">
             <h2>About Me</h2>
-            <p>I am a dedicated and driven student at Tennessee Technological University, pursuing a B.S. in Business
-                Administration with a major in Business Information & Technology, a concentration in Business
-                Intelligence & Analytics,
-                and a minor in Leadership. My goal is to leverage my technical skills and
-                leadership experience to make a meaningful impact through data-driven decision making. I am passionate
-                about data analysis, business intelligence,
-                and exploring emerging technology trends.</p>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+                I am a dedicated and driven student at <strong>Tennessee Technological University</strong>, pursuing a
+                B.S. in Business
+                Administration with a major in <strong>Business Information & Technology</strong>, a concentration in
+                <strong>Business
+                    Intelligence & Analytics</strong>, and a minor in <strong>Leadership</strong>.
+                <br><br>
+                My goal is to leverage my technical skills and leadership experience to make a meaningful impact through
+                data-driven decision making.
+                I am passionate about data analysis, business intelligence, and exploring emerging technology trends.
+            </p>
         </section>
 
         <div class="quadrants">
             <div class="quadrant">
                 <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-                <p>Currently pursuing a Bachelor's degree at Tennessee Technological University. My coursework includes
-                    Management Information Systems, Intro to Cybersecurity, and Business Statistics.</p>
+                <p>Currently pursuing a Bachelor's degree at Tennessee Tech. My coursework includes Management
+                    Information Systems, Cybersecurity, and Business Statistics.</p>
                 <a href="pages/education.html" class="button">Learn More</a>
             </div>
             <div class="quadrant">
                 <h3><i class="fas fa-briefcase"></i> Experience</h3>
-                <p>I have experience as a Substitute Teacher, where I've honed my leadership and critical thinking
-                    skills. I've also held multiple leadership roles in the Order of the Arrow, Boy Scouts of America.
-                </p>
+                <p>Detailed history of my professional and volunteer roles, including student leadership, substitute
+                    teaching, and extensive non-profit involvement.</p>
                 <a href="pages/experience.html" class="button">See Experience</a>
             </div>
             <div class="quadrant">
                 <h3><i class="fas fa-lightbulb"></i> Projects</h3>
-                <p>I've contributed to several publications, including "The Wheel v3," a resource guide for Order of the
-                    Arrow members, and the "2023 Annual Report" for the Wa-Hi-Nasa Lodge.</p>
+                <p>Showcase of my publications, data analysis projects, and significant contributions to the Order of
+                    the Arrow and Scouting organizations.</p>
                 <a href="pages/projects.html" class="button">View Projects</a>
             </div>
         </div>
 
-        <section class="content-box fun-fact-section">
+        <section class="fun-fact-section">
             <h2><i class="fas fa-star"></i> Fun Fact</h2>
-            <p id="fun-fact">I have climbed a 12,441-foot mountain!</p>
+            <p>I have climbed a 12,441-foot mountain!</p>
         </section>
 
     </main>
