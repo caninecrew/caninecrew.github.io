@@ -286,6 +286,46 @@
             }
         }
 
+        /* Scouting by the Numbers */
+        .quadrants {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .quadrant {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--background-light);
+            border-radius: var(--radius-md);
+            transition: transform 0.3s ease;
+        }
+
+        .quadrant:hover {
+            transform: translateY(-5px);
+        }
+
+        .quadrant h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .quadrant h3 i {
+            font-size: 1.5rem;
+        }
+
+        .quadrant p {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+
 
         /* Existing timeline styles... */
 
@@ -390,27 +430,7 @@
                 15-year adventure in Scouting has shaped my character, leadership, and commitment to service.</p>
         </section>
 
-        <section class="content-box">
-            <h2>Scouting by the Numbers</h2>
-            <div class="quadrants">
-                <div class="quadrant">
-                    <h3><i class="fas fa-calendar-alt"></i> 15+ Years</h3>
-                    <p>Years in Scouting</p>
-                </div>
-                <div class="quadrant">
-                    <h3><i class="fas fa-hands-helping"></i> 500+ Hours</h3>
-                    <p>Service Hours</p>
-                </div>
-                <div class="quadrant">
-                    <h3><i class="fas fa-users"></i> 30+ Roles</h3>
-                    <p>Leadership Positions</p>
-                </div>
-                <div class="quadrant">
-                    <h3><i class="fas fa-award"></i> Eagle Scout</h3>
-                    <p>Highest Rank</p>
-                </div>
-            </div>
-        </section>
+
 
         <section class="content-box">
             <h2>What Scouting Means to Me</h2>
