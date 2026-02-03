@@ -8,136 +8,6 @@
     <title>Education - Samuel Rumbley</title>
     <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Additional styles for the redesigned education page */
-        .education-card {
-            background: var(--background-white);
-            border-radius: var(--radius-md);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .education-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .education-header .icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-top: 0.25rem;
-        }
-
-        .education-header h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: var(--text-color);
-        }
-
-        .education-header .degree {
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        .education-details .date {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .education-details h4 {
-            font-size: 1.1rem;
-            color: var(--primary-color-dark);
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.25rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .education-details ul {
-            list-style-position: outside;
-            padding-left: 1.25rem;
-            margin: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 0.5rem 1rem;
-        }
-
-        .education-details ul li {
-            margin-bottom: 0.25rem;
-        }
-
-        /* Honors & Recognition Section */
-        .honors-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .honors-category {
-            background: var(--background-white);
-            border-radius: var(--radius-md);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-color);
-        }
-
-        .honors-category h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .honor-item {
-            margin-bottom: 1.25rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .honor-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .honor-item .title {
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.25rem;
-            color: var(--text-color);
-        }
-
-        .honor-item .meta {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .honor-item .description {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            line-height: 1.5;
-        }
-    </style>
 </head>
 
 <body>
@@ -152,138 +22,63 @@
                 University.</p>
         </section>
 
-        <section>
-            <div class="education-card">
-                <div class="education-header">
-                    <i class="fas fa-university icon"></i>
-                    <div>
-                        <h3>Tennessee Technological University</h3>
-                        <p class="degree"><strong>B.S. Business Administration, Business Information &
-                                Technology</strong></p>
-                        <p class="degree" style="margin-top: 0.25rem;"><strong>Minor:</strong> Leadership |
-                            <strong>Concentration:</strong> Business Intelligence & Analytics
-                        </p>
+        <div class="education-list-master">
+            <div class="education-group">
+                <h2 class="group-title"><i class="fas fa-university"></i> Higher Education</h2>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-university"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Tennessee Technological University</h3>
+                            <span class="date">Aug 2022 – May 2026 (Exp.)</span>
+                        </div>
+                        <p class="company">B.S. Business Administration | Major: Business Information & Technology</p>
+                        <p><strong>Minor:</strong> Leadership | <strong>Concentration:</strong> Business Intelligence &
+                            Analytics</p>
+                        <p><strong>GPA:</strong> 3.61</p>
+
+                        <h4 style="margin-top: 1rem;">Relevant Coursework</h4>
+                        <div class="course-grid">
+                            <span>MIS</span>
+                            <span>Cybersecurity</span>
+                            <span>Business Stats</span>
+                            <span>Event Planning</span>
+                            <span>Non-Profit Leadership</span>
+                        </div>
                     </div>
                 </div>
-                <div class="education-details">
-                    <p class="date">Aug 2022 - Expected Graduation: May 2026</p>
-                    <p><strong>Major GPA:</strong> 3.61 | <strong>Expected Graduation:</strong> May 2026</p>
 
-                    <h4>Activities & Societies</h4>
-                    <ul>
-                        <li>Resident Assistant (Aug 2025 – Present)</li>
-                        <li>Dean's List (multiple semesters)</li>
-                        <li>Student Government Association</li>
-                    </ul>
-
-                    <h4>Relevant Coursework</h4>
-                    <ul>
-                        <li>Management Information Systems</li>
-                        <li>Intro to Cybersecurity & Privacy</li>
-                        <li>Computer Applications in Business</li>
-                        <li>Non-Profit Leadership</li>
-                        <li>Principles of Event Planning</li>
-                        <li>Business Statistics</li>
-                        <li>Business Communications</li>
-                    </ul>
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Volunteer State Community College</h3>
+                            <span class="date">Dec 2023</span>
+                        </div>
+                        <p class="company">Supplemental Coursework</p>
+                        <p>Completed credit-bearing coursework to augment business and technology curriculum.</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="education-card">
-                <div class="education-header">
-                    <i class="fas fa-graduation-cap icon"></i>
-                    <div>
-                        <h3>Wilson Central High School</h3>
-                        <p class="degree"><strong>Elective Focus: Information Technology</strong></p>
-                    </div>
-                </div>
-                <div class="education-details">
-                    <p class="date">Aug 2018 - May 2022</p>
-                    <h4>Dual Enrollment</h4>
-                    <ul>
-                        <li>Cumberland University (Aug 2020 - May 2022)</li>
-                    </ul>
-                    <h4>Additional Education</h4>
-                    <ul>
-                        <li>Volunteer State Community College (Dec 2023)</li>
-                    </ul>
-                    <h4>Activities and Societies</h4>
-                    <ul>
-                        <li>Dell Tech Computer Repair Program</li>
-                        <li>National Honor Society</li>
-                        <li>Student Council</li>
-                        <li>Beta Club</li>
-                        <li>Robotics Club</li>
-                        <li>Future Business Leaders of America</li>
-                        <li>Fellowship of Christian Athletes</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            <div class="education-group">
+                <h2 class="group-title"><i class="fas fa-school"></i> Secondary Education</h2>
 
-        <section style="margin-top: 4rem;">
-            <h2 class="section-title text-center"><i class="fas fa-medal"></i> Honors & Recognition</h2>
-            <div class="honors-section">
-                <!-- Distinguished Awards -->
-                <div class="honors-category">
-                    <h3><i class="fas fa-award"></i> Distinguished Service</h3>
-                    <div class="honor-item">
-                        <span class="title">James E. West Fellowship</span>
-                        <div class="meta"><span>Order of the Arrow</span> <span>2024</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">Founder's Award</span>
-                        <div class="meta"><span>Order of the Arrow</span> <span>2023</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">Scout of the Year</span>
-                        <div class="meta"><span>Middle Tennessee Council</span> <span>2023</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">Vigil Honor</span>
-                        <div class="meta"><span>Boy Scouts of America</span> <span>2021</span></div>
-                    </div>
-                </div>
-
-                <!-- Scholarships -->
-                <div class="honors-category">
-                    <h3><i class="fas fa-graduation-cap"></i> Major Scholarships</h3>
-                    <div class="honor-item">
-                        <span class="title">Laura and William Miller Scholarship</span>
-                        <div class="meta"><span>MTC Scouting</span> <span>2024</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">Josh Sain Memorial Scholarship</span>
-                        <div class="meta"><span>Ostrander Scholar Society</span> <span>2024</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">ACFE Scholarship</span>
-                        <div class="meta"><span>MTC ACFE Chapter</span> <span>2022-2024</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">Presidential Scholars Scholarship</span>
-                        <div class="meta"><span>Tennessee Tech</span> <span>2022-Pres</span></div>
-                    </div>
-                </div>
-
-                <!-- Academic Ranks -->
-                <div class="honors-category">
-                    <h3><i class="fas fa-star"></i> Notable Ranks</h3>
-                    <div class="honor-item">
-                        <span class="title">Summit Award (Venturing Rank)</span>
-                        <div class="meta"><span>Scouting America</span> <span>2025</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">Eagle Scout Rank</span>
-                        <div class="meta"><span>Scouting America</span> <span>2021</span></div>
-                    </div>
-                    <div class="honor-item">
-                        <span class="title">National Honor Society</span>
-                        <div class="meta"><span>Wilson Central HS</span> <span>2019-2022</span></div>
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Wilson Central High School</h3>
+                            <span class="date">Aug 2018 – May 2022</span>
+                        </div>
+                        <p class="company">IT Focus | Dual Enrollment at Cumberland University</p>
+                        <p>Completed intensive information technology pathways and university-level dual enrollment
+                            courses.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>

@@ -435,3 +435,15 @@ window.addEventListener('click', (e) => {
         document.body.style.overflow = '';
     }
 });
+
+/**
+ * Mobile Menu Toggle (Master Header)
+ */
+window.toggleMenu = function () {
+    const nav = document.querySelector('.nav-master');
+    const toggle = document.querySelector('.menu-toggle-master');
+    if (nav && toggle) {
+        nav.classList.toggle('active');
+        toggle.classList.toggle('active');
+    }
+};
