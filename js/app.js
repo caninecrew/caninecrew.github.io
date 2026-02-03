@@ -379,3 +379,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = new App();
     app.init();
 });
+
+/**
+ * Universal Modal Logic
+ */
+window.openModal = function (src, alt) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const captionText = document.getElementById("caption");
+
+    if (modal && modalImg) {
+        modal.style.display = "block";
+        modalImg.src = src;
+        modalImg.alt = alt;
+        if (captionText) captionText.textContent = alt;
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeModal = function () {
+    const modal = document.getElementById("imageModal");
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = '';
+    }
+};
+
+window.openTextModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "block";
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeTextModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = '';
+    }
+};
+
+// Close on escape or outside click
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        document.body.style.overflow = '';
+    }
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+});

@@ -78,6 +78,65 @@
         .education-details ul li {
             margin-bottom: 0.25rem;
         }
+
+        /* Honors & Recognition Section */
+        .honors-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .honors-category {
+            background: var(--background-white);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .honors-category h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .honor-item {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .honor-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .honor-item .title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: var(--text-color);
+        }
+
+        .honor-item .meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .honor-item .description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 
@@ -158,6 +217,70 @@
                         <li>Future Business Leaders of America</li>
                         <li>Fellowship of Christian Athletes</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <h2 class="section-title text-center"><i class="fas fa-medal"></i> Honors & Recognition</h2>
+            <div class="honors-section">
+                <!-- Distinguished Awards -->
+                <div class="honors-category">
+                    <h3><i class="fas fa-award"></i> Distinguished Service</h3>
+                    <div class="honor-item">
+                        <span class="title">James E. West Fellowship</span>
+                        <div class="meta"><span>Order of the Arrow</span> <span>2024</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">Founder's Award</span>
+                        <div class="meta"><span>Order of the Arrow</span> <span>2023</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">Scout of the Year</span>
+                        <div class="meta"><span>Middle Tennessee Council</span> <span>2023</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">Vigil Honor</span>
+                        <div class="meta"><span>Boy Scouts of America</span> <span>2021</span></div>
+                    </div>
+                </div>
+
+                <!-- Scholarships -->
+                <div class="honors-category">
+                    <h3><i class="fas fa-graduation-cap"></i> Major Scholarships</h3>
+                    <div class="honor-item">
+                        <span class="title">Laura and William Miller Scholarship</span>
+                        <div class="meta"><span>MTC Scouting</span> <span>2024</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">Josh Sain Memorial Scholarship</span>
+                        <div class="meta"><span>Ostrander Scholar Society</span> <span>2024</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">ACFE Scholarship</span>
+                        <div class="meta"><span>MTC ACFE Chapter</span> <span>2022-2024</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">Presidential Scholars Scholarship</span>
+                        <div class="meta"><span>Tennessee Tech</span> <span>2022-Pres</span></div>
+                    </div>
+                </div>
+
+                <!-- Academic Ranks -->
+                <div class="honors-category">
+                    <h3><i class="fas fa-star"></i> Notable Ranks</h3>
+                    <div class="honor-item">
+                        <span class="title">Summit Award (Venturing Rank)</span>
+                        <div class="meta"><span>Scouting America</span> <span>2025</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">Eagle Scout Rank</span>
+                        <div class="meta"><span>Scouting America</span> <span>2021</span></div>
+                    </div>
+                    <div class="honor-item">
+                        <span class="title">National Honor Society</span>
+                        <div class="meta"><span>Wilson Central HS</span> <span>2019-2022</span></div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,11 +83,12 @@
         }
     </style>
 </head>
+
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <div id="header"></div>
-    
+
     <main id="main-content" class="container fade-in">
         <section class="intro">
             <h1>Projects & Publications</h1>
@@ -99,12 +101,12 @@
                 <div class="project-content">
                     <i class="fas fa-book-open project-icon"></i>
                     <h3>The Wheel v3</h3>
-                    <div class="meta">Resource Guide</div>
-                    <p>Contributed to "The Wheel v3," a comprehensive resource guide designed for Order of the Arrow members. This publication serves as a key reference for leadership, service, and operations within the organization.</p>
+                    <div class="meta">Resource Guide (2024)</div>
+                    <p>Contributed to a comprehensive resource guide for Order of the Arrow members, focusing on
+                        leadership and operational best practices.</p>
                     <div class="project-tags">
                         <span class="tag">Publication</span>
                         <span class="tag">Leadership</span>
-                        <span class="tag">Documentation</span>
                     </div>
                 </div>
             </article>
@@ -112,38 +114,110 @@
             <!-- 2023 Annual Report -->
             <article class="project-card">
                 <div class="project-content">
-                    <i class="fas fa-file-alt project-icon"></i>
+                    <i class="fas fa-chart-pie project-icon"></i>
                     <h3>2023 Annual Report</h3>
                     <div class="meta">Wa-Hi-Nasa Lodge</div>
-                    <p>Co-authored and designed the "2023 Annual Report" for the Wa-Hi-Nasa Lodge. The report detailed the lodge's achievements, financial status, and membership statistics for the year.</p>
+                    <p>Designed and analyzed data for an organizational annual report, documenting membership trends and
+                        fiscal impact for ~920 members.</p>
                     <div class="project-tags">
-                        <span class="tag">Annual Report</span>
                         <span class="tag">Data Analysis</span>
                         <span class="tag">Design</span>
                     </div>
                 </div>
             </article>
-            
-             <!-- Placeholder for future projects -->
+
             <article class="project-card">
                 <div class="project-content">
                     <i class="fas fa-code project-icon"></i>
                     <h3>Portfolio Website</h3>
-                    <div class="meta">Web Development</div>
-                    <p>Designed and developed this personal portfolio website to showcase my education, experience, and skills. Built with HTML, CSS, and JavaScript, focusing on responsiveness and accessibility.</p>
+                    <div class="meta">Current Project</div>
+                    <p>Designed and developed this high-performance portfolio using modern web standards to showcase
+                        professional development and skills.</p>
                     <div class="project-tags">
-                        <span class="tag">Web Design</span>
-                        <span class="tag">HTML/CSS/JS</span>
                         <span class="tag">Frontend</span>
+                        <span class="tag">JS/CSS</span>
                     </div>
                 </div>
             </article>
         </div>
+
+        <section style="margin-top: 5rem;">
+            <h2 class="section-title text-center"><i class="fas fa-hand-holding-heart"></i> Service & Community Projects
+            </h2>
+            <p class="lead text-center" style="margin-bottom: 3rem; color: var(--text-secondary);">Directing complex
+                volunteer operations and infrastructure projects for the community.</p>
+
+            <!-- Summit Project -->
+            <div class="content-box" style="margin-bottom: 3rem;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                    <h3>Summit Award Project: Camp Discovery Enclosure</h3>
+                    <span class="tag">April 2025</span>
+                </div>
+                <p style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
+                    Led the complete demolition and reconstruction of a critical sanitation enclosure at a special needs
+                    camp.
+                    Managed site preparation, material procurement, and a volunteer crew to build a durable structure
+                    with treated lumber and metal panels.
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item"
+                        onclick="openModal('../images/summit-project/project1.jpg', 'Site before reconstruction')">
+                        <img src="../images/summit-project/project1.jpg" alt="Site before reconstruction"
+                            loading="lazy">
+                    </div>
+                    <div class="gallery-item"
+                        onclick="openModal('../images/summit-project/project3.jpg', 'Framework construction')">
+                        <img src="../images/summit-project/project3.jpg" alt="Framework construction" loading="lazy">
+                    </div>
+                    <div class="gallery-item"
+                        onclick="openModal('../images/summit-project/project5.jpg', 'Completed project')">
+                        <img src="../images/summit-project/project5.jpg" alt="Completed project" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eagle Project -->
+            <div class="content-box">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+                    <h3>Eagle Scout Project: Pandemic Response</h3>
+                    <span class="tag">February 2021</span>
+                </div>
+                <p style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
+                    Coordinated 20+ volunteers to produce and distribute over 500 handmade face masks to local schools
+                    during the COVID-19 pandemic.
+                    Focused on supply chain management, quality control, and community distribution logistics.
+                </p>
+                <div class="gallery-grid">
+                    <div class="gallery-item"
+                        onclick="openModal('../images/eagle-project/project1.jpg', 'Project delivery')">
+                        <img src="../images/eagle-project/project1.jpg" alt="Project delivery" loading="lazy">
+                    </div>
+                    <div class="gallery-item"
+                        onclick="openModal('../images/eagle-project/project2.jpg', 'Production workflow')">
+                        <img src="../images/eagle-project/project2.jpg" alt="Production workflow" loading="lazy">
+                    </div>
+                    <div class="gallery-item"
+                        onclick="openModal('../images/eagle-project/project6.jpg', 'Final inspection')">
+                        <img src="../images/eagle-project/project6.jpg" alt="Final inspection" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <button type="button" class="close" onclick="closeModal()" aria-label="Close image">&times;</button>
+        <img class="modal-content" id="modalImage" alt="">
+        <div id="caption"></div>
+    </div>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
 
     <script src="../js/app.js"></script>
 </body>
+
 </html>

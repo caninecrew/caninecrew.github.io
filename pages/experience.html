@@ -152,14 +152,14 @@
                     <ul>
                         <li>Led an 850-member organization as Lodge Chief, supervising 80+ leaders and managing an
                             $81,000 budget.</li>
-                        <li>Directed 150 volunteers to execute a week-long Winter Camp for 500+ scouts in December 2024.
+                        <li>Directed 150 volunteers to execute a week-long Winter Camp for 800+ scouts in December 2024.
                         </li>
                         <li>Served on the 2024 National Conference Technology Committee, supporting infrastructure and
                             operations for an event with 7,000+ attendees.</li>
-                        <li>Received numerous local and national leadership awards for dedication to service.</li>
                     </ul>
-                    <a href="scouting.html#leadership-section" class="button" style="margin-top: 1rem;">View All
-                        Scouting Roles</a>
+                    <button class="button" onclick="openTextModal('leadershipModal')" style="margin-top: 1rem;">
+                        <i class="fas fa-history"></i> View Full Leadership History
+                    </button>
                 </div>
                 <div class="experience-card">
                     <h3>Executive Board Member</h3>
@@ -210,7 +210,132 @@
                 </div>
             </div>
         </div>
+
+        <section class="content-box" style="margin-top: 4rem;">
+            <h2 class="section-title"><i class="fas fa-map-signs"></i> The Scouting Journey</h2>
+            <p class="lead" style="margin-bottom: 2rem; color: var(--text-secondary);">A narrative of my growth,
+                service, and leadership milestones over 15 years in Scouting.</p>
+            <div class="timeline-wrapper">
+                <div class="timeline-horizontal" id="timeline">
+                    <div class="timeline-card">
+                        <div class="timeline-date">2010</div>
+                        <h3>Started in Cub Scouts</h3>
+                        <p>Began my involvement in Scouting through Cub Scouts, where I learned teamwork,
+                            responsibility, and basic outdoor skills.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">June 2015</div>
+                        <h3>Joined Scouts BSA</h3>
+                        <p>Moved into the Scouts BSA program, taking on greater responsibility through youth leadership,
+                            service projects, and skill development.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">August 2017</div>
+                        <h3>Order of the Arrow</h3>
+                        <p>Chosen by fellow Scouts for membership in Scouting's national honor society, recognizing
+                            leadership, service, and commitment.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">May 2018</div>
+                        <h3>Life Rank</h3>
+                        <p>Reached the final rank before Eagle Scout, reflecting sustained leadership, service, and
+                            long-term dedication.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Feb 28, 2021</div>
+                        <h3>Eagle Scout</h3>
+                        <p>Earned the highest rank in Scouting, awarded for demonstrated leadership, service, and
+                            personal growth.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Dec 2023</div>
+                        <h3>Founder's Award</h3>
+                        <p>Recognized for exceptional volunteer service and long-term contributions beyond normal
+                            leadership expectations.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Dec 2024</div>
+                        <h3>James E. West Fellow</h3>
+                        <p>Honored through a major endowment contribution made in my name, supporting the long-term
+                            future of Scouting.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">April 2025</div>
+                        <h3>Summit Award</h3>
+                        <p>Earned the highest recognition in the Venturing program, highlighting advanced leadership,
+                            service, and personal development.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Leadership History Modal -->
+    <div id="leadershipModal" class="modal">
+        <button type="button" class="close" onclick="closeTextModal('leadershipModal')"
+            aria-label="Close modal">&times;</button>
+        <div class="modal-content text-modal">
+            <h2>Detailed Leadership History</h2>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-flag-usa"></i> National Order of the Arrow</h3>
+                <ul class="role-list">
+                    <li>
+                        <span class="role-date">Jan 2024 – Oct 2024</span>
+                        <strong>Traffic Manager, National Communications Subcommittee</strong>
+                        <p>Managed communications ticketing system to route and track requests between national
+                            subcommittees.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">July 2024 – Aug 2024</span>
+                        <strong>Operations Team Member, NOAC 2024</strong>
+                        <p>Supported infrastructure for an event with 7,000+ attendees, managing computing hardware and
+                            networks.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-map-marked-alt"></i> Section & Regional</h3>
+                <ul class="role-list">
+                    <li>
+                        <span class="role-date">2024 – 2025</span>
+                        <strong>Section Leadership Seminar Coordinator</strong>
+                        <p>Coordinated logistics for a multi-state leadership seminar for lodge leaders.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">2023 – 2024</span>
+                        <strong>Training Conclave Vice Chief</strong>
+                        <p>Delivered comprehensive leadership training for section members from multiple states.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-feather-alt"></i> Wa-Hi-Nasa Lodge Leadership</h3>
+                <ul class="role-list">
+                    <li>
+                        <span class="role-date">Dec 2023 – Dec 2024</span>
+                        <strong>Vigil Chair & Winter Camp Chair</strong>
+                        <p>Oversaw Vigil selection and chaired a major council event for 800+ attendees.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">Dec 2022 – Dec 2023</span>
+                        <strong>Lodge Chief</strong>
+                        <p>Presided over the Lodge Executive Committee for 920 members.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">Dec 2021 – Dec 2022</span>
+                        <strong>Lodge Secretary</strong>
+                        <p>Led lodge-wide engagement through social media, website, and Slack management.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary); font-style: italic;">Plus 5
+                additional years of chapter and unit leadership roles.</p>
+        </div>
+    </div>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
