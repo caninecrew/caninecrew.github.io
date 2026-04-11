@@ -4,19 +4,14 @@
  * buttons that have not yet been processed.
  */
 function initializeCollapsibles() {
-    // Find all collapsible buttons that have not been initialized
     const collapsibles = document.querySelectorAll('.collapsible:not([data-collapsible-init])');
 
     let collapsibleCounter = document.querySelectorAll('[id^="collapsible-content-"]').length;
 
     collapsibles.forEach(button => {
-        // Mark the button as initialized to prevent re-adding listeners
         button.setAttribute('data-collapsible-init', 'true');
-
-        // Set initial accessibility state
         button.setAttribute('aria-expanded', 'false');
 
-        // Ensure each collapsible has a content panel and wire up ARIA
         let content;
         if (button.parentElement && button.parentElement.tagName === 'H3') {
             content = button.parentElement.nextElementSibling;
@@ -36,26 +31,19 @@ function initializeCollapsibles() {
         }
 
         button.addEventListener('click', function () {
-            // Toggle the 'active' class for styling
             this.classList.toggle('active');
             const isActive = this.classList.contains('active');
-
-            // Update accessibility state
             this.setAttribute('aria-expanded', isActive);
 
-            // Find the content panel to show or hide
             let content;
-            // The merit badge buttons are inside an H3, others are not
             if (this.parentElement && this.parentElement.tagName === 'H3') {
                 content = this.parentElement.nextElementSibling;
             } else {
                 content = this.nextElementSibling;
             }
 
-            // Toggle the display if the content panel exists
             if (content) {
                 if (isActive) {
-                    // Merit badge lists use a grid layout
                     if (content.classList.contains('merit-badge-list')) {
                         content.style.display = 'grid';
                     } else {
@@ -71,45 +59,31 @@ function initializeCollapsibles() {
     });
 }
 
-// Main App Class
 class App {
     constructor() {
         this.initialized = false;
-        // Simple config store for theme
         this.theme = localStorage.getItem('ui.theme') || 'light';
+        this.mobileMenuBound = false;
     }
 
     async init() {
         if (this.initialized) return;
 
         try {
-            // Load shared HTML components like header and footer
             await this.loadSharedComponents();
-
-            // Initialize mobile menu after header is loaded
             this.initializeMobileMenu();
-
-            // Initialize configuration
             this.initConfig();
-
-            // Initialize components
             this.initComponents();
-
-            // Set up event listeners
             this.setupEventListeners();
-
-            // Initialize features based on current page
             await this.initPageSpecific();
-
+            this.registerServiceWorker();
             this.initialized = true;
-
         } catch (error) {
             console.error('Failed to initialize application:', error);
         }
     }
 
     async loadSharedComponents() {
-        // Detect if we're on the index page or a subpage
         const currentPath = window.location.pathname;
         const isIndexPage = currentPath === '/' ||
             currentPath.endsWith('/') ||
@@ -117,7 +91,6 @@ class App {
             currentPath.split('/').pop() === '' ||
             !currentPath.includes('/pages/');
 
-        // Set paths based on page location
         const headerPath = isIndexPage ? 'pages/header.html' : 'header.html';
         const footerPath = isIndexPage ? 'pages/footer.html' : 'footer.html';
 
@@ -158,41 +131,41 @@ class App {
         }
     }
 
-    /**
-     * Dynamically adjusts links within container based on page depth.
-     */
     fixLinks(container, isIndexPage) {
         const links = container.querySelectorAll('a');
         links.forEach(link => {
-            let href = link.getAttribute('href');
+            const href = link.getAttribute('href');
             if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) return;
 
-            // Simplify: All links in header/footer relative to ROOT
-            // If on index: Home is 'index.html', Education is 'pages/education.html'
-            // If on pages: Home is '../index.html', Education is 'education.html'
+            const normalizedHref = href.replace(/^\.\//, '');
 
-            if (isIndexPage) {
-                // Keep index.html as is, others prepend pages/
-                if (href !== 'index.html' && !href.includes('pages/')) {
-                    link.setAttribute('href', 'pages/' + href);
-                }
-            } else {
-                // If on subpage
-                if (href === 'index.html') {
-                    link.setAttribute('href', '../index.html');
-                } else {
-                    // Remove pages/ if it exists, as we are already in pages/
-                    href = href.replace('pages/', '');
-                    link.setAttribute('href', href);
-                }
+            if (normalizedHref === '/' || normalizedHref === '/index.html' || normalizedHref === 'index.html') {
+                link.setAttribute('href', isIndexPage ? 'index.html' : '../index.html');
+                return;
             }
+
+            if (normalizedHref.startsWith('/pages/')) {
+                link.setAttribute('href', isIndexPage ? normalizedHref.slice(1) : normalizedHref.replace('/pages/', ''));
+                return;
+            }
+
+            if (normalizedHref.startsWith('pages/')) {
+                link.setAttribute('href', isIndexPage ? normalizedHref : normalizedHref.replace('pages/', ''));
+                return;
+            }
+
+            if (normalizedHref.endsWith('.html')) {
+                link.setAttribute('href', isIndexPage ? `pages/${normalizedHref}` : normalizedHref);
+                return;
+            }
+
+            link.setAttribute('href', normalizedHref);
         });
 
-        // Also fix image sources
         const images = container.querySelectorAll('img');
         images.forEach(img => {
             let src = img.getAttribute('src');
-            if (!src || src.startsWith('http')) return;
+            if (!src || src.startsWith('http') || src.startsWith('data:')) return;
 
             if (isIndexPage) {
                 if (src.startsWith('../')) src = src.substring(3);
@@ -204,76 +177,97 @@ class App {
     }
 
     initializeMobileMenu() {
-        // Initialize mobile menu functionality after header is loaded
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        if (this.mobileMenuBound) return;
+
+        const mobileMenuBtn = document.querySelector('.menu-toggle-master');
         const mainNav = document.querySelector('.main-nav');
         const closeMenuBtn = document.querySelector('.close-menu-btn');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        if (mobileMenuBtn && mainNav) {
-            // Open mobile menu
-            mobileMenuBtn.addEventListener('click', () => {
-                mainNav.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-            });
+        if (!mobileMenuBtn || !mainNav) return;
 
-            // Close mobile menu
-            const closeMobileMenu = () => {
-                mainNav.classList.remove('active');
-                document.body.style.overflow = ''; // Restore scrolling
-            };
+        if (!mainNav.id) {
+            mainNav.id = 'primary-navigation';
+        }
 
-            if (closeMenuBtn) {
-                closeMenuBtn.addEventListener('click', closeMobileMenu);
+        const setMenuState = (isOpen) => {
+            mainNav.classList.toggle('active', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+        };
+
+        mobileMenuBtn.setAttribute('aria-controls', mainNav.id);
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            setMenuState(!mainNav.classList.contains('active'));
+        });
+
+        const closeMobileMenu = () => setMenuState(false);
+
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', closeMobileMenu);
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (mainNav.classList.contains('active') &&
+                !mainNav.contains(e.target) &&
+                !mobileMenuBtn.contains(e.target)) {
+                closeMobileMenu();
             }
+        });
 
-            // Close menu when clicking nav links
-            navLinks.forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
-            });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
 
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (mainNav.classList.contains('active') &&
-                    !mainNav.contains(e.target) &&
-                    !mobileMenuBtn.contains(e.target)) {
-                    closeMobileMenu();
-                }
-            });
+        this.mobileMenuBound = true;
+    }
 
-            // Close menu on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-                    closeMobileMenu();
-                }
+    registerServiceWorker() {
+        if (!('serviceWorker' in navigator) || window.location.protocol === 'file:') {
+            return;
+        }
+
+        const register = () => {
+            navigator.serviceWorker.register('/sw.js').catch(error => {
+                console.warn('Service worker registration failed:', error);
             });
+        };
+
+        if (document.readyState === 'complete') {
+            register();
+        } else {
+            window.addEventListener('load', register, { once: true });
         }
     }
 
     initConfig() {
-        // Apply theme
         document.documentElement.setAttribute('data-theme', this.theme);
     }
 
     initComponents() {
-        // Initialize all components in the page
         initializeCollapsibles();
 
-        // Reveal any elements using the fade-in utility
         document.querySelectorAll('.fade-in').forEach(el => {
             el.classList.add('visible');
         });
     }
 
     setupEventListeners() {
-        // Theme toggle
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', () => this.toggleTheme());
         }
 
-        // Sticky Header & Scroll Effects
-        const header = document.querySelector('.site-header');
+        const header = document.querySelector('.site-header-master, .site-header');
         window.addEventListener('scroll', () => {
             if (header) {
                 if (window.scrollY > 50) {
@@ -284,7 +278,6 @@ class App {
             }
         });
 
-        // Back to top button
         const backToTop = document.getElementById('back-to-top');
         if (backToTop) {
             let inThrottle;
@@ -334,16 +327,23 @@ class App {
 
             const map = L.map('map').setView([39.8283, -98.5795], 4);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
+                attribution: '&copy; OpenStreetMap contributors'
             }).addTo(map);
 
-            // Load markers from travel.js data if available
-            if (window.travelLocations) {
-                window.travelLocations.forEach(location => {
+            const travelLocations = Array.isArray(window.travelLocations) ? window.travelLocations : [];
+            const bounds = [];
+
+            if (travelLocations.length) {
+                travelLocations.forEach(location => {
+                    if (!location.position || typeof location.position.lat !== 'number' || typeof location.position.lng !== 'number') {
+                        return;
+                    }
+
                     const popupContent = `
                         <div class="map-popup">
-                            <h3>${location.title || ''}</h3>
+                            <h3>${location.name || ''}</h3>
                             <p>${location.description || ''}</p>
+                            ${location.date ? `<p>${location.date}</p>` : ''}
                         </div>
                     `;
 
@@ -353,7 +353,14 @@ class App {
                     ]).addTo(map);
 
                     marker.bindPopup(popupContent);
+                    bounds.push([location.position.lat, location.position.lng]);
                 });
+
+                if (bounds.length === 1) {
+                    map.setView(bounds[0], 6);
+                } else if (bounds.length > 1) {
+                    map.fitBounds(bounds, { padding: [40, 40] });
+                }
             }
 
             if (mapLoading) mapLoading.style.display = 'none';
@@ -374,15 +381,11 @@ class App {
     }
 }
 
-// Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     const app = new App();
     app.init();
 });
 
-/**
- * Universal Modal Logic
- */
 window.openModal = function (src, alt) {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
@@ -421,7 +424,6 @@ window.closeTextModal = function (modalId) {
     }
 };
 
-// Close on escape or outside click
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
@@ -436,14 +438,15 @@ window.addEventListener('click', (e) => {
     }
 });
 
-/**
- * Mobile Menu Toggle (Master Header)
- */
 window.toggleMenu = function () {
-    const nav = document.querySelector('.nav-master');
+    const nav = document.querySelector('.main-nav');
     const toggle = document.querySelector('.menu-toggle-master');
     if (nav && toggle) {
-        nav.classList.toggle('active');
-        toggle.classList.toggle('active');
+        const willOpen = !nav.classList.contains('active');
+        nav.classList.toggle('active', willOpen);
+        document.body.classList.toggle('menu-open', willOpen);
+        document.body.style.overflow = willOpen ? 'hidden' : '';
+        toggle.classList.toggle('active', willOpen);
+        toggle.setAttribute('aria-expanded', String(willOpen));
     }
 };

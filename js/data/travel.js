@@ -29,49 +29,39 @@ const travelLocations = [
     }
 ];
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Populate locations grid
-    const locationsGrid = document.getElementById('locations-grid');
-    
-    if (locationsGrid && window.travelLocations) {
-        window.travelLocations.forEach(location => {
-            const card = document.createElement('div');
-            card.className = 'location-card';
-            card.innerHTML = `
-                <img src="${location.image}" alt="${location.name}">
-                <div class="location-info">
-                    <h3>${location.name}</h3>
-                    <p>${location.description}</p>
-                    <p class="location-date">${location.date}</p>
-                </div>
-            `;
-            locationsGrid.appendChild(card);
-        });
-    }
-    
-    // Load map
-    if (document.getElementById('travel-map-container')) {
-        MapUtils.loadAPI();
-    }
-});
+window.travelLocations = travelLocations;
 
-// Map initialization callback
-window.initMap = function() {
-    const map = MapUtils.initializeMap('map');
-    if (!map) return;
-    
-    if (window.travelLocations) {
-        // Convert travel locations to map markers
-        const markers = window.travelLocations.map(location => ({
-            position: location.position, // Corrected from 'coords'
-            title: location.name,
-            content: `<div class="map-popup">
+function renderTravelLocations() {
+    const locationsGrid = document.getElementById('locations-grid');
+    if (!locationsGrid) return;
+
+    locationsGrid.innerHTML = '';
+
+    if (!Array.isArray(window.travelLocations) || window.travelLocations.length === 0) {
+        const emptyState = document.createElement('p');
+        emptyState.className = 'empty-state';
+        emptyState.textContent = 'Travel locations will appear here once they are added.';
+        locationsGrid.appendChild(emptyState);
+        return;
+    }
+
+    window.travelLocations.forEach(location => {
+        const card = document.createElement('div');
+        card.className = 'location-card';
+        card.innerHTML = `
+            <img src="${location.image}" alt="${location.name}">
+            <div class="location-info">
                 <h3>${location.name}</h3>
                 <p>${location.description}</p>
-                <p>${location.date}</p>
-            </div>`
-        }));
-        
-        MapUtils.addMarkers(map, markers);
-    }
-};
+                <p class="location-date">${location.date}</p>
+            </div>
+        `;
+        locationsGrid.appendChild(card);
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderTravelLocations, { once: true });
+} else {
+    renderTravelLocations();
+}

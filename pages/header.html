@@ -1,4 +1,4 @@
-<header class="site-header-master">
+<header class="site-header-master" id="top">
     <div class="header-container-master">
         <div class="logo-master">
             <a href="index.html">
@@ -8,12 +8,12 @@
             </a>
         </div>
 
-        <button class="menu-toggle-master" aria-label="Toggle menu" onclick="window.toggleMenu()">
+        <button class="menu-toggle-master" aria-label="Toggle menu" aria-controls="primary-navigation" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
-        <nav class="main-nav">
+        <nav class="main-nav" id="primary-navigation" aria-label="Primary">
             <div class="nav-header">
                 <div class="logo mobile-logo">Samuel Rumbley</div>
                 <button class="close-menu-btn" aria-label="Close menu">
