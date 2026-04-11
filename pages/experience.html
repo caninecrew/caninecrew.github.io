@@ -1,93 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley's professional experience and work history">
+    <meta name="description"
+        content="Samuel Rumbley's professional experience, leadership roles, and volunteer history.">
     <title>Experience - Samuel Rumbley</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles for the redesigned experience page */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-column h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color-faint);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .experience-card {
+            background: var(--background-white);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .experience-card h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--text-color);
+        }
+
+        .experience-card .company {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-card .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            list-style-position: outside;
+            padding-left: 1.25rem;
+            margin: 0;
+        }
+
+        .experience-card ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 992px) {
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Skip link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <div id="header"></div>
-    
+
     <main id="main-content" class="container fade-in">
-        <h2 class="center">Experience</h2>
+        <section class="intro">
+            <h1>My Experience</h1>
+            <p class="lead">A detailed look at my professional roles and extensive leadership in service to the
+                community.</p>
+        </section>
 
-        <section class="experience-timeline">
-            <div class="content-box">
-                <h3>Substitute Teacher</h3>
-                <p>Wilson County Schools · Part-time</p>
-                <p>Aug 2023 - Present · 10 months</p>
-                <p><strong>Location:</strong> Lebanon, TN</p>
-                <ul>
-                    <li>Utilize critical thinking and problem-solving skills to create a safe and effective learning environment.</li>
-                    <li>Monitor student growth and behavior.</li>
-                    <li>Work effectively with fellow staff members.</li>
-                </ul>
-                <div class="button-container">
-                    <a href="https://www.wcschools.com/" target="_blank">Wilson County Schools</a>
+        <div class="experience-list-master">
+            <div class="experience-group">
+                <h2 class="group-title"><i class="fas fa-briefcase"></i> Professional Journey</h2>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-university"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Resident Assistant</h3>
+                            <span class="date">Aug 2025 – Present</span>
+                        </div>
+                        <p class="company">Tennessee Technological University</p>
+                        <ul>
+                            <li>Serve as a student leader and resource for residential students, fostering a positive
+                                living-learning community.</li>
+                            <li>Respond to emergencies and provide support for students navigating university life.</li>
+                            <li>Plan and execute programs that promote student engagement and development.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-campground"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Program Director</h3>
+                            <span class="date">May – July 2025</span>
+                        </div>
+                        <p class="company">Middle Tennessee Council, Scouting America</p>
+                        <ul>
+                            <li>Led operations for 1,000+ campers and supervised 40+ staff across 60+ program areas.
+                            </li>
+                            <li>Managed daily schedules and large-scale events at Boxwell Scout Reservation.</li>
+                            <li>Mentored staff and coordinated weekly programming Engaging campers and volunteers.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Substitute Teacher</h3>
+                            <span class="date">May 2023 – Present</span>
+                        </div>
+                        <p class="company">Wilson & Putnam County Schools</p>
+                        <ul>
+                            <li>Maintain safe and effective learning environments across various grade levels.</li>
+                            <li>Adapt teaching strategies to monitor student growth and behavior.</li>
+                            <li>Collaborate with staff to ensure educational consistency.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="content-box">
-                <h3>Group Meeting Lead</h3>
-                <p>Section SR-7B, Southern Region, Order of the Arrow, Boy Scouts of America · Volunteer</p>
-                <p>Dec 2023 - Present · 6 months</p>
-                <p><strong>Location:</strong> Virtual</p>
-                <ul>
-                    <li>Lead semi-weekly meetings with lodge leadership from across Tennessee and Kentucky.</li>
-                    <li>Help lodges coordinate events and share best practices.</li>
-                    <li>Communicate opportunities and requirements to lodges.</li>
-                </ul>
-                <div class="button-container">
-                    <a href="https://southern.oa-bsa.org/sr7b/" target="_blank">Section SR-7B</a>
+            <div class="experience-group">
+                <h2 class="group-title"><i class="fas fa-hands-helping"></i> Leadership & Impact</h2>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-medal"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Lodge Chief</h3>
+                            <span class="date">Dec 2022 – Dec 2023</span>
+                        </div>
+                        <p class="company">Wa-Hi-Nasa Lodge, Order of the Arrow</p>
+                        <ul>
+                            <li>Led an 850-member organization, supervising 80+ leaders and managing an $81,000 budget.
+                            </li>
+                            <li>Directed volunteers to execute large-scale Scouting events and winter camps.</li>
+                        </ul>
+                        <button class="button" onclick="window.openTextModal('leadershipModal')"
+                            style="margin-top: 1rem;">
+                            <i class="fas fa-history"></i> Detailed History
+                        </button>
+                    </div>
+                </div>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-church"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Youth & Media Volunteer</h3>
+                            <span class="date">2016 – Present</span>
+                        </div>
+                        <p class="company">Church of the Nazarene (Nashville/Cookeville)</p>
+                        <ul>
+                            <li>Serve as Sunday School teacher and children's program volunteer.</li>
+                            <li>Manage technology and media systems for worship services and community events.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="content-box">
-                <h3>Boxwell Staff</h3>
-                <p>Middle Tennessee Council, Boy Scouts of America · Seasonal</p>
-                <p>May 2023 - Aug 2023 · 4 months</p>
-                <p><strong>Location:</strong> Lebanon, TN</p>
-                <ul>
-                    <li>Actively participated as a summer camp staff member, including teaching merit badge classes such as Scouting Heritage and Indian Lore.</li>
-                    <li>Maintained the lodge building and outdoor areas.</li>
-                    <li>Promoted council programs and camping opportunities.</li>
-                </ul>
-                <div class="button-container">
-                    <a href="http://www.virtualboxwell.org/" target="_blank">Boxwell Scout Reservation</a>
-                    <a href="https://www.mtcscouting.org/" target="_blank">Middle Tennessee Council</a>
-                    <a href="https://www.wahinasa.org/" target="_blank">Wa-Hi-Nasa Lodge, Order of the Arrow</a>
+        <section class="content-box" style="margin-top: 4rem;">
+            <h2 class="section-title"><i class="fas fa-map-signs"></i> The Scouting Journey</h2>
+            <p class="lead" style="margin-bottom: 2rem; color: var(--text-secondary);">A narrative of my growth,
+                service, and leadership milestones over 15 years in Scouting.</p>
+            <div class="timeline-wrapper">
+                <div class="timeline-horizontal" id="timeline">
+                    <div class="timeline-card">
+                        <div class="timeline-date">2010</div>
+                        <h3>Started in Cub Scouts</h3>
+                        <p>Began my involvement in Scouting through Cub Scouts, where I learned teamwork,
+                            responsibility, and basic outdoor skills.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">June 2015</div>
+                        <h3>Joined Scouts BSA</h3>
+                        <p>Moved into the Scouts BSA program, taking on greater responsibility through youth leadership,
+                            service projects, and skill development.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">August 2017</div>
+                        <h3>Order of the Arrow</h3>
+                        <p>Chosen by fellow Scouts for membership in Scouting's national honor society, recognizing
+                            leadership, service, and commitment.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">May 2018</div>
+                        <h3>Life Rank</h3>
+                        <p>Reached the final rank before Eagle Scout, reflecting sustained leadership, service, and
+                            long-term dedication.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Feb 28, 2021</div>
+                        <h3>Eagle Scout</h3>
+                        <p>Earned the highest rank in Scouting, awarded for demonstrated leadership, service, and
+                            personal growth.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Dec 2023</div>
+                        <h3>Founder's Award</h3>
+                        <p>Recognized for exceptional volunteer service and long-term contributions beyond normal
+                            leadership expectations.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">Dec 2024</div>
+                        <h3>James E. West Fellow</h3>
+                        <p>Honored through a major endowment contribution made in my name, supporting the long-term
+                            future of Scouting.</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">April 2025</div>
+                        <h3>Summit Award</h3>
+                        <p>Earned the highest recognition in the Venturing program, highlighting advanced leadership,
+                            service, and personal development.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Leadership History Modal -->
+    <div id="leadershipModal" class="modal">
+        <button type="button" class="close" onclick="closeTextModal('leadershipModal')"
+            aria-label="Close modal">&times;</button>
+        <div class="modal-content text-modal">
+            <h2>Detailed Leadership History</h2>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-flag-usa"></i> National Order of the Arrow</h3>
+                <ul class="role-list">
+                    <li>
+                        <span class="role-date">Jan 2024 – Oct 2024</span>
+                        <strong>Traffic Manager, National Communications Subcommittee</strong>
+                        <p>Managed communications ticketing system to route and track requests between national
+                            subcommittees.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">July 2024 – Aug 2024</span>
+                        <strong>Operations Team Member, NOAC 2024</strong>
+                        <p>Supported infrastructure for an event with 7,000+ attendees, managing computing hardware and
+                            networks.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-map-marked-alt"></i> Section & Regional</h3>
+                <ul class="role-list">
+                    <li>
+                        <span class="role-date">2024 – 2025</span>
+                        <strong>Section Leadership Seminar Coordinator</strong>
+                        <p>Coordinated logistics for a multi-state leadership seminar for lodge leaders.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">2023 – 2024</span>
+                        <strong>Training Conclave Vice Chief</strong>
+                        <p>Delivered comprehensive leadership training for section members from multiple states.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-feather-alt"></i> Wa-Hi-Nasa Lodge Leadership</h3>
+                <ul class="role-list">
+                    <li>
+                        <span class="role-date">Dec 2023 – Dec 2024</span>
+                        <strong>Vigil Chair & Winter Camp Chair</strong>
+                        <p>Oversaw Vigil selection and chaired a major council event for 800+ attendees.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">Dec 2022 – Dec 2023</span>
+                        <strong>Lodge Chief</strong>
+                        <p>Presided over the Lodge Executive Committee for 920 members.</p>
+                    </li>
+                    <li>
+                        <span class="role-date">Dec 2021 – Dec 2022</span>
+                        <strong>Lodge Secretary</strong>
+                        <p>Led lodge-wide engagement through social media, website, and Slack management.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary); font-style: italic;">Plus 5
+                additional years of chapter and unit leadership roles.</p>
+        </div>
+    </div>
+
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
 
-    <!-- Core utilities -->
-    <script src="../js/core/config.js"></script>
-    <script src="../js/core/utils.js"></script>
-    <script src="../js/core/domUtils.js"></script>
-    <script src="../js/core/a11yUtils.js"></script>
-    <script src="../js/core/errorHandler.js"></script>
-    <script src="../js/core/performance.js"></script>
-    
-    <!-- Components -->
-    <script src="../js/components/header.js"></script>
-    <script src="../js/components/footer.js"></script>
-    <script src="../js/components/carousel.js"></script>
-    <script src="../js/components/collapsible.js"></script>
-    
-    <!-- Service Worker -->
-    <script src="../js/sw-register.js"></script>
-    
-    <!-- Page specific -->
     <script src="../js/app.js"></script>
 </body>
+
 </html>

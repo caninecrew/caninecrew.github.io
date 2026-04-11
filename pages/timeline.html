@@ -1,44 +1,68 @@
-<!-- Timeline Section - Simplified and more visual -->
+<!-- Timeline Section - Enhanced with rank badges -->
 <section class="timeline-section" id="timeline-section">
-    <h2>Scouting Journey Timeline</h2>
+    <div class="section-header">
+        <h2>Scouting Timeline</h2>
+        <p class="section-description">My journey from Cub Scout to Eagle Scout and beyond</p>
+    </div>
+    
     <div class="timeline-wrapper">
-        <div class="timeline horizontal">
-            <div class="timeline-item">
-                <div class="timeline-date">2010</div>
+        <button class="timeline-scroll-btn left" aria-label="Scroll left">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <!-- Scout Rank -->
+            <div class="timeline-item rank-milestone">
+                <div class="timeline-date">Mar 2015</div>
                 <div class="timeline-content">
-                    <h3>Started in Cub Scouts</h3>
-                    <p>Began my scouting journey in Pack 253</p>
+                    <div class="rank-badge">
+                        <img src="../images/ranks/scout.png" alt="Scout Rank Badge" class="rank-image">
+                    </div>
+                    <h3>Scout Rank</h3>
+                    <p>Joined Scouting and earned my first rank</p>
                 </div>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">June 2015</div>
+            
+            <!-- Tenderfoot Rank -->
+            <div class="timeline-item rank-milestone">
+                <div class="timeline-date">Aug 2015</div>
                 <div class="timeline-content">
-                    <h3>Joined Scouts BSA</h3>
-                    <p>Joined Troop 1204 and earned Scout rank</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">September 2015</div>
-                <div class="timeline-content">
+                    <div class="rank-badge">
+                        <img src="../images/ranks/tenderfoot.png" alt="Tenderfoot Rank Badge" class="rank-image">
+                    </div>
                     <h3>Tenderfoot Rank</h3>
-                    <p>Completed first major rank advancement</p>
+                    <p>Mastered basic scouting skills</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            
+            <!-- Second Class & First Class -->
+            <div class="timeline-item rank-milestone">
                 <div class="timeline-date">May 2016</div>
                 <div class="timeline-content">
+                    <div class="rank-badge">
+                        <img src="../images/ranks/second.png" alt="Second Class Rank Badge" class="rank-image">
+                        <img src="../images/ranks/first.png" alt="First Class Rank Badge" class="rank-image second-badge">
+                    </div>
                     <h3>Second Class & First Class</h3>
                     <p>Achieved two ranks in rapid succession</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            
+            <!-- Star Rank -->
+            <div class="timeline-item rank-milestone">
                 <div class="timeline-date">Mar 2017</div>
                 <div class="timeline-content">
+                    <div class="rank-badge">
+                        <img src="../images/ranks/star.png" alt="Star Rank Badge" class="rank-image">
+                    </div>
                     <h3>Star Rank</h3>
                     <p>Earned six merit badges and demonstrated leadership</p>
                 </div>
             </div>
             
+            <!-- Order of the Arrow -->
             <div class="timeline-item">
                 <div class="timeline-date">Aug 2017</div>
                 <div class="timeline-content">
@@ -46,53 +70,52 @@
                     <p>Inducted into Scouting's National Honor Society</p>
                 </div>
             </div>
-            <div class="timeline-item">
+            
+            <!-- Life Rank -->
+            <div class="timeline-item rank-milestone">
                 <div class="timeline-date">May 2018</div>
                 <div class="timeline-content">
+                    <div class="rank-badge">
+                        <img src="../images/ranks/life.png" alt="Life Rank Badge" class="rank-image">
+                    </div>
                     <h3>Life Rank</h3>
                     <p>Final rank before Eagle Scout</p>
                 </div>
             </div>
-
+            
+            <!-- Eagle Project -->
             <div class="timeline-item">
-                <div class="timeline-date">July 2018</div>
+                <div class="timeline-date">Dec 2018</div>
                 <div class="timeline-content">
-                    <h3>Brotherhood Honor</h3>
-                    <p>Order of the Arrow</p>
+                    <h3>Eagle Project</h3>
+                    <p>Led a team to complete my Eagle service project</p>
                 </div>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">February 28, 2021</div>
+            
+            <!-- Eagle Scout -->
+            <div class="timeline-item rank-milestone featured-milestone">
+                <div class="timeline-date">Feb 2021</div>
                 <div class="timeline-content">
+                    <div class="rank-badge">
+                        <img src="../images/ranks/eagle.png" alt="Eagle Rank Badge" class="rank-image">
+                    </div>
                     <h3>Eagle Scout</h3>
-                    <p>Achieved the rank of Eagle Scout</p>
+                    <p>Achieved Scouting's highest rank after completing all requirements</p>
                 </div>
             </div>
-
+            
+            <!-- Add other significant events like Vigil Honor, etc. -->
             <div class="timeline-item">
-                <div class="timeline-date">September 2021</div>
+                <div class="timeline-date">Sep 2021</div>
                 <div class="timeline-content">
                     <h3>Vigil Honor</h3>
-                    <p>Order of the Arrow</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">December 2023</div>
-                <div class="timeline-content">
-                    <h3>Founders Award</h3>
-                    <p>Order of the Arrow</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">December 2024</div>
-                <div class="timeline-content">
-                    <h3>James E. West Fellow</h3>
-                    <p>Scouting America</p>
+                    <p>Received the highest honor in the Order of the Arrow</p>
                 </div>
             </div>
         </div>
+        
+        <button class="timeline-scroll-btn right" aria-label="Scroll right">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 </section>

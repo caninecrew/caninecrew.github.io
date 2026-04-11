@@ -5,8 +5,28 @@ const travelLocations = [
         description: "Hometown",
         date: "Born and raised",
         image: "../images/travel/mtjuliet.jpg"
+    },
+    {
+        name: "Washington, D.C.",
+        position: { lat: 38.8951, lng: -77.0364 },
+        description: "Visited the Pentagon, National Zoo, and National Mall.",
+        date: "Various Trips",
+        image: "https://images.unsplash.com/photo-1617581125133-d236b2b6c5c1?q=80&w=2940&auto=format&fit=crop"
+    },
+    {
+        name: "New York City, New York",
+        position: { lat: 40.7128, lng: -74.0060 },
+        description: "Visited the 9/11 Memorial and the Empire State Building.",
+        date: "Various Trips",
+        image: "https://images.unsplash.com/photo-1546436836-07a91091f160?q=80&w=2940&auto=format&fit=crop"
+    },
+    {
+        name: "Key West, Florida",
+        position: { lat: 24.5551, lng: -81.7800 },
+        description: "Travelled to the furtherst point south in the continental United States.",
+        date: "Family Vacation",
+        image: "https://images.unsplash.com/photo-1581423293816-7517c37e4034?q=80&w=2894&auto=format&fit=crop"
     }
-    // Add more locations as needed
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -43,7 +63,7 @@ window.initMap = function() {
     if (window.travelLocations) {
         // Convert travel locations to map markers
         const markers = window.travelLocations.map(location => ({
-            position: location.coords,
+            position: location.position, // Corrected from 'coords'
             title: location.name,
             content: `<div class="map-popup">
                 <h3>${location.name}</h3>

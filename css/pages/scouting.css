@@ -295,6 +295,88 @@
   right: 1rem;
 }
 
+/* Rank milestone styling */
+.rank-milestone .timeline-content {
+    position: relative;
+    padding-top: 2rem;
+    border-top: 3px solid var(--primary-color);
+}
+
+.rank-badge {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--background-white);
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: var(--shadow);
+    z-index: 2;
+}
+
+.rank-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.second-badge {
+    margin-left: 5px;
+}
+
+/* Featured milestone (Eagle Scout) */
+.featured-milestone .timeline-content {
+    border-color: var(--secondary-color);
+    background: var(--primary-color-faint);
+}
+
+.featured-milestone .rank-badge {
+    padding: 8px;
+}
+
+.featured-milestone .rank-image {
+    width: 50px;
+    height: 50px;
+}
+
+/* Desktop and tablet adjustments */
+@media (min-width: 768px) {
+    .rank-badge {
+        top: -30px;
+    }
+    
+    .rank-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .featured-milestone .rank-image {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 576px) {
+    .rank-badge {
+        top: -20px;
+    }
+    
+    .rank-image {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .featured-milestone .rank-image {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .second-badge {
+        margin-left: 3px;
+    }
+}
+
 /* ===========================
    3. Merit Badges Section
    =========================== */

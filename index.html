@@ -1,118 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley - Portfolio showcasing education, experience, and scouting achievements">
+    <meta name="description"
+        content="Samuel Rumbley - Portfolio showcasing education, experience, and scouting achievements.">
     <meta name="keywords" content="Samuel Rumbley, business information technology, scouting, leadership, Tennessee">
     <meta name="author" content="Samuel Rumbley">
-
-    <title>Home</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Removed config.js reference -->
-    <script defer src="js/index.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
-          crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-            crossorigin=""></script>
+    <title>Samuel Rumbley - Home</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div id="header"></div>
+
     <main class="container">
-        <section class="intro">
-            <h2>Welcome to My Website</h2>
-            <img src="images/profile.jpg" alt="Samuel Rumbley" class="profile-picture">
-            <p>Hello! I'm Samuel Rumbley. Welcome to my personal website where you can learn more about my education, work experience, projects, and more.</p>
-            <p>Feel free to explore the different sections of my site to get to know me better and see what I've been working on.</p>
-        </section>
-        <section class="quadrants">
-            <!-- Education Quadrant -->
-            <div class="quadrant">
-                <h2>Education</h2>
-                <p>I'm currently pursuing a Bachelor's degree in Business Information and Technology at Tennessee Technological University. My goal is to combine my experience in education with my technical expertise to make a meaningful impact in various fields.</p>
-                <div class="button-container">
-                    <a href="pages/education.html">Education</a>
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-img-container">
+                    <img src="images/profile.jpg" alt="Samuel Rumbley" class="hero-profile-img">
+                    <img src="C:/Users/Samue/.gemini/antigravity/brain/89934154-755e-4378-8118-5753e994c4e2/hero_illustration_1770080089451.png"
+                        alt="Tech Illustration" class="hero-illustration">
                 </div>
-            </div>
-            
-            <!-- Experience Quadrant -->
-            <div class="quadrant">
-                <h2>Experience</h2>
-                <p>During my time in college, I have been serving as a Substitute Teacher for Wilson and Putnam County Schools, where I utilize critical thinking and leadership skills to create a safe and effective learning environment.</p>
-                <div class="button-container">
-                    <a href="pages/experience.html">Experience</a>
-                </div>
-            </div>
-            
-            <div class="quadrant">
-                <h2>Interests</h2>
-                <ul>
-                    <li>Data Analysis</li>
-                    <li>Cybersecurity</li>
-                    <li>Technology Trends</li>
-                    <li>Leadership</li>
-                    <li>Event Planning</li>
-                </ul>
-            </div>
-            <div class="quadrant">
-                <h2>Connect with Me</h2>
-                <p>Feel free to connect with me on <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank">LinkedIn</a>.</p>
-            </div>
-            <div class="quadrant">
-                <h2>Featured Awards</h2>
-                <ul id="featured-awards-list">
-                    <!-- JavaScript will populate this list -->
-                </ul>
-                <div class="button-container">
-                    <a href="pages/achievements.html">Awards</a>
-                </div>
-            </div>
-            <div class="quadrant">
-                <h2>Download Resume</h2>
-                <div class="button-container">
-                    <a href="documents/resume.pdf" target="_blank">Download Resume</a>
-                </div>
-            </div>
-            <div class="quadrant">
-                <h2>Fun Fact</h2>
-                <p id="fun-fact"></p>
-                <!-- JavaScript will populate the fun fact -->
-            </div>
-            <div class="quadrant">
-                <h2>Training & Certifications</h2>
-                <p>View my professional certifications and completed training courses.</p>
-                <div class="button-container">
-                    <a href="pages/training.html">View Training</a>
-                </div>
-            </div>
-            <div class="quadrant map-quadrant">
-                <h2>Places I've Been</h2>
-                <p>Explore locations I've visited around the country and the world on my travel page.</p>
-                <div class="button-container">
-                    <a href="pages/travel.html">Travel</a>
+                <div class="hero-body">
+                    <span class="hero-greeting">Hello, I'm</span>
+                    <h1 class="hero-title">Samuel Rumbley</h1>
+                    <h2 class="hero-subtitle">Business Intelligence & Analytics Student<br>Aspiring Data-Driven Leader
+                    </h2>
+
+                    <div class="hero-actions">
+                        <a href="documents/resume.pdf" target="_blank" class="primary-btn">View Resume</a>
+                        <a href="#about" class="secondary-btn">About Me</a>
+                    </div>
+
+                    <div class="hero-socials">
+                        <a href="https://www.linkedin.com/in/samuel-rumbley" target="_blank" rel="noopener"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/caninecrew" target="_blank" rel="noopener" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="mailto:contact@samuelrumbley.com" aria-label="Email"><i
+                                class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <section id="about" class="content-box">
+            <h2>About Me</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
+                I am a dedicated and driven student at <strong>Tennessee Technological University</strong>, pursuing a
+                B.S. in Business
+                Administration with a major in <strong>Business Information & Technology</strong>, a concentration in
+                <strong>Business
+                    Intelligence & Analytics</strong>, and a minor in <strong>Leadership</strong>.
+                <br><br>
+                My goal is to leverage my technical skills and leadership experience to make a meaningful impact through
+                data-driven decision making.
+                I am passionate about data analysis, business intelligence, and exploring emerging technology trends.
+            </p>
+        </section>
+
+        <section class="tools-grid-section">
+            <h2 class="section-title"><i class="fas fa-compass"></i> Tools & Adventures</h2>
+            <div class="tools-grid">
+                <a href="pages/travel.html" class="tool-card travel-card">
+                    <div class="tool-card-content">
+                        <i class="fas fa-globe-americas tool-icon"></i>
+                        <h3>Travel Map</h3>
+                        <p>Explore an interactive map of the places I've visited and adventures I've had.</p>
+                        <span class="tool-link">View Map <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <a href="pages/equation-solver.html" class="tool-card solver-card">
+                    <div class="tool-card-content">
+                        <i class="fas fa-calculator tool-icon"></i>
+                        <h3>Equation Solver</h3>
+                        <p>A custom-built tool for solving equations and visualizing mathematical expressions.</p>
+                        <span class="tool-link">Try Tool <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="what-i-do-section">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> What I Do</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Business Intelligence</h3>
+                    <p>Leveraging data analysis and visualization to drive strategic decision-making and business
+                        growth.</p>
+                    <ul class="pillar-skills">
+                        <li>Power BI</li>
+                        <li>SQL</li>
+                        <li>Data Modeling</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fas fa-users"></i></div>
+                    <h3>Leadership & Ops</h3>
+                    <p>Driving organizational success through effective team management, budget oversight, and strategic
+                        planning.</p>
+                    <ul class="pillar-skills">
+                        <li>Project Mgmt</li>
+                        <li>Staff Supervision</li>
+                        <li>Risk Assessment</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Information Tech</h3>
+                    <p>Building secure and scalable infrastructure while exploring emerging technologies and development
+                        patterns.</p>
+                    <ul class="pillar-skills">
+                        <li>Python</li>
+                        <li>Cybersecurity</li>
+                        <li>Cloud Infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h2 class="section-title"><i class="fas fa-tools"></i> Tech Stack & Tools</h2>
+            <div class="skills-grid-master">
+                <div class="skill-item-master" title="Power BI"><i class="fas fa-chart-bar"></i><span>Power BI</span>
+                </div>
+                <div class="skill-item-master" title="SQL"><i class="fas fa-database"></i><span>SQL</span></div>
+                <div class="skill-item-master" title="Python"><i class="fab fa-python"></i><span>Python</span></div>
+                <div class="skill-item-master" title="Excel"><i class="fas fa-file-excel"></i><span>Excel</span></div>
+                <div class="skill-item-master" title="Git"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                <div class="skill-item-master" title="AWS"><i class="fab fa-aws"></i><span>AWS</span></div>
+                <div class="skill-item-master" title="Linux"><i class="fab fa-linux"></i><span>Linux</span></div>
+                <div class="skill-item-master" title="PostgreSQL"><i class="fas fa-server"></i><span>PostgreSQL</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="fun-fact-section">
+            <h2><i class="fas fa-star"></i> Fun Fact</h2>
+            <p>I have climbed a 12,441-foot mountain!</p>
+        </section>
+
     </main>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
-    <!-- Core utilities -->
-    <script src="js/core/config.js"></script>
-    <script src="js/core/utils.js"></script>
-    <script src="js/core/domUtils.js"></script>
-    <script src="js/core/a11yUtils.js"></script>
-    <script src="js/core/errorHandler.js"></script>
-    <script src="js/core/performance.js"></script>
-    <!-- Components -->
-    <script src="js/components/header.js"></script>
-    <script src="js/components/footer.js"></script>
-    <script src="js/components/map.js"></script>
-    <script src="js/components/carousel.js"></script>
-    <script src="js/components/collapsible.js"></script>
-    <!-- Data -->
-    <script src="js/data/travel.js"></script>
-    <!-- Application -->
+
     <script src="js/app.js"></script>
 </body>
+
 </html>

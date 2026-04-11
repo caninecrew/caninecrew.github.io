@@ -1,100 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samuel Rumbley's educational background and achievements">
+    <meta name="description" content="Samuel Rumbley's educational background, coursework, and academic achievements.">
     <title>Education - Samuel Rumbley</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <!-- Skip link for accessibility -->
+    <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Skip link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <div id="header"></div>
-    
+
     <main id="main-content" class="container fade-in">
-        <h2 class="center">Education</h2>
-
-        <section>
-            <div class="content-box">
-                <h3>Tennessee Technological University</h3>
-                <p><strong>Business Information and Technology | Minor in Leadership</strong></p>
-                <p>Aug 2022 - May 2026</p>
-                <p>Overall GPA: 3.55 | Major GPA: 3.78 | Expected Graduation: May 2026</p>
-                <h4>Activities</h4>
-                <ul>
-                    <li>SGA (First Year Assembly, 2022-2023)</li>
-                </ul>
-                <h4>Courses</h4>
-                <ul>
-                    <li>Backpacking-Camping (PHED 1530)</li>
-                    <li>Computer Applications / Business (DS 2810)</li>
-                    <li>Intro to Cybersecurity / Privacy (CSC 2570)</li>
-                    <li>Management Information Systems (DS 3841)</li>
-                    <li>Non-Profit Leadership (LIST 3500)</li>
-                    <li>Principles of Event Planning (COMM 3030)</li>
-                    <li>Business Stats 1 (ECON 3610)</li>
-                    <li>Business Communications 1 (BMGT 3720)</li>
-                </ul>
-                <div class="button-container">
-                    <a href="https://www.tntech.edu/" target="_blank">Tennessee Technological University</a>
-                </div>
-            </div>
-
-            <div class="content-box">
-                <h3>Cumberland University</h3>
-                <p><strong>Dual Enrollment Courses</strong></p>
-                <p>Aug 2020 - May 2022</p>
-                <div class="button-container">
-                    <a href="https://www.cumberland.edu/" target="_blank">Cumberland University</a>
-                </div>
-            </div>
-            
-            <div class="content-box">
-                <h3>Wilson Central High School</h3>
-                <p><strong>Elective Focus: Information Technology</strong></p>
-                <p>Aug 2018 - May 2022</p>
-                <p>Activities and societies:</p>
-                <ul>
-                    <li>Dell Tech Computer Repair Program</li>
-                    <li>National Honor Society</li>
-                    <li>Student Council</li>
-                    <li>Beta Club</li>
-                    <li>Robotics Club</li>
-                    <li>Future Business Leaders of America</li>
-                    <li>Fellowship of Christian Athletes</li>
-                </ul>
-                <div class="button-container">
-                    <a href="https://wchs.wcschools.com/" target="_blank">Wilson Central High School</a>
-                </div>
-            </div>
+        <section class="intro">
+            <h1>Education</h1>
+            <p class="lead">My academic journey, from high school to my current studies at Tennessee Technological
+                University.</p>
         </section>
+
+        <div class="education-list-master">
+            <div class="education-group">
+                <h2 class="group-title"><i class="fas fa-university"></i> Higher Education</h2>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-university"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Tennessee Technological University</h3>
+                            <span class="date">Aug 2022 – May 2026 (Exp.)</span>
+                        </div>
+                        <p class="company">B.S. Business Administration | Major: Business Information & Technology</p>
+                        <p><strong>Minor:</strong> Leadership | <strong>Concentration:</strong> Business Intelligence &
+                            Analytics</p>
+                        <p><strong>GPA:</strong> 3.61</p>
+
+                        <h4 style="margin-top: 1rem;">Relevant Coursework</h4>
+                        <div class="course-grid">
+                            <span>MIS</span>
+                            <span>Cybersecurity</span>
+                            <span>Business Stats</span>
+                            <span>Event Planning</span>
+                            <span>Non-Profit Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Volunteer State Community College</h3>
+                            <span class="date">Dec 2023</span>
+                        </div>
+                        <p class="company">Supplemental Coursework</p>
+                        <p>Completed credit-bearing coursework to augment business and technology curriculum.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-group">
+                <h2 class="group-title"><i class="fas fa-school"></i> Secondary Education</h2>
+
+                <div class="experience-card-master">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>Wilson Central High School</h3>
+                            <span class="date">Aug 2018 – May 2022</span>
+                        </div>
+                        <p class="company">IT Focus | Dual Enrollment at Cumberland University</p>
+                        <p>Completed intensive information technology pathways and university-level dual enrollment
+                            courses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
     <div id="footer"></div>
 
-    <!-- Core utilities -->
-    <script src="../js/core/config.js"></script>
-    <script src="../js/core/utils.js"></script>
-    <script src="../js/core/domUtils.js"></script>
-    <script src="../js/core/a11yUtils.js"></script>
-    <script src="../js/core/errorHandler.js"></script>
-    <script src="../js/core/performance.js"></script>
-    
-    <!-- Components -->
-    <script src="../js/components/header.js"></script>
-    <script src="../js/components/footer.js"></script>
-    <script src="../js/components/carousel.js"></script>
-    <script src="../js/components/collapsible.js"></script>
-    
-    <!-- Service Worker -->
-    <script src="../js/sw-register.js"></script>
-    
-    <!-- Page specific -->
     <script src="../js/app.js"></script>
 </body>
+
 </html>
