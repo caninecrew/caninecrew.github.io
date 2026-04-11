@@ -26,6 +26,7 @@
 @import 'pages/home.css';
 @import 'pages/scouting.css';
 @import 'pages/travel.css';
+@import 'pages/equation-solver.css';
 
 /* Media queries - must be last */
 @import 'media-queries.css';

@@ -1,0 +1,86 @@
+.equation-solver {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.solver-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.solver-row {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+}
+
+.solver-row label,
+.solver-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.solver-field input,
+.solver-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  background: var(--input-background);
+  color: var(--input-text);
+}
+
+.solver-field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.solver-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.solver-status {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+}
+
+.solver-output {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  align-items: stretch;
+}
+
+.result-box,
+.plot-box {
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  background: var(--background-color);
+}
+
+.result-box pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.plot-box {
+  min-height: 380px;
+}
+
+@media (max-width: 900px) {
+  .solver-row {
+    grid-template-columns: 1fr;
+  }
+
+  .solver-output {
+    grid-template-columns: 1fr;
+  }
+}
