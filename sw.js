@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'caninecrew-public-v1';
+const CACHE_VERSION = 'caninecrew-public-v2';
 const CACHE_NAME = `caninecrew-public-${CACHE_VERSION}`;
 
 const PRECACHE_URLS = [
@@ -20,7 +20,6 @@ const PRECACHE_URLS = [
     '/pages/travel.html',
     '/pages/equation-solver.html',
     '/pages/scouting.html',
-    '/pages/scouting-test.html',
     '/css/pages/equation-solver.css',
     '/documents/resume.pdf',
     '/images/profile.jpg',

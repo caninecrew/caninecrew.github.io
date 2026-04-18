@@ -5918,6 +5918,41 @@ body>.container {
   }
 }
 
+.selected-work-section {
+  padding: 4rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.selected-work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.selected-work-card {
+  height: 100%;
+}
+
+.selected-work-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.project-bullets {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.project-bullets li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.project-bullets strong {
+  color: var(--text-color);
+}
+
 .primary-btn {
   background-color: var(--primary-color);
   color: white;

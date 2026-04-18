@@ -14,9 +14,69 @@
 </head>
 
 <body>
-    <div id="header"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main class="container">
+    <div id="header"></div>
+    <noscript>
+        <style>
+            .no-js-header {
+                position: static;
+                height: auto;
+                padding: 1rem 0;
+                box-shadow: none;
+            }
+
+            .no-js-header .header-container-master {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                height: auto;
+            }
+
+            .no-js-header .menu-toggle-master,
+            .no-js-header .close-menu-btn {
+                display: none;
+            }
+
+            .no-js-header .main-nav {
+                position: static;
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .no-js-header .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem 1rem;
+            }
+        </style>
+        <header class="site-header-master no-js-header" id="top">
+            <div class="header-container-master">
+                <div class="logo-master">
+                    <a href="/">
+                        <span class="logo-tag">&lt;</span>
+                        <span class="logo-name">S.Rumbley</span>
+                        <span class="logo-tag">/&gt;</span>
+                    </a>
+                </div>
+                <nav class="main-nav" aria-label="Primary">
+                    <ul class="nav-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/pages/education.html">Education</a></li>
+                        <li><a href="/pages/experience.html">Experience</a></li>
+                        <li><a href="/pages/projects.html">Projects</a></li>
+                        <li><a href="/pages/scouting.html">Scouting</a></li>
+                        <li><a href="/pages/achievements.html">Achievements</a></li>
+                        <li><a href="/pages/training.html">Training</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </noscript>
+
+    <main id="main-content" class="container">
         <section class="hero-section">
             <div class="hero-content">
                 <div class="hero-img-container">
@@ -30,7 +90,7 @@
 
                     <div class="hero-actions">
                         <a href="documents/resume.pdf" target="_blank" class="primary-btn">View Resume</a>
-                        <a href="#about" class="secondary-btn">About Me</a>
+                        <a href="mailto:contact@samuelrumbley.com" class="secondary-btn">Contact Me</a>
                     </div>
 
                     <div class="hero-socials">
@@ -47,38 +107,76 @@
 
         <section id="about" class="content-box">
             <h2>About Me</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary);">
-                I am a dedicated and driven student at <strong>Tennessee Technological University</strong>, pursuing a
-                B.S. in Business
-                Administration with a major in <strong>Business Information & Technology</strong>, a concentration in
-                <strong>Business
-                    Intelligence & Analytics</strong>, and a minor in <strong>Leadership</strong>.
-                <br><br>
-                My goal is to leverage my technical skills and leadership experience to make a meaningful impact through
-                data-driven decision making.
-                I am passionate about data analysis, business intelligence, and exploring emerging technology trends.
-            </p>
+            <ul>
+                <li>Pursuing a B.S. in Business Administration at <strong>Tennessee Technological University</strong>
+                    with a major in Business Information & Technology, a Business Intelligence & Analytics
+                    concentration, and a Leadership minor.</li>
+                <li>Focuses on data analysis, business intelligence, and practical technology work that helps teams
+                    make better decisions.</li>
+                <li>Combines technical execution with leadership experience from campus, scouting, and community roles.
+                </li>
+            </ul>
         </section>
 
-        <section class="tools-grid-section">
-            <h2 class="section-title"><i class="fas fa-compass"></i> Tools & Adventures</h2>
-            <div class="tools-grid">
-                <a href="pages/travel.html" class="tool-card travel-card">
-                    <div class="tool-card-content">
-                        <i class="fas fa-globe-americas tool-icon"></i>
-                        <h3>Travel Map</h3>
-                        <p>Explore an interactive map of the places I've visited and adventures I've had.</p>
-                        <span class="tool-link">View Map <i class="fas fa-arrow-right"></i></span>
+        <section class="selected-work-section">
+            <h2 class="section-title"><i class="fas fa-star"></i> Selected Work</h2>
+            <div class="selected-work-grid">
+                <article class="project-card-master selected-work-card">
+                    <div class="project-icon-top"><i class="fas fa-campground"></i></div>
+                    <div class="project-content-master">
+                        <div class="project-header-master">
+                            <h3>Camp Program Leadership</h3>
+                            <span class="project-date-master">Program Director, 2025</span>
+                        </div>
+                        <p class="project-org-master">Middle Tennessee Council, Scouting America</p>
+                        <ul class="project-bullets">
+                            <li><strong>Built:</strong> Camp operations across more than 60 program areas for 1,000+
+                                campers.</li>
+                            <li><strong>Tools:</strong> Staff scheduling, risk management, and daily coordination
+                                across a 40+ person team.</li>
+                            <li><strong>Impact:</strong> Kept large-scale camp programming organized and responsive
+                                under real operational pressure.</li>
+                        </ul>
                     </div>
-                </a>
-                <a href="pages/equation-solver.html" class="tool-card solver-card">
-                    <div class="tool-card-content">
-                        <i class="fas fa-calculator tool-icon"></i>
-                        <h3>Equation Solver</h3>
-                        <p>A custom-built tool for solving equations and visualizing mathematical expressions.</p>
-                        <span class="tool-link">Try Tool <i class="fas fa-arrow-right"></i></span>
+                </article>
+
+                <article class="project-card-master selected-work-card">
+                    <div class="project-icon-top"><i class="fab fa-python"></i></div>
+                    <div class="project-content-master">
+                        <div class="project-header-master">
+                            <h3>Equation Solver</h3>
+                            <span class="project-date-master">Interactive Tool</span>
+                        </div>
+                        <p class="project-org-master">Python-backed graphing and solving workflow</p>
+                        <ul class="project-bullets">
+                            <li><strong>Built:</strong> An interactive solver for equations and inequalities with
+                                graph output.</li>
+                            <li><strong>Tools:</strong> Python via Pyodide, Plotly, JavaScript, and browser-based UI
+                                logic.</li>
+                            <li><strong>Impact:</strong> Turns a technical demo into a visible example of scripting,
+                                computation, and visualization.</li>
+                        </ul>
                     </div>
-                </a>
+                </article>
+
+                <article class="project-card-master selected-work-card">
+                    <div class="project-icon-top"><i class="fas fa-globe-americas"></i></div>
+                    <div class="project-content-master">
+                        <div class="project-header-master">
+                            <h3>Travel Map</h3>
+                            <span class="project-date-master">Interactive Feature</span>
+                        </div>
+                        <p class="project-org-master">Portfolio feature built for exploration</p>
+                        <ul class="project-bullets">
+                            <li><strong>Built:</strong> An interactive map of visited locations with marker popups and
+                                location cards.</li>
+                            <li><strong>Tools:</strong> Leaflet, OpenStreetMap tiles, JavaScript, and responsive layout
+                                work.</li>
+                            <li><strong>Impact:</strong> Adds a more memorable, user-friendly way to explore the site
+                                beyond a static résumé.</li>
+                        </ul>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -135,11 +233,6 @@
                 <div class="skill-item-master" title="PostgreSQL"><i class="fas fa-server"></i><span>PostgreSQL</span>
                 </div>
             </div>
-        </section>
-
-        <section class="fun-fact-section">
-            <h2><i class="fas fa-star"></i> Fun Fact</h2>
-            <p>I have climbed a 12,441-foot mountain!</p>
         </section>
 
     </main>
