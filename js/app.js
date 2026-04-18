@@ -59,6 +59,100 @@ function initializeCollapsibles() {
     });
 }
 
+const SHARED_HEADER_FALLBACK_HTML = `
+<header class="site-header-master" id="top">
+    <div class="header-container-master">
+        <div class="logo-master">
+            <a href="/">
+                <span class="logo-tag">&lt;</span>
+                <span class="logo-name">S.Rumbley</span>
+                <span class="logo-tag">/&gt;</span>
+            </a>
+        </div>
+
+        <button class="menu-toggle-master" aria-label="Toggle menu" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav class="main-nav" id="primary-navigation" aria-label="Primary">
+            <div class="nav-header">
+                <div class="logo mobile-logo">Samuel Rumbley</div>
+                <button class="close-menu-btn" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/education.html">Education</a></li>
+                <li><a href="/pages/experience.html">Experience</a></li>
+                <li><a href="/pages/projects.html">Projects</a></li>
+                <li><a href="/pages/scouting.html">Scouting</a></li>
+                <li><a href="/pages/achievements.html">Achievements</a></li>
+                <li><a href="/pages/training.html">Training</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>`;
+
+const SHARED_FOOTER_FALLBACK_HTML = `
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Me</h3>
+            <div class="footer-bio">
+                <img src="images/profile.jpg" alt="Samuel Rumbley" class="footer-profile">
+                <p>Business Intelligence & Analytics student at Tennessee Tech University, passionate about leadership and data-driven impact.</p>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Navigation</h3>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="travel.html">Travel</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Connect</h3>
+            <div class="social-links">
+                <a href="https://github.com/caninecrew" class="social-link" aria-label="GitHub Profile">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/samuel-rumbley" class="social-link" aria-label="LinkedIn Profile">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/samuel_rumbley" class="social-link" aria-label="Instagram Profile">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:contact@samuelrumbley.com" class="social-link" aria-label="Email Me">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://app.joinhandshake.com/stu/users/25299545" class="social-link" aria-label="Handshake Profile">
+                    <i class="fas fa-handshake"></i>
+                </a>
+            </div>
+            <div class="footer-contact">
+                <p><a href="mailto:contact@samuelrumbley.com">contact@samuelrumbley.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p class="copyright">&copy; <span class="copyright-year">2025</span> Samuel Rumbley. All Rights Reserved.</p>
+            <a href="#top" class="back-to-top-footer" aria-label="Back to top">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>`;
+
 class App {
     constructor() {
         this.initialized = false;
@@ -99,33 +193,27 @@ class App {
 
         if (!headerContainer && !footerContainer) return;
 
+        const loadFragment = async (path, fallbackHtml, container, onLoad) => {
+            if (!container) return;
+
+            try {
+                const res = await fetch(path);
+                const html = res.ok ? await res.text() : fallbackHtml;
+                container.innerHTML = html;
+            } catch (error) {
+                console.warn(`Falling back to embedded shared markup for ${path}:`, error);
+                container.innerHTML = fallbackHtml;
+            }
+
+            this.fixLinks(container, isIndexPage);
+            if (onLoad) onLoad();
+        };
+
         try {
-            const promises = [];
-
-            if (headerContainer) {
-                promises.push(
-                    fetch(headerPath)
-                        .then(res => res.ok ? res.text() : Promise.reject(`Header: ${res.status}`))
-                        .then(html => {
-                            headerContainer.innerHTML = html;
-                            this.fixLinks(headerContainer, isIndexPage);
-                            this.initializeMobileMenu();
-                        })
-                );
-            }
-
-            if (footerContainer) {
-                promises.push(
-                    fetch(footerPath)
-                        .then(res => res.ok ? res.text() : Promise.reject(`Footer: ${res.status}`))
-                        .then(html => {
-                            footerContainer.innerHTML = html;
-                            this.fixLinks(footerContainer, isIndexPage);
-                        })
-                );
-            }
-
-            await Promise.all(promises);
+            await Promise.all([
+                loadFragment(headerPath, SHARED_HEADER_FALLBACK_HTML, headerContainer, () => this.initializeMobileMenu()),
+                loadFragment(footerPath, SHARED_FOOTER_FALLBACK_HTML, footerContainer)
+            ]);
         } catch (error) {
             console.error('Error loading shared components:', error);
         }

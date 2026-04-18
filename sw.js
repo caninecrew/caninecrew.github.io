@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'caninecrew-public-v2';
+const CACHE_VERSION = 'caninecrew-public-v3';
 const CACHE_NAME = `caninecrew-public-${CACHE_VERSION}`;
 
 const PRECACHE_URLS = [
