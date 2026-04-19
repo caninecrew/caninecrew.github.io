@@ -23,7 +23,7 @@ const travelLocations = [
     {
         name: "Key West, Florida",
         position: { lat: 24.5551, lng: -81.7800 },
-        description: "Travelled to the furtherst point south in the continental United States.",
+        description: "Traveled to the furthest point south in the continental United States.",
         date: "Family Vacation",
         image: "https://images.unsplash.com/photo-1581423293816-7517c37e4034?q=80&w=2894&auto=format&fit=crop"
     }
