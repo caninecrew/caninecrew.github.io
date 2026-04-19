@@ -16,65 +16,40 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div id="header"></div>
-    <noscript>
-        <style>
-            .no-js-header {
-                position: static;
-                height: auto;
-                padding: 1rem 0;
-                box-shadow: none;
-            }
-
-            .no-js-header .header-container-master {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                height: auto;
-            }
-
-            .no-js-header .menu-toggle-master,
-            .no-js-header .close-menu-btn {
-                display: none;
-            }
-
-            .no-js-header .main-nav {
-                position: static;
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-
-            .no-js-header .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.75rem 1rem;
-            }
-        </style>
-        <header class="site-header-master no-js-header" id="top">
-            <div class="header-container-master">
-                <div class="logo-master">
-                    <a href="/">
-                        <span class="logo-tag">&lt;</span>
-                        <span class="logo-name">S.Rumbley</span>
-                        <span class="logo-tag">/&gt;</span>
-                    </a>
-                </div>
-                <nav class="main-nav" aria-label="Primary">
-                    <ul class="nav-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/pages/education.html">Education</a></li>
-                        <li><a href="/pages/experience.html">Experience</a></li>
-                        <li><a href="/pages/projects.html">Projects</a></li>
-                        <li><a href="/pages/scouting.html">Scouting</a></li>
-                        <li><a href="/pages/achievements.html">Achievements</a></li>
-                        <li><a href="/pages/training.html">Training</a></li>
-                    </ul>
-                </nav>
+    <header class="site-header-master" id="top">
+        <div class="header-container-master">
+            <div class="logo-master">
+                <a href="/">
+                    <span class="logo-tag">&lt;</span>
+                    <span class="logo-name">S.Rumbley</span>
+                    <span class="logo-tag">/&gt;</span>
+                </a>
             </div>
-        </header>
-    </noscript>
+
+            <button class="menu-toggle-master" aria-label="Toggle menu" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="main-nav" id="primary-navigation" aria-label="Primary">
+                <div class="nav-header">
+                    <div class="logo mobile-logo">Samuel Rumbley</div>
+                    <button class="close-menu-btn" aria-label="Close menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pages/education.html">Education</a></li>
+                    <li><a href="/pages/experience.html">Experience</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/scouting.html">Scouting</a></li>
+                    <li><a href="/pages/achievements.html">Achievements</a></li>
+                    <li><a href="/pages/training.html">Training</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <main id="main-content" class="container">
         <section class="hero-section">
