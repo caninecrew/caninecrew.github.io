@@ -1,5 +1,35 @@
 const data = window.siteData;
 
+const skillGroups = [
+  {
+    title: "Technology and Data",
+    items: ["IT Support", "Technical Troubleshooting", "Microsoft Excel", "Power Query", "SQL", "Python", "R", "Tableau", "Google Colab", "Git", "Linux", "Data Analysis"]
+  },
+  {
+    title: "Workplace Tools",
+    items: ["Google Workspace", "Microsoft Office", "Slack Workspace Administration", "Atlassian Jira", "Asana", "Excel Dashboards"]
+  },
+  {
+    title: "Education and Leadership",
+    items: ["Teaching", "Classroom Support", "Youth Development", "Program Development", "Event Planning", "Volunteer Coordination", "Problem Solving", "Critical Thinking", "Communication", "Teamwork", "Organizational Leadership"]
+  }
+];
+
+const credentialGroups = [
+  {
+    title: "Certifications",
+    items: ["Notary Public", "Adult & Pediatric First Aid / CPR / AED", "Youth Mental Health First Aid", "National Camping School - Program Director", "National Camping School - Short-Term Camp Administrator / Assessor", "Excel: Power Query for Beginners", "Excel: Dashboards for Beginners"]
+  },
+  {
+    title: "Scholarships and Honors",
+    items: ["Laura and William Miller Scholarship for Summer Camp Staff", "Josh Sain Memorial Scholarship", "MTC ACFE Scholarship", "Presidential Scholars Scholarship", "TN HOPE Scholarship", "Dean's List"]
+  },
+  {
+    title: "Scouting Recognition",
+    items: ["Founder's Award", "Tom Parker Memorial Award", "Middle Tennessee Council Scout of the Year", "Josh Sain Memorial Award", "Eagle Scout", "OA Vigil Honor"]
+  }
+];
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -29,6 +59,21 @@ function summaryFor(item) {
   return "";
 }
 
+function contextFor(item) {
+  return [item.organization || item.location || item.type, item.dates].filter(Boolean).join(" | ");
+}
+
+function detailsMarkup(item, detailId) {
+  const details = item.details || [];
+  if (!details.length) return `<p class="meta">Ready for future details</p>`;
+  return `
+    <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">Show details</button>
+    <ul class="detail-list" id="${detailId}" hidden>
+      ${details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
+    </ul>
+  `;
+}
+
 function renderFeatureCards(target, items) {
   target.innerHTML = items.map((item) => `
     <article class="feature">
@@ -38,42 +83,61 @@ function renderFeatureCards(target, items) {
   `).join("");
 }
 
-function renderExpandableList(target, items, options = {}) {
+function renderTimeline(target, items, prefix) {
   target.innerHTML = items.map((item, index) => {
-    const title = item.role || item.school || item.title;
-    const context = [item.organization || item.location || item.type, item.dates].filter(Boolean).join(" | ");
-    const details = item.details || [];
-    const detailId = `${options.prefix || "details"}-${index}`;
+    const detailId = `${prefix}-${index}`;
     return `
-      <article class="profile-item">
-        <div class="item-main">
-          <div>
-            <h3>${escapeHtml(title)}</h3>
-            ${context ? `<p class="meta">${escapeHtml(context)}</p>` : ""}
-          </div>
+      <article class="timeline-item">
+        <div class="timeline-marker" aria-hidden="true"></div>
+        <div class="timeline-card">
+          <p class="meta">${escapeHtml(contextFor(item))}</p>
+          <h3>${escapeHtml(item.role || item.school || item.title)}</h3>
           <p>${escapeHtml(summaryFor(item))}</p>
-          ${item.url ? `<a class="text-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open project</a>` : ""}
+          ${detailsMarkup(item, detailId)}
         </div>
-        ${details.length ? `
-          <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">View details</button>
-          <ul class="detail-list" id="${detailId}" hidden>
-            ${details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
-          </ul>
-        ` : `<p class="meta">Ready for future details</p>`}
+      </article>
+    `;
+  }).join("");
+}
+
+function renderCards(target, items, prefix) {
+  target.innerHTML = items.map((item, index) => {
+    const detailId = `${prefix}-${index}`;
+    return `
+      <article class="profile-card-item">
+        <p class="card-kicker">${escapeHtml(item.type || item.organization || item.location || "")}</p>
+        <h3>${escapeHtml(item.title || item.role || item.school)}</h3>
+        ${item.dates ? `<p class="meta">${escapeHtml(item.dates)}</p>` : ""}
+        <p>${escapeHtml(summaryFor(item))}</p>
+        ${item.url ? `<a class="text-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open project</a>` : ""}
+        ${detailsMarkup(item, detailId)}
       </article>
     `;
   }).join("");
 }
 
 function renderEducation(target) {
-  renderExpandableList(target, data.education.map((item) => ({
+  renderCards(target, data.education.map((item) => ({
     ...item,
+    title: item.school,
+    type: item.location,
     summary: item.degree
-  })), { prefix: "education" });
+  })), "education");
 }
 
-function renderTags(target, items) {
-  target.innerHTML = items.map((item) => `<span>${escapeHtml(item)}</span>`).join("");
+function renderGroupedTags(target, groups, sourceItems) {
+  target.innerHTML = groups.map((group) => {
+    const items = group.items.filter((item) => sourceItems.includes(item));
+    if (!items.length) return "";
+    return `
+      <article class="tag-group">
+        <h3>${escapeHtml(group.title)}</h3>
+        <div class="tag-list">
+          ${items.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+        </div>
+      </article>
+    `;
+  }).join("");
 }
 
 document.querySelectorAll("[data-year]").forEach((target) => {
@@ -93,7 +157,7 @@ document.querySelectorAll("[data-leadership-themes]").forEach((target) => {
 });
 
 document.querySelectorAll("[data-work]").forEach((target) => {
-  renderExpandableList(target, data.work, { prefix: "work" });
+  renderTimeline(target, data.work, "work");
 });
 
 document.querySelectorAll("[data-education]").forEach((target) => {
@@ -101,27 +165,19 @@ document.querySelectorAll("[data-education]").forEach((target) => {
 });
 
 document.querySelectorAll("[data-service]").forEach((target) => {
-  renderExpandableList(target, data.service, { prefix: "service" });
+  renderCards(target, data.service, "service");
 });
 
 document.querySelectorAll("[data-projects]").forEach((target) => {
-  renderExpandableList(target, data.projects, { prefix: "project" });
+  renderCards(target, data.projects, "project");
 });
 
 document.querySelectorAll("[data-skills]").forEach((target) => {
-  renderTags(target, data.skills);
+  renderGroupedTags(target, skillGroups, data.skills);
 });
 
 document.querySelectorAll("[data-awards]").forEach((target) => {
-  renderTags(target, data.awards);
-});
-
-document.querySelectorAll("[data-resume-download]").forEach((target) => {
-  if (!data.resumeDownload) {
-    target.hidden = true;
-    return;
-  }
-  target.innerHTML = `<a class="button" href="${escapeHtml(data.resumeDownload)}">Download resume PDF</a>`;
+  renderGroupedTags(target, credentialGroups, data.awards);
 });
 
 document.addEventListener("click", (event) => {
@@ -130,7 +186,7 @@ document.addEventListener("click", (event) => {
   const details = document.getElementById(toggle.getAttribute("aria-controls"));
   const expanded = toggle.getAttribute("aria-expanded") === "true";
   toggle.setAttribute("aria-expanded", String(!expanded));
-  toggle.textContent = expanded ? "View details" : "Hide details";
+  toggle.textContent = expanded ? "Show details" : "Hide details";
   details.hidden = expanded;
 });
 
