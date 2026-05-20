@@ -136,7 +136,15 @@ function renderGroupedTags(target, groups, sourceItems) {
       <article class="tag-group">
         <h3>${escapeHtml(group.title)}</h3>
         <div class="tag-list">
-          ${items.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+          ${items.map((item) => {
+            const credentialLink = data.credentialLinks?.[item];
+            return `
+              <span class="tag-item">
+                <span>${escapeHtml(item)}</span>
+                ${credentialLink?.url ? `<a class="tag-link" href="${escapeHtml(credentialLink.url)}" target="_blank" rel="noopener">${escapeHtml(credentialLink.label || "Info")}</a>` : ""}
+              </span>
+            `;
+          }).join("")}
         </div>
       </article>
     `;
