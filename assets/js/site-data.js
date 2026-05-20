@@ -27,16 +27,16 @@ window.siteData = {
   ],
   leadershipThemes: [
     {
-      title: "Practical problem solving",
-      text: "Bringing a calm, organized approach to technical issues, program needs, and people-focused challenges."
+      title: "Steady coordination",
+      text: "I help organize people, schedules, tasks, and details so teams can serve well, especially when plans change or pressure builds."
     },
     {
-      title: "Youth-centered leadership",
-      text: "Helping young people grow through Scouting, classroom support, residence life, camp programming, and ministry."
+      title: "Youth development",
+      text: "Much of my leadership has centered on helping young people grow through Scouting, classroom support, residence life, camp programming, and ministry."
     },
     {
-      title: "Clear systems and communication",
-      text: "Using technology, documentation, and structured processes to help teams work more effectively."
+      title: "Clear communication",
+      text: "I value simple instructions, thoughtful follow through, and systems that make it easier for volunteers, students, families, and leaders to work together."
     }
   ],
   education: [
@@ -128,7 +128,7 @@ window.siteData = {
   ],
   service: [
     {
-      role: "Volunteer",
+      role: "Children's and Youth Ministry Volunteer",
       organization: "Cookeville Church of the Nazarene",
       dates: "September 2023 - May 2026",
       details: [
@@ -137,7 +137,7 @@ window.siteData = {
       ]
     },
     {
-      role: "Member and Former Youth Leader",
+      role: "Member and Former Lodge Chief",
       organization: "Wa-Hi-Nasa Lodge, Order of the Arrow",
       dates: "August 2017 - Present",
       details: [
@@ -158,8 +158,8 @@ window.siteData = {
       ]
     },
     {
-      role: "Leadership Roles",
-      organization: "Section E3, Eastern Region, Order of the Arrow",
+      role: "Section Leadership Roles",
+      organization: "Section E3, Order of the Arrow",
       dates: "August 2022 - April 2025",
       details: [
         "Coordinated logistics for a multi-state Section Leadership Seminar attended by lodge leaders.",
@@ -178,7 +178,7 @@ window.siteData = {
       ]
     },
     {
-      role: "Subcommittee and Event Staff Roles",
+      role: "National Communications and Event Staff Roles",
       organization: "National Order of the Arrow",
       dates: "January 2024 - October 2024",
       details: [
