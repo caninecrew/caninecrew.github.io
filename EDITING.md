@@ -12,25 +12,13 @@ This site is a simple static GitHub Pages site. Most content is edited in one fi
 - Leadership and service roles: edit the `service` list.
 - Skills: edit the `skills` list.
 - Credentials and awards: edit the `awards` list.
-- Credential buttons: edit `credentialLinks`.
 - Projects and publications: edit the `projects` list.
 
-## Credential Buttons
+## Credentials
 
-Each credential button is controlled by `credentialLinks` in `assets/js/site-data.js`.
+Credentials and awards are intentionally plain text unless there is a specific public page, certificate file, or project page that should be linked.
 
-Example:
-
-```js
-"Eagle Scout": {
-  label: "Info",
-  url: "https://www.scouting.org/programs/scouts-bsa/advancement-and-awards/eagle-scout/"
-}
-```
-
-- `label` is the button text shown on the site.
-- `url` is the public page visitors open.
-- If a credential is listed in `awards` but does not have a matching `credentialLinks` entry, it will still show as plain text.
+If you later want to link proof of a credential, add the public page or document as a project or publication instead of adding generic links.
 
 ## Page Text
 
@@ -44,6 +32,5 @@ Open the site locally or on GitHub Pages and check:
 
 - The page loads.
 - Navigation links scroll to the right sections.
-- Credential buttons open the correct public pages.
 - Details buttons expand and collapse.
 - No private contact information is added by mistake.
