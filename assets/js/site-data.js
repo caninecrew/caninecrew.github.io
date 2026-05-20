@@ -14,29 +14,29 @@ window.siteData = {
   highlights: [
     {
       title: "IT support and business technology",
-      text: "Business Information Technology graduate with a concentration in Business Intelligence and Analytics, preparing to begin an IT Support Analyst role with The Gideons International."
+      text: "Business Information Technology graduate with a Business Intelligence and Analytics concentration, preparing to begin an IT Support Analyst role with The Gideons International."
     },
     {
       title: "Education and student support",
-      text: "Experience supporting students through substitute teaching, residence life, classroom leadership, and youth development."
+      text: "Experience in substitute teaching, residence life, classroom leadership, and youth development."
     },
     {
       title: "Scouting, ministry, and service leadership",
-      text: "Long-term leader in Scouting and church ministry with experience in program planning, volunteer coordination, communications, youth mentorship, and camp operations."
+      text: "Long-term involvement in Scouting and church ministry through program planning, volunteer coordination, youth mentorship, and camp operations."
     }
   ],
   leadershipThemes: [
     {
       title: "Steady coordination",
-      text: "I help organize people, schedules, tasks, and details so teams can serve well, especially when plans change or pressure builds."
+      text: "I organize people, schedules, tasks, and details so teams can keep moving when plans change or pressure builds."
     },
     {
       title: "Youth development",
-      text: "Much of my leadership has centered on helping young people grow through Scouting, classroom support, residence life, camp programming, and ministry."
+      text: "Much of my leadership has centered on helping young people grow through Scouting, classrooms, residence life, camp programming, and ministry."
     },
     {
       title: "Clear communication",
-      text: "I value simple instructions, thoughtful follow through, and systems that make it easier for volunteers, students, families, and leaders to work together."
+      text: "I value simple instructions, thoughtful follow-through, and systems that make expectations easier to understand."
     }
   ],
   education: [
@@ -79,6 +79,7 @@ window.siteData = {
       role: "Resident Assistant",
       organization: "Tennessee Technological University",
       dates: "August 2025 - May 2026",
+      summary: "Served as a student leader and first point of contact in a university housing community.",
       details: [
         "Served as a student leader and first point of contact for residents in a university housing community.",
         "Supported resident communication, community standards, safety awareness, student engagement, and day-to-day housing operations.",
@@ -89,18 +90,20 @@ window.siteData = {
       role: "Substitute Teacher",
       organization: "Wilson County Schools",
       dates: "July 2023 - May 2026",
+      summary: "Provided classroom instruction and maintained productive learning environments across grade levels.",
       details: [
         "Provided classroom instruction and maintained productive learning environments across grade levels.",
         "Adapted quickly to lesson plans, school expectations, and student needs.",
-        "Strengthened communication, classroom management, and leadership skills while supporting student growth."
+        "Built practical communication, classroom management, and leadership skills."
       ]
     },
     {
       role: "Substitute Teacher",
       organization: "Putnam County School System",
       dates: "May 2023 - May 2026",
+      summary: "Worked across varied school settings with structure, professionalism, and flexibility.",
       details: [
-        "Supported classroom instruction and student supervision in a variety of school settings.",
+        "Assisted with classroom instruction and student supervision in a variety of school settings.",
         "Maintained structure, professionalism, and flexibility while working with different teachers, students, and school routines."
       ]
     },
@@ -108,6 +111,7 @@ window.siteData = {
       role: "Program Director, Camp Craig",
       organization: "Middle Tennessee Council, Scouting America",
       dates: "May 2025 - July 2025",
+      summary: "Led Camp Craig program operations, staff coordination, and weekly camp-wide activities.",
       details: [
         "Designed and executed daily program schedules for an average of 300 campers per week.",
         "Led and mentored a 32-member team of youth and adult staff.",
@@ -119,9 +123,10 @@ window.siteData = {
       role: "Summer Camp Counselor",
       organization: "Middle Tennessee Council, Scouting America",
       dates: "June 2023 - July 2024",
+      summary: "Taught merit badge classes and helped create positive summer camp experiences for Scouts.",
       details: [
         "Provided leadership and merit badge instruction to Scouts ages 5-18.",
-        "Supported youth skill development, advancement goals, and positive camp experiences.",
+        "Encouraged youth skill development, advancement goals, and positive camp experiences.",
         "Promoted the Order of the Arrow and encouraged youth participation in service leadership."
       ]
     }
@@ -131,15 +136,17 @@ window.siteData = {
       role: "Children's and Youth Ministry Volunteer",
       organization: "Cookeville Church of the Nazarene",
       dates: "September 2023 - May 2026",
+      summary: "Served in children's ministry, youth events, worship support, community events, and Sunday School.",
       details: [
         "Served in children's ministry, youth events, worship support, community events, and Sunday School.",
-        "Helped create a welcoming and supportive environment for children, students, families, and church guests."
+        "Helped create a welcoming environment for children, students, families, and church guests."
       ]
     },
     {
       role: "Member and Former Lodge Chief",
       organization: "Wa-Hi-Nasa Lodge, Order of the Arrow",
       dates: "August 2017 - Present",
+      summary: "Held lodge, chapter, section, regional, and national roles in event management, youth mentorship, and communications.",
       details: [
         "Held lodge, chapter, section, regional, and national leadership roles focused on event management, youth mentorship, communications, and service.",
         "Served as Lodge Chief for a lodge of roughly 920 members, guiding the Lodge Executive Committee and annual program.",
@@ -151,6 +158,7 @@ window.siteData = {
       role: "Assistant Scoutmaster",
       organization: "Scouts BSA Troop 1204",
       dates: "May 2015 - Present",
+      summary: "Continued long-term Scouting involvement through troop-level mentorship and program work.",
       details: [
         "Continued serving youth and adult leaders through troop-level mentorship, advancement support, outdoor program support, and leadership development.",
         "Previously served in youth leadership roles including Senior Patrol Leader and OA Representative.",
@@ -161,6 +169,7 @@ window.siteData = {
       role: "Section Leadership Roles",
       organization: "Section E3, Order of the Arrow",
       dates: "August 2022 - April 2025",
+      summary: "Held appointed section roles in logistics, leadership training, and event promotion.",
       details: [
         "Coordinated logistics for a multi-state Section Leadership Seminar attended by lodge leaders.",
         "Planned and delivered leadership training as Training Conclave Vice Chief.",
@@ -171,6 +180,7 @@ window.siteData = {
       role: "Executive Board Member",
       organization: "Middle Tennessee Council, Scouting America",
       dates: "December 2022 - February 2025",
+      summary: "Contributed a youth and young adult perspective to council-level Scouting leadership.",
       details: [
         "Represented youth and young adult perspectives in council-level Scouting leadership.",
         "Contributed to board discussions related to program quality, community support, and council priorities.",
@@ -181,6 +191,7 @@ window.siteData = {
       role: "National Communications and Event Staff Roles",
       organization: "National Order of the Arrow",
       dates: "January 2024 - October 2024",
+      summary: "Worked on communications and technology operations for national Order of the Arrow initiatives.",
       details: [
         "Supported communications infrastructure and technology operations for national Order of the Arrow initiatives.",
         "Served on NOAC 2024 communications and technology operations teams, assisting with ticketing, equipment, networks, printers, and AV support."
@@ -190,6 +201,7 @@ window.siteData = {
       role: "Volunteer",
       organization: "Nashville Grace Church of the Nazarene",
       dates: "August 2015 - August 2023",
+      summary: "Served in media, community events, children's ministry, and local youth ministry leadership.",
       details: [
         "Served on the technology and media team, volunteered at community events, helped with children's services, and served on the local Nazarene Youth International Council."
       ]
@@ -198,6 +210,7 @@ window.siteData = {
       role: "Youth Volunteer",
       organization: "Wilson County Teen Court",
       dates: "September 2021 - May 2022",
+      summary: "Participated in a youth peer accountability program in Wilson County.",
       details: [
         "Supported a youth peer accountability program serving students charged with status or delinquent offenses."
       ]
@@ -259,7 +272,7 @@ window.siteData = {
     {
       title: "Personal Website",
       type: "Web",
-      description: "A GitHub Pages site used to share my resume, leadership experience, service involvement, selected projects, and professional background.",
+      description: "A GitHub Pages site for sharing my professional background, selected projects, leadership experience, and service involvement.",
       url: "https://www.samuelrumbley.com/"
     },
     {
@@ -277,7 +290,7 @@ window.siteData = {
     {
       title: "2023 Annual Report",
       type: "Publication",
-      description: "A large-scale Wa-Hi-Nasa Lodge annual report project where I provided leadership and guidance to support documentation, storytelling, and organizational communication.",
+      description: "A large-scale Wa-Hi-Nasa Lodge annual report project involving leadership, documentation, storytelling, and organizational communication.",
       url: ""
     },
     {

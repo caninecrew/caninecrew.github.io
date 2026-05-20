@@ -41,7 +41,7 @@ function renderFeatureCards(target, items) {
 function renderExpandableList(target, items, options = {}) {
   target.innerHTML = items.map((item, index) => {
     const title = item.role || item.school || item.title;
-    const context = [item.organization || item.location || item.type, item.dates].filter(Boolean).join(" · ");
+    const context = [item.organization || item.location || item.type, item.dates].filter(Boolean).join(" | ");
     const details = item.details || [];
     const detailId = `${options.prefix || "details"}-${index}`;
     return `
