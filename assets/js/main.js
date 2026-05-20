@@ -67,7 +67,7 @@ function detailsMarkup(item, detailId) {
   const details = item.details || [];
   if (!details.length) return `<p class="meta">Ready for future details</p>`;
   return `
-    <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">Show details</button>
+    <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">Details</button>
     <ul class="detail-list" id="${detailId}" hidden>
       ${details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
     </ul>
@@ -186,7 +186,7 @@ document.addEventListener("click", (event) => {
   const details = document.getElementById(toggle.getAttribute("aria-controls"));
   const expanded = toggle.getAttribute("aria-expanded") === "true";
   toggle.setAttribute("aria-expanded", String(!expanded));
-  toggle.textContent = expanded ? "Show details" : "Hide details";
+  toggle.textContent = expanded ? "Details" : "Hide details";
   details.hidden = expanded;
 });
 
