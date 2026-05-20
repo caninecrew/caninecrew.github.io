@@ -14,15 +14,15 @@ window.siteData = {
   highlights: [
     {
       title: "Business technology",
-      text: "Tennessee Tech graduate in Business Information and Technology with a concentration in Business Intelligence and Analytics."
+      text: "Tennessee Tech graduate in Business Information Technology with a concentration in Business Intelligence and Analytics."
     },
     {
       title: "People-centered support",
-      text: "Experience supporting students and classrooms as a Resident Assistant and substitute teacher."
+      text: "Experience supporting classrooms, residence life, youth programs, and faith-based service environments."
     },
     {
       title: "Service leadership",
-      text: "Long-term Scouting and church volunteer leadership, including large programs, youth development, and media support."
+      text: "Long-term Scouting and church leadership across program planning, youth development, communications, and media support."
     }
   ],
   leadershipThemes: [
@@ -43,12 +43,23 @@ window.siteData = {
     {
       school: "Tennessee Technological University",
       location: "Cookeville, TN",
-      degree: "B.S. Business Administration, Business Information and Technology",
-      dates: "Graduated May 2026",
+      degree: "Bachelor's degree, Business Information Technology",
+      dates: "August 2022 - May 2026",
       details: [
-        "Minor: Leadership",
+        "B.S. Business Administration",
         "Concentration: Business Intelligence and Analytics",
+        "Activities: Student Government Association and Resident Assistant",
         "Major GPA: 3.61"
+      ]
+    },
+    {
+      school: "Wilson Central High School",
+      location: "Lebanon, TN",
+      degree: "Elective Focus: Information Technology",
+      dates: "August 2018 - May 2022",
+      details: [
+        "Dell Tech Computer Repair Program",
+        "National Honor Society, Student Council, Beta Club, Robotics Club, Future Business Leaders of America, and Fellowship of Christian Athletes"
       ]
     }
   ],
@@ -72,58 +83,81 @@ window.siteData = {
     },
     {
       role: "Substitute Teacher",
-      organization: "Wilson & Putnam County Schools",
-      dates: "May 2023 - Present",
+      organization: "Wilson County Schools",
+      dates: "July 2023 - May 2026",
       details: [
-        "Maintained safe, effective classroom environments across multiple grade levels.",
+        "Provided classroom instruction and maintained productive learning environments.",
+        "Strengthened adaptability, communication, and leadership while supporting student growth."
+      ]
+    },
+    {
+      role: "Substitute Teacher",
+      organization: "Putnam County School System",
+      dates: "May 2023 - May 2026",
+      details: [
+        "Provided classroom instruction and maintained productive learning environments.",
         "Adapted quickly to lesson plans, school expectations, and student needs."
       ]
     },
     {
-      role: "Program Director",
+      role: "Program Director, Camp Craig",
       organization: "Middle Tennessee Council, Scouting America",
-      dates: "May - July 2025",
+      dates: "May 2025 - July 2025",
       details: [
-        "Led operations for 1,000+ campers and supervised 40+ staff across 60+ program areas.",
-        "Managed daily schedules, workflows, and large-scale events at Boxwell Scout Reservation.",
-        "Mentored staff and coordinated weekly programming for campers, volunteers, and staff."
+        "Designed and executed daily program schedules for an average of 300 campers per week.",
+        "Led and mentored a 32-member team of youth and adult staff.",
+        "Collaborated with area directors to assess site safety, optimize staffing, and support Scout retention.",
+        "Managed camp-wide activities including fellowship gatherings, dining hall programming, and troop competitions."
       ]
     },
     {
-      role: "Camp Counselor",
+      role: "Summer Camp Counselor",
       organization: "Middle Tennessee Council, Scouting America",
-      dates: "Summer 2023 & 2024",
+      dates: "June 2023 - July 2024",
       details: [
-        "Supported camp programming, camper development, and day-to-day summer camp operations."
+        "Provided leadership and merit badge instruction to Scouts ages 5-18.",
+        "Supported youth skill development, advancement goals, and positive camp experiences.",
+        "Promoted the Order of the Arrow and encouraged youth participation in service leadership."
       ]
     }
   ],
   service: [
     {
-      role: "Family and Media Volunteer",
-      organization: "First Church of the Nazarene, Cookeville, TN",
-      dates: "October 2023 - Present",
+      role: "Volunteer",
+      organization: "Cookeville Church of the Nazarene",
+      dates: "September 2023 - May 2026",
       details: [
-        "Supported family ministry and media needs for church services and community programs."
+        "Served as a Sunday School teacher and supported community, children's ministry, worship service, and youth events."
       ]
     },
     {
-      role: "Adviser & Member",
-      organization: "Order of the Arrow, Scouting America",
+      role: "Member and Former Youth Leader",
+      organization: "Wa-Hi-Nasa Lodge, Order of the Arrow",
       dates: "August 2017 - Present",
       details: [
-        "Led an 850-member organization, supervising 80+ leaders and managing an $81,000 budget.",
-        "Directed 150 volunteers for a week-long Winter Camp serving 500+ scouts in December 2024.",
-        "Served on the National Conference Technology Committee for an event with 7,000+ attendees.",
-        "Received local and national leadership awards for dedication to service."
+        "Held lodge, chapter, and national leadership roles focused on event management, youth mentorship, communications, and service.",
+        "Served as Lodge Chief for a lodge of roughly 920 members, guiding the Lodge Executive Committee and annual program.",
+        "Chaired council-level Winter Camp program delivery for 800+ attendees with youth key staff, advisers, professional Scouters, and additional volunteers.",
+        "Led communications work including social media, website, newsletter, eNews, and Slack engagement."
       ]
     },
     {
-      role: "Eagle Scout & Assistant Scoutmaster",
-      organization: "Troop 1204, Old Hickory, TN",
+      role: "Assistant Scoutmaster",
+      organization: "Scouts BSA Troop 1204",
       dates: "May 2015 - Present",
       details: [
-        "Continued serving youth and adult leaders through troop-level mentorship and program support."
+        "Continued serving youth and adult leaders through troop-level mentorship and program support.",
+        "Previously served in youth leadership roles including Senior Patrol Leader and OA Representative."
+      ]
+    },
+    {
+      role: "Leadership Roles",
+      organization: "Section E3, Eastern Region, Order of the Arrow",
+      dates: "August 2022 - April 2025",
+      details: [
+        "Coordinated logistics for a multi-state Section Leadership Seminar attended by lodge leaders.",
+        "Planned and delivered leadership training as Training Conclave Vice Chief.",
+        "Supported section communications and event promotion through appointed leadership roles."
       ]
     },
     {
@@ -137,31 +171,68 @@ window.siteData = {
       ]
     },
     {
-      role: "Children and Media Volunteer",
-      organization: "Grace Church of the Nazarene, Nashville, TN",
-      dates: "August 2016 - September 2023",
+      role: "Subcommittee and Event Staff Roles",
+      organization: "National Order of the Arrow",
+      dates: "January 2024 - October 2024",
       details: [
-        "Served in children's ministry and media support roles."
+        "Supported communications infrastructure and technology operations for national initiatives.",
+        "Served on NOAC 2024 communications and technology operations teams, assisting with ticketing, equipment, networks, printers, and AV support."
+      ]
+    },
+    {
+      role: "Volunteer",
+      organization: "Nashville Grace Church of the Nazarene",
+      dates: "August 2015 - August 2023",
+      details: [
+        "Served on the technology and media team, volunteered at community events, helped with children's services, and served on the local Nazarene Youth International Council."
+      ]
+    },
+    {
+      role: "Youth Volunteer",
+      organization: "Wilson County Teen Court",
+      dates: "September 2021 - May 2022",
+      details: [
+        "Supported a youth peer accountability program serving students charged with status or delinquent offenses."
       ]
     }
   ],
   skills: [
+    "Problem Solving",
+    "Critical Thinking",
+    "Communication",
+    "Teamwork",
+    "Organizational Leadership",
     "Microsoft Office",
     "Google Workspace",
+    "Microsoft Excel",
+    "Power Query",
+    "Excel Dashboards",
     "Atlassian Jira",
     "Asana",
     "R",
     "Python",
     "Slack Workspace Administration",
     "Data Analysis",
-    "Excel",
     "Google Colab",
-    "Tableau"
+    "Tableau",
+    "Teaching",
+    "Curriculum Development",
+    "Program Development",
+    "Event Planning"
   ],
   awards: [
     "Notary Public",
     "Adult & Pediatric First Aid / CPR / AED",
-    "Middle TN Council Scout of the Year",
+    "Excel: Power Query for Beginners",
+    "Excel: Dashboards for Beginners",
+    "Laura and William Miller Scholarship for Summer Camp Staff",
+    "Josh Sain Memorial Scholarship",
+    "MTC ACFE Scholarship",
+    "Founder's Award",
+    "Middle Tennessee Council Scout of the Year",
+    "Josh Sain Memorial Award",
+    "Presidential Scholars Scholarship",
+    "TN HOPE Scholarship",
     "Eagle Scout",
     "National Camping School - Program Director",
     "Youth Mental Health First Aid",
@@ -176,15 +247,21 @@ window.siteData = {
       url: "https://www.samuelrumbley.com/"
     },
     {
-      title: "Data and Analytics Projects",
-      type: "Placeholder",
-      description: "Add class, Excel, Tableau, Python, or business intelligence projects here as they are ready to share.",
+      title: "The Wheel v3",
+      type: "Publication",
+      description: "Contributed oversight, guidance, and editorial assistance to an updated resource guide for Order of the Arrow members.",
       url: ""
     },
     {
-      title: "Service Leadership Portfolio",
-      type: "Placeholder",
-      description: "Add public summaries of Scouting, camp operations, ministry, or youth development work here.",
+      title: "2023 Annual Report",
+      type: "Publication",
+      description: "Provided leadership and guidance for a large-scale Wa-Hi-Nasa Lodge annual report.",
+      url: ""
+    },
+    {
+      title: "Data and Analytics Portfolio",
+      type: "Future Project",
+      description: "A place to add Excel, Tableau, Python, business intelligence, or cybersecurity projects when ready to share publicly.",
       url: ""
     }
   ]
