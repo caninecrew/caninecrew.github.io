@@ -259,25 +259,31 @@ window.siteData = {
     {
       title: "Personal Website",
       type: "Web",
-      description: "A clean GitHub Pages site used to share resume information, leadership experience, service involvement, and selected projects.",
+      description: "A GitHub Pages site used to share my resume, leadership experience, service involvement, selected projects, and professional background.",
       url: "https://www.samuelrumbley.com/"
+    },
+    {
+      title: "Records Tracker",
+      type: "Web App",
+      description: "A personal public records and FOIA case-management system designed to track requests, deadlines, correspondence, documents, and case details.",
+      url: ""
     },
     {
       title: "The Wheel v3",
       type: "Publication",
-      description: "Contributed oversight, guidance, and editorial assistance to an updated resource guide for Order of the Arrow members.",
+      description: "An updated Order of the Arrow resource guide for lodge members. I contributed oversight, guidance, and editorial support to help make the resource more useful for youth and adult leaders.",
       url: ""
     },
     {
       title: "2023 Annual Report",
       type: "Publication",
-      description: "Provided leadership and guidance for a large-scale Wa-Hi-Nasa Lodge annual report.",
+      description: "A large-scale Wa-Hi-Nasa Lodge annual report project where I provided leadership and guidance to support documentation, storytelling, and organizational communication.",
       url: ""
     },
     {
       title: "Data and Analytics Portfolio",
       type: "Future Project",
-      description: "A planned space for Excel, Tableau, Python, business intelligence, and cybersecurity projects that are ready to share publicly.",
+      description: "A planned space for Excel, Tableau, Python, SQL, business intelligence, and data analysis projects that are ready to share publicly.",
       url: ""
     }
   ]
