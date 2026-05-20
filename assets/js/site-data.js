@@ -71,8 +71,8 @@ window.siteData = {
       organization: "The Gideons International",
       dates: "Starting late May 2026",
       details: [
-        "Beginning a full-time technology support role focused on helping users, troubleshooting issues, and supporting day-to-day IT operations.",
-        "Bringing a service-oriented background in education, ministry, residence life, and volunteer leadership into a professional IT environment."
+        "Beginning a full-time IT support role focused on user assistance, troubleshooting, technical problem solving, and day-to-day technology operations.",
+        "Bringing a service-oriented background in education, ministry, residence life, and volunteer leadership into a professional technology environment."
       ]
     },
     {
@@ -81,8 +81,8 @@ window.siteData = {
       dates: "August 2025 - May 2026",
       details: [
         "Served as a student leader and first point of contact for residents in a university housing community.",
-        "Supported student engagement, policy communication, safety awareness, and day-to-day residential operations.",
-        "Communicated with residents and housing staff to address concerns, share reminders, and support smooth checkout and community processes."
+        "Supported resident communication, community standards, safety awareness, student engagement, and day-to-day housing operations.",
+        "Communicated with residents, supervisors, and housing staff to resolve concerns and support smooth residential processes."
       ]
     },
     {

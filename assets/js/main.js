@@ -110,7 +110,7 @@ document.querySelectorAll("[data-projects]").forEach((target) => {
 
 document.querySelectorAll("[data-resume-download]").forEach((target) => {
   if (!data.resumeDownload) {
-    target.innerHTML = '<p class="note">Resume PDF download will be added after the resume is updated for graduation and the new role.</p>';
+    target.hidden = true;
     return;
   }
   target.innerHTML = `<a class="button" href="${escapeHtml(data.resumeDownload)}">Download resume PDF</a>`;
