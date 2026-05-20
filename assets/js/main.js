@@ -66,10 +66,13 @@ function contextFor(item) {
 function detailsMarkup(item, detailId) {
   const details = item.details || [];
   if (!details.length) return `<p class="meta">Ready for future details</p>`;
+  const summary = summaryFor(item);
+  const visibleDetails = details.filter((detail) => detail !== summary);
+  if (!visibleDetails.length) return "";
   return `
     <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">Details</button>
     <ul class="detail-list" id="${detailId}" hidden>
-      ${details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
+      ${visibleDetails.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
     </ul>
   `;
 }
