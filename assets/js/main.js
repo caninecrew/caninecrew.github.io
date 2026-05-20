@@ -16,22 +16,60 @@ function renderLinks(target, variant) {
   target.innerHTML = links;
 }
 
-function renderCards(target, items, mapper) {
-  target.innerHTML = items.map(mapper).join("");
+function firstSentence(text) {
+  const match = String(text).match(/^.*?[.!?](?:\s|$)/);
+  return match ? match[0].trim() : text;
 }
 
-function renderTimeline(target, items) {
+function summaryFor(item) {
+  if (item.summary) return item.summary;
+  if (item.description) return item.description;
+  if (item.details?.length) return firstSentence(item.details[0]);
+  if (item.degree) return item.degree;
+  return "";
+}
+
+function renderFeatureCards(target, items) {
   target.innerHTML = items.map((item) => `
-    <article class="timeline-item">
-      <div>
-        <h3>${escapeHtml(item.role)}</h3>
-        <p class="meta">${escapeHtml(item.organization)} · ${escapeHtml(item.dates)}</p>
-      </div>
-      <ul>
-        ${item.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
-      </ul>
+    <article class="feature">
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${escapeHtml(item.text)}</p>
     </article>
   `).join("");
+}
+
+function renderExpandableList(target, items, options = {}) {
+  target.innerHTML = items.map((item, index) => {
+    const title = item.role || item.school || item.title;
+    const context = [item.organization || item.location || item.type, item.dates].filter(Boolean).join(" · ");
+    const details = item.details || [];
+    const detailId = `${options.prefix || "details"}-${index}`;
+    return `
+      <article class="profile-item">
+        <div class="item-main">
+          <div>
+            <h3>${escapeHtml(title)}</h3>
+            ${context ? `<p class="meta">${escapeHtml(context)}</p>` : ""}
+          </div>
+          <p>${escapeHtml(summaryFor(item))}</p>
+          ${item.url ? `<a class="text-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open project</a>` : ""}
+        </div>
+        ${details.length ? `
+          <button class="detail-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">View details</button>
+          <ul class="detail-list" id="${detailId}" hidden>
+            ${details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
+          </ul>
+        ` : `<p class="meta">Ready for future details</p>`}
+      </article>
+    `;
+  }).join("");
+}
+
+function renderEducation(target) {
+  renderExpandableList(target, data.education.map((item) => ({
+    ...item,
+    summary: item.degree
+  })), { prefix: "education" });
 }
 
 function renderTags(target, items) {
@@ -47,46 +85,27 @@ document.querySelectorAll("[data-links]").forEach((target) => {
 });
 
 document.querySelectorAll("[data-highlights]").forEach((target) => {
-  renderCards(target, data.highlights, (item) => `
-    <article class="feature">
-      <h3>${escapeHtml(item.title)}</h3>
-      <p>${escapeHtml(item.text)}</p>
-    </article>
-  `);
+  renderFeatureCards(target, data.highlights);
 });
 
 document.querySelectorAll("[data-leadership-themes]").forEach((target) => {
-  renderCards(target, data.leadershipThemes, (item) => `
-    <article class="feature">
-      <h3>${escapeHtml(item.title)}</h3>
-      <p>${escapeHtml(item.text)}</p>
-    </article>
-  `);
-});
-
-document.querySelectorAll("[data-experience-preview]").forEach((target) => {
-  renderTimeline(target, data.work.slice(0, 3));
-});
-
-document.querySelectorAll("[data-education]").forEach((target) => {
-  renderCards(target, data.education, (item) => `
-    <article class="card">
-      <h3>${escapeHtml(item.school)}</h3>
-      <p class="meta">${escapeHtml(item.location)} · ${escapeHtml(item.dates)}</p>
-      <p>${escapeHtml(item.degree)}</p>
-      <ul>
-        ${item.details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}
-      </ul>
-    </article>
-  `);
+  renderFeatureCards(target, data.leadershipThemes);
 });
 
 document.querySelectorAll("[data-work]").forEach((target) => {
-  renderTimeline(target, data.work);
+  renderExpandableList(target, data.work, { prefix: "work" });
+});
+
+document.querySelectorAll("[data-education]").forEach((target) => {
+  renderEducation(target);
 });
 
 document.querySelectorAll("[data-service]").forEach((target) => {
-  renderTimeline(target, data.service);
+  renderExpandableList(target, data.service, { prefix: "service" });
+});
+
+document.querySelectorAll("[data-projects]").forEach((target) => {
+  renderExpandableList(target, data.projects, { prefix: "project" });
 });
 
 document.querySelectorAll("[data-skills]").forEach((target) => {
@@ -97,17 +116,6 @@ document.querySelectorAll("[data-awards]").forEach((target) => {
   renderTags(target, data.awards);
 });
 
-document.querySelectorAll("[data-projects]").forEach((target) => {
-  renderCards(target, data.projects, (item) => `
-    <article class="card">
-      <p class="eyebrow">${escapeHtml(item.type)}</p>
-      <h3>${escapeHtml(item.title)}</h3>
-      <p>${escapeHtml(item.description)}</p>
-      ${item.url ? `<a class="text-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open project</a>` : `<p class="meta">Ready for future details</p>`}
-    </article>
-  `);
-});
-
 document.querySelectorAll("[data-resume-download]").forEach((target) => {
   if (!data.resumeDownload) {
     target.hidden = true;
@@ -116,10 +124,27 @@ document.querySelectorAll("[data-resume-download]").forEach((target) => {
   target.innerHTML = `<a class="button" href="${escapeHtml(data.resumeDownload)}">Download resume PDF</a>`;
 });
 
+document.addEventListener("click", (event) => {
+  const toggle = event.target.closest(".detail-toggle");
+  if (!toggle) return;
+  const details = document.getElementById(toggle.getAttribute("aria-controls"));
+  const expanded = toggle.getAttribute("aria-expanded") === "true";
+  toggle.setAttribute("aria-expanded", String(!expanded));
+  toggle.textContent = expanded ? "View details" : "Hide details";
+  details.hidden = expanded;
+});
+
 document.querySelectorAll(".nav-toggle").forEach((button) => {
   button.addEventListener("click", () => {
     const expanded = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", String(!expanded));
     document.body.classList.toggle("nav-open", !expanded);
+  });
+});
+
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    document.body.classList.remove("nav-open");
+    document.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
   });
 });
