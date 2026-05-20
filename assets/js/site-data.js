@@ -43,13 +43,15 @@ window.siteData = {
     {
       school: "Tennessee Technological University",
       location: "Cookeville, TN",
-      degree: "Bachelor's degree, Business Information Technology",
-      dates: "August 2022 - May 2026",
+      degree: "B.S. in Business Administration, Business Information Technology",
+      dates: "Awarded May 8, 2026",
       details: [
-        "B.S. Business Administration",
+        "Institutional Honors: Cum Laude",
+        "Minor: Leadership",
         "Concentration: Business Intelligence and Analytics",
+        "Overall GPA: 3.58",
         "Activities: Student Government Association and Resident Assistant",
-        "Major GPA: 3.61"
+        "Relevant coursework: Business Intelligence, Advanced Business Analytics, Business Database Management, Business Applications Development, Business Data Communications, Cybersecurity and Privacy, Event Planning, Organizational Leadership"
       ]
     },
     {
