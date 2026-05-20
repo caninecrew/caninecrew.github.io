@@ -13,16 +13,16 @@ window.siteData = {
   ],
   highlights: [
     {
-      title: "Business technology and IT support",
+      title: "IT support and business technology",
       text: "Business Information Technology graduate with a concentration in Business Intelligence and Analytics, preparing to begin an IT Support Analyst role with The Gideons International."
     },
     {
-      title: "Education and youth development",
-      text: "Experience supporting students through substitute teaching, residence life, Scouting, summer camp leadership, and church ministry."
+      title: "Education and student support",
+      text: "Experience supporting students through substitute teaching, residence life, classroom leadership, and youth development."
     },
     {
-      title: "Service-focused leadership",
-      text: "Long-term leader in Scouting and faith-based service with experience in program planning, volunteer coordination, communications, and hands-on problem solving."
+      title: "Scouting, ministry, and service leadership",
+      text: "Long-term leader in Scouting and church ministry with experience in program planning, volunteer coordination, communications, youth mentorship, and camp operations."
     }
   ],
   leadershipThemes: [
