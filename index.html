@@ -14,7 +14,7 @@
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="#main">Samuel Rumbley</a>
+      <a class="brand" href="#main"><span class="brand-mark">SR</span><span>Samuel Rumbley</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
       <div class="nav-links" id="site-menu">
         <a href="#about">About</a>
@@ -29,94 +29,122 @@
   </header>
 
   <main id="main" class="profile-layout">
-    <section class="profile-card" aria-labelledby="profile-name">
-      <div class="profile-cover"></div>
-      <div class="profile-main">
-        <img class="profile-photo" src="assets/images/profile.jpg" alt="Samuel Rumbley">
-        <div class="profile-copy">
-          <p class="eyebrow">Technology · Education · Ministry · Scouting · Service</p>
-          <h1 id="profile-name">Samuel Rumbley</h1>
-          <p class="headline">Practical technology and people-centered leadership.</p>
-          <p class="profile-summary">Tennessee Tech graduate in Business Information Technology preparing to begin work as an IT Support Analyst with The Gideons International. My background brings together technical support, business analytics, education, residence life, Scouting, and church ministry.</p>
-          <p class="profile-location">Cookeville, Tennessee, United States</p>
-          <div class="actions" data-links="primary"></div>
-        </div>
-      </div>
-    </section>
+    <div class="profile-shell">
+      <aside class="profile-sidebar" aria-label="Profile summary">
+        <section class="side-card identity-card">
+          <img class="side-photo" src="assets/images/profile.jpg" alt="Samuel Rumbley">
+          <h2>Samuel Rumbley</h2>
+          <p>Business Information Technology graduate preparing for IT support work with The Gideons International.</p>
+          <div class="mini-links" data-links="sidebar"></div>
+        </section>
 
-    <section class="profile-section" id="about">
-      <div class="section-heading">
-        <p class="eyebrow">About</p>
-        <h2>IT support with a service mindset</h2>
-      </div>
-      <div class="prose">
-        <p>My current direction is IT support, with a long-term interest in using technology to strengthen mission-driven organizations. I am drawn to work where clear systems, patient troubleshooting, and reliable follow-through make daily operations easier.</p>
-        <p>That interest has been shaped by business technology coursework, substitute teaching, residence life, camp operations, Scouting leadership, and church ministry.</p>
-      </div>
-      <div class="feature-grid" data-highlights></div>
-    </section>
+        <section class="side-card">
+          <h2>Current Direction</h2>
+          <p>IT support, business technology, education, Scouting, ministry, and practical systems.</p>
+        </section>
 
-    <section class="profile-section" id="experience">
-      <div class="section-heading">
-        <p class="eyebrow">Experience</p>
-        <h2>Professional and campus roles</h2>
-      </div>
-      <div class="stack" data-work></div>
-    </section>
+        <section class="side-card">
+          <h2>Profile Highlights</h2>
+          <ul class="quick-list">
+            <li>Tennessee Tech graduate</li>
+            <li>Business Intelligence and Analytics concentration</li>
+            <li>Resident Assistant and substitute teaching experience</li>
+            <li>Scouting America and church ministry leadership</li>
+          </ul>
+        </section>
+      </aside>
 
-    <section class="profile-section" id="education">
-      <div class="section-heading">
-        <p class="eyebrow">Education</p>
-        <h2>Academic background</h2>
-      </div>
-      <div class="stack" data-education></div>
-    </section>
+      <div class="profile-feed">
+        <section class="profile-card" aria-labelledby="profile-name">
+          <div class="profile-cover"></div>
+          <div class="profile-main">
+            <img class="profile-photo" src="assets/images/profile.jpg" alt="Samuel Rumbley">
+            <div class="profile-copy">
+              <p class="eyebrow">Technology &middot; Education &middot; Ministry &middot; Scouting &middot; Service</p>
+              <h1 id="profile-name">Samuel Rumbley</h1>
+              <p class="headline">Practical technology and people-centered leadership.</p>
+              <p class="profile-summary">Tennessee Tech graduate in Business Information Technology preparing to begin work as an IT Support Analyst with The Gideons International. My background brings together technical support, business analytics, education, residence life, Scouting, and church ministry.</p>
+              <p class="profile-location">Cookeville, Tennessee, United States</p>
+              <div class="actions" data-links="primary"></div>
+            </div>
+          </div>
+        </section>
 
-    <section class="profile-section" id="leadership">
-      <div class="section-heading">
-        <p class="eyebrow">Leadership and Service</p>
-        <h2>Responsibility, youth development, faith, and service</h2>
-      </div>
-      <div class="prose">
-        <p>My leadership has grown through Scouting, the Order of the Arrow, church ministry, residence life, education, and camp service. Those settings taught me to organize details, listen carefully, communicate expectations, and create structure that helps young people grow.</p>
-      </div>
-      <div class="feature-grid" data-leadership-themes></div>
-      <div class="stack" data-service></div>
-    </section>
+        <section class="profile-section" id="about">
+          <div class="section-heading">
+            <p class="eyebrow">About</p>
+            <h2>IT support with a service mindset</h2>
+          </div>
+          <div class="prose">
+            <p>My current direction is IT support, with a long-term interest in using technology to strengthen mission-driven organizations. I am drawn to work where clear systems, patient troubleshooting, and reliable follow-through make daily operations easier.</p>
+            <p>That interest has been shaped by business technology coursework, substitute teaching, residence life, camp operations, Scouting leadership, and church ministry.</p>
+          </div>
+          <div class="feature-grid" data-highlights></div>
+        </section>
 
-    <section class="profile-section" id="projects">
-      <div class="section-heading">
-        <p class="eyebrow">Projects and Publications</p>
-        <h2>Technology, records, data, and Scouting publications</h2>
-      </div>
-      <p class="section-intro">A growing collection of public work connected to technology, data, records tracking, Scouting, leadership, and service systems.</p>
-      <div class="cards" data-projects></div>
-    </section>
+        <section class="profile-section" id="experience">
+          <div class="section-heading">
+            <p class="eyebrow">Experience</p>
+            <h2>Professional and campus roles</h2>
+          </div>
+          <div class="stack" data-work></div>
+        </section>
 
-    <section class="profile-section" id="skills">
-      <div class="section-heading">
-        <p class="eyebrow">Skills</p>
-        <h2>Technology, communication, and leadership</h2>
-      </div>
-      <div class="tag-list" data-skills></div>
-    </section>
+        <section class="profile-section" id="education">
+          <div class="section-heading">
+            <p class="eyebrow">Education</p>
+            <h2>Academic background</h2>
+          </div>
+          <div class="stack" data-education></div>
+        </section>
 
-    <section class="profile-section" id="credentials">
-      <div class="section-heading">
-        <p class="eyebrow">Credentials and Recognition</p>
-        <h2>Certifications, awards, and honors</h2>
-      </div>
-      <div class="tag-list large" data-awards></div>
-    </section>
+        <section class="profile-section" id="leadership">
+          <div class="section-heading">
+            <p class="eyebrow">Leadership and Service</p>
+            <h2>Responsibility, youth development, faith, and service</h2>
+          </div>
+          <div class="prose">
+            <p>My leadership has grown through Scouting, the Order of the Arrow, church ministry, residence life, education, and camp service. Those settings taught me to organize details, listen carefully, communicate expectations, and create structure that helps young people grow.</p>
+          </div>
+          <div class="feature-grid" data-leadership-themes></div>
+          <div class="stack" data-service></div>
+        </section>
 
-    <section class="profile-section contact-section" id="contact">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2>Connect with me</h2>
-        <p class="section-intro">The best public places to connect are LinkedIn and GitHub.</p>
+        <section class="profile-section" id="projects">
+          <div class="section-heading">
+            <p class="eyebrow">Projects and Publications</p>
+            <h2>Technology, records, data, and Scouting publications</h2>
+          </div>
+          <p class="section-intro">A growing collection of public work connected to technology, data, records tracking, Scouting, leadership, and service systems.</p>
+          <div class="cards" data-projects></div>
+        </section>
+
+        <section class="profile-section" id="skills">
+          <div class="section-heading">
+            <p class="eyebrow">Skills</p>
+            <h2>Technology, communication, and leadership</h2>
+          </div>
+          <div class="tag-list" data-skills></div>
+        </section>
+
+        <section class="profile-section" id="credentials">
+          <div class="section-heading">
+            <p class="eyebrow">Credentials and Recognition</p>
+            <h2>Certifications, awards, and honors</h2>
+          </div>
+          <div class="tag-list large" data-awards></div>
+        </section>
+
+        <section class="profile-section contact-section" id="contact">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Connect with me</h2>
+            <p class="section-intro">The best public places to connect are LinkedIn and GitHub.</p>
+          </div>
+          <div class="link-list" data-links="contact"></div>
+        </section>
       </div>
-      <div class="link-list" data-links="contact"></div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">

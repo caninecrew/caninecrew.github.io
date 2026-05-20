@@ -3,12 +3,13 @@
   --panel: #ffffff;
   --ink: #1f2933;
   --muted: #5d6673;
-  --line: #d8d6d0;
+  --line: #d6d0c8;
   --green: #2f5d4a;
-  --blue: #1f6f9f;
+  --blue: #0a66c2;
   --gold: #9a6428;
   --soft: #edf3f1;
-  --shadow: 0 12px 30px rgba(31, 41, 51, 0.08);
+  --soft-blue: #eaf3fb;
+  --shadow: 0 6px 18px rgba(31, 41, 51, 0.06);
 }
 
 * {
@@ -27,6 +28,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: 180px;
+  background: linear-gradient(180deg, #e7eef3, rgba(231, 238, 243, 0));
 }
 
 img {
@@ -70,7 +80,7 @@ a:hover {
 .nav {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  min-height: 68px;
+  min-height: 58px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -82,6 +92,21 @@ a:hover {
   font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 0;
 }
 
 .nav-links {
@@ -93,10 +118,10 @@ a:hover {
 .nav-links a {
   color: var(--ink);
   text-decoration: none;
-  padding: 0.5rem 0.65rem;
+  padding: 0.45rem 0.6rem;
   border-radius: 6px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .nav-links a:hover,
@@ -125,6 +150,88 @@ a:hover {
   padding: 1rem 0 2rem;
 }
 
+.profile-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.profile-feed {
+  min-width: 0;
+}
+
+.profile-sidebar {
+  position: sticky;
+  top: 76px;
+  display: grid;
+  gap: 1rem;
+}
+
+.side-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.side-card h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.side-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.identity-card {
+  text-align: center;
+  overflow: hidden;
+}
+
+.identity-card::before {
+  content: "";
+  display: block;
+  height: 66px;
+  margin: -1rem -1rem 0;
+  background:
+    linear-gradient(135deg, rgba(10, 102, 194, 0.88), rgba(47, 93, 74, 0.85)),
+    linear-gradient(90deg, #0a66c2, #2f5d4a);
+}
+
+.side-photo {
+  width: 96px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  margin: -48px auto 0.75rem;
+  background: #fff;
+}
+
+.mini-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+
+.mini-links a {
+  font-weight: 800;
+}
+
+.quick-list {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
 .profile-card,
 .profile-section {
   background: var(--panel);
@@ -139,10 +246,10 @@ a:hover {
 }
 
 .profile-cover {
-  min-height: 140px;
+  min-height: 150px;
   background:
-    linear-gradient(135deg, rgba(47, 93, 74, 0.92), rgba(31, 111, 159, 0.82)),
-    linear-gradient(90deg, #2f5d4a, #1f6f9f);
+    linear-gradient(135deg, rgba(10, 102, 194, 0.88), rgba(47, 93, 74, 0.86)),
+    linear-gradient(90deg, #0a66c2, #2f5d4a);
 }
 
 .profile-main {
@@ -169,7 +276,7 @@ a:hover {
 
 .profile-copy h1 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-size: clamp(2rem, 4vw, 3.25rem);
   line-height: 1;
   letter-spacing: 0;
 }
@@ -177,7 +284,7 @@ a:hover {
 .headline {
   margin: 0.55rem 0 0;
   color: var(--ink);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
 }
 
@@ -196,7 +303,7 @@ a:hover {
 
 .eyebrow {
   margin: 0 0 0.65rem;
-  color: var(--gold);
+  color: var(--blue);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -218,9 +325,9 @@ a:hover {
   justify-content: center;
   min-height: 42px;
   padding: 0.62rem 0.95rem;
-  border: 1px solid var(--green);
-  border-radius: 6px;
-  background: var(--green);
+  border: 1px solid var(--blue);
+  border-radius: 999px;
+  background: var(--blue);
   color: #fff;
   font-weight: 800;
   text-decoration: none;
@@ -228,12 +335,12 @@ a:hover {
 
 .button:hover,
 .actions a:hover {
-  background: var(--ink);
+  background: #084f95;
   color: #fff;
 }
 
 .profile-section {
-  padding: 1.4rem;
+  padding: 1.25rem;
   margin-bottom: 1rem;
 }
 
@@ -262,6 +369,10 @@ a:hover {
   border-radius: 8px;
   background: #fff;
   padding: 1rem;
+}
+
+.profile-item + .profile-item {
+  border-top-color: #ece8e2;
 }
 
 .feature h3,
@@ -294,7 +405,7 @@ a:hover {
 .detail-toggle {
   justify-self: start;
   border: 1px solid var(--blue);
-  border-radius: 6px;
+  border-radius: 999px;
   background: #fff;
   color: var(--blue);
   cursor: pointer;
@@ -305,7 +416,7 @@ a:hover {
 
 .detail-toggle:hover,
 .detail-toggle:focus-visible {
-  background: #e8f2f7;
+  background: var(--soft-blue);
   outline: none;
 }
 
@@ -328,7 +439,7 @@ a:hover {
   padding: 0.35rem 0.65rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--soft);
+  background: #f7f9fb;
   color: var(--ink);
   font-weight: 700;
 }
@@ -359,6 +470,19 @@ a:hover {
 }
 
 @media (max-width: 900px) {
+  .profile-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-sidebar {
+    position: static;
+    order: 2;
+  }
+
+  .profile-feed {
+    order: 1;
+  }
+
   .feature-grid,
   .cards {
     grid-template-columns: 1fr;
@@ -410,6 +534,10 @@ a:hover {
   }
 
   .profile-section {
+    padding: 1rem;
+  }
+
+  .side-card {
     padding: 1rem;
   }
 
